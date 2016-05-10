@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es5",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "declaration": true,
+        "moduleResolution": "node"
+    },
+    "files": [
+        "typings/main.d.ts",
+        "ng2-validators.ts",
+        "./src/password-validators.ts",
+        "./tests/password-validators.spec.ts"
+    ]
+}
