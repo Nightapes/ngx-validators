@@ -2,7 +2,7 @@
   "name": "ng2-validators",
   "description": "An implementation of angular validators for Angular 2",
   "scripts": {
-    "test": "tsc && karma start",
+    "test": "tslint /src && tsc && karma start",
     "test-watch": "tsc && karma start --no-single-run --auto-watch",
     "commit": "npm run prepublish && npm test && git-cz",
     "prepublish": "typings install && tsc && node make.js",
@@ -16,7 +16,7 @@
     "angular",
     "angular2",
     "validators"
-   ],
+  ],
   "author": "Sebastian Beisch",
   "license": "MIT",
   "bugs": {
@@ -52,6 +52,9 @@
     "systemjs": "~0.19.24",
     "systemjs-builder": "^0.15.13",
     "tsd": "^0.6.5",
+    "tslint": "3.6.0",
+    "tslint-eslint-rules": "1.2.0",
+    "tslint-stylish": "2.1.0-beta",
     "typescript": "^1.8.9",
     "typings": "^0.6.8",
     "zone.js": "^0.6.10"
