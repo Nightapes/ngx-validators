@@ -17,9 +17,6 @@
     // Control whether tslint is enabled for TypeScript files or not.
 	"tslint.enable": true,
 
-	// The path to the rules configuration file
-	"tslint.configFile": "tslint.json",
-    
     // Configure glob patterns for excluding files and folders.
 	"files.exclude": {
         "**/.git": true,
@@ -29,6 +26,8 @@
         "gradlew": true,
         "gradlew.bat": true,
         "typings": true,
-        "node_modules": true
+        "node_modules": true,
+        "**/*.js" : true,
+        "**/*.d.ts" : true
         }
 }
