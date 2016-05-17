@@ -7,7 +7,6 @@ List of validators
 1. Password 
 1. Email 
 
-
 ## Password validators
 
 The rules are from https://github.com/vt-middleware/passay
@@ -35,6 +34,10 @@ password: Control = new Control('', Validators.compose([
         PasswordValidators.repeatCharacterRegexRule(4),
         PasswordValidators.whitespaceRule()
     ]));
+```
+
+```
+email: Control = new Control('', EmailValidators.normal());
 ```
 
 ##Todo
