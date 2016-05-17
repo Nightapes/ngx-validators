@@ -48,7 +48,7 @@
     "karma-typescript-preprocessor": "0.0.21",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",
-    "semantic-release": "~4.3.5",
+    "semantic-release": "^4.3.5",
     "systemjs": "~0.19.24",
     "systemjs-builder": "^0.15.13",
     "tsd": "^0.6.5",
