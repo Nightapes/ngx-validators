@@ -27,7 +27,7 @@
         "gradlew.bat": true,
         "typings": true,
         "node_modules": true,
-        "**/*.js" : true,
-        "**/*.d.ts" : true
+        "**/*.js" : false,
+        "**/*.d.ts" : false
         }
 }

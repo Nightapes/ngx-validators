@@ -14,6 +14,8 @@
         "typings/main.d.ts",
         "ng2-validators.ts",
         "./src/password-validators.ts",
-        "./tests/password-validators.spec.ts"
+        "./tests/password-validators.spec.ts",
+        "./src/email-validators.ts",
+        "./tests/email-validators.spec.ts"
     ]
 }
