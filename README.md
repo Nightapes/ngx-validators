@@ -27,6 +27,13 @@ The password validators are:
 * simple (only checks if it looks like a mail)
 * normal (follows the [HTML5](https://www.w3.org/TR/html5/forms.html#valid-e-mail-address) rules)
 
+## Install
+
+```
+npm install ng2-validators
+```
+
+
 ## How to use
 
 ```
