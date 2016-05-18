@@ -9,6 +9,7 @@ List of validators
 1. Universal
 1. Creditcards
 
+
 ## Password validators
 
 The rules are from https://github.com/vt-middleware/passay
