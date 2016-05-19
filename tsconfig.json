@@ -16,6 +16,8 @@
         "./src/password-validators.ts",
         "./tests/password-validators.spec.ts",
         "./src/email-validators.ts",
-        "./tests/email-validators.spec.ts"
+        "./tests/email-validators.spec.ts",
+        "./src/universal-validators.ts",
+        "./tests/universal-validators.spec.ts"
     ]
 }
