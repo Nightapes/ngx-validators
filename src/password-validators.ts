@@ -13,16 +13,6 @@ export class PasswordValidators {
         };
     }
 
-    static whitespaceRule(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            let pattern = '\\s';
-            if (control.value !== '' && new RegExp(pattern).test(control.value)) {
-                return { 'whitespaceRule': true };
-            }
-            return undefined;
-        };
-    }
-
     static allowedCharacterRule(allowedChars: string[]): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
             let value: string = control.value;

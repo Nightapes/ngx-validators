@@ -16,15 +16,6 @@ System.registerDynamic("src/password-validators", [], true, function($__require,
         return undefined;
       };
     };
-    PasswordValidators.whitespaceRule = function() {
-      return function validate(control) {
-        var pattern = '\\s';
-        if (control.value !== '' && new RegExp(pattern).test(control.value)) {
-          return {'whitespaceRule': true};
-        }
-        return undefined;
-      };
-    };
     PasswordValidators.allowedCharacterRule = function(allowedChars) {
       return function validate(control) {
         var value = control.value;
@@ -140,7 +131,39 @@ System.registerDynamic("src/email-validators", [], true, function($__require, ex
   return module.exports;
 });
 
-System.registerDynamic("ng2-validators", ["./src/password-validators", "./src/email-validators"], true, function($__require, exports, module) {
+System.registerDynamic("src/universal-validators", ["@angular/core/src/facade/lang"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var lang_1 = $__require('@angular/core/src/facade/lang');
+  var UniversalValidators = (function() {
+    function UniversalValidators() {}
+    UniversalValidators.noWhitespace = function() {
+      return function validate(control) {
+        var pattern = '\\s';
+        if (control.value !== '' && new RegExp(pattern).test(control.value)) {
+          return {'noWhitespaceRequired': true};
+        }
+        return undefined;
+      };
+    };
+    UniversalValidators.isNumber = function() {
+      return function validate(control) {
+        if (control.value !== '' && lang_1.NumberWrapper.isNaN(control.value)) {
+          return {'numberRequired': true};
+        }
+        return undefined;
+      };
+    };
+    return UniversalValidators;
+  }());
+  exports.UniversalValidators = UniversalValidators;
+  return module.exports;
+});
+
+System.registerDynamic("ng2-validators", ["./src/password-validators", "./src/email-validators", "./src/universal-validators"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -153,5 +176,6 @@ System.registerDynamic("ng2-validators", ["./src/password-validators", "./src/em
   }
   __export($__require('./src/password-validators'));
   __export($__require('./src/email-validators'));
+  __export($__require('./src/universal-validators'));
   return module.exports;
 });
