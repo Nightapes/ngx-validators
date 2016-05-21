@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@angular/common": "2.0.0-rc.1",
+    "@angular/compiler": "2.0.0-rc.1",
     "@angular/core": "2.0.0-rc.1",
     "@angular/platform-browser": "2.0.0-rc.1",
-    "@angular/compiler": "2.0.0-rc.1",
     "commitizen": "~2.8.1",
     "cz-conventional-changelog": "~1.1.6",
     "es6-promise": "^3.0.2",
@@ -45,6 +45,7 @@
     "karma-chrome-launcher": "~0.2.2",
     "karma-firefox-launcher": "~0.1.7",
     "karma-jasmine": "~0.3.8",
+    "karma-mocha-reporter": "^2.0.3",
     "karma-typescript-preprocessor": "0.0.21",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.6",

@@ -31,24 +31,6 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
         });
-        describe('whitespaceRule', () => {
-
-            it('should work for empty control', () => {
-                let control: Control = new Control('');
-                let validated = PasswordValidators.whitespaceRule()(control);
-                expect(validated).toBeUndefined();
-            });
-            it('should work for valid password', () => {
-                let control: Control = new Control('aaabbbccc');
-                let validated = PasswordValidators.whitespaceRule()(control);
-                expect(validated).toBeUndefined();
-            });
-            it('should work for invalid password', () => {
-                let control: Control = new Control('aaab bbccc');
-                let validated = PasswordValidators.whitespaceRule()(control);
-                expect(validated).toEqual({ 'whitespaceRule': true });
-            });
-        });
 
         describe('allowedCharacterRule', () => {
 

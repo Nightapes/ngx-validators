@@ -1,9 +1,11 @@
 import { AbstractControl } from '@angular/common';
+import {Util} from './util'
 
 export class PasswordValidators {
 
     static repeatCharacterRegexRule(repeatCount: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let repeatDec = repeatCount - 1;
             let pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
             if (control.value !== '' && new RegExp(pattern).test(control.value)) {
@@ -13,18 +15,9 @@ export class PasswordValidators {
         };
     }
 
-    static whitespaceRule(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            let pattern = '\\s';
-            if (control.value !== '' && new RegExp(pattern).test(control.value)) {
-                return { 'whitespaceRule': true };
-            }
-            return undefined;
-        };
-    }
-
     static allowedCharacterRule(allowedChars: string[]): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             let valid = true;
             let invalidChars: string[] = [];
@@ -46,6 +39,7 @@ export class PasswordValidators {
 
     static alphabeticalCharacterRule(amount: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -61,6 +55,7 @@ export class PasswordValidators {
 
     static digitCharacterRule(amount: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -76,6 +71,7 @@ export class PasswordValidators {
 
     static lowercaseCharacterRule(amount: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -91,6 +87,7 @@ export class PasswordValidators {
 
     static uppercaseCharacterRule(amount: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
