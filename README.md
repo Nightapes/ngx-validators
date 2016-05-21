@@ -14,7 +14,7 @@ The rules are from https://github.com/vt-middleware/passay
 The password validators are: 
 
 * repeatCharacterRegexRule
-* whitespaceRule
+* whitespaceRule (moved to UniversalValidators)
 * allowedCharacterRule
 * alphabeticalCharacterRule
 * digitCharacterRule
@@ -22,10 +22,19 @@ The password validators are:
 * uppercaseCharacterRule
 * more will come
 
-## Email
+## Email validators
 
 * simple (only checks if it looks like a mail)
 * normal (follows the [HTML5](https://www.w3.org/TR/html5/forms.html#valid-e-mail-address) rules)
+
+## Universal validators
+
+* noWhitespace
+* isNumber
+* isInRange
+* minLength
+* maxLength
+
 
 ## Install
 
@@ -47,13 +56,18 @@ password: Control = new Control('', Validators.compose([
 email: Control = new Control('', EmailValidators.normal());
 ```
 
+```
+text: Control = new Control('', UniversalValidators.minLength(2));
+```
+
+
 ##Todo
 
 * Implement  https://github.com/mailcheck/mailcheck
 * Add more password rules
-* Add general validators
+* Add credit card validators
+* Add phone validators
 * Add address validator 
-* Add releases
 
 Get the complete changelog here: https://github.com/Nightapes/ng2-validators/releases
 
