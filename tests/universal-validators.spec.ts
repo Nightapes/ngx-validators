@@ -53,5 +53,86 @@ export function main() {
             });
 
         });
+
+        describe('isInRangeRule', () => {
+
+            it('should work for empty control', () => {
+                let control: Control = new Control('');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid number', () => {
+                let control: Control = new Control('7');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for invalid number small', () => {
+                let control: Control = new Control('4');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toEqual({ 'rangeValueToSmall': true });
+            });
+
+            it('should work for invalid number big', () => {
+                let control: Control = new Control('11');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toEqual({ 'rangeValueToBig': true });
+            });
+
+            it('should work for invalid input', () => {
+                let control: Control = new Control('sdsd');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toEqual({ 'numberRequired': true });
+            });
+
+        });
+
+        describe('minLength', () => {
+
+            it('should work for empty control', () => {
+                let control: Control = new Control('');
+                let validated = UniversalValidators.minLength(2)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid length', () => {
+                let control: Control = new Control('453');
+                let validated = UniversalValidators.minLength(2)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for invalid length', () => {
+                let control: Control = new Control('abbccc');
+                let validated = UniversalValidators.minLength(6)(control);
+                expect(validated).toEqual({ 'minLength': true });
+            });
+
+        });
+
+        describe('maxLength', () => {
+
+            it('should work for empty control', () => {
+                let control: Control = new Control('');
+                let validated = UniversalValidators.maxLength(2)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid length', () => {
+                let control: Control = new Control('453');
+                let validated = UniversalValidators.maxLength(4)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for invalid length', () => {
+                let control: Control = new Control('abbccc');
+                let validated = UniversalValidators.maxLength(2)(control);
+                expect(validated).toEqual({ 'maxLength': true });
+            });
+
+        });
+
+
+
     });
 }

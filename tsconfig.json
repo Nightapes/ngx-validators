@@ -18,6 +18,8 @@
         "./src/email-validators.ts",
         "./tests/email-validators.spec.ts",
         "./src/universal-validators.ts",
-        "./tests/universal-validators.spec.ts"
+        "./tests/universal-validators.spec.ts",
+        "./src/util.ts",
+        "./tests/util.spec.ts"
     ]
 }
