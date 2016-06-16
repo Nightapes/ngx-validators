@@ -255,7 +255,7 @@ System.registerDynamic("src/creditcard-validators", ["./util"], true, function($
   var maestro = '(?:(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15})$';
   var jcb = '(?:(?:2131|1800|35\\d{3})\\d{11})$';
   var discover = '(?:6(?:011|5[0-9]{2})(?:[0-9]{12}))$';
-  var dinersClub = '(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$';
+  var dinersclub = '(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$';
   var mastercard = '(?:5[1-5][0-9]{14})$';
   var CreditCardValidators = (function() {
     function CreditCardValidators() {}
@@ -263,7 +263,7 @@ System.registerDynamic("src/creditcard-validators", ["./util"], true, function($
       return function validate(control) {
         if (util_1.Util.isNotPresent(control))
           return undefined;
-        if (new RegExp(americanExpress + '|' + visa + '|' + maestro + '|' + jcb + '|' + discover + '|' + mastercard + '|' + dinersClub).test(control.value)) {
+        if (new RegExp(americanExpress + '|' + visa + '|' + maestro + '|' + jcb + '|' + discover + '|' + mastercard + '|' + dinersclub).test(control.value)) {
           return undefined;
         }
         return {'creditcard': true};
@@ -279,14 +279,14 @@ System.registerDynamic("src/creditcard-validators", ["./util"], true, function($
         return {'americanExpress': true};
       };
     };
-    CreditCardValidators.dinersClub = function() {
+    CreditCardValidators.dinersclub = function() {
       return function validate(control) {
         if (util_1.Util.isNotPresent(control))
           return undefined;
-        if (new RegExp(dinersClub).test(control.value)) {
+        if (new RegExp(dinersclub).test(control.value)) {
           return undefined;
         }
-        return {'dinersClub': true};
+        return {'dinersclub': true};
       };
     };
     CreditCardValidators.discover = function() {
