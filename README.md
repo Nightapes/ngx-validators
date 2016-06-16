@@ -6,6 +6,8 @@ List of validators
 
 1. Password 
 1. Email 
+1. Universal
+1. Creditcards 
 
 ## Password validators
 
@@ -35,6 +37,15 @@ The password validators are:
 * minLength
 * maxLength
 
+## Creditcard validators
+
+* americanexpress
+* visa
+* dinersclub
+* discover
+* jcb
+* maestro
+* mastercard
 
 ## Install
 
@@ -65,7 +76,6 @@ text: Control = new Control('', UniversalValidators.minLength(2));
 
 * Implement  https://github.com/mailcheck/mailcheck
 * Add more password rules
-* Add credit card validators
 * Add phone validators
 * Add address validator 
 
