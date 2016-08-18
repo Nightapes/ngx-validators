@@ -202,7 +202,7 @@ System.registerDynamic("src/universal-validators", ["@angular/core/src/facade/la
         if (util_1.Util.isNotPresent(control))
           return undefined;
         var value = control.value;
-        if (value.length > minLength) {
+        if (value.length <= minLength) {
           return undefined;
         }
         return {'minLength': true};
@@ -213,7 +213,7 @@ System.registerDynamic("src/universal-validators", ["@angular/core/src/facade/la
         if (util_1.Util.isNotPresent(control))
           return undefined;
         var value = control.value;
-        if (maxLength > value.length) {
+        if (maxLength >= value.length) {
           return undefined;
         }
         return {'maxLength': true};

@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/common';
 import { NumberWrapper} from '@angular/core/src/facade/lang';
-import {Util} from './util'
+import {Util} from './util';
 
 export class UniversalValidators {
 
@@ -47,7 +47,7 @@ export class UniversalValidators {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
-            if (value.length > minLength) {
+            if (value.length <= minLength) {
                 return undefined;
             }
             return { 'minLength': true };
@@ -58,7 +58,7 @@ export class UniversalValidators {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
-            if (maxLength > value.length) {
+            if (maxLength >= value.length) {
                 return undefined;
             }
             return { 'maxLength': true };

@@ -62,6 +62,18 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
 
+            it('should work for valid number, lower range', () => {
+                let control: Control = new Control('5');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid number, higher range', () => {
+                let control: Control = new Control('10');
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toBeUndefined();
+            });
+
             it('should work for valid number', () => {
                 let control: Control = new Control('7');
                 let validated = UniversalValidators.isInRange(5, 10)(control);
@@ -97,13 +109,13 @@ export function main() {
             });
 
             it('should work for valid length', () => {
-                let control: Control = new Control('453');
+                let control: Control = new Control('12');
                 let validated = UniversalValidators.minLength(2)(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for invalid length', () => {
-                let control: Control = new Control('abbccc');
+                let control: Control = new Control('1234567');
                 let validated = UniversalValidators.minLength(6)(control);
                 expect(validated).toEqual({ 'minLength': true });
             });
@@ -119,13 +131,13 @@ export function main() {
             });
 
             it('should work for valid length', () => {
-                let control: Control = new Control('453');
+                let control: Control = new Control('1234');
                 let validated = UniversalValidators.maxLength(4)(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for invalid length', () => {
-                let control: Control = new Control('abbccc');
+                let control: Control = new Control('123');
                 let validated = UniversalValidators.maxLength(2)(control);
                 expect(validated).toEqual({ 'maxLength': true });
             });

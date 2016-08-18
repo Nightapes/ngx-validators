@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/common';
-import {Util} from './util'
+import {Util} from './util';
 
 let visa = '(?:4[0-9]{12})(?:[0-9]{3})?$';
 let americanExpress = '(?:3[47][0-9]{13})$';
@@ -7,7 +7,7 @@ let maestro = '(?:(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15})$';
 let jcb = '(?:(?:2131|1800|35\\d{3})\\d{11})$';
 let discover = '(?:6(?:011|5[0-9]{2})(?:[0-9]{12}))$';
 let dinersclub = '(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$';
-let mastercard = '(?:5[1-5][0-9]{14})$'
+let mastercard = '(?:5[1-5][0-9]{14})$';
 
 export class CreditCardValidators {
 

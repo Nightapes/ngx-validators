@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/common';
-import {Util} from './util'
+import {Util} from './util';
 
 export class EmailValidators {
 
@@ -18,7 +18,9 @@ export class EmailValidators {
     static normal(): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
+            // tslint:disable max-length 
             let pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+            // tslint:enable
             if (pattern.test(control.value)) {
                 return undefined;
             }

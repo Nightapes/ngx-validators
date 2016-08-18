@@ -1,5 +1,5 @@
 import { AbstractControl } from '@angular/common';
-import {Util} from './util'
+import {Util} from './util';
 
 export class PasswordValidators {
 
