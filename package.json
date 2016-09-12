@@ -26,14 +26,16 @@
   "typings": "./ng2-validators.d.ts",
   "homepage": "https://github.com/Nightapes/ng2-validators",
   "peerDependencies": {
-    "@angular/common": "2.0.0-rc.5",
-    "@angular/core": "2.0.0-rc.5"
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6"
   },
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.5",
-    "@angular/compiler": "2.0.0-rc.5",
-    "@angular/core": "2.0.0-rc.5",
-    "@angular/platform-browser": "2.0.0-rc.5",
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6",
     "commitizen": "2.8.1",
     "cz-conventional-changelog": "1.1.6",
     "es6-promise": "3.0.2",
@@ -48,14 +50,15 @@
     "karma-mocha-reporter": "2.0.3",
     "karma-typescript-preprocessor": "0.0.21",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.6",
+    "rxjs": "5.0.0-beta.11",
     "semantic-release": "4.3.5",
-    "systemjs": "0.19.24",
+    "systemjs": "0.19.27",
     "systemjs-builder": "0.15.13",
     "tsd": "0.6.5",
-    "typescript": "1.8.9",
+    "traceur": "^0.0.111",
+    "typescript": "2.0.2",
     "typings": "0.6.8",
-    "zone.js": "0.6.12"
+    "zone.js": "0.6.17"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"

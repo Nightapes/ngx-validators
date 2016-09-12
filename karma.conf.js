@@ -14,20 +14,51 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: [
             // for Travis
+            'node_modules/traceur/bin/traceur.js',
+
             'node_modules/es6-shim/es6-shim.js',
             'node_modules/zone.js/dist/zone.js',
             'node_modules/zone.js/dist/long-stack-trace-zone.js',
+            'node_modules/zone.js/dist/async-test.js',
+            'node_modules/zone.js/dist/fake-async-test.js',
+            'node_modules/zone.js/dist/sync-test.js',
+            'node_modules/zone.js/dist/proxy.js',
             'node_modules/zone.js/dist/jasmine-patch.js',
             'node_modules/systemjs/dist/system.src.js',
             'node_modules/reflect-metadata/Reflect.js',
 
-            { pattern: 'node_modules/@angular/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/rxjs/**/*.js', included: false, watched: false, served: true },
-            { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false, served: true }, // PhantomJS2 (and possibly others) might require it
+            {
+                pattern: 'node_modules/@angular/**/*.js',
+                included: false,
+                watched: false,
+                served: true
+            }, {
+                pattern: 'node_modules/rxjs/**/*.js',
+                included: false,
+                watched: false,
+                served: true
+            }, {
+                pattern: 'node_modules/systemjs/dist/system-polyfills.js',
+                included: false,
+                watched: false,
+                served: true
+            }, // PhantomJS2 (and possibly others) might require it
 
-            { pattern: 'ng2-validators.ts', included: false, watched: true }, // source files
-            { pattern: 'src/**/*.ts', included: false, watched: true }, // source files
-            { pattern: 'tests/**/*.ts', included: false, watched: true }, // test files
+            {
+                pattern: 'ng2-validators.ts',
+                included: false,
+                watched: true
+            }, // source files
+            {
+                pattern: 'src/**/*.ts',
+                included: false,
+                watched: true
+            }, // source files
+            {
+                pattern: 'tests/**/*.ts',
+                included: false,
+                watched: true
+            }, // test files
             'karma-test-shim.js'
         ],
 
@@ -68,7 +99,7 @@ module.exports = function(config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: process.env.TRAVIS ? ['Firefox'] : [ 'Chrome'],
+        browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome'],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits

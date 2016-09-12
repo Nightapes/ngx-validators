@@ -1,5 +1,5 @@
-import { AbstractControl } from '@angular/common';
-import {Util} from './util';
+import { AbstractControl } from '@angular/forms';
+import { Util } from './../util';
 
 export class PasswordValidators {
 
@@ -99,6 +99,19 @@ export class PasswordValidators {
             }
             return undefined;
         };
+    }
+
+    static mismatchedPasswords(passwordControlName?: string, confirmPasswordControlName?: string) {
+        return function validate(group: AbstractControl): { [key: string]: any } {
+            let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
+            let newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
+            if (newPasswordValue !== newPasswordConfirmValue) {
+                group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').setErrors({ 'mismatchedPasswords': true });
+                return { 'mismatchedPasswords': true };
+            }
+            return undefined;
+
+        }
     }
 
 }

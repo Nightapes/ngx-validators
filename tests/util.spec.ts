@@ -1,5 +1,5 @@
 import {Util} from '../src/util';
-import {Control} from '@angular/common';
+import {FormControl} from '@angular/forms';
 
 export function main() {
 
@@ -8,13 +8,13 @@ export function main() {
         describe('isNotPresent', () => {
 
             it('should work for empty control', () => {
-                let control: Control = new Control('');
+                let control: FormControl = new FormControl('');
                 let validated = Util.isNotPresent(control);
                 expect(validated).toBeTruthy();
             });
 
             it('should work for control with text', () => {
-                let control: Control = new Control('aaabbbccc');
+                let control: FormControl = new FormControl('aaabbbccc');
                 let validated = Util.isNotPresent(control);
                 expect(validated).toBeFalsy();
             });

@@ -1,6 +1,6 @@
-import { AbstractControl } from '@angular/common';
-import { NumberWrapper} from '@angular/core/src/facade/lang';
-import {Util} from './util';
+import { AbstractControl } from '@angular/forms';
+import { NumberWrapper } from '@angular/core/src/facade/lang';
+import { Util } from './../util';
 
 export class UniversalValidators {
 
@@ -62,6 +62,34 @@ export class UniversalValidators {
                 return undefined;
             }
             return { 'maxLength': true };
+        };
+    }
+
+    static min(min: number): any {
+        return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
+            let value: string = control.value;
+            if (NumberWrapper.isNaN(control.value)) {
+                return { 'numberRequired': true };
+            }
+            if (+value >= min) {
+                return undefined;
+            }
+            return { 'min': true };
+        };
+    }
+
+    static max(max: number): any {
+        return function validate(control: AbstractControl): { [key: string]: any } {
+            if (Util.isNotPresent(control)) return undefined;
+            let value: string = control.value;
+            if (NumberWrapper.isNaN(control.value)) {
+                return { 'numberRequired': true };
+            }
+            if (max >= +value) {
+                return undefined;
+            }
+            return { 'max': true };
         };
     }
 

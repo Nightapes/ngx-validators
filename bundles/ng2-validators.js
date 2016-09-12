@@ -1,10 +1,10 @@
-System.registerDynamic("src/password-validators", ["./util"], true, function($__require, exports, module) {
+System.registerDynamic("src/password/password-validators", ["./../util"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util_1 = $__require('./util');
+  var util_1 = $__require('./../util');
   var PasswordValidators = (function() {
     function PasswordValidators() {}
     PasswordValidators.repeatCharacterRegexRule = function(repeatCount) {
@@ -106,19 +106,95 @@ System.registerDynamic("src/password-validators", ["./util"], true, function($__
         return undefined;
       };
     };
+    PasswordValidators.mismatchedPasswords = function(passwordControlName, confirmPasswordControlName) {
+      return function validate(group) {
+        var newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
+        var newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
+        if (newPasswordValue !== newPasswordConfirmValue) {
+          group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').setErrors({'mismatchedPasswords': true});
+          return {'mismatchedPasswords': true};
+        }
+        return undefined;
+      };
+    };
     return PasswordValidators;
   }());
   exports.PasswordValidators = PasswordValidators;
   return module.exports;
 });
 
-System.registerDynamic("src/email-validators", ["./util"], true, function($__require, exports, module) {
+System.registerDynamic("src/password/password.directive", ["@angular/core", "@angular/forms", "./password-validators"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util_1 = $__require('./util');
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = $__require('@angular/core');
+  var forms_1 = $__require('@angular/forms');
+  var password_validators_1 = $__require('./password-validators');
+  var PasswordValidator = (function() {
+    function PasswordValidator() {
+      this.repeatCharacter = 4;
+      this.alphabeticalCharacter = 1;
+      this.digitCharacter = 1;
+      this.lowercaseCharacter = 1;
+      this.uppercaseCharacter = 1;
+    }
+    PasswordValidator.prototype.ngOnInit = function() {
+      this.repeatCharacterValidator = password_validators_1.PasswordValidators.repeatCharacterRegexRule(this.repeatCharacter);
+      this.alphabeticalCharacterValidator = password_validators_1.PasswordValidators.alphabeticalCharacterRule(this.alphabeticalCharacter);
+      this.digitCharacterValidator = password_validators_1.PasswordValidators.digitCharacterRule(this.digitCharacter);
+      this.lowercaseCharacterValidator = password_validators_1.PasswordValidators.lowercaseCharacterRule(this.lowercaseCharacter);
+      this.uppercaseCharacterValidator = password_validators_1.PasswordValidators.uppercaseCharacterRule(this.uppercaseCharacter);
+    };
+    PasswordValidator.prototype.validate = function(c) {
+      var compose = forms_1.Validators.compose([this.repeatCharacterValidator, this.digitCharacterValidator, this.alphabeticalCharacterValidator, this.lowercaseCharacterValidator, this.uppercaseCharacterValidator]);
+      return compose(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidator.prototype, "repeatCharacter", void 0);
+    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidator.prototype, "alphabeticalCharacter", void 0);
+    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidator.prototype, "digitCharacter", void 0);
+    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidator.prototype, "lowercaseCharacter", void 0);
+    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidator.prototype, "uppercaseCharacter", void 0);
+    PasswordValidator = __decorate([core_1.Directive({
+      selector: '[password][formControlName],[password][formControl],[password][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return PasswordValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], PasswordValidator);
+    return PasswordValidator;
+  }());
+  exports.PasswordValidator = PasswordValidator;
+  return module.exports;
+});
+
+System.registerDynamic("src/email/email-validators", ["./../util"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var util_1 = $__require('./../util');
   var EmailValidators = (function() {
     function EmailValidators() {}
     EmailValidators.simple = function() {
@@ -149,14 +225,76 @@ System.registerDynamic("src/email-validators", ["./util"], true, function($__req
   return module.exports;
 });
 
-System.registerDynamic("src/universal-validators", ["@angular/core/src/facade/lang", "./util"], true, function($__require, exports, module) {
+System.registerDynamic("src/email/email.directive", ["@angular/core", "@angular/forms", "./email-validators"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = $__require('@angular/core');
+  var forms_1 = $__require('@angular/forms');
+  var email_validators_1 = $__require('./email-validators');
+  var EmailValidator = (function() {
+    function EmailValidator() {
+      this.email = 'normal';
+    }
+    EmailValidator.prototype.ngOnInit = function() {
+      switch (this.email) {
+        case 'simple':
+          this.validator = email_validators_1.EmailValidators.simple();
+          break;
+        case 'normal':
+          this.validator = email_validators_1.EmailValidators.normal();
+          break;
+        default:
+          this.validator = email_validators_1.EmailValidators.normal();
+          break;
+      }
+    };
+    EmailValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', String)], EmailValidator.prototype, "email", void 0);
+    EmailValidator = __decorate([core_1.Directive({
+      selector: '[email][formControlName],[email][formControl],[email][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return EmailValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], EmailValidator);
+    return EmailValidator;
+  }());
+  exports.EmailValidator = EmailValidator;
+  return module.exports;
+});
+
+System.registerDynamic("src/universal/universal-validators", ["@angular/core/src/facade/lang", "./../util"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
   var lang_1 = $__require('@angular/core/src/facade/lang');
-  var util_1 = $__require('./util');
+  var util_1 = $__require('./../util');
   var UniversalValidators = (function() {
     function UniversalValidators() {}
     UniversalValidators.noWhitespace = function() {
@@ -219,9 +357,174 @@ System.registerDynamic("src/universal-validators", ["@angular/core/src/facade/la
         return {'maxLength': true};
       };
     };
+    UniversalValidators.min = function(min) {
+      return function validate(control) {
+        if (util_1.Util.isNotPresent(control))
+          return undefined;
+        var value = control.value;
+        if (lang_1.NumberWrapper.isNaN(control.value)) {
+          return {'numberRequired': true};
+        }
+        if (+value >= min) {
+          return undefined;
+        }
+        return {'min': true};
+      };
+    };
+    UniversalValidators.max = function(max) {
+      return function validate(control) {
+        if (util_1.Util.isNotPresent(control))
+          return undefined;
+        var value = control.value;
+        if (lang_1.NumberWrapper.isNaN(control.value)) {
+          return {'numberRequired': true};
+        }
+        if (max >= +value) {
+          return undefined;
+        }
+        return {'max': true};
+      };
+    };
     return UniversalValidators;
   }());
   exports.UniversalValidators = UniversalValidators;
+  return module.exports;
+});
+
+System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@angular/forms", "./universal-validators"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = $__require('@angular/core');
+  var forms_1 = $__require('@angular/forms');
+  var universal_validators_1 = $__require('./universal-validators');
+  var WhiteSpaceValidator = (function() {
+    function WhiteSpaceValidator() {}
+    WhiteSpaceValidator.prototype.ngOnInit = function() {
+      this.validator = universal_validators_1.UniversalValidators.noWhitespace();
+    };
+    WhiteSpaceValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    WhiteSpaceValidator = __decorate([core_1.Directive({
+      selector: '[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return WhiteSpaceValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], WhiteSpaceValidator);
+    return WhiteSpaceValidator;
+  }());
+  exports.WhiteSpaceValidator = WhiteSpaceValidator;
+  var IsNumberValidator = (function() {
+    function IsNumberValidator() {}
+    IsNumberValidator.prototype.ngOnInit = function() {
+      this.validator = universal_validators_1.UniversalValidators.isNumber();
+    };
+    IsNumberValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    IsNumberValidator = __decorate([core_1.Directive({
+      selector: '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return IsNumberValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], IsNumberValidator);
+    return IsNumberValidator;
+  }());
+  exports.IsNumberValidator = IsNumberValidator;
+  var IsInRangealidator = (function() {
+    function IsInRangealidator() {}
+    IsInRangealidator.prototype.ngOnInit = function() {
+      this.validator = universal_validators_1.UniversalValidators.isInRange(this.min, this.max);
+    };
+    IsInRangealidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', Number)], IsInRangealidator.prototype, "min", void 0);
+    __decorate([core_1.Input(), __metadata('design:type', Number)], IsInRangealidator.prototype, "max", void 0);
+    IsInRangealidator = __decorate([core_1.Directive({
+      selector: '[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return IsInRangealidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], IsInRangealidator);
+    return IsInRangealidator;
+  }());
+  exports.IsInRangealidator = IsInRangealidator;
+  var MaxValidator = (function() {
+    function MaxValidator() {}
+    MaxValidator.prototype.ngOnInit = function() {
+      this.validator = universal_validators_1.UniversalValidators.max(this.max);
+    };
+    MaxValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', Number)], MaxValidator.prototype, "max", void 0);
+    MaxValidator = __decorate([core_1.Directive({
+      selector: '[max][formControlName],[max][formControl],[max][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return MaxValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], MaxValidator);
+    return MaxValidator;
+  }());
+  exports.MaxValidator = MaxValidator;
+  var MinValidator = (function() {
+    function MinValidator() {}
+    MinValidator.prototype.ngOnInit = function() {
+      this.validator = universal_validators_1.UniversalValidators.max(this.min);
+    };
+    MinValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', Number)], MinValidator.prototype, "min", void 0);
+    MinValidator = __decorate([core_1.Directive({
+      selector: '[min][formControlName],[min][formControl],[min][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return MinValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], MinValidator);
+    return MinValidator;
+  }());
+  exports.MinValidator = MinValidator;
   return module.exports;
 });
 
@@ -243,13 +546,13 @@ System.registerDynamic("src/util", [], true, function($__require, exports, modul
   return module.exports;
 });
 
-System.registerDynamic("src/creditcard-validators", ["./util"], true, function($__require, exports, module) {
+System.registerDynamic("src/creditcard/creditcard-validators", ["./../util"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
-  var util_1 = $__require('./util');
+  var util_1 = $__require('./../util');
   var visa = '(?:4[0-9]{12})(?:[0-9]{3})?$';
   var americanExpress = '(?:3[47][0-9]{13})$';
   var maestro = '(?:(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15})$';
@@ -345,20 +648,135 @@ System.registerDynamic("src/creditcard-validators", ["./util"], true, function($
   return module.exports;
 });
 
-System.registerDynamic("ng2-validators", ["./src/password-validators", "./src/email-validators", "./src/universal-validators", "./src/creditcard-validators"], true, function($__require, exports, module) {
+System.registerDynamic("src/creditcard/creditcard.directive", ["@angular/core", "@angular/forms", "./creditcard-validators"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
       global = this,
       GLOBAL = this;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = $__require('@angular/core');
+  var forms_1 = $__require('@angular/forms');
+  var creditcard_validators_1 = $__require('./creditcard-validators');
+  var CreditCardValidator = (function() {
+    function CreditCardValidator() {
+      this.creditCard = 'all';
+    }
+    CreditCardValidator.prototype.ngOnInit = function() {
+      switch (this.creditCard) {
+        case 'all':
+          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard();
+          break;
+        case 'americanExpress':
+          this.validator = creditcard_validators_1.CreditCardValidators.americanExpress();
+          break;
+        case 'dinersclub':
+          this.validator = creditcard_validators_1.CreditCardValidators.dinersclub();
+          break;
+        case 'discover':
+          this.validator = creditcard_validators_1.CreditCardValidators.discover();
+          break;
+        case 'jcb':
+          this.validator = creditcard_validators_1.CreditCardValidators.jcb();
+          break;
+        case 'maestro':
+          this.validator = creditcard_validators_1.CreditCardValidators.maestro();
+          break;
+        case 'mastercard':
+          this.validator = creditcard_validators_1.CreditCardValidators.mastercard();
+          break;
+        case 'visa':
+          this.validator = creditcard_validators_1.CreditCardValidators.visa();
+          break;
+        default:
+          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard();
+          break;
+      }
+    };
+    CreditCardValidator.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', String)], CreditCardValidator.prototype, "creditCard", void 0);
+    CreditCardValidator = __decorate([core_1.Directive({
+      selector: '[creditCard][formControlName],[creditCard][formControl],[creditCard][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return CreditCardValidator;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], CreditCardValidator);
+    return CreditCardValidator;
+  }());
+  exports.CreditCardValidator = CreditCardValidator;
+  return module.exports;
+});
+
+System.registerDynamic("ng2-validators", ["./src/password/password-validators", "./src/email/email-validators", "./src/universal/universal-validators", "./src/creditcard/creditcard-validators", "./src/password/password.directive", "./src/email/email.directive", "./src/universal/universal.directive", "./src/creditcard/creditcard.directive", "@angular/core"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
   function __export(m) {
     for (var p in m)
       if (!exports.hasOwnProperty(p))
         exports[p] = m[p];
   }
-  __export($__require('./src/password-validators'));
-  __export($__require('./src/email-validators'));
-  __export($__require('./src/universal-validators'));
-  __export($__require('./src/creditcard-validators'));
+  __export($__require('./src/password/password-validators'));
+  __export($__require('./src/email/email-validators'));
+  __export($__require('./src/universal/universal-validators'));
+  __export($__require('./src/creditcard/creditcard-validators'));
+  __export($__require('./src/password/password.directive'));
+  __export($__require('./src/email/email.directive'));
+  __export($__require('./src/universal/universal.directive'));
+  __export($__require('./src/creditcard/creditcard.directive'));
+  var core_1 = $__require('@angular/core');
+  var creditcard_directive_2 = $__require('./src/creditcard/creditcard.directive');
+  var email_directive_2 = $__require('./src/email/email.directive');
+  var universal_directive_2 = $__require('./src/universal/universal.directive');
+  var password_directive_2 = $__require('./src/password/password.directive');
+  var VALIDATORS_DIRECTIVES = [creditcard_directive_2.CreditCardValidator, email_directive_2.EmailValidator, password_directive_2.PasswordValidator, universal_directive_2.IsInRangealidator, universal_directive_2.IsNumberValidator, universal_directive_2.MaxValidator, universal_directive_2.MinValidator, universal_directive_2.WhiteSpaceValidator];
+  var ValidatorsModule = (function() {
+    function ValidatorsModule() {}
+    ValidatorsModule = __decorate([core_1.NgModule({
+      declarations: [VALIDATORS_DIRECTIVES],
+      exports: [VALIDATORS_DIRECTIVES]
+    }), __metadata('design:paramtypes', [])], ValidatorsModule);
+    return ValidatorsModule;
+  }());
+  exports.ValidatorsModule = ValidatorsModule;
   return module.exports;
 });
