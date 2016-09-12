@@ -100,6 +100,8 @@ module.exports = function(config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome'],
+        
+        browserNoActivityTimeout: 90000, // Note: default value (10000) is not enough
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
