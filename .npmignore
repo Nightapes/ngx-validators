@@ -11,8 +11,13 @@ coverage
 *.ts
 !*.d.ts
 tests
-typings
 typings.json
+typings/
+.gitignore
+tsconfig.json
+.npmignore
+karma-test-shim.js
+karma.conf.js
 
 #################
 ## Visual Studio Code

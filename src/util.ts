@@ -2,7 +2,11 @@ import { AbstractControl } from '@angular/forms';
 
 export class Util {
     static isNotPresent(control: AbstractControl): boolean {
-        return control.value !== '' ? false : true;
+        let value = control.value;
+        if (value === undefined || value === null) {
+            return true;
+        }
+        return value !== '' ? false : true;
     };
 }
 

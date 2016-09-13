@@ -1,5 +1,4 @@
 import { AbstractControl } from '@angular/forms';
-import { NumberWrapper } from '@angular/core/src/facade/lang';
 import { Util } from './../util';
 
 export class UniversalValidators {
@@ -18,7 +17,7 @@ export class UniversalValidators {
     static isNumber(): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
-            if (NumberWrapper.isNaN(control.value)) {
+            if (isNaN(control.value)) {
                 return { 'numberRequired': true };
             }
             return undefined;
@@ -28,7 +27,7 @@ export class UniversalValidators {
     static isInRange(minValue: number, maxValue: number): any {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
-            if (NumberWrapper.isNaN(control.value)) {
+            if (isNaN(control.value)) {
                 return { 'numberRequired': true };
             }
             if (+control.value < minValue) {
@@ -69,7 +68,7 @@ export class UniversalValidators {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
-            if (NumberWrapper.isNaN(control.value)) {
+            if (isNaN(control.value)) {
                 return { 'numberRequired': true };
             }
             if (+value >= min) {
@@ -83,7 +82,7 @@ export class UniversalValidators {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
-            if (NumberWrapper.isNaN(control.value)) {
+            if (isNaN(control.value)) {
                 return { 'numberRequired': true };
             }
             if (max >= +value) {
