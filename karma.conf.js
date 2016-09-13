@@ -45,7 +45,7 @@ module.exports = function(config) {
             }, // PhantomJS2 (and possibly others) might require it
 
             {
-                pattern: 'ng2-validators.ts',
+                pattern: 'index.ts',
                 included: false,
                 watched: true
             }, // source files

@@ -50,7 +50,7 @@ The password validators are:
 ## Install
 
 ```
-npm install ng2-validators
+npm install ng2-validators --save
 ```
 
 
@@ -61,7 +61,7 @@ needs: ```ReactiveFormsModule```
 ### Passwords
 
 ```
-@import {PasswordValidators} from 'ng2-validators/ng2-validators'
+@import {PasswordValidators} from 'ng2-validators'
 
 ...
 password: Control = new Control('', Validators.compose([
@@ -79,7 +79,7 @@ password: Control = new Control('', Validators.compose([
 ### Password mismatch
 
 ```
-@import {PasswordValidators} from 'ng2-validators/ng2-validators'
+@import {PasswordValidators} from 'ng2-validators'
 
 ...
 
@@ -96,7 +96,7 @@ let form = new FormGroup({
 #### Override control name
 
 ```
-@import {PasswordValidators} from 'ng2-validators/ng2-validators'
+@import {PasswordValidators} from 'ng2-validators'
 
 ...
 
@@ -114,7 +114,7 @@ let form = new FormGroup({
 ### Email
 
 ```
-@import {EmailValidators} from 'ng2-validators/ng2-validators'
+@import {EmailValidators} from 'ng2-validators'
 
 ...
 
@@ -125,7 +125,7 @@ email2: Control = new Control('', EmailValidators.simple());
 ### Universal
 
 ```
-@import {UniversalValidators} from 'ng2-validators/ng2-validators'
+@import {UniversalValidators} from 'ng2-validators'
 
 ...
 
@@ -141,7 +141,7 @@ control: Control = new Control('', UniversalValidators.max(2));
 ### Creditcards
 
 ```
-@import {CreditCardValidators} from 'ng2-validators/ng2-validators'
+@import {CreditCardValidators} from 'ng2-validators'
 
 ...
 
@@ -165,7 +165,7 @@ needs ```FormsModule and ValidatorsModule ```
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ValidatorsModule } from 'ng2-validators/ng2-validators'
+import { ValidatorsModule } from 'ng2-validators'
 
 import { AppComponent } from './app.component';
 
@@ -182,11 +182,11 @@ export class AppModule {
 ```
 <form>
 <input type="password" [(ngModel)]="model.password" name="password" #formControl="ngModel" password>
-<p *ngIf="formControl.hasError('repeatCharacterRegexRule')">Password contains repeating characters</p>
-<p *ngIf="formControl.hasError('digitCharacterRule')">Password should contain at least on digit</p>
-<p *ngIf="formControl.hasError('alphabeticalCharacterRule')">Password should contain at least on alphabetical character</p>
-<p *ngIf="formControl.hasError('lowercaseCharacterRule')">Password should contain at least on lowercase character</p>
-<p *ngIf="formControl.hasError('uppercaseCharacterRule')">Password should contain at least on uppercase character</p>
+<span *ngIf="formControl.errors?.repeatCharacterRegexRule">Password contains repeating characters</span>
+<span *ngIf="formControl.errors?.digitCharacterRule">Password should contain at least on digit</span>
+<span *ngIf="formControl.errors?.alphabeticalCharacterRule">Password should contain at least on alphabetical character</span>
+<span *ngIf="formControl.errors?.lowercaseCharacterRule">Password should contain at least on lowercase character</span>
+<span *ngIf="formControl.errors?.uppercaseCharacterRule">Password should contain at least on uppercase character</span>
 </form>
 
 // Override values
@@ -206,7 +206,7 @@ export class AppModule {
 <form>
 
 <input type="text" [(ngModel)]="model.creditcard" name="creditcard" #formControl="ngModel" creditCard>
-<p *ngIf="formControl.hasError('creditcard')">Is not a creditcard</p>
+<span *ngIf="formControl.errors?.creditcard">Is not a creditcard</span>
 </form>
 
 // Override values
@@ -219,7 +219,7 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" email>
-<p *ngIf="formControl.hasError('normalEmailRule')">Is not a email</p>
+<span *ngIf="formControl.errors?.normalEmailRule">Is not a email</span>
 </form>
 
 ```
@@ -231,7 +231,7 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.firstname" name="firstname" #formControl="ngModel" noWhitespace>
-<p *ngIf="formControl.hasError('noWhitespaceRequired')">Should not contain a whitespace</p>
+<span *ngIf="formControl.errors?.noWhitespaceRequired">Should not contain a whitespace</span>
 </form>
 ```
 
@@ -240,7 +240,7 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isNumber>
-<p *ngIf="formControl.hasError('numberRequired')">Needs to be a number</p>
+<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
 </form>
 ```
 
@@ -249,9 +249,9 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isInRange  [min]="2" [max]="4">
-<p *ngIf="formControl.hasError('numberRequired')">Needs to be a number</p>
-<p *ngIf="formControl.hasError('rangeValueToSmall')">Number to small</p>
-<p *ngIf="formControl.hasError('rangeValueToBig')">Number to big</p>
+<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
+<span *ngIf="formControl.errors?.rangeValueToSmall">Number to small</span>
+<span *ngIf="formControl.errors?.rangeValueToBig">Number to big</span>
 </form>
 ```
 #### min
@@ -259,8 +259,8 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [min]="2">
-<p *ngIf="formControl.hasError('numberRequired')">Needs to be a number</p>
-<p *ngIf="formControl.hasError('min')">Number to small</p>
+<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
+<span *ngIf="formControl.errors?.min">Number to small</span>
 </form>
 ```
 #### max
@@ -268,8 +268,8 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [max]="2">
-<p *ngIf="formControl.hasError('numberRequired')">Needs to be a number</p>
-<p *ngIf="formControl.hasError('max')">Number to small</p>
+<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
+<span *ngIf="formControl.errors?.max">Number to small</span>
 </form>
 ```
 

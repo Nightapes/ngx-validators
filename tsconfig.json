@@ -12,16 +12,22 @@
     },
     "files": [
         "typings/main.d.ts",
-        "ng2-validators.ts",
-        "./src/password/password-validators.ts",
+        "./index.ts",
+        "./ng2-validators.ts",
+        "./tests/util.spec.ts",
         "./tests/password-validators.spec.ts",
-        "./src/email/email-validators.ts",
         "./tests/email-validators.spec.ts",
-        "./src/universal/universal-validators.ts",
-        "./src/creditcard/creditcard-validators.ts",
         "./tests/creditcard-validators.spec.ts",
         "./tests/universal-validators.spec.ts",
         "./src/util.ts",
-        "./tests/util.spec.ts"
+        "./src/password/password-validators.ts",
+        "./src/universal/universal-validators.ts",
+        "./src/email/email-validators.ts",
+        "./src/creditcard/creditcard-validators.ts",
+        "./src/password/password.directive.ts",
+        "./src/universal/universal.directive.ts",
+        "./src/email/email.directive.ts",
+        "./src/creditcard/creditcard.directive.ts",
+        "./src/validators.module.ts"
     ]
 }

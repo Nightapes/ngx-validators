@@ -27,7 +27,7 @@ var config = {
 builder.config(config);
 
 builder
-.bundle(name, path.resolve(__dirname, 'bundles/', name + '.js'))
+.bundle('index', path.resolve(__dirname, 'bundles/', name + '.js'))
 .then(function() {
   console.log('Build complete.');
 })

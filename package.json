@@ -22,8 +22,8 @@
   "bugs": {
     "url": "https://github.com/Nightapes/ng2-validators/issues"
   },
-  "main": "ng2-validators.js",
-  "typings": "./ng2-validators.d.ts",
+  "main": "index.js",
+  "typings": "./index.d.ts",
   "homepage": "https://github.com/Nightapes/ng2-validators",
   "peerDependencies": {
     "@angular/common": "2.0.0-rc.7",
