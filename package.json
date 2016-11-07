@@ -1,66 +1,68 @@
 {
-  "name": "ng2-validators",
-  "description": "An implementation of angular validators for Angular 2",
-  "scripts": {
-    "test": "tsc && karma start",
-    "test-watch": "tsc && karma start --no-single-run --auto-watch",
-    "commit": "npm run prepublish && npm test && git-cz",
-    "prepublish": "typings install && tsc && node make.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Nightapes/ng2-validators.git"
-  },
-  "keywords": [
-    "angular",
-    "angular2",
-    "validators"
-  ],
-  "author": "Sebastian Beisch",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Nightapes/ng2-validators/issues"
-  },
-  "main": "index.js",
-  "typings": "./index.d.ts",
-  "homepage": "https://github.com/Nightapes/ng2-validators",
-  "peerDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0"
-  },
-  "devDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.0.0",
-    "@angular/forms": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/platform-browser": "^2.0.0",
-    "commitizen": "2.8.1",
-    "cz-conventional-changelog": "1.1.6",
-    "es6-promise": "3.0.2",
-    "es6-shim": "0.35.0",
-    "gulp": "3.9.1",
-    "gulp-git": "1.7.1",
-    "jasmine-core": "2.4.1",
-    "karma": "0.13.19",
-    "karma-chrome-launcher": "0.2.2",
-    "karma-firefox-launcher": "0.1.7",
-    "karma-jasmine": "0.3.8",
-    "karma-mocha-reporter": "2.0.3",
-    "karma-typescript-preprocessor": "0.0.21",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.12",
-    "semantic-release": "4.3.5",
-    "systemjs": "0.19.27",
-    "systemjs-builder": "0.15.13",
-    "tsd": "0.6.5",
-    "traceur": "^0.0.111",
-    "typescript": "2.0.2",
-    "typings": "0.6.8",
-    "zone.js": "0.6.21"
-  },
-  "czConfig": {
-    "path": "node_modules/cz-conventional-changelog"
-  }
+    "name": "ng2-validators",
+    "description": "An implementation of angular validators for Angular 2",
+    "scripts": {
+        "test": "tsc && karma start",
+        "test-watch": "tsc && karma start --no-single-run --auto-watch",
+        "commit": "npm run prepublish && npm test && git-cz",
+        "prepublish": "typings install && tsc && node make.js",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nightapes/ng2-validators.git"
+    },
+    "keywords": [
+        "angular",
+        "angular2",
+        "validators"
+    ],
+    "author": "Sebastian Beisch",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Nightapes/ng2-validators/issues"
+    },
+    "main": "index.js",
+    "typings": "./index.d.ts",
+    "homepage": "https://github.com/Nightapes/ng2-validators",
+    "peerDependencies": {
+        "@angular/common": "^2.0.0",
+        "@angular/core": "^2.0.0",
+        "@angular/forms": "^2.0.0"
+    },
+    "devDependencies": {
+        "@angular/common": "^2.0.0",
+        "@angular/compiler": "^2.0.0",
+        "@angular/core": "^2.0.0",
+        "@angular/forms": "^2.0.0",
+        "@angular/platform-browser": "^2.0.0",
+        "codelyzer": "^1.0.0-beta.3",
+        "commitizen": "2.8.1",
+        "cz-conventional-changelog": "1.1.6",
+        "es6-promise": "3.0.2",
+        "es6-shim": "0.35.0",
+        "gulp": "3.9.1",
+        "gulp-git": "1.7.1",
+        "jasmine-core": "2.4.1",
+        "karma": "0.13.19",
+        "karma-chrome-launcher": "0.2.2",
+        "karma-firefox-launcher": "0.1.7",
+        "karma-jasmine": "0.3.8",
+        "karma-mocha-reporter": "2.0.3",
+        "karma-typescript-preprocessor": "0.0.21",
+        "reflect-metadata": "0.1.2",
+        "rxjs": "5.0.0-beta.12",
+        "semantic-release": "4.3.5",
+        "systemjs": "0.19.27",
+        "systemjs-builder": "0.15.13",
+        "traceur": "^0.0.111",
+        "tsd": "0.6.5",
+        "tslint-eslint-rules": "^2.1.0",
+        "typescript": "2.0.2",
+        "typings": "0.6.8",
+        "zone.js": "0.6.21"
+    },
+    "czConfig": {
+        "path": "node_modules/cz-conventional-changelog"
+    }
 }

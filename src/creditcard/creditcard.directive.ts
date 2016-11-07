@@ -7,11 +7,11 @@ import { CreditCardValidators } from './creditcard-validators';
     selector: '[creditCard][formControlName],[creditCard][formControl],[creditCard][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => CreditCardValidator),
+        useExisting: forwardRef(() => CreditCardValidatorDirective),
         multi: true
     }]
 })
-export class CreditCardValidator implements Validator, OnInit {
+export class CreditCardValidatorDirective implements Validator, OnInit {
     @Input() creditCard: string = 'all';
 
     private validator: ValidatorFn;

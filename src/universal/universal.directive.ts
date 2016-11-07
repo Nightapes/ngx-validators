@@ -7,11 +7,11 @@ import { UniversalValidators } from './universal-validators';
     selector: '[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => WhiteSpaceValidator),
+        useExisting: forwardRef(() => WhiteSpaceValidatorDirective),
         multi: true
     }]
 })
-export class WhiteSpaceValidator implements Validator, OnInit {
+export class WhiteSpaceValidatorDirective implements Validator, OnInit {
     private validator: ValidatorFn;
 
     ngOnInit() {
@@ -27,11 +27,11 @@ export class WhiteSpaceValidator implements Validator, OnInit {
     selector: '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => IsNumberValidator),
+        useExisting: forwardRef(() => IsNumberValidatorDirective),
         multi: true
     }]
 })
-export class IsNumberValidator implements Validator, OnInit {
+export class IsNumberValidatorDirective implements Validator, OnInit {
     private validator: ValidatorFn;
 
     ngOnInit() {
@@ -47,18 +47,18 @@ export class IsNumberValidator implements Validator, OnInit {
     selector: '[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => IsInRangealidator),
+        useExisting: forwardRef(() => IsInRangeValidatorDirective),
         multi: true
     }]
 })
-export class IsInRangealidator implements Validator, OnInit {
-    @Input() min: number;
-    @Input() max: number;
+export class IsInRangeValidatorDirective implements Validator, OnInit {
+    @Input() minValue: number;
+    @Input() maxValue: number;
 
     private validator: ValidatorFn;
 
     ngOnInit() {
-        this.validator = UniversalValidators.isInRange(this.min, this.max);
+        this.validator = UniversalValidators.isInRange(this.minValue, this.maxValue);
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
@@ -70,11 +70,11 @@ export class IsInRangealidator implements Validator, OnInit {
     selector: '[max][formControlName],[max][formControl],[max][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => MaxValidator),
+        useExisting: forwardRef(() => MaxValidatorDirective),
         multi: true
     }]
 })
-export class MaxValidator implements Validator, OnInit {
+export class MaxValidatorDirective implements Validator, OnInit {
     @Input() max: number;
 
     private validator: ValidatorFn;
@@ -92,11 +92,11 @@ export class MaxValidator implements Validator, OnInit {
     selector: '[min][formControlName],[min][formControl],[min][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => MinValidator),
+        useExisting: forwardRef(() => MinValidatorDirective),
         multi: true
     }]
 })
-export class MinValidator implements Validator, OnInit {
+export class MinValidatorDirective implements Validator, OnInit {
     @Input() min: number;
 
     private validator: ValidatorFn;
