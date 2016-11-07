@@ -248,7 +248,7 @@ export class AppModule {
 
 ```
 <form>
-<input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isInRange  [min]="2" [max]="4">
+<input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isInRange  [minValue]="2" [maxValue]="4">
 <span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
 <span *ngIf="formControl.errors?.rangeValueToSmall">Number to small</span>
 <span *ngIf="formControl.errors?.rangeValueToBig">Number to big</span>
