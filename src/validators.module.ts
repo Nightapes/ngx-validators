@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 
-import { CreditCardValidator } from './creditcard/creditcard.directive';
-import { EmailValidator } from './email/email.directive';
-import { IsInRangealidator, IsNumberValidator, MaxValidator, MinValidator, WhiteSpaceValidator } from './universal/universal.directive';
-import { PasswordValidator } from './password/password.directive';
+import { CreditCardValidatorDirective } from './creditcard/creditcard.directive';
+import { EmailValidatorDirective } from './email/email.directive';
+import { IsInRangeValidatorDirective, IsNumberValidatorDirective, 
+    MaxValidatorDirective, MinValidatorDirective, WhiteSpaceValidatorDirective } from './universal/universal.directive';
+import { PasswordValidatorDirective } from './password/password.directive';
 
 @NgModule({
-    declarations: [CreditCardValidator,
-        EmailValidator,
-        PasswordValidator,
-        IsInRangealidator,
-        IsNumberValidator,
-        MaxValidator,
-        MinValidator,
-        WhiteSpaceValidator],
-    exports: [CreditCardValidator,
-        EmailValidator,
-        PasswordValidator,
-        IsInRangealidator,
-        IsNumberValidator,
-        MaxValidator,
-        MinValidator,
-        WhiteSpaceValidator]
+    declarations: [CreditCardValidatorDirective,
+        EmailValidatorDirective,
+        PasswordValidatorDirective,
+        IsInRangeValidatorDirective,
+        IsNumberValidatorDirective,
+        MaxValidatorDirective,
+        MinValidatorDirective,
+        WhiteSpaceValidatorDirective],
+    exports: [CreditCardValidatorDirective,
+        EmailValidatorDirective,
+        PasswordValidatorDirective,
+        IsInRangeValidatorDirective,
+        IsNumberValidatorDirective,
+        MaxValidatorDirective,
+        MinValidatorDirective,
+        WhiteSpaceValidatorDirective]
 })
 export class ValidatorsModule {}

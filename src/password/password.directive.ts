@@ -7,11 +7,11 @@ import { PasswordValidators } from './password-validators';
     selector: '[password][formControlName],[password][formControl],[password][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => PasswordValidator),
+        useExisting: forwardRef(() => PasswordValidatorDirective),
         multi: true
     }]
 })
-export class PasswordValidator implements Validator, OnInit {
+export class PasswordValidatorDirective implements Validator, OnInit {
     @Input() repeatCharacter: number = 4;
     @Input() alphabeticalCharacter: number = 1;
     @Input() digitCharacter: number = 1;

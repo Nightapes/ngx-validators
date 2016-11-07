@@ -7,11 +7,11 @@ import { EmailValidators } from './email-validators';
     selector: '[email][formControlName],[email][formControl],[email][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => EmailValidator),
+        useExisting: forwardRef(() => EmailValidatorDirective),
         multi: true
     }]
 })
-export class EmailValidator implements Validator, OnInit {
+export class EmailValidatorDirective implements Validator, OnInit {
     @Input() email: string = 'normal';
 
     private validator: ValidatorFn;

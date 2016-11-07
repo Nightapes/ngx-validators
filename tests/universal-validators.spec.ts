@@ -62,6 +62,12 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
 
+            it('should work for empty control', () => {
+                let control: FormControl = new FormControl(null);
+                let validated = UniversalValidators.isInRange(5, 10)(control);
+                expect(validated).toBeUndefined();
+            });
+
             it('should work for valid number, lower range', () => {
                 let control: FormControl = new FormControl('5');
                 let validated = UniversalValidators.isInRange(5, 10)(control);

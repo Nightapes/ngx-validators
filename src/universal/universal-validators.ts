@@ -1,6 +1,7 @@
 import { AbstractControl } from '@angular/forms';
 import { Util } from './../util';
 
+
 export class UniversalValidators {
 
     static noWhitespace(): any {
