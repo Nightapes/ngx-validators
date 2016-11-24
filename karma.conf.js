@@ -32,7 +32,14 @@ module.exports = function(config) {
                 included: false,
                 watched: false,
                 served: true
-            }, {
+            },
+            {
+                pattern: 'node_modules/google-libphonenumber/dist/libphonenumber.js',
+                included: false,
+                watched: false,
+                served: true
+            },
+            {
                 pattern: 'node_modules/rxjs/**/*.js',
                 included: false,
                 watched: false,
@@ -45,38 +52,27 @@ module.exports = function(config) {
             }, // PhantomJS2 (and possibly others) might require it
 
             {
-                pattern: 'index.ts',
+                pattern: 'index.js',
                 included: false,
                 watched: true
             }, // source files
             {
-                pattern: 'src/**/*.ts',
+                pattern: 'src/**/*.js',
                 included: false,
                 watched: true
-            }, // source files
+            },
             {
-                pattern: 'tests/**/*.ts',
+                pattern: 'tests/**/*.js',
                 included: false,
                 watched: true
-            }, // test files
+            },
             'karma-test-shim.js'
         ],
 
         // list of files to exclude
         exclude: [
-            'node_modules/@angular/**/*_spec.js'
+            'node_modules/**/*spec.js'
         ],
-
-        preprocessors: {
-            '**/*.ts': ['typescript']
-        },
-
-        typescriptPreprocessor: {
-            options: require('./tsconfig.json').compilerOptions,
-            typings: [
-                "typings/main.d.ts"
-            ]
-        },
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -94,13 +90,20 @@ module.exports = function(config) {
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
 
+        client: {
+            captureConsole: true,
+            mocha: {
+                bail: true
+            }
+        },
+
         // enable / disable watching file and executing tests whenever any file changes
         autoWatch: false,
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: process.env.TRAVIS ? ['Firefox'] : ['Chrome'],
-        
+
         browserNoActivityTimeout: 90000, // Note: default value (10000) is not enough
 
         // Continuous Integration mode

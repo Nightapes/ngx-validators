@@ -12,7 +12,10 @@ System.config({
     defaultJSExtensions: true,
     map: {
         '@angular': 'node_modules/@angular',
-        'rxjs': 'node_modules/rxjs'
+        'rxjs': 'node_modules/rxjs',
+    },
+    paths: {
+        'google-libphonenumber': 'node_modules/google-libphonenumber/dist/libphonenumber.js'
     },
     packages: {
         '@angular/common': {
@@ -26,7 +29,7 @@ System.config({
         '@angular/forms': {
             main: 'index.js',
             defaultExtension: 'js'
-        },
+        }
     }
 });
 
