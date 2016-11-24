@@ -14,7 +14,7 @@ export {
     MinValidatorDirective, WhiteSpaceValidatorDirective
 } from './src/universal/universal.directive';
 export { CreditCardValidatorDirective } from './src/creditcard/creditcard.directive';
-export { PhoneValidatorDirective, CountryCodeValidatorDirective } from './src/phone/phone.directive';
+export { PhoneValidatorDirective, CountryCodeValidatorDirective, PossiblePhoneValidatorDirective } from './src/phone/phone.directive';
 
 //Module
 export { ValidatorsModule } from './src/validators.module';

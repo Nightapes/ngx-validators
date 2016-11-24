@@ -4,6 +4,29 @@ import { NG_VALIDATORS, Validator, ValidatorFn, AbstractControl } from '@angular
 import { PhoneValidators } from './phone-validators';
 
 @Directive({
+    selector: '[possiblePhone][formControlName],[possiblePhone][formControl],[possiblePhone][ngModel]',
+    providers: [{
+        provide: NG_VALIDATORS,
+        useExisting: forwardRef(() => PossiblePhoneValidatorDirective),
+        multi: true
+    }]
+})
+
+export class PossiblePhoneValidatorDirective implements Validator, OnInit {
+    @Input() possiblePhone: string = 'US';
+
+    private validator: ValidatorFn;
+
+    ngOnInit() {
+        this.validator = PhoneValidators.isPossibleNumberWithReason(this.possiblePhone);
+    }
+
+    validate(c: AbstractControl): { [key: string]: any } {
+        return this.validator(c);
+    }
+}
+
+@Directive({
     selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
@@ -18,7 +41,7 @@ export class PhoneValidatorDirective implements Validator, OnInit {
     private validator: ValidatorFn;
 
     ngOnInit() {
-        this.validator = PhoneValidators.isPossibleNumberWithReason(this.phone);
+        this.validator = PhoneValidators.isPhoneNumber(this.phone);
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
@@ -30,7 +53,7 @@ export class PhoneValidatorDirective implements Validator, OnInit {
     selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
-        useExisting: forwardRef(() => PhoneValidatorDirective),
+        useExisting: forwardRef(() => CountryCodeValidatorDirective),
         multi: true
     }]
 })

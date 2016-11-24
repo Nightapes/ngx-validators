@@ -71,12 +71,20 @@ export class PhoneValidators {
                 return { 'noValidRegionCode': true };
             }
 
+
             let phoneParser: PhoneNumberUtil = PhoneNumberUtil.getInstance();
-            let phoneNumber: libPhoneNumber.PhoneNumber = phoneParser.parse(control.value, local);
-            if (phoneParser.isValidNumber(phoneNumber)) {
-                return undefined;
+
+            let error = { 'noPhoneNumber': true };
+            try {
+                let phoneNumber: libPhoneNumber.PhoneNumber = phoneParser.parse(control.value, local);
+                if (phoneParser.isValidNumber(phoneNumber)) {
+                    error = undefined;
+                }
+            } catch (err) {
+                error = { 'noPhoneNumber': true };
             }
-            return { 'noPhoneNumber': true };
+
+            return error;
         };
     }
 
@@ -91,23 +99,33 @@ export class PhoneValidators {
             }
 
             let phoneParser: PhoneNumberUtil = PhoneNumberUtil.getInstance();
-            let phoneNumber: libPhoneNumber.PhoneNumber = phoneParser.parse(control.value, local);
-            let reason: PhoneNumberUtil.ValidationResult = phoneParser.isPossibleNumberWithReason(phoneNumber);
 
-            if (reason === PhoneNumberUtil.ValidationResult.IS_POSSIBLE) {
-                return undefined;
+            let error: any = { 'noPhoneNumber': true };
+            try {
+                let phoneNumber: libPhoneNumber.PhoneNumber = phoneParser.parse(control.value, local);
+                let reason: PhoneNumberUtil.ValidationResult = phoneParser.isPossibleNumberWithReason(phoneNumber);
+                switch (reason) {
+                    case PhoneNumberUtil.ValidationResult.IS_POSSIBLE:
+                        error = undefined;
+                        break;
+                    case PhoneNumberUtil.ValidationResult.TOO_LONG:
+                        error = { 'phoneNumberTooLong': true };
+                        break;
+                    case PhoneNumberUtil.ValidationResult.TOO_SHORT:
+                        error = { 'phoneNumberTooShort': true };
+                        break;
+                    case PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
+                        error = { 'phoneNumberInvalidCountryCode': true };
+                        break;
+                    default:
+                        error = { 'noPhoneNumber': true };
+                        break;
+                }
+            } catch (err) {
+                error = { 'noPhoneNumber': true };
             }
 
-            switch (reason) {
-                case PhoneNumberUtil.ValidationResult.TOO_LONG:
-                    return { 'phoneNumberTooLong': true };
-                case PhoneNumberUtil.ValidationResult.TOO_SHORT:
-                    return { 'phoneNumberTooShort': true };
-                case PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
-                    return { 'phoneNumberInvalidCountryCode': true };
-                default:
-                    return { 'noPhoneNumber': true };
-            }
+            return error;
 
         };
     }

@@ -42,6 +42,14 @@ export function main() {
             it('should work for invalid Phone', () => {
                 const invalidPhone = [
                     '123SDDSD',
+                    'sd',
+                    'sdsd322323',
+                    'sdsdc43v4c34v',
+                    'sdsfdfd44d',
+                    'sd434343sd',
+                    '3434s3434dsd',
+                    '43434343434sdsd',
+                    '343434343.sdsd',
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);
@@ -66,24 +74,36 @@ export function main() {
                 expect(validated).toEqual({ 'noValidRegionCode': true });
             });
 
-            it('should work for valid Phones', () => {
+            it('should work for invalid Phones', () => {
                 const phone = [
-                    '202-456-1414',
-                    '(202) 456-1414',
-                    '+1 (202) 456-1414',
-                    '202.456.1414',
-                    '202/4561414',
-                    '1 202 456 1414',
-                    '+12024561414',
-                    '1 202-456-1414'
+                    'sd',
+                    'sdsdsdsd'
                 ];
 
                 phone.forEach(element => {
                     let control: FormControl = new FormControl(element);
                     let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
-                    expect(validated).toBeUndefined();
+                    expect(validated).toEqual({ 'noPhoneNumber': true });
                 });
 
+            });
+
+            it('should work for invalid Phones', () => {
+                const invalidPhone = [
+                    '202-456-14',
+                    '(202) 456-14',
+                    '+1 (202) 456-14',
+                    '202.456.14',
+                    '202/45614',
+                    '1 202 456 14',
+                    '+120245614',
+                    '1 202-456-14'
+                ];
+                invalidPhone.forEach(element => {
+                    let control: FormControl = new FormControl(element);
+                    let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                    expect(validated).toEqual({ 'phoneNumberTooShort': true });
+                });
             });
 
             it('should work for invalid Phones (short)', () => {
@@ -113,7 +133,7 @@ export function main() {
                     '202/4561414555',
                     '1 202 456 1414555',
                     '+12024561414555',
-                    '1 202-456-1414555'
+                    '1 202-456-1414555',
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);

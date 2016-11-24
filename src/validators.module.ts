@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { CreditCardValidatorDirective } from './creditcard/creditcard.directive';
 import { EmailValidatorDirective } from './email/email.directive';
-import { IsInRangeValidatorDirective, IsNumberValidatorDirective, 
-    MaxValidatorDirective, MinValidatorDirective, WhiteSpaceValidatorDirective } from './universal/universal.directive';
+import {
+    IsInRangeValidatorDirective, IsNumberValidatorDirective,
+    MaxValidatorDirective, MinValidatorDirective, WhiteSpaceValidatorDirective
+} from './universal/universal.directive';
 import { PasswordValidatorDirective } from './password/password.directive';
+import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeValidatorDirective } from './phone/phone.directive';
 
 @NgModule({
     declarations: [CreditCardValidatorDirective,
@@ -14,7 +17,10 @@ import { PasswordValidatorDirective } from './password/password.directive';
         IsNumberValidatorDirective,
         MaxValidatorDirective,
         MinValidatorDirective,
-        WhiteSpaceValidatorDirective],
+        WhiteSpaceValidatorDirective,
+        PhoneValidatorDirective,
+        PossiblePhoneValidatorDirective,
+        CountryCodeValidatorDirective],
     exports: [CreditCardValidatorDirective,
         EmailValidatorDirective,
         PasswordValidatorDirective,
@@ -22,6 +28,9 @@ import { PasswordValidatorDirective } from './password/password.directive';
         IsNumberValidatorDirective,
         MaxValidatorDirective,
         MinValidatorDirective,
-        WhiteSpaceValidatorDirective]
+        WhiteSpaceValidatorDirective,
+        PhoneValidatorDirective,
+        PossiblePhoneValidatorDirective,
+        CountryCodeValidatorDirective]
 })
-export class ValidatorsModule {}
+export class ValidatorsModule { }
