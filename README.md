@@ -156,6 +156,18 @@ control: Control = new Control('', UniversalValidators.visa());
 
 ```
 
+### Phonenumber
+
+```
+@import {PhoneValidators} from 'ng2-validators'
+
+...
+
+countryCode: Control = new Control('', PhoneValidators.isValidRegionCode());
+phone: Control = new Control('', PhoneValidators.isPhoneNumber());
+phone2: Control = new Control('', PhoneValidators.isPossibleNumberWithReason());
+```
+
 
 ## How to use [template driven][beta]
 
@@ -224,6 +236,26 @@ export class AppModule {
 
 ```
 
+### Phone
+```
+<form>
+<input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US">
+<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
+<span *ngIf="formControl.errors?.phoneNumberTooLong">Phone number is to long</span>
+<span *ngIf="formControl.errors?.phoneNumberTooShort">Phone number is to short</span>
+<span *ngIf="formControl.errors?.noPhoneNumber">Is not a phone number</span>
+</form>
+
+```
+
+```
+<form>
+<input type="text" [(ngModel)]="model.countryCode" name="countryCode" #formControl="ngModel" countryCode>
+<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
+</form>
+
+```
+
 ### Universal
 
 #### whitespace
@@ -277,7 +309,6 @@ export class AppModule {
 
 * Implement  https://github.com/mailcheck/mailcheck
 * Add more password rules
-* Add phone validators
 * Add address validator 
 
 Get the complete changelog here: https://github.com/Nightapes/ng2-validators/releases

@@ -8,10 +8,20 @@
         "inlineSourceMap": true,
         "inlineSources": true,
         "declaration": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./node_modules"
+        ],
+        "types": [
+            "core-js",
+            "jasmine",
+            "node",
+            "systemjs",
+            "google-libphonenumber"
+        ]
     },
     "files": [
-        "typings/main.d.ts",
         "./index.ts",
         "./ng2-validators.ts",
         "./tests/util.spec.ts",
@@ -19,8 +29,10 @@
         "./tests/email-validators.spec.ts",
         "./tests/creditcard-validators.spec.ts",
         "./tests/universal-validators.spec.ts",
+        "./tests/phone-validators.spec.ts",
         "./src/util.ts",
         "./src/password/password-validators.ts",
+        "./src/phone/phone-validators.ts",
         "./src/universal/universal-validators.ts",
         "./src/email/email-validators.ts",
         "./src/creditcard/creditcard-validators.ts",

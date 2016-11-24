@@ -5,7 +5,7 @@
         "test": "tsc && karma start",
         "test-watch": "tsc && karma start --no-single-run --auto-watch",
         "commit": "npm run prepublish && npm test && git-cz",
-        "prepublish": "typings install && tsc && node make.js",
+        "prepublish": "tsc && node make.js",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
     },
     "repository": {
@@ -36,6 +36,12 @@
         "@angular/core": "^2.0.0",
         "@angular/forms": "^2.0.0",
         "@angular/platform-browser": "^2.0.0",
+        "@types/google-libphonenumber": "^7.4.9",
+        "@types/jasmine": "^2.5.36",
+        "@types/systemjs": "^0.19.31",
+        "@types/core-js": "^0.9.34",
+        "@types/node": "^6.0.46",
+        "@types/zone.js": "^0.0.27",
         "codelyzer": "^1.0.0-beta.3",
         "commitizen": "2.8.1",
         "cz-conventional-changelog": "1.1.6",
@@ -58,11 +64,14 @@
         "traceur": "^0.0.111",
         "tsd": "0.6.5",
         "tslint-eslint-rules": "^2.1.0",
-        "typescript": "2.0.2",
-        "typings": "0.6.8",
+        "typescript": "2.0.10",
+        "typings": "2.0.0",
         "zone.js": "0.6.21"
     },
     "czConfig": {
         "path": "node_modules/cz-conventional-changelog"
+    },
+    "dependencies": {
+        "google-libphonenumber": "^2.0.5"
     }
 }
