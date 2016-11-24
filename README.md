@@ -237,9 +237,24 @@ export class AppModule {
 ```
 
 ### Phone
+
+
+#### Valid Phone
+
 ```
 <form>
 <input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US">
+<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
+<span *ngIf="formControl.errors?.noPhoneNumber">Is not a phone number</span>
+</form>
+
+```
+
+#### Possible Phone
+
+```
+<form>
+<input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" possiblePhone="US">
 <span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
 <span *ngIf="formControl.errors?.phoneNumberTooLong">Phone number is to long</span>
 <span *ngIf="formControl.errors?.phoneNumberTooShort">Phone number is to short</span>
@@ -247,6 +262,8 @@ export class AppModule {
 </form>
 
 ```
+
+#### CountryCode
 
 ```
 <form>

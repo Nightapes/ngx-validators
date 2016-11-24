@@ -1,182 +1,3 @@
-System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libphonenumber"], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var define,
-      global = this,
-      GLOBAL = this;
-  var util_1 = $__require('./../util');
-  var google_libphonenumber_1 = $__require('google-libphonenumber');
-  exports.regionsCode = {
-    UN001: '001',
-    AD: 'AD',
-    AE: 'AE',
-    AO: 'AO',
-    AQ: 'AQ',
-    AR: 'AR',
-    AU: 'AU',
-    BB: 'BB',
-    BR: 'BR',
-    BS: 'BS',
-    BY: 'BY',
-    CA: 'CA',
-    CH: 'CH',
-    CN: 'CN',
-    CS: 'CS',
-    CX: 'CX',
-    DE: 'DE',
-    GB: 'GB',
-    HU: 'HU',
-    IT: 'IT',
-    JP: 'JP',
-    KR: 'KR',
-    MX: 'MX',
-    NZ: 'NZ',
-    PL: 'PL',
-    RE: 'RE',
-    SE: 'SE',
-    SG: 'SG',
-    US: 'US',
-    YT: 'YT',
-    ZW: 'ZW',
-    ZZ: 'ZZ'
-  };
-  var PhoneValidators = (function() {
-    function PhoneValidators() {}
-    PhoneValidators.checkRegionCode = function(local) {
-      return !(exports.regionsCode[local] === undefined);
-    };
-    PhoneValidators.isValidRegionCode = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(control.value)) {
-          return {'noValidRegionCode': true};
-        }
-        return undefined;
-      };
-    };
-    PhoneValidators.isPhoneNumber = function(local) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(local)) {
-          return {'noValidRegionCode': true};
-        }
-        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
-        var phoneNumber = phoneParser.parse(control.value, local);
-        if (phoneParser.isValidNumber(phoneNumber)) {
-          return undefined;
-        }
-        return {'noPhoneNumber': true};
-      };
-    };
-    PhoneValidators.isPossibleNumberWithReason = function(local) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(local)) {
-          return {'noValidRegionCode': true};
-        }
-        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
-        var phoneNumber = phoneParser.parse(control.value, local);
-        var reason = phoneParser.isPossibleNumberWithReason(phoneNumber);
-        if (reason === google_libphonenumber_1.PhoneNumberUtil.ValidationResult.IS_POSSIBLE) {
-          return undefined;
-        }
-        switch (reason) {
-          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_LONG:
-            return {'phoneNumberTooLong': true};
-          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_SHORT:
-            return {'phoneNumberTooShort': true};
-          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
-            return {'phoneNumberInvalidCountryCode': true};
-          default:
-            return {'noPhoneNumber': true};
-        }
-      };
-    };
-    return PhoneValidators;
-  }());
-  exports.PhoneValidators = PhoneValidators;
-  return module.exports;
-});
-
-System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/forms", "./phone-validators"], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var define,
-      global = this,
-      GLOBAL = this;
-  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
-    var c = arguments.length,
-        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-        d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
-      r = Reflect.decorate(decorators, target, key, desc);
-    else
-      for (var i = decorators.length - 1; i >= 0; i--)
-        if (d = decorators[i])
-          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-  };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
-  var core_1 = $__require('@angular/core');
-  var forms_1 = $__require('@angular/forms');
-  var phone_validators_1 = $__require('./phone-validators');
-  var PhoneValidatorDirective = (function() {
-    function PhoneValidatorDirective() {
-      this.phone = 'US';
-    }
-    PhoneValidatorDirective.prototype.ngOnInit = function() {
-      this.validator = phone_validators_1.PhoneValidators.isPossibleNumberWithReason(this.phone);
-    };
-    PhoneValidatorDirective.prototype.validate = function(c) {
-      return this.validator(c);
-    };
-    __decorate([core_1.Input(), __metadata('design:type', String)], PhoneValidatorDirective.prototype, "phone", void 0);
-    PhoneValidatorDirective = __decorate([core_1.Directive({
-      selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return PhoneValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], PhoneValidatorDirective);
-    return PhoneValidatorDirective;
-  }());
-  exports.PhoneValidatorDirective = PhoneValidatorDirective;
-  var CountryCodeValidatorDirective = (function() {
-    function CountryCodeValidatorDirective() {}
-    CountryCodeValidatorDirective.prototype.ngOnInit = function() {
-      this.validator = phone_validators_1.PhoneValidators.isValidRegionCode();
-    };
-    CountryCodeValidatorDirective.prototype.validate = function(c) {
-      return this.validator(c);
-    };
-    CountryCodeValidatorDirective = __decorate([core_1.Directive({
-      selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return PhoneValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], CountryCodeValidatorDirective);
-    return CountryCodeValidatorDirective;
-  }());
-  exports.CountryCodeValidatorDirective = CountryCodeValidatorDirective;
-  return module.exports;
-});
-
 System.registerDynamic("src/creditcard/creditcard-validators", ["./../util"], true, function($__require, exports, module) {
   "use strict";
   ;
@@ -698,28 +519,6 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
   return module.exports;
 });
 
-System.registerDynamic("src/util", [], true, function($__require, exports, module) {
-  "use strict";
-  ;
-  var define,
-      global = this,
-      GLOBAL = this;
-  var Util = (function() {
-    function Util() {}
-    Util.isNotPresent = function(control) {
-      var value = control.value;
-      if (value === undefined || value === null) {
-        return true;
-      }
-      return value !== '' ? false : true;
-    };
-    ;
-    return Util;
-  }());
-  exports.Util = Util;
-  return module.exports;
-});
-
 System.registerDynamic("src/password/password-validators", ["./../util"], true, function($__require, exports, module) {
   "use strict";
   ;
@@ -910,7 +709,247 @@ System.registerDynamic("src/password/password.directive", ["@angular/core", "@an
   return module.exports;
 });
 
-System.registerDynamic("src/validators.module", ["@angular/core", "./creditcard/creditcard.directive", "./email/email.directive", "./universal/universal.directive", "./password/password.directive"], true, function($__require, exports, module) {
+System.registerDynamic("src/util", [], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var Util = (function() {
+    function Util() {}
+    Util.isNotPresent = function(control) {
+      var value = control.value;
+      if (value === undefined || value === null) {
+        return true;
+      }
+      return value !== '' ? false : true;
+    };
+    ;
+    return Util;
+  }());
+  exports.Util = Util;
+  return module.exports;
+});
+
+System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libphonenumber"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var util_1 = $__require('./../util');
+  var google_libphonenumber_1 = $__require('google-libphonenumber');
+  exports.regionsCode = {
+    UN001: '001',
+    AD: 'AD',
+    AE: 'AE',
+    AO: 'AO',
+    AQ: 'AQ',
+    AR: 'AR',
+    AU: 'AU',
+    BB: 'BB',
+    BR: 'BR',
+    BS: 'BS',
+    BY: 'BY',
+    CA: 'CA',
+    CH: 'CH',
+    CN: 'CN',
+    CS: 'CS',
+    CX: 'CX',
+    DE: 'DE',
+    GB: 'GB',
+    HU: 'HU',
+    IT: 'IT',
+    JP: 'JP',
+    KR: 'KR',
+    MX: 'MX',
+    NZ: 'NZ',
+    PL: 'PL',
+    RE: 'RE',
+    SE: 'SE',
+    SG: 'SG',
+    US: 'US',
+    YT: 'YT',
+    ZW: 'ZW',
+    ZZ: 'ZZ'
+  };
+  var PhoneValidators = (function() {
+    function PhoneValidators() {}
+    PhoneValidators.checkRegionCode = function(local) {
+      return !(exports.regionsCode[local] === undefined);
+    };
+    PhoneValidators.isValidRegionCode = function() {
+      return function validate(control) {
+        if (util_1.Util.isNotPresent(control)) {
+          return undefined;
+        }
+        if (!PhoneValidators.checkRegionCode(control.value)) {
+          return {'noValidRegionCode': true};
+        }
+        return undefined;
+      };
+    };
+    PhoneValidators.isPhoneNumber = function(local) {
+      return function validate(control) {
+        if (util_1.Util.isNotPresent(control)) {
+          return undefined;
+        }
+        if (!PhoneValidators.checkRegionCode(local)) {
+          return {'noValidRegionCode': true};
+        }
+        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
+        var error = {'noPhoneNumber': true};
+        try {
+          var phoneNumber = phoneParser.parse(control.value, local);
+          if (phoneParser.isValidNumber(phoneNumber)) {
+            error = undefined;
+          }
+        } catch (err) {
+          error = {'noPhoneNumber': true};
+        }
+        return error;
+      };
+    };
+    PhoneValidators.isPossibleNumberWithReason = function(local) {
+      return function validate(control) {
+        if (util_1.Util.isNotPresent(control)) {
+          return undefined;
+        }
+        if (!PhoneValidators.checkRegionCode(local)) {
+          return {'noValidRegionCode': true};
+        }
+        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
+        var error = {'noPhoneNumber': true};
+        try {
+          var phoneNumber = phoneParser.parse(control.value, local);
+          var reason = phoneParser.isPossibleNumberWithReason(phoneNumber);
+          switch (reason) {
+            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.IS_POSSIBLE:
+              error = undefined;
+              break;
+            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_LONG:
+              error = {'phoneNumberTooLong': true};
+              break;
+            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_SHORT:
+              error = {'phoneNumberTooShort': true};
+              break;
+            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
+              error = {'phoneNumberInvalidCountryCode': true};
+              break;
+            default:
+              error = {'noPhoneNumber': true};
+              break;
+          }
+        } catch (err) {
+          error = {'noPhoneNumber': true};
+        }
+        return error;
+      };
+    };
+    return PhoneValidators;
+  }());
+  exports.PhoneValidators = PhoneValidators;
+  return module.exports;
+});
+
+System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/forms", "./phone-validators"], true, function($__require, exports, module) {
+  "use strict";
+  ;
+  var define,
+      global = this,
+      GLOBAL = this;
+  var __decorate = (this && this.__decorate) || function(decorators, target, key, desc) {
+    var c = arguments.length,
+        r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
+        d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+      r = Reflect.decorate(decorators, target, key, desc);
+    else
+      for (var i = decorators.length - 1; i >= 0; i--)
+        if (d = decorators[i])
+          r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+  };
+  var __metadata = (this && this.__metadata) || function(k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+      return Reflect.metadata(k, v);
+  };
+  var core_1 = $__require('@angular/core');
+  var forms_1 = $__require('@angular/forms');
+  var phone_validators_1 = $__require('./phone-validators');
+  var PossiblePhoneValidatorDirective = (function() {
+    function PossiblePhoneValidatorDirective() {
+      this.possiblePhone = 'US';
+    }
+    PossiblePhoneValidatorDirective.prototype.ngOnInit = function() {
+      this.validator = phone_validators_1.PhoneValidators.isPossibleNumberWithReason(this.possiblePhone);
+    };
+    PossiblePhoneValidatorDirective.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', String)], PossiblePhoneValidatorDirective.prototype, "possiblePhone", void 0);
+    PossiblePhoneValidatorDirective = __decorate([core_1.Directive({
+      selector: '[possiblePhone][formControlName],[possiblePhone][formControl],[possiblePhone][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return PossiblePhoneValidatorDirective;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], PossiblePhoneValidatorDirective);
+    return PossiblePhoneValidatorDirective;
+  }());
+  exports.PossiblePhoneValidatorDirective = PossiblePhoneValidatorDirective;
+  var PhoneValidatorDirective = (function() {
+    function PhoneValidatorDirective() {
+      this.phone = 'US';
+    }
+    PhoneValidatorDirective.prototype.ngOnInit = function() {
+      this.validator = phone_validators_1.PhoneValidators.isPhoneNumber(this.phone);
+    };
+    PhoneValidatorDirective.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    __decorate([core_1.Input(), __metadata('design:type', String)], PhoneValidatorDirective.prototype, "phone", void 0);
+    PhoneValidatorDirective = __decorate([core_1.Directive({
+      selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return PhoneValidatorDirective;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], PhoneValidatorDirective);
+    return PhoneValidatorDirective;
+  }());
+  exports.PhoneValidatorDirective = PhoneValidatorDirective;
+  var CountryCodeValidatorDirective = (function() {
+    function CountryCodeValidatorDirective() {}
+    CountryCodeValidatorDirective.prototype.ngOnInit = function() {
+      this.validator = phone_validators_1.PhoneValidators.isValidRegionCode();
+    };
+    CountryCodeValidatorDirective.prototype.validate = function(c) {
+      return this.validator(c);
+    };
+    CountryCodeValidatorDirective = __decorate([core_1.Directive({
+      selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
+      providers: [{
+        provide: forms_1.NG_VALIDATORS,
+        useExisting: core_1.forwardRef(function() {
+          return CountryCodeValidatorDirective;
+        }),
+        multi: true
+      }]
+    }), __metadata('design:paramtypes', [])], CountryCodeValidatorDirective);
+    return CountryCodeValidatorDirective;
+  }());
+  exports.CountryCodeValidatorDirective = CountryCodeValidatorDirective;
+  return module.exports;
+});
+
+System.registerDynamic("src/validators.module", ["@angular/core", "./creditcard/creditcard.directive", "./email/email.directive", "./universal/universal.directive", "./password/password.directive", "./phone/phone.directive"], true, function($__require, exports, module) {
   "use strict";
   ;
   var define,
@@ -937,11 +976,12 @@ System.registerDynamic("src/validators.module", ["@angular/core", "./creditcard/
   var email_directive_1 = $__require('./email/email.directive');
   var universal_directive_1 = $__require('./universal/universal.directive');
   var password_directive_1 = $__require('./password/password.directive');
+  var phone_directive_1 = $__require('./phone/phone.directive');
   var ValidatorsModule = (function() {
     function ValidatorsModule() {}
     ValidatorsModule = __decorate([core_1.NgModule({
-      declarations: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective],
-      exports: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective]
+      declarations: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective],
+      exports: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective]
     }), __metadata('design:paramtypes', [])], ValidatorsModule);
     return ValidatorsModule;
   }());
@@ -980,6 +1020,7 @@ System.registerDynamic("index", ["./src/password/password-validators", "./src/em
   var phone_directive_1 = $__require('./src/phone/phone.directive');
   exports.PhoneValidatorDirective = phone_directive_1.PhoneValidatorDirective;
   exports.CountryCodeValidatorDirective = phone_directive_1.CountryCodeValidatorDirective;
+  exports.PossiblePhoneValidatorDirective = phone_directive_1.PossiblePhoneValidatorDirective;
   var validators_module_1 = $__require('./src/validators.module');
   exports.ValidatorsModule = validators_module_1.ValidatorsModule;
   return module.exports;
