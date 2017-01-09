@@ -346,6 +346,60 @@ export function main() {
                 expect(validated).toEqual({ 'mastercard': true });
             });
 
+            it('should work for wrong mastercard number 4', () => {
+                let control: FormControl = new FormControl('1221009999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 5', () => {
+                let control: FormControl = new FormControl('2121009999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 6', () => {
+                let control: FormControl = new FormControl('2211009999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 7', () => {
+                let control: FormControl = new FormControl('2220009999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 8', () => {
+                let control: FormControl = new FormControl('2721009999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 9', () => {
+                let control: FormControl = new FormControl('2721999999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 10', () => {
+                let control: FormControl = new FormControl('2730999999999999');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 11', () => {
+                let control: FormControl = new FormControl('2820999999999999 foo');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
+            it('should work for wrong mastercard number 12', () => {
+                let control: FormControl = new FormControl('4111111111111111');
+                let validated = CreditCardValidators.mastercard()(control);
+                expect(validated).toEqual({ 'mastercard': true });
+            });
+
         });
     });
 };
