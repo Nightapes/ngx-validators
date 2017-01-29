@@ -1,19 +1,19 @@
-# ng2-validators [![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master) 
+# ng2-validators [![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)
 
 An implementation of various angular validators for Angular 2.
 
 List of validators
 
-1. Password 
-1. Email 
+1. Password
+1. Email
 1. Universal
-1. Creditcards 
+1. Creditcards
 
 ## Password validators
 
 The rules are from https://github.com/vt-middleware/passay
 
-The password validators are: 
+The password validators are:
 
 * repeatCharacterRegexRule
 * whitespaceRule (moved to UniversalValidators)
@@ -61,10 +61,10 @@ needs: ```ReactiveFormsModule```
 ### Passwords
 
 ```
-@import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ng2-validators'
 
 ...
-password: Control = new Control('', Validators.compose([
+password: FormControl = new FormControl('', Validators.compose([
         PasswordValidators.repeatCharacterRegexRule(4),
         PasswordValidators.whitespaceRule(),
         PasswordValidators.alphabeticalCharacterRule(1);
@@ -79,7 +79,7 @@ password: Control = new Control('', Validators.compose([
 ### Password mismatch
 
 ```
-@import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ng2-validators'
 
 ...
 
@@ -96,7 +96,7 @@ let form = new FormGroup({
 #### Override control name
 
 ```
-@import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ng2-validators'
 
 ...
 
@@ -114,58 +114,58 @@ let form = new FormGroup({
 ### Email
 
 ```
-@import {EmailValidators} from 'ng2-validators'
+import {EmailValidators} from 'ng2-validators'
 
 ...
 
-email: Control = new Control('', EmailValidators.normal());
-email2: Control = new Control('', EmailValidators.simple());
+email: FormControl = new FormControl('', EmailValidators.normal());
+email2: FormControl = new FormControl('', EmailValidators.simple());
 ```
 
 ### Universal
 
 ```
-@import {UniversalValidators} from 'ng2-validators'
+import {UniversalValidators} from 'ng2-validators'
 
 ...
 
-control: Control = new Control('', UniversalValidators.noWhitespace());
-control: Control = new Control('', UniversalValidators.isNumber());
-control: Control = new Control('', UniversalValidators.isInRange(2, 5));
-control: Control = new Control('', UniversalValidators.minLength(2));
-control: Control = new Control('', UniversalValidators.maxLength(7));
-control: Control = new Control('', UniversalValidators.min(2));
-control: Control = new Control('', UniversalValidators.max(2));
+control: FormControl = new FormControl('', UniversalValidators.noWhitespace());
+control: FormControl = new FormControl('', UniversalValidators.isNumber());
+control: FormControl = new FormControl('', UniversalValidators.isInRange(2, 5));
+control: FormControl = new FormControl('', UniversalValidators.minLength(2));
+control: FormControl = new FormControl('', UniversalValidators.maxLength(7));
+control: FormControl = new FormControl('', UniversalValidators.min(2));
+control: FormControl = new FormControl('', UniversalValidators.max(2));
 ```
 
 ### Creditcards
 
 ```
-@import {CreditCardValidators} from 'ng2-validators'
+import {CreditCardValidators} from 'ng2-validators'
 
 ...
 
-control: Control = new Control('', UniversalValidators.isCreditCard());
-control: Control = new Control('', UniversalValidators.americanExpress());
-control: Control = new Control('', UniversalValidators.dinersclub());
-control: Control = new Control('', UniversalValidators.discover());
-control: Control = new Control('', UniversalValidators.jcb());
-control: Control = new Control('', UniversalValidators.maestro());
-control: Control = new Control('', UniversalValidators.mastercard());
-control: Control = new Control('', UniversalValidators.visa());
+control: FormControl = new FormControl('', UniversalValidators.isCreditCard());
+control: FormControl = new FormControl('', UniversalValidators.americanExpress());
+control: FormControl = new FormControl('', UniversalValidators.dinersclub());
+control: FormControl = new FormControl('', UniversalValidators.discover());
+control: FormControl = new FormControl('', UniversalValidators.jcb());
+control: FormControl = new FormControl('', UniversalValidators.maestro());
+control: FormControl = new FormControl('', UniversalValidators.mastercard());
+control: FormControl = new FormControl('', UniversalValidators.visa());
 
 ```
 
 ### Phonenumber
 
 ```
-@import {PhoneValidators} from 'ng2-validators'
+import {PhoneValidators} from 'ng2-validators'
 
 ...
 
-countryCode: Control = new Control('', PhoneValidators.isValidRegionCode());
-phone: Control = new Control('', PhoneValidators.isPhoneNumber());
-phone2: Control = new Control('', PhoneValidators.isPossibleNumberWithReason());
+countryCode: FormControl = new FormControl('', PhoneValidators.isValidRegionCode());
+phone: FormControl = new FormControl('', PhoneValidators.isPhoneNumber());
+phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithReason());
 ```
 
 
@@ -194,11 +194,11 @@ export class AppModule {
 ```
 <form>
 <input type="password" [(ngModel)]="model.password" name="password" #formControl="ngModel" password>
-<span *ngIf="formControl.errors?.repeatCharacterRegexRule">Password contains repeating characters</span>
-<span *ngIf="formControl.errors?.digitCharacterRule">Password should contain at least on digit</span>
-<span *ngIf="formControl.errors?.alphabeticalCharacterRule">Password should contain at least on alphabetical character</span>
-<span *ngIf="formControl.errors?.lowercaseCharacterRule">Password should contain at least on lowercase character</span>
-<span *ngIf="formControl.errors?.uppercaseCharacterRule">Password should contain at least on uppercase character</span>
+<span *ngIf="formControl.hasError('repeatCharacterRegexRule')">Password contains repeating characters</span>
+<span *ngIf="formControl.hasError('digitCharacterRule')">Password should contain at least on digit</span>
+<span *ngIf="formControl.hasError('alphabeticalCharacterRule')">Password should contain at least on alphabetical character</span>
+<span *ngIf="formControl.hasError('lowercaseCharacterRule')">Password should contain at least on lowercase character</span>
+<span *ngIf="formControl.hasError('uppercaseCharacterRule')">Password should contain at least on uppercase character</span>
 </form>
 
 // Override values
@@ -218,7 +218,7 @@ export class AppModule {
 <form>
 
 <input type="text" [(ngModel)]="model.creditcard" name="creditcard" #formControl="ngModel" creditCard>
-<span *ngIf="formControl.errors?.creditcard">Is not a creditcard</span>
+<span *ngIf="formControl.hasError('creditcard')">Is not a creditcard</span>
 </form>
 
 // Override values
@@ -231,7 +231,7 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" email>
-<span *ngIf="formControl.errors?.normalEmailRule">Is not a email</span>
+<span *ngIf="formControl.hasError('normalEmailRule')">Is not a email</span>
 </form>
 
 ```
@@ -244,8 +244,8 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US">
-<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
-<span *ngIf="formControl.errors?.noPhoneNumber">Is not a phone number</span>
+<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
+<span *ngIf="formControl.hasError('noPhoneNumber')">Is not a phone number</span>
 </form>
 
 ```
@@ -255,10 +255,10 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" possiblePhone="US">
-<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
-<span *ngIf="formControl.errors?.phoneNumberTooLong">Phone number is to long</span>
-<span *ngIf="formControl.errors?.phoneNumberTooShort">Phone number is to short</span>
-<span *ngIf="formControl.errors?.noPhoneNumber">Is not a phone number</span>
+<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
+<span *ngIf="formControl.hasError('phoneNumberTooLong')">Phone number is to long</span>
+<span *ngIf="formControl.hasError('phoneNumberTooShort')">Phone number is to short</span>
+<span *ngIf="formControl.hasError('noPhoneNumber')">Is not a phone number</span>
 </form>
 
 ```
@@ -268,7 +268,7 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.countryCode" name="countryCode" #formControl="ngModel" countryCode>
-<span *ngIf="formControl.errors?.noValidRegionCode">Is not a countryCode</span>
+<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
 </form>
 
 ```
@@ -280,7 +280,7 @@ export class AppModule {
 ```
 <form>
 <input type="text" [(ngModel)]="model.firstname" name="firstname" #formControl="ngModel" noWhitespace>
-<span *ngIf="formControl.errors?.noWhitespaceRequired">Should not contain a whitespace</span>
+<span *ngIf="formControl.hasError('noWhitespaceRequired')">Should not contain a whitespace</span>
 </form>
 ```
 
@@ -289,7 +289,7 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isNumber>
-<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
+<span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
 </form>
 ```
 
@@ -298,9 +298,9 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isInRange  [minValue]="2" [maxValue]="4">
-<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
-<span *ngIf="formControl.errors?.rangeValueToSmall">Number to small</span>
-<span *ngIf="formControl.errors?.rangeValueToBig">Number to big</span>
+<span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
+<span *ngIf="formControl.hasError('rangeValueToSmall')">Number to small</span>
+<span *ngIf="formControl.hasError('rangeValueToBig')">Number to big</span>
 </form>
 ```
 #### min
@@ -308,8 +308,8 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [min]="2">
-<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
-<span *ngIf="formControl.errors?.min">Number to small</span>
+<span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
+<span *ngIf="formControl.hasError('min')">Number to small</span>
 </form>
 ```
 #### max
@@ -317,8 +317,8 @@ export class AppModule {
 ```
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [max]="2">
-<span *ngIf="formControl.errors?.numberRequired">Needs to be a number</span>
-<span *ngIf="formControl.errors?.max">Number to small</span>
+<span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
+<span *ngIf="formControl.hasError('max')">Number to small</span>
 </form>
 ```
 
@@ -326,7 +326,7 @@ export class AppModule {
 
 * Implement  https://github.com/mailcheck/mailcheck
 * Add more password rules
-* Add address validator 
+* Add address validator
 
 Get the complete changelog here: https://github.com/Nightapes/ng2-validators/releases
 
