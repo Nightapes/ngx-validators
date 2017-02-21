@@ -9,4 +9,3 @@ export class Util {
         return value !== '' ? false : true;
     };
 }
-

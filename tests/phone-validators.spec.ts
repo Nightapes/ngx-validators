@@ -148,25 +148,24 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = PhoneValidators.isValidRegionCode()(control);
+                let validated = PhoneValidators.isValidRegionCode(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for wrong region code', () => {
                 let control: FormControl = new FormControl('REGIONCODE');
-                let validated = PhoneValidators.isValidRegionCode()(control);
+                let validated = PhoneValidators.isValidRegionCode(control);
                 expect(validated).toEqual({ 'noValidRegionCode': true });
             });
 
             it('should work for region code', () => {
                 for (let code in regionsCode) {
                     let control: FormControl = new FormControl(code);
-                    let validated = PhoneValidators.isValidRegionCode()(control);
+                    let validated = PhoneValidators.isValidRegionCode(control);
                     expect(validated).toBeUndefined();
                 };
 
             });
-
 
         });
 

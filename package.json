@@ -4,8 +4,9 @@
     "scripts": {
         "test": "tsc && karma start",
         "test-watch": "tsc && karma start --no-single-run --auto-watch",
-        "commit": "npm run prepublish && npm test && git-cz",
-        "prepublish": "tsc && node make.js",
+        "lint": "tslint ./**/*.ts --exclude ./node_modules/**",
+        "commit": "npm run lint && npm run prepublish && npm test && git-cz",
+        "prepublish": "npm run lint && tsc && node make.js",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
     },
     "repository": {
@@ -31,18 +32,18 @@
         "@angular/forms": "^2.0.0"
     },
     "devDependencies": {
-        "@angular/common": "^2.0.0",
-        "@angular/compiler": "^2.0.0",
-        "@angular/core": "^2.0.0",
-        "@angular/forms": "^2.0.0",
-        "@angular/platform-browser": "^2.0.0",
+        "@angular/common": "^2.4.0",
+        "@angular/compiler": "^2.4.0",
+        "@angular/core": "^2.4.0",
+        "@angular/forms": "^2.4.0",
+        "@angular/platform-browser": "^2.4.0",
+        "@types/core-js": "^0.9.34",
         "@types/google-libphonenumber": "^7.4.9",
         "@types/jasmine": "^2.5.36",
-        "@types/systemjs": "^0.19.31",
-        "@types/core-js": "^0.9.34",
         "@types/node": "^6.0.46",
+        "@types/systemjs": "^0.19.31",
         "@types/zone.js": "^0.0.27",
-        "codelyzer": "^1.0.0-beta.3",
+        "codelyzer": "^2.0.0-beta.4",
         "commitizen": "2.8.1",
         "cz-conventional-changelog": "1.1.6",
         "es6-promise": "3.0.2",
@@ -57,16 +58,16 @@
         "karma-mocha-reporter": "2.0.3",
         "karma-typescript-preprocessor": "0.0.21",
         "reflect-metadata": "0.1.2",
-        "rxjs": "5.0.0-beta.12",
+        "rxjs": "5.0.1",
         "semantic-release": "4.3.5",
         "systemjs": "0.19.27",
         "systemjs-builder": "0.15.13",
         "traceur": "^0.0.111",
         "tsd": "0.6.5",
-        "tslint-eslint-rules": "^2.1.0",
+        "tslint": "^4.4.2",
         "typescript": "2.0.10",
         "typings": "2.0.0",
-        "zone.js": "0.6.21"
+        "zone.js": "0.7.2"
     },
     "czConfig": {
         "path": "node_modules/cz-conventional-changelog"

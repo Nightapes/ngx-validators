@@ -1,96 +1,98 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { Util } from './../util';
 
+const noWhitespace: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    if (Util.isNotPresent(control)) return undefined;
+    let pattern = '\\s';
+    if (new RegExp(pattern).test(control.value)) {
+        return { 'noWhitespaceRequired': true };
+    }
+    return undefined;
+};
 
-export class UniversalValidators {
+const isNumber: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    if (Util.isNotPresent(control)) return undefined;
+    if (isNaN(control.value)) {
+        return { 'numberRequired': true };
+    }
+    return undefined;
+};
 
-    static noWhitespace(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let pattern = '\\s';
-            if (new RegExp(pattern).test(control.value)) {
-                return { 'noWhitespaceRequired': true };
-            }
+const isInRange = (minValue: number, maxValue: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        if (isNaN(control.value)) {
+            return { 'numberRequired': true };
+        }
+        if (+control.value < minValue) {
+            return { 'rangeValueToSmall': true };
+        }
+
+        if (+control.value > maxValue) {
+            return { 'rangeValueToBig': true };
+        } else {
             return undefined;
-        };
-    }
+        }
+    };
+};
 
-    static isNumber(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            if (isNaN(control.value)) {
-                return { 'numberRequired': true };
-            }
+const minLength = (minLength: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let value: string = control.value;
+        if (value.length <= minLength) {
             return undefined;
-        };
-    }
+        }
+        return { 'minLength': true };
+    };
+};
 
-    static isInRange(minValue: number, maxValue: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            if (isNaN(control.value)) {
-                return { 'numberRequired': true };
-            }
-            if (+control.value < minValue) {
-                return { 'rangeValueToSmall': true };
-            }
+const maxLength = (maxLength: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let value: string = control.value;
+        if (maxLength >= value.length) {
+            return undefined;
+        }
+        return { 'maxLength': true };
+    };
+};
 
-            if (+control.value > maxValue) {
-                return { 'rangeValueToBig': true };
-            } else {
-                return undefined;
-            }
-        };
-    }
+const min = (min: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let value: string = control.value;
+        if (isNaN(control.value)) {
+            return { 'numberRequired': true };
+        }
+        if (+value >= min) {
+            return undefined;
+        }
+        return { 'min': true };
+    };
+};
 
-    static minLength(minLength: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let value: string = control.value;
-            if (value.length <= minLength) {
-                return undefined;
-            }
-            return { 'minLength': true };
-        };
-    }
+const max = (max: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let value: string = control.value;
+        if (isNaN(control.value)) {
+            return { 'numberRequired': true };
+        }
+        if (max >= +value) {
+            return undefined;
+        }
+        return { 'max': true };
+    };
+};
 
-    static maxLength(maxLength: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let value: string = control.value;
-            if (maxLength >= value.length) {
-                return undefined;
-            }
-            return { 'maxLength': true };
-        };
-    }
-
-    static min(min: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let value: string = control.value;
-            if (isNaN(control.value)) {
-                return { 'numberRequired': true };
-            }
-            if (+value >= min) {
-                return undefined;
-            }
-            return { 'min': true };
-        };
-    }
-
-    static max(max: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let value: string = control.value;
-            if (isNaN(control.value)) {
-                return { 'numberRequired': true };
-            }
-            if (max >= +value) {
-                return undefined;
-            }
-            return { 'max': true };
-        };
-    }
-
-}
+// tslint:disable-next-line:variable-name
+export const UniversalValidators: any = {
+    max,
+    min,
+    maxLength,
+    minLength,
+    isInRange,
+    isNumber,
+    noWhitespace
+};

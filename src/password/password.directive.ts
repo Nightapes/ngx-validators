@@ -7,6 +7,7 @@ import { PasswordValidators } from './password-validators';
     selector: '[password][formControlName],[password][formControl],[password][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => PasswordValidatorDirective),
         multi: true
     }]

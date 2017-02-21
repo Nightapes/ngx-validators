@@ -5,98 +5,87 @@ System.registerDynamic("src/creditcard/creditcard-validators", ["./../util"], tr
       global = this,
       GLOBAL = this;
   var util_1 = $__require('./../util');
-  var visa = '^(?:4[0-9]{12})(?:[0-9]{3})?$';
-  var americanExpress = '^(?:3[47][0-9]{13})$';
-  var maestro = '^(?:(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15})$';
-  var jcb = '^(?:(?:2131|1800|35\\d{3})\\d{11})$';
-  var discover = '^(?:6(?:011|5[0-9]{2})(?:[0-9]{12}))$';
-  var dinersclub = '^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$';
-  var mastercard = '^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$';
-  var CreditCardValidators = (function() {
-    function CreditCardValidators() {}
-    CreditCardValidators.isCreditCard = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(americanExpress + '|' + visa + '|' + maestro + '|' + jcb + '|' + discover + '|' + mastercard + '|' + dinersclub).test(control.value)) {
-          return undefined;
-        }
-        return {'creditcard': true};
-      };
-    };
-    CreditCardValidators.americanExpress = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(americanExpress).test(control.value)) {
-          return undefined;
-        }
-        return {'americanExpress': true};
-      };
-    };
-    CreditCardValidators.dinersclub = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(dinersclub).test(control.value)) {
-          return undefined;
-        }
-        return {'dinersclub': true};
-      };
-    };
-    CreditCardValidators.discover = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(discover).test(control.value)) {
-          return undefined;
-        }
-        return {'discover': true};
-      };
-    };
-    CreditCardValidators.jcb = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(jcb).test(control.value)) {
-          return undefined;
-        }
-        return {'jcb': true};
-      };
-    };
-    CreditCardValidators.maestro = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(maestro).test(control.value)) {
-          return undefined;
-        }
-        return {'maestro': true};
-      };
-    };
-    CreditCardValidators.mastercard = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(mastercard).test(control.value)) {
-          return undefined;
-        }
-        return {'mastercard': true};
-      };
-    };
-    CreditCardValidators.visa = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (new RegExp(visa).test(control.value)) {
-          return undefined;
-        }
-        return {'visa': true};
-      };
-    };
-    return CreditCardValidators;
-  }());
-  exports.CreditCardValidators = CreditCardValidators;
+  var visaRegex = '^(?:4[0-9]{12})(?:[0-9]{3})?$';
+  var americanExpressRegex = '^(?:3[47][0-9]{13})$';
+  var maestroRegex = '^(?:(?:5[0678]\\d\\d|6304|6390|67\\d\\d)\\d{8,15})$';
+  var jcbRegex = '^(?:(?:2131|1800|35\\d{3})\\d{11})$';
+  var discoverRegex = '^(?:6(?:011|5[0-9]{2})(?:[0-9]{12}))$';
+  var dinersclubRegex = '^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$';
+  var mastercardRegex = '^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$';
+  exports.isCreditCard = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(americanExpressRegex + '|' + visaRegex + '|' + maestroRegex + '|' + jcbRegex + '|' + discoverRegex + '|' + mastercardRegex + '|' + dinersclubRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'creditcard': true};
+  };
+  exports.americanExpress = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(americanExpressRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'americanExpress': true};
+  };
+  exports.dinersclub = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(dinersclubRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'dinersclub': true};
+  };
+  exports.discover = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(discoverRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'discover': true};
+  };
+  exports.jcb = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(jcbRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'jcb': true};
+  };
+  exports.maestro = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(maestroRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'maestro': true};
+  };
+  exports.mastercard = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(mastercardRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'mastercard': true};
+  };
+  exports.visa = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (new RegExp(visaRegex).test(control.value)) {
+      return undefined;
+    }
+    return {'visa': true};
+  };
+  exports.CreditCardValidators = {
+    isCreditCard: exports.isCreditCard,
+    americanExpress: exports.americanExpress,
+    dinersclub: exports.dinersclub,
+    discover: exports.discover,
+    jcb: exports.jcb,
+    maestro: exports.maestro,
+    mastercard: exports.mastercard,
+    visa: exports.visa
+  };
   return module.exports;
 });
 
@@ -132,31 +121,31 @@ System.registerDynamic("src/creditcard/creditcard.directive", ["@angular/core", 
     CreditCardValidatorDirective.prototype.ngOnInit = function() {
       switch (this.creditCard) {
         case 'all':
-          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard();
+          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard;
           break;
         case 'americanExpress':
-          this.validator = creditcard_validators_1.CreditCardValidators.americanExpress();
+          this.validator = creditcard_validators_1.CreditCardValidators.americanExpress;
           break;
         case 'dinersclub':
-          this.validator = creditcard_validators_1.CreditCardValidators.dinersclub();
+          this.validator = creditcard_validators_1.CreditCardValidators.dinersclub;
           break;
         case 'discover':
-          this.validator = creditcard_validators_1.CreditCardValidators.discover();
+          this.validator = creditcard_validators_1.CreditCardValidators.discover;
           break;
         case 'jcb':
-          this.validator = creditcard_validators_1.CreditCardValidators.jcb();
+          this.validator = creditcard_validators_1.CreditCardValidators.jcb;
           break;
         case 'maestro':
-          this.validator = creditcard_validators_1.CreditCardValidators.maestro();
+          this.validator = creditcard_validators_1.CreditCardValidators.maestro;
           break;
         case 'mastercard':
-          this.validator = creditcard_validators_1.CreditCardValidators.mastercard();
+          this.validator = creditcard_validators_1.CreditCardValidators.mastercard;
           break;
         case 'visa':
-          this.validator = creditcard_validators_1.CreditCardValidators.visa();
+          this.validator = creditcard_validators_1.CreditCardValidators.visa;
           break;
         default:
-          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard();
+          this.validator = creditcard_validators_1.CreditCardValidators.isCreditCard;
           break;
       }
     };
@@ -187,33 +176,28 @@ System.registerDynamic("src/email/email-validators", ["./../util"], true, functi
       global = this,
       GLOBAL = this;
   var util_1 = $__require('./../util');
-  var EmailValidators = (function() {
-    function EmailValidators() {}
-    EmailValidators.simple = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var pattern = '^.+@.+\\..+$';
-        if (new RegExp(pattern).test(control.value)) {
-          return undefined;
-        }
-        return {'simpleEmailRule': true};
-      };
-    };
-    EmailValidators.normal = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        if (pattern.test(control.value)) {
-          return undefined;
-        }
-        return {'normalEmailRule': true};
-      };
-    };
-    return EmailValidators;
-  }());
-  exports.EmailValidators = EmailValidators;
+  exports.simple = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    var pattern = '^.+@.+\\..+$';
+    if (new RegExp(pattern).test(control.value)) {
+      return undefined;
+    }
+    return {'simpleEmailRule': true};
+  };
+  exports.normal = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    var pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    if (pattern.test(control.value)) {
+      return undefined;
+    }
+    return {'normalEmailRule': true};
+  };
+  exports.EmailValidators = {
+    simple: exports.simple,
+    normal: exports.normal
+  };
   return module.exports;
 });
 
@@ -249,13 +233,13 @@ System.registerDynamic("src/email/email.directive", ["@angular/core", "@angular/
     EmailValidatorDirective.prototype.ngOnInit = function() {
       switch (this.email) {
         case 'simple':
-          this.validator = email_validators_1.EmailValidators.simple();
+          this.validator = email_validators_1.EmailValidators.simple;
           break;
         case 'normal':
-          this.validator = email_validators_1.EmailValidators.normal();
+          this.validator = email_validators_1.EmailValidators.normal;
           break;
         default:
-          this.validator = email_validators_1.EmailValidators.normal();
+          this.validator = email_validators_1.EmailValidators.normal;
           break;
       }
     };
@@ -286,99 +270,99 @@ System.registerDynamic("src/universal/universal-validators", ["./../util"], true
       global = this,
       GLOBAL = this;
   var util_1 = $__require('./../util');
-  var UniversalValidators = (function() {
-    function UniversalValidators() {}
-    UniversalValidators.noWhitespace = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var pattern = '\\s';
-        if (new RegExp(pattern).test(control.value)) {
-          return {'noWhitespaceRequired': true};
-        }
+  var noWhitespace = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    var pattern = '\\s';
+    if (new RegExp(pattern).test(control.value)) {
+      return {'noWhitespaceRequired': true};
+    }
+    return undefined;
+  };
+  var isNumber = function(control) {
+    if (util_1.Util.isNotPresent(control))
+      return undefined;
+    if (isNaN(control.value)) {
+      return {'numberRequired': true};
+    }
+    return undefined;
+  };
+  var isInRange = function(minValue, maxValue) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
         return undefined;
-      };
-    };
-    UniversalValidators.isNumber = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (isNaN(control.value)) {
-          return {'numberRequired': true};
-        }
+      if (isNaN(control.value)) {
+        return {'numberRequired': true};
+      }
+      if (+control.value < minValue) {
+        return {'rangeValueToSmall': true};
+      }
+      if (+control.value > maxValue) {
+        return {'rangeValueToBig': true};
+      } else {
         return undefined;
-      };
+      }
     };
-    UniversalValidators.isInRange = function(minValue, maxValue) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        if (isNaN(control.value)) {
-          return {'numberRequired': true};
-        }
-        if (+control.value < minValue) {
-          return {'rangeValueToSmall': true};
-        }
-        if (+control.value > maxValue) {
-          return {'rangeValueToBig': true};
-        } else {
-          return undefined;
-        }
-      };
+  };
+  var minLength = function(minLength) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (value.length <= minLength) {
+        return undefined;
+      }
+      return {'minLength': true};
     };
-    UniversalValidators.minLength = function(minLength) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (value.length <= minLength) {
-          return undefined;
-        }
-        return {'minLength': true};
-      };
+  };
+  var maxLength = function(maxLength) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (maxLength >= value.length) {
+        return undefined;
+      }
+      return {'maxLength': true};
     };
-    UniversalValidators.maxLength = function(maxLength) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (maxLength >= value.length) {
-          return undefined;
-        }
-        return {'maxLength': true};
-      };
+  };
+  var min = function(min) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (isNaN(control.value)) {
+        return {'numberRequired': true};
+      }
+      if (+value >= min) {
+        return undefined;
+      }
+      return {'min': true};
     };
-    UniversalValidators.min = function(min) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (isNaN(control.value)) {
-          return {'numberRequired': true};
-        }
-        if (+value >= min) {
-          return undefined;
-        }
-        return {'min': true};
-      };
+  };
+  var max = function(max) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (isNaN(control.value)) {
+        return {'numberRequired': true};
+      }
+      if (max >= +value) {
+        return undefined;
+      }
+      return {'max': true};
     };
-    UniversalValidators.max = function(max) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (isNaN(control.value)) {
-          return {'numberRequired': true};
-        }
-        if (max >= +value) {
-          return undefined;
-        }
-        return {'max': true};
-      };
-    };
-    return UniversalValidators;
-  }());
-  exports.UniversalValidators = UniversalValidators;
+  };
+  exports.UniversalValidators = {
+    max: max,
+    min: min,
+    maxLength: maxLength,
+    minLength: minLength,
+    isInRange: isInRange,
+    isNumber: isNumber,
+    noWhitespace: noWhitespace
+  };
   return module.exports;
 });
 
@@ -410,7 +394,7 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
   var WhiteSpaceValidatorDirective = (function() {
     function WhiteSpaceValidatorDirective() {}
     WhiteSpaceValidatorDirective.prototype.ngOnInit = function() {
-      this.validator = universal_validators_1.UniversalValidators.noWhitespace();
+      this.validator = universal_validators_1.UniversalValidators.noWhitespace;
     };
     WhiteSpaceValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
@@ -431,7 +415,7 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
   var IsNumberValidatorDirective = (function() {
     function IsNumberValidatorDirective() {}
     IsNumberValidatorDirective.prototype.ngOnInit = function() {
-      this.validator = universal_validators_1.UniversalValidators.isNumber();
+      this.validator = universal_validators_1.UniversalValidators.isNumber;
     };
     IsNumberValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
@@ -526,121 +510,125 @@ System.registerDynamic("src/password/password-validators", ["./../util"], true, 
       global = this,
       GLOBAL = this;
   var util_1 = $__require('./../util');
-  var PasswordValidators = (function() {
-    function PasswordValidators() {}
-    PasswordValidators.repeatCharacterRegexRule = function(repeatCount) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var repeatDec = repeatCount - 1;
-        var pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
-        if (control.value !== '' && new RegExp(pattern).test(control.value)) {
-          return {'repeatCharacterRegexRule': true};
-        }
+  exports.repeatCharacterRegexRule = function(repeatCount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
         return undefined;
-      };
+      var repeatDec = repeatCount - 1;
+      var pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
+      if (control.value !== '' && new RegExp(pattern).test(control.value)) {
+        return {'repeatCharacterRegexRule': true};
+      }
+      return undefined;
     };
-    PasswordValidators.allowedCharacterRule = function(allowedChars) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        var valid = true;
-        var invalidChars = [];
-        for (var _i = 0,
-            value_1 = value; _i < value_1.length; _i++) {
-          var char = value_1[_i];
-          if (allowedChars.indexOf(char) === -1) {
-            valid = false;
-            if (invalidChars.indexOf(char) === -1) {
-              invalidChars.push(char);
-            }
+  };
+  exports.allowedCharacterRule = function(allowedChars) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      var valid = true;
+      var invalidChars = [];
+      for (var _i = 0,
+          value_1 = value; _i < value_1.length; _i++) {
+        var char = value_1[_i];
+        if (allowedChars.indexOf(char) === -1) {
+          valid = false;
+          if (invalidChars.indexOf(char) === -1) {
+            invalidChars.push(char);
           }
         }
-        if (!valid) {
-          return {'allowedCharacterRule': invalidChars};
-        }
-        return undefined;
-      };
+      }
+      if (!valid) {
+        return {'allowedCharacterRule': invalidChars};
+      }
+      return undefined;
     };
-    PasswordValidators.alphabeticalCharacterRule = function(amount) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (value.length === 0) {
-          return undefined;
-        }
-        var pattern = /[^A-Za-z]+/g;
-        var stripped = value.replace(pattern, '');
-        if (stripped.length < amount) {
-          return {'alphabeticalCharacterRule': true};
-        }
+  };
+  exports.alphabeticalCharacterRule = function(amount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
         return undefined;
-      };
-    };
-    PasswordValidators.digitCharacterRule = function(amount) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (value.length === 0) {
-          return undefined;
-        }
-        var pattern = /[^0-9\.]+/g;
-        var stripped = value.replace(pattern, '');
-        if (stripped.length < amount) {
-          return {'digitCharacterRule': true};
-        }
+      var value = control.value;
+      if (value.length === 0) {
         return undefined;
-      };
+      }
+      var pattern = /[^A-Za-z]+/g;
+      var stripped = value.replace(pattern, '');
+      if (stripped.length < amount) {
+        return {'alphabeticalCharacterRule': true};
+      }
+      return undefined;
     };
-    PasswordValidators.lowercaseCharacterRule = function(amount) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (value.length === 0) {
-          return undefined;
-        }
-        var pattern = /[^a-z]+/g;
-        var stripped = value.replace(pattern, '');
-        if (stripped.length < amount) {
-          return {'lowercaseCharacterRule': true};
-        }
+  };
+  exports.digitCharacterRule = function(amount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
         return undefined;
-      };
-    };
-    PasswordValidators.uppercaseCharacterRule = function(amount) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control))
-          return undefined;
-        var value = control.value;
-        if (value.length === 0) {
-          return undefined;
-        }
-        var pattern = /[^A-Z]+/g;
-        var stripped = value.replace(pattern, '');
-        if (stripped.length < amount) {
-          return {'uppercaseCharacterRule': true};
-        }
+      var value = control.value;
+      if (value.length === 0) {
         return undefined;
-      };
+      }
+      var pattern = /[^0-9\.]+/g;
+      var stripped = value.replace(pattern, '');
+      if (stripped.length < amount) {
+        return {'digitCharacterRule': true};
+      }
+      return undefined;
     };
-    PasswordValidators.mismatchedPasswords = function(passwordControlName, confirmPasswordControlName) {
-      return function validate(group) {
-        var newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
-        var newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
-        if (newPasswordValue !== newPasswordConfirmValue) {
-          group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').setErrors({'mismatchedPasswords': true});
-          return {'mismatchedPasswords': true};
-        }
+  };
+  exports.lowercaseCharacterRule = function(amount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
         return undefined;
-      };
+      var value = control.value;
+      if (value.length === 0) {
+        return undefined;
+      }
+      var pattern = /[^a-z]+/g;
+      var stripped = value.replace(pattern, '');
+      if (stripped.length < amount) {
+        return {'lowercaseCharacterRule': true};
+      }
+      return undefined;
     };
-    return PasswordValidators;
-  }());
-  exports.PasswordValidators = PasswordValidators;
+  };
+  exports.uppercaseCharacterRule = function(amount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (value.length === 0) {
+        return undefined;
+      }
+      var pattern = /[^A-Z]+/g;
+      var stripped = value.replace(pattern, '');
+      if (stripped.length < amount) {
+        return {'uppercaseCharacterRule': true};
+      }
+      return undefined;
+    };
+  };
+  exports.mismatchedPasswords = function(passwordControlName, confirmPasswordControlName) {
+    return function(group) {
+      var newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
+      var newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
+      if (newPasswordValue !== newPasswordConfirmValue) {
+        group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').setErrors({'mismatchedPasswords': true});
+        return {'mismatchedPasswords': true};
+      }
+      return undefined;
+    };
+  };
+  exports.PasswordValidators = {
+    repeatCharacterRegexRule: exports.repeatCharacterRegexRule,
+    allowedCharacterRule: exports.allowedCharacterRule,
+    alphabeticalCharacterRule: exports.alphabeticalCharacterRule,
+    digitCharacterRule: exports.digitCharacterRule,
+    lowercaseCharacterRule: exports.lowercaseCharacterRule,
+    uppercaseCharacterRule: exports.uppercaseCharacterRule,
+    mismatchedPasswords: exports.mismatchedPasswords
+  };
   return module.exports;
 });
 
@@ -773,82 +761,82 @@ System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libph
     ZW: 'ZW',
     ZZ: 'ZZ'
   };
-  var PhoneValidators = (function() {
-    function PhoneValidators() {}
-    PhoneValidators.checkRegionCode = function(local) {
-      return !(exports.regionsCode[local] === undefined);
-    };
-    PhoneValidators.isValidRegionCode = function() {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(control.value)) {
-          return {'noValidRegionCode': true};
-        }
+  exports.checkRegionCode = function(local) {
+    return !(exports.regionsCode[local] === undefined);
+  };
+  exports.isValidRegionCode = function(control) {
+    if (util_1.Util.isNotPresent(control)) {
+      return undefined;
+    }
+    if (!exports.checkRegionCode(control.value)) {
+      return {'noValidRegionCode': true};
+    }
+    return undefined;
+  };
+  exports.isPhoneNumber = function(local) {
+    return function validate(control) {
+      if (util_1.Util.isNotPresent(control)) {
         return undefined;
-      };
+      }
+      if (!exports.checkRegionCode(local)) {
+        return {'noValidRegionCode': true};
+      }
+      var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
+      var error = {'noPhoneNumber': true};
+      try {
+        var phoneNumber = phoneParser.parse(control.value, local);
+        if (phoneParser.isValidNumber(phoneNumber)) {
+          error = undefined;
+        }
+      } catch (err) {
+        error = {'noPhoneNumber': true};
+      }
+      return error;
     };
-    PhoneValidators.isPhoneNumber = function(local) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(local)) {
-          return {'noValidRegionCode': true};
-        }
-        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
-        var error = {'noPhoneNumber': true};
-        try {
-          var phoneNumber = phoneParser.parse(control.value, local);
-          if (phoneParser.isValidNumber(phoneNumber)) {
+  };
+  exports.isPossibleNumberWithReason = function(local) {
+    return function validate(control) {
+      if (util_1.Util.isNotPresent(control)) {
+        return undefined;
+      }
+      if (!exports.checkRegionCode(local)) {
+        return {'noValidRegionCode': true};
+      }
+      var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
+      var error = {'noPhoneNumber': true};
+      try {
+        var phoneNumber = phoneParser.parse(control.value, local);
+        var reason = phoneParser.isPossibleNumberWithReason(phoneNumber);
+        switch (reason) {
+          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.IS_POSSIBLE:
             error = undefined;
-          }
-        } catch (err) {
-          error = {'noPhoneNumber': true};
+            break;
+          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_LONG:
+            error = {'phoneNumberTooLong': true};
+            break;
+          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_SHORT:
+            error = {'phoneNumberTooShort': true};
+            break;
+          case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
+            error = {'phoneNumberInvalidCountryCode': true};
+            break;
+          default:
+            error = {'noPhoneNumber': true};
+            break;
         }
-        return error;
-      };
+      } catch (err) {
+        error = {'noPhoneNumber': true};
+      }
+      return error;
     };
-    PhoneValidators.isPossibleNumberWithReason = function(local) {
-      return function validate(control) {
-        if (util_1.Util.isNotPresent(control)) {
-          return undefined;
-        }
-        if (!PhoneValidators.checkRegionCode(local)) {
-          return {'noValidRegionCode': true};
-        }
-        var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
-        var error = {'noPhoneNumber': true};
-        try {
-          var phoneNumber = phoneParser.parse(control.value, local);
-          var reason = phoneParser.isPossibleNumberWithReason(phoneNumber);
-          switch (reason) {
-            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.IS_POSSIBLE:
-              error = undefined;
-              break;
-            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_LONG:
-              error = {'phoneNumberTooLong': true};
-              break;
-            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.TOO_SHORT:
-              error = {'phoneNumberTooShort': true};
-              break;
-            case google_libphonenumber_1.PhoneNumberUtil.ValidationResult.INVALID_COUNTRY_CODE:
-              error = {'phoneNumberInvalidCountryCode': true};
-              break;
-            default:
-              error = {'noPhoneNumber': true};
-              break;
-          }
-        } catch (err) {
-          error = {'noPhoneNumber': true};
-        }
-        return error;
-      };
-    };
-    return PhoneValidators;
-  }());
-  exports.PhoneValidators = PhoneValidators;
+  };
+  exports.PhoneValidators = {
+    isPossibleNumberWithReason: exports.isPossibleNumberWithReason,
+    isPhoneNumber: exports.isPhoneNumber,
+    checkRegionCode: exports.checkRegionCode,
+    isValidRegionCode: exports.isValidRegionCode,
+    regionsCode: exports.regionsCode
+  };
   return module.exports;
 });
 
@@ -928,7 +916,7 @@ System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/
   var CountryCodeValidatorDirective = (function() {
     function CountryCodeValidatorDirective() {}
     CountryCodeValidatorDirective.prototype.ngOnInit = function() {
-      this.validator = phone_validators_1.PhoneValidators.isValidRegionCode();
+      this.validator = phone_validators_1.PhoneValidators.isValidRegionCode;
     };
     CountryCodeValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);

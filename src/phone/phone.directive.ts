@@ -7,6 +7,7 @@ import { PhoneValidators } from './phone-validators';
     selector: '[possiblePhone][formControlName],[possiblePhone][formControl],[possiblePhone][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => PossiblePhoneValidatorDirective),
         multi: true
     }]
@@ -30,6 +31,7 @@ export class PossiblePhoneValidatorDirective implements Validator, OnInit {
     selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => PhoneValidatorDirective),
         multi: true
     }]
@@ -53,6 +55,7 @@ export class PhoneValidatorDirective implements Validator, OnInit {
     selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => CountryCodeValidatorDirective),
         multi: true
     }]
@@ -63,7 +66,7 @@ export class CountryCodeValidatorDirective implements Validator, OnInit {
     private validator: ValidatorFn;
 
     ngOnInit() {
-        this.validator = PhoneValidators.isValidRegionCode();
+        this.validator = PhoneValidators.isValidRegionCode;
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
