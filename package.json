@@ -6,8 +6,8 @@
         "test-watch": "tsc && karma start --no-single-run --auto-watch",
         "lint": "tslint 'src/**/*.ts' && tslint 'tests/**/*.ts'",
         "commit": "npm run lint && npm run prepublish && npm test && git-cz",
-        "prepublish": "npm run lint && tsc && node make.js",
-        "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+        "prepublish": "tsc && node make.js",
+        "semantic-release": "npm run lint && semantic-release pre && npm publish && semantic-release post"
     },
     "repository": {
         "type": "git",
@@ -65,8 +65,8 @@
         "traceur": "^0.0.111",
         "tsd": "0.6.5",
         "tslint": "^4.4.2",
-        "typescript": "2.0.10",
-        "typings": "2.0.0",
+        "typescript": "2.1.6",
+        "typings": "2.1.0",
         "zone.js": "0.7.2"
     },
     "czConfig": {

@@ -114,7 +114,7 @@ System.registerDynamic("src/creditcard/creditcard.directive", ["@angular/core", 
   var core_1 = $__require('@angular/core');
   var forms_1 = $__require('@angular/forms');
   var creditcard_validators_1 = $__require('./creditcard-validators');
-  var CreditCardValidatorDirective = (function() {
+  var CreditCardValidatorDirective = CreditCardValidatorDirective_1 = (function() {
     function CreditCardValidatorDirective() {
       this.creditCard = 'all';
     }
@@ -152,20 +152,21 @@ System.registerDynamic("src/creditcard/creditcard.directive", ["@angular/core", 
     CreditCardValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', String)], CreditCardValidatorDirective.prototype, "creditCard", void 0);
-    CreditCardValidatorDirective = __decorate([core_1.Directive({
-      selector: '[creditCard][formControlName],[creditCard][formControl],[creditCard][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return CreditCardValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], CreditCardValidatorDirective);
     return CreditCardValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", String)], CreditCardValidatorDirective.prototype, "creditCard", void 0);
+  CreditCardValidatorDirective = CreditCardValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[creditCard][formControlName],[creditCard][formControl],[creditCard][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return CreditCardValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], CreditCardValidatorDirective);
   exports.CreditCardValidatorDirective = CreditCardValidatorDirective;
+  var CreditCardValidatorDirective_1;
   return module.exports;
 });
 
@@ -226,7 +227,7 @@ System.registerDynamic("src/email/email.directive", ["@angular/core", "@angular/
   var core_1 = $__require('@angular/core');
   var forms_1 = $__require('@angular/forms');
   var email_validators_1 = $__require('./email-validators');
-  var EmailValidatorDirective = (function() {
+  var EmailValidatorDirective = EmailValidatorDirective_1 = (function() {
     function EmailValidatorDirective() {
       this.email = 'normal';
     }
@@ -246,20 +247,21 @@ System.registerDynamic("src/email/email.directive", ["@angular/core", "@angular/
     EmailValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', String)], EmailValidatorDirective.prototype, "email", void 0);
-    EmailValidatorDirective = __decorate([core_1.Directive({
-      selector: '[email][formControlName],[email][formControl],[email][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return EmailValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], EmailValidatorDirective);
     return EmailValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", String)], EmailValidatorDirective.prototype, "email", void 0);
+  EmailValidatorDirective = EmailValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[email][formControlName],[email][formControl],[email][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return EmailValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], EmailValidatorDirective);
   exports.EmailValidatorDirective = EmailValidatorDirective;
+  var EmailValidatorDirective_1;
   return module.exports;
 });
 
@@ -391,7 +393,7 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
   var core_1 = $__require('@angular/core');
   var forms_1 = $__require('@angular/forms');
   var universal_validators_1 = $__require('./universal-validators');
-  var WhiteSpaceValidatorDirective = (function() {
+  var WhiteSpaceValidatorDirective = WhiteSpaceValidatorDirective_1 = (function() {
     function WhiteSpaceValidatorDirective() {}
     WhiteSpaceValidatorDirective.prototype.ngOnInit = function() {
       this.validator = universal_validators_1.UniversalValidators.noWhitespace;
@@ -399,20 +401,20 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
     WhiteSpaceValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    WhiteSpaceValidatorDirective = __decorate([core_1.Directive({
-      selector: '[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return WhiteSpaceValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], WhiteSpaceValidatorDirective);
     return WhiteSpaceValidatorDirective;
   }());
+  WhiteSpaceValidatorDirective = WhiteSpaceValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return WhiteSpaceValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], WhiteSpaceValidatorDirective);
   exports.WhiteSpaceValidatorDirective = WhiteSpaceValidatorDirective;
-  var IsNumberValidatorDirective = (function() {
+  var IsNumberValidatorDirective = IsNumberValidatorDirective_1 = (function() {
     function IsNumberValidatorDirective() {}
     IsNumberValidatorDirective.prototype.ngOnInit = function() {
       this.validator = universal_validators_1.UniversalValidators.isNumber;
@@ -420,20 +422,20 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
     IsNumberValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    IsNumberValidatorDirective = __decorate([core_1.Directive({
-      selector: '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return IsNumberValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], IsNumberValidatorDirective);
     return IsNumberValidatorDirective;
   }());
+  IsNumberValidatorDirective = IsNumberValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return IsNumberValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], IsNumberValidatorDirective);
   exports.IsNumberValidatorDirective = IsNumberValidatorDirective;
-  var IsInRangeValidatorDirective = (function() {
+  var IsInRangeValidatorDirective = IsInRangeValidatorDirective_1 = (function() {
     function IsInRangeValidatorDirective() {}
     IsInRangeValidatorDirective.prototype.ngOnInit = function() {
       this.validator = universal_validators_1.UniversalValidators.isInRange(this.minValue, this.maxValue);
@@ -441,22 +443,22 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
     IsInRangeValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', Number)], IsInRangeValidatorDirective.prototype, "minValue", void 0);
-    __decorate([core_1.Input(), __metadata('design:type', Number)], IsInRangeValidatorDirective.prototype, "maxValue", void 0);
-    IsInRangeValidatorDirective = __decorate([core_1.Directive({
-      selector: '[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return IsInRangeValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], IsInRangeValidatorDirective);
     return IsInRangeValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", Number)], IsInRangeValidatorDirective.prototype, "minValue", void 0);
+  __decorate([core_1.Input(), __metadata("design:type", Number)], IsInRangeValidatorDirective.prototype, "maxValue", void 0);
+  IsInRangeValidatorDirective = IsInRangeValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return IsInRangeValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], IsInRangeValidatorDirective);
   exports.IsInRangeValidatorDirective = IsInRangeValidatorDirective;
-  var MaxValidatorDirective = (function() {
+  var MaxValidatorDirective = MaxValidatorDirective_1 = (function() {
     function MaxValidatorDirective() {}
     MaxValidatorDirective.prototype.ngOnInit = function() {
       this.validator = universal_validators_1.UniversalValidators.max(this.max);
@@ -464,21 +466,21 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
     MaxValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', Number)], MaxValidatorDirective.prototype, "max", void 0);
-    MaxValidatorDirective = __decorate([core_1.Directive({
-      selector: '[max][formControlName],[max][formControl],[max][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return MaxValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], MaxValidatorDirective);
     return MaxValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", Number)], MaxValidatorDirective.prototype, "max", void 0);
+  MaxValidatorDirective = MaxValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[max][formControlName],[max][formControl],[max][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return MaxValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], MaxValidatorDirective);
   exports.MaxValidatorDirective = MaxValidatorDirective;
-  var MinValidatorDirective = (function() {
+  var MinValidatorDirective = MinValidatorDirective_1 = (function() {
     function MinValidatorDirective() {}
     MinValidatorDirective.prototype.ngOnInit = function() {
       this.validator = universal_validators_1.UniversalValidators.max(this.min);
@@ -486,20 +488,25 @@ System.registerDynamic("src/universal/universal.directive", ["@angular/core", "@
     MinValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', Number)], MinValidatorDirective.prototype, "min", void 0);
-    MinValidatorDirective = __decorate([core_1.Directive({
-      selector: '[min][formControlName],[min][formControl],[min][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return MinValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], MinValidatorDirective);
     return MinValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", Number)], MinValidatorDirective.prototype, "min", void 0);
+  MinValidatorDirective = MinValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[min][formControlName],[min][formControl],[min][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return MinValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], MinValidatorDirective);
   exports.MinValidatorDirective = MinValidatorDirective;
+  var WhiteSpaceValidatorDirective_1,
+      IsNumberValidatorDirective_1,
+      IsInRangeValidatorDirective_1,
+      MaxValidatorDirective_1,
+      MinValidatorDirective_1;
   return module.exports;
 });
 
@@ -657,7 +664,7 @@ System.registerDynamic("src/password/password.directive", ["@angular/core", "@an
   var core_1 = $__require('@angular/core');
   var forms_1 = $__require('@angular/forms');
   var password_validators_1 = $__require('./password-validators');
-  var PasswordValidatorDirective = (function() {
+  var PasswordValidatorDirective = PasswordValidatorDirective_1 = (function() {
     function PasswordValidatorDirective() {
       this.repeatCharacter = 4;
       this.alphabeticalCharacter = 1;
@@ -676,24 +683,25 @@ System.registerDynamic("src/password/password.directive", ["@angular/core", "@an
       var compose = forms_1.Validators.compose([this.repeatCharacterValidator, this.digitCharacterValidator, this.alphabeticalCharacterValidator, this.lowercaseCharacterValidator, this.uppercaseCharacterValidator]);
       return compose(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidatorDirective.prototype, "repeatCharacter", void 0);
-    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidatorDirective.prototype, "alphabeticalCharacter", void 0);
-    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidatorDirective.prototype, "digitCharacter", void 0);
-    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidatorDirective.prototype, "lowercaseCharacter", void 0);
-    __decorate([core_1.Input(), __metadata('design:type', Number)], PasswordValidatorDirective.prototype, "uppercaseCharacter", void 0);
-    PasswordValidatorDirective = __decorate([core_1.Directive({
-      selector: '[password][formControlName],[password][formControl],[password][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return PasswordValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], PasswordValidatorDirective);
     return PasswordValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", Number)], PasswordValidatorDirective.prototype, "repeatCharacter", void 0);
+  __decorate([core_1.Input(), __metadata("design:type", Number)], PasswordValidatorDirective.prototype, "alphabeticalCharacter", void 0);
+  __decorate([core_1.Input(), __metadata("design:type", Number)], PasswordValidatorDirective.prototype, "digitCharacter", void 0);
+  __decorate([core_1.Input(), __metadata("design:type", Number)], PasswordValidatorDirective.prototype, "lowercaseCharacter", void 0);
+  __decorate([core_1.Input(), __metadata("design:type", Number)], PasswordValidatorDirective.prototype, "uppercaseCharacter", void 0);
+  PasswordValidatorDirective = PasswordValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[password][formControlName],[password][formControl],[password][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return PasswordValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], PasswordValidatorDirective);
   exports.PasswordValidatorDirective = PasswordValidatorDirective;
+  var PasswordValidatorDirective_1;
   return module.exports;
 });
 
@@ -865,7 +873,7 @@ System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/
   var core_1 = $__require('@angular/core');
   var forms_1 = $__require('@angular/forms');
   var phone_validators_1 = $__require('./phone-validators');
-  var PossiblePhoneValidatorDirective = (function() {
+  var PossiblePhoneValidatorDirective = PossiblePhoneValidatorDirective_1 = (function() {
     function PossiblePhoneValidatorDirective() {
       this.possiblePhone = 'US';
     }
@@ -875,21 +883,21 @@ System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/
     PossiblePhoneValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', String)], PossiblePhoneValidatorDirective.prototype, "possiblePhone", void 0);
-    PossiblePhoneValidatorDirective = __decorate([core_1.Directive({
-      selector: '[possiblePhone][formControlName],[possiblePhone][formControl],[possiblePhone][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return PossiblePhoneValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], PossiblePhoneValidatorDirective);
     return PossiblePhoneValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", String)], PossiblePhoneValidatorDirective.prototype, "possiblePhone", void 0);
+  PossiblePhoneValidatorDirective = PossiblePhoneValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[possiblePhone][formControlName],[possiblePhone][formControl],[possiblePhone][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return PossiblePhoneValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], PossiblePhoneValidatorDirective);
   exports.PossiblePhoneValidatorDirective = PossiblePhoneValidatorDirective;
-  var PhoneValidatorDirective = (function() {
+  var PhoneValidatorDirective = PhoneValidatorDirective_1 = (function() {
     function PhoneValidatorDirective() {
       this.phone = 'US';
     }
@@ -899,21 +907,21 @@ System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/
     PhoneValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    __decorate([core_1.Input(), __metadata('design:type', String)], PhoneValidatorDirective.prototype, "phone", void 0);
-    PhoneValidatorDirective = __decorate([core_1.Directive({
-      selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return PhoneValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], PhoneValidatorDirective);
     return PhoneValidatorDirective;
   }());
+  __decorate([core_1.Input(), __metadata("design:type", String)], PhoneValidatorDirective.prototype, "phone", void 0);
+  PhoneValidatorDirective = PhoneValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[phone][formControlName],[phone][formControl],[phone][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return PhoneValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], PhoneValidatorDirective);
   exports.PhoneValidatorDirective = PhoneValidatorDirective;
-  var CountryCodeValidatorDirective = (function() {
+  var CountryCodeValidatorDirective = CountryCodeValidatorDirective_1 = (function() {
     function CountryCodeValidatorDirective() {}
     CountryCodeValidatorDirective.prototype.ngOnInit = function() {
       this.validator = phone_validators_1.PhoneValidators.isValidRegionCode;
@@ -921,19 +929,22 @@ System.registerDynamic("src/phone/phone.directive", ["@angular/core", "@angular/
     CountryCodeValidatorDirective.prototype.validate = function(c) {
       return this.validator(c);
     };
-    CountryCodeValidatorDirective = __decorate([core_1.Directive({
-      selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
-      providers: [{
-        provide: forms_1.NG_VALIDATORS,
-        useExisting: core_1.forwardRef(function() {
-          return CountryCodeValidatorDirective;
-        }),
-        multi: true
-      }]
-    }), __metadata('design:paramtypes', [])], CountryCodeValidatorDirective);
     return CountryCodeValidatorDirective;
   }());
+  CountryCodeValidatorDirective = CountryCodeValidatorDirective_1 = __decorate([core_1.Directive({
+    selector: '[countryCode][formControlName],[countryCode][formControl],[countryCode][ngModel]',
+    providers: [{
+      provide: forms_1.NG_VALIDATORS,
+      useExisting: core_1.forwardRef(function() {
+        return CountryCodeValidatorDirective_1;
+      }),
+      multi: true
+    }]
+  })], CountryCodeValidatorDirective);
   exports.CountryCodeValidatorDirective = CountryCodeValidatorDirective;
+  var PossiblePhoneValidatorDirective_1,
+      PhoneValidatorDirective_1,
+      CountryCodeValidatorDirective_1;
   return module.exports;
 });
 
@@ -955,10 +966,6 @@ System.registerDynamic("src/validators.module", ["@angular/core", "./creditcard/
           r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
   };
-  var __metadata = (this && this.__metadata) || function(k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
-      return Reflect.metadata(k, v);
-  };
   var core_1 = $__require('@angular/core');
   var creditcard_directive_1 = $__require('./creditcard/creditcard.directive');
   var email_directive_1 = $__require('./email/email.directive');
@@ -967,12 +974,12 @@ System.registerDynamic("src/validators.module", ["@angular/core", "./creditcard/
   var phone_directive_1 = $__require('./phone/phone.directive');
   var ValidatorsModule = (function() {
     function ValidatorsModule() {}
-    ValidatorsModule = __decorate([core_1.NgModule({
-      declarations: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective],
-      exports: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective]
-    }), __metadata('design:paramtypes', [])], ValidatorsModule);
     return ValidatorsModule;
   }());
+  ValidatorsModule = __decorate([core_1.NgModule({
+    declarations: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective],
+    exports: [creditcard_directive_1.CreditCardValidatorDirective, email_directive_1.EmailValidatorDirective, password_directive_1.PasswordValidatorDirective, universal_directive_1.IsInRangeValidatorDirective, universal_directive_1.IsNumberValidatorDirective, universal_directive_1.MaxValidatorDirective, universal_directive_1.MinValidatorDirective, universal_directive_1.WhiteSpaceValidatorDirective, phone_directive_1.PhoneValidatorDirective, phone_directive_1.PossiblePhoneValidatorDirective, phone_directive_1.CountryCodeValidatorDirective]
+  })], ValidatorsModule);
   exports.ValidatorsModule = ValidatorsModule;
   return module.exports;
 });
