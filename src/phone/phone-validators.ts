@@ -40,7 +40,7 @@ export const regionsCode: any = {
     ZZ: 'ZZ'
 };
 
-export const checkRegionCode = (local: string): boolean => {
+export function checkRegionCode(local: string): boolean {
     return !(regionsCode[local] === undefined);
 };
 

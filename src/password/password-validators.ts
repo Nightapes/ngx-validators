@@ -1,7 +1,7 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { Util } from './../util';
 
-export const repeatCharacterRegexRule = (repeatCount: number): ValidatorFn => {
+export const repeatCharacterRegexRule = (repeatCount: number): any => {
     return (control: AbstractControl): { [key: string]: any } => {
         if (Util.isNotPresent(control)) return undefined;
         let repeatDec = repeatCount - 1;
@@ -99,6 +99,22 @@ export const uppercaseCharacterRule = (amount: number): ValidatorFn => {
     };
 };
 
+export const specialCharacterRule = (amount: number): ValidatorFn => {
+    return (control: AbstractControl): { [key: string]: any } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let value: string = control.value;
+        if (value.length === 0) {
+            return undefined;
+        }
+        let pattern = /[\w\s]+/g;
+        let stripped = value.replace(pattern, '');
+        if (stripped.length < amount) {
+            return { 'specialCharacterRule': true };
+        }
+        return undefined;
+    };
+};
+
 export const mismatchedPasswords = (passwordControlName?: string, confirmPasswordControlName?: string): ValidatorFn => {
     return (group: AbstractControl): { [key: string]: any } => {
         let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
@@ -120,5 +136,6 @@ export const PasswordValidators = {
     digitCharacterRule,
     lowercaseCharacterRule,
     uppercaseCharacterRule,
-    mismatchedPasswords
+    mismatchedPasswords,
+    specialCharacterRule
 };

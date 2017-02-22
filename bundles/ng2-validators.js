@@ -616,6 +616,22 @@ System.registerDynamic("src/password/password-validators", ["./../util"], true, 
       return undefined;
     };
   };
+  exports.specialCharacterRule = function(amount) {
+    return function(control) {
+      if (util_1.Util.isNotPresent(control))
+        return undefined;
+      var value = control.value;
+      if (value.length === 0) {
+        return undefined;
+      }
+      var pattern = /[\w\s]+/g;
+      var stripped = value.replace(pattern, '');
+      if (stripped.length < amount) {
+        return {'specialCharacterRule': true};
+      }
+      return undefined;
+    };
+  };
   exports.mismatchedPasswords = function(passwordControlName, confirmPasswordControlName) {
     return function(group) {
       var newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
@@ -634,7 +650,8 @@ System.registerDynamic("src/password/password-validators", ["./../util"], true, 
     digitCharacterRule: exports.digitCharacterRule,
     lowercaseCharacterRule: exports.lowercaseCharacterRule,
     uppercaseCharacterRule: exports.uppercaseCharacterRule,
-    mismatchedPasswords: exports.mismatchedPasswords
+    mismatchedPasswords: exports.mismatchedPasswords,
+    specialCharacterRule: exports.specialCharacterRule
   };
   return module.exports;
 });
@@ -769,14 +786,16 @@ System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libph
     ZW: 'ZW',
     ZZ: 'ZZ'
   };
-  exports.checkRegionCode = function(local) {
+  function checkRegionCode(local) {
     return !(exports.regionsCode[local] === undefined);
-  };
+  }
+  exports.checkRegionCode = checkRegionCode;
+  ;
   exports.isValidRegionCode = function(control) {
     if (util_1.Util.isNotPresent(control)) {
       return undefined;
     }
-    if (!exports.checkRegionCode(control.value)) {
+    if (!checkRegionCode(control.value)) {
       return {'noValidRegionCode': true};
     }
     return undefined;
@@ -786,7 +805,7 @@ System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libph
       if (util_1.Util.isNotPresent(control)) {
         return undefined;
       }
-      if (!exports.checkRegionCode(local)) {
+      if (!checkRegionCode(local)) {
         return {'noValidRegionCode': true};
       }
       var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
@@ -807,7 +826,7 @@ System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libph
       if (util_1.Util.isNotPresent(control)) {
         return undefined;
       }
-      if (!exports.checkRegionCode(local)) {
+      if (!checkRegionCode(local)) {
         return {'noValidRegionCode': true};
       }
       var phoneParser = google_libphonenumber_1.PhoneNumberUtil.getInstance();
@@ -841,7 +860,7 @@ System.registerDynamic("src/phone/phone-validators", ["./../util", "google-libph
   exports.PhoneValidators = {
     isPossibleNumberWithReason: exports.isPossibleNumberWithReason,
     isPhoneNumber: exports.isPhoneNumber,
-    checkRegionCode: exports.checkRegionCode,
+    checkRegionCode: checkRegionCode,
     isValidRegionCode: exports.isValidRegionCode,
     regionsCode: exports.regionsCode
   };

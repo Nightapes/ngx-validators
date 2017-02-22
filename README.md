@@ -22,6 +22,7 @@ The password validators are:
 * digitCharacterRule
 * lowercaseCharacterRule
 * uppercaseCharacterRule
+* specialCharacterRule
 * more will come
 
 ## Email validators
@@ -65,13 +66,13 @@ import {PasswordValidators} from 'ng2-validators'
 
 ...
 password: FormControl = new FormControl('', Validators.compose([
-        PasswordValidators.repeatCharacterRegexRule(4),
-        PasswordValidators.whitespaceRule(),
-        PasswordValidators.alphabeticalCharacterRule(1);
-        PasswordValidators.digitCharacterRule(1);
-        PasswordValidators.lowercaseCharacterRule(1);
-        PasswordValidators.uppercaseCharacterRule(1);
-        PasswordValidators.allowedCharacterRule(['a', 'b']);
+    PasswordValidators.repeatCharacterRegexRule(4),
+    PasswordValidators.alphabeticalCharacterRule(1),
+    PasswordValidators.digitCharacterRule(1),
+    PasswordValidators.lowercaseCharacterRule(1),
+    PasswordValidators.uppercaseCharacterRule(1),
+    PasswordValidators.specialCharacterRule(1),
+    PasswordValidators.allowedCharacterRule(['a', 'b'])
     ]));
 ```
 
@@ -118,8 +119,8 @@ import {EmailValidators} from 'ng2-validators'
 
 ...
 
-email: FormControl = new FormControl('', EmailValidators.normal());
-email2: FormControl = new FormControl('', EmailValidators.simple());
+email: FormControl = new FormControl('', EmailValidators.normal);
+email2: FormControl = new FormControl('', EmailValidators.simple);
 ```
 
 ### Universal
@@ -129,8 +130,8 @@ import {UniversalValidators} from 'ng2-validators'
 
 ...
 
-control: FormControl = new FormControl('', UniversalValidators.noWhitespace());
-control: FormControl = new FormControl('', UniversalValidators.isNumber());
+control: FormControl = new FormControl('', UniversalValidators.noWhitespace);
+control: FormControl = new FormControl('', UniversalValidators.isNumber);
 control: FormControl = new FormControl('', UniversalValidators.isInRange(2, 5));
 control: FormControl = new FormControl('', UniversalValidators.minLength(2));
 control: FormControl = new FormControl('', UniversalValidators.maxLength(7));
@@ -145,14 +146,14 @@ import {CreditCardValidators} from 'ng2-validators'
 
 ...
 
-control: FormControl = new FormControl('', UniversalValidators.isCreditCard());
-control: FormControl = new FormControl('', UniversalValidators.americanExpress());
-control: FormControl = new FormControl('', UniversalValidators.dinersclub());
-control: FormControl = new FormControl('', UniversalValidators.discover());
-control: FormControl = new FormControl('', UniversalValidators.jcb());
-control: FormControl = new FormControl('', UniversalValidators.maestro());
-control: FormControl = new FormControl('', UniversalValidators.mastercard());
-control: FormControl = new FormControl('', UniversalValidators.visa());
+control: FormControl = new FormControl('', UniversalValidators.isCreditCard);
+control: FormControl = new FormControl('', UniversalValidators.americanExpress);
+control: FormControl = new FormControl('', UniversalValidators.dinersclub);
+control: FormControl = new FormControl('', UniversalValidators.discover);
+control: FormControl = new FormControl('', UniversalValidators.jcb);
+control: FormControl = new FormControl('', UniversalValidators.maestro);
+control: FormControl = new FormControl('', UniversalValidators.mastercard);
+control: FormControl = new FormControl('', UniversalValidators.visa);
 
 ```
 
@@ -163,9 +164,9 @@ import {PhoneValidators} from 'ng2-validators'
 
 ...
 
-countryCode: FormControl = new FormControl('', PhoneValidators.isValidRegionCode());
-phone: FormControl = new FormControl('', PhoneValidators.isPhoneNumber());
-phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithReason());
+countryCode: FormControl = new FormControl('', PhoneValidators.isValidRegionCode);
+phone: FormControl = new FormControl('', PhoneValidators.isPhoneNumber('US'));
+phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithReason('US'));
 ```
 
 

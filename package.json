@@ -69,8 +69,10 @@
         "typings": "2.1.0",
         "zone.js": "0.7.2"
     },
-    "czConfig": {
-        "path": "node_modules/cz-conventional-changelog"
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        }
     },
     "dependencies": {
         "google-libphonenumber": "^2.0.5"
