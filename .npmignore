@@ -49,3 +49,7 @@ Desktop.ini
 
 # Mac crap
 .DS_Store
+
+examples/
+ng2-validators-2.0.0.tgz
+

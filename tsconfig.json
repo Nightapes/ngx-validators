@@ -1,45 +1,55 @@
 {
     "compilerOptions": {
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "target": "es5",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
+        "baseUrl": ".",
         "declaration": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "strictNullChecks": false,
+        "noImplicitAny": true,
+        "module": "es2015",
         "moduleResolution": "node",
+        "paths": {
+            "@angular/core": [
+                "node_modules/@angular/core"
+            ],
+            "@angular/forms": [
+                "node_modules/@angular/forms"
+            ],
+            "google-libphonenumber": [
+                "node_modules/google-libphonenumber/dist/libphonenumber.js"
+            ],
+            "rxjs/*": [
+                "node_modules/rxjs/*"
+            ]
+        },
+        "rootDir": ".",
+        "sourceMap": true,
+        "inlineSources": true,
+        "target": "es5",
+        "skipLibCheck": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
         "typeRoots": [
             "./node_modules/@types",
             "./node_modules"
         ],
         "types": [
-            "core-js",
             "jasmine",
-            "node",
-            "systemjs",
             "google-libphonenumber"
         ]
     },
     "files": [
-        "./index.ts",
-        "./ng2-validators.ts",
+        "index.ts",
         "./tests/util.spec.ts",
         "./tests/password-validators.spec.ts",
         "./tests/email-validators.spec.ts",
         "./tests/creditcard-validators.spec.ts",
         "./tests/universal-validators.spec.ts",
-        "./tests/phone-validators.spec.ts",
-        "./src/util.ts",
-        "./src/password/password-validators.ts",
-        "./src/phone/phone-validators.ts",
-        "./src/universal/universal-validators.ts",
-        "./src/email/email-validators.ts",
-        "./src/creditcard/creditcard-validators.ts",
-        "./src/password/password.directive.ts",
-        "./src/universal/universal.directive.ts",
-        "./src/email/email.directive.ts",
-        "./src/creditcard/creditcard.directive.ts",
-        "./src/validators.module.ts"
-    ]
+        "./tests/phone-validators.spec.ts"
+    ],
+    "angularCompilerOptions": {
+        "strictMetadataEmit": true
+    }
 }

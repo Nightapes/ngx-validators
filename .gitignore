@@ -44,3 +44,9 @@ Desktop.ini
 .DS_Store
 
 jsconfig.json
+*.log
+*.tgz
+examples/node_modules/
+*.ngsummary.json
+*.metadata.json
+*.ngfactory.ts

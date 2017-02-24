@@ -1,4 +1,7 @@
-# ng2-validators [![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)
+# ng2-validators
+
+[![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)
+[![npm version](https://badge.fury.io/js/ng2-validators.svg)](https://badge.fury.io/js/ng2-validators)
 
 An implementation of various angular validators for Angular 2.
 
