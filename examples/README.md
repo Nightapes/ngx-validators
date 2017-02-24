@@ -25,3 +25,15 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Update ng2-validators
+
+`npm pack` root
+
+`npm run update-lib` example
+
+## Build for gh-pages
+
+`ng build --prod --base-href "https://Nightapes.github.io/ng2-validators/"`
+
+`ngh` to update gh-page

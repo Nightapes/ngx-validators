@@ -5,26 +5,26 @@
     </md-card-header>
     <md-card-content>
       <md-input-container>
-        <input type="text" mdInput [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US" placeholder="Phone">
-      </md-input-container>
-      <div class="error-container">
-        <div *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</div>
-        <div *ngIf="formControl.hasError('noPhoneNumber')">Is not a phone number</div>
-      </div>
-      <md-input-container>
-        <input type="text" mdInput [(ngModel)]="model.phone2" name="phone" #formControl2="ngModel" possiblePhone="US" placeholder="Possible phone">
-      </md-input-container>
-      <div class="error-container">
-        <div *ngIf="formControl2.hasError('noValidRegionCode')">Is not a countryCode</div>
-        <div *ngIf="formControl2.hasError('phoneNumberTooLong')">Phone number is to long</div>
-        <div *ngIf="formControl2.hasError('phoneNumberTooShort')">Phone number is to short</div>
-        <div *ngIf="formControl2.hasError('noPhoneNumber')">Is not a phone number</div>
-      </div>
-      <md-input-container>
         <input mdInput type="text" [(ngModel)]="model.countryCode" name="countryCode" #formControl3="ngModel" countryCode placeholder="Country code">
       </md-input-container>
       <div class="error-container">
-        <div *ngIf="formControl3.hasError('noValidRegionCode')">Is not a countryCode</div>
+        <div *ngIf="formControl3.hasError('noValidRegionCode')" class="error">Is not a countryCode</div>
+      </div>
+      <md-input-container>
+        <input type="text" mdInput [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US" placeholder="Phone">
+      </md-input-container>
+      <div class="error-container">
+        <div *ngIf="formControl.hasError('noValidRegionCode')" class="error">Is not a countryCode</div>
+        <div *ngIf="formControl.hasError('noPhoneNumber')" class="error">Is not a phone number</div>
+      </div>
+      <md-input-container>
+        <input type="text" mdInput [(ngModel)]="model.phone2" name="possiblePhone" #formControl2="ngModel" possiblePhone="US" placeholder="Possible phone">
+      </md-input-container>
+      <div class="error-container">
+        <div *ngIf="formControl2.hasError('noValidRegionCode')" class="error">Is not a countryCode</div>
+        <div *ngIf="formControl2.hasError('phoneNumberTooLong')" class="error">Phone number is to long</div>
+        <div *ngIf="formControl2.hasError('phoneNumberTooShort')" class="error">Phone number is to short</div>
+        <div *ngIf="formControl2.hasError('noPhoneNumber')" class="error">Is not a phone number</div>
       </div>
     </md-card-content>
   </md-card>
