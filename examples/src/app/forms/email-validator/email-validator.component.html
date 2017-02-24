@@ -1,0 +1,15 @@
+<form>
+  <md-card class="card">
+    <md-card-header>
+      <md-card-title>Email</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <md-input-container>
+        <input type="email" mdInput [(ngModel)]="model" name="email" #formControl="ngModel" email placeholder="Email">
+      </md-input-container>
+      <div class="error-container">
+        <div *ngIf="formControl.hasError('normalEmailRule')" class="error">Is not a email</div>
+      </div>
+    </md-card-content>
+  </md-card>
+</form>

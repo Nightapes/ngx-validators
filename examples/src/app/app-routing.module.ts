@@ -1,16 +1,25 @@
-import { ReactiveFormValidatorsComponent } from './reactive-form-validators/reactive-form-validators.component';
+import { GuideComponent } from './guide/guide.component';
+import { FormsComponent } from './forms/forms.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsComponent } from './forms/forms.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: ReactiveFormValidatorsComponent
+    path: 'reactive-forms',
+    component: ReactiveFormsComponent
   },
   {
     path: 'forms',
     component: FormsComponent
+  },
+  {
+    path: 'guide',
+    component: GuideComponent
+  }, {
+    path: '',
+    redirectTo: 'guide',
+    pathMatch: 'prefix'
   }
 ];
 

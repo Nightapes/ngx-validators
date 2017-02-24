@@ -8,7 +8,8 @@
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "update-lib": "npm install ../ng2-validators-2.0.0.tgz --save"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +24,7 @@
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
     "google-libphonenumber": "^2.0.5",
+    "ng2-validators": "file:///D:\\work\\repository\\ng2-validators\\ng2-validators-2.0.0.tgz",
     "rxjs": "^5.1.0",
     "zone.js": "^0.7.6"
   },
@@ -43,6 +45,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.0"
+    "typescript": "2.2.1"
   }
 }

@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+  <md-card class="card">
+    <md-card-header>
+      <md-card-title>Phone</md-card-title>
+    </md-card-header>
+    <md-card-content>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container>
+              <input mdInput formControlName="countryCode" name="countryCode" placeholder="CountryCode">
+              <md-hint *ngIf="countryCode.hasError('noValidRegionCode')" class="error">Is not a country code</md-hint>
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input mdInput formControlName="possiblePhone" name="possiblePhone" placeholder="possible Phone (weak check)">
+              <md-hint *ngIf="possiblePhone.hasError('noValidRegionCode') || phone.hasError('phoneNumberInvalidCountryCode')" class="error">Wrong country code</md-hint>
+              <md-hint *ngIf="possiblePhone.hasError('phoneNumberTooLong')" class="error">Phone number is to long</md-hint>
+              <md-hint *ngIf="possiblePhone.hasError('phoneNumberTooShort')" class="error">Phone number is to short</md-hint>
+              <md-hint *ngIf="possiblePhone.hasError('noPhoneNumber')" class="error">Is not a phone number</md-hint>
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input mdInput formControlName="phone" name="phone" placeholder="Phone">
+              <md-hint *ngIf="phone.hasError('noPhoneNumber')" class="error">Is not a phone number</md-hint>
+              <md-hint *ngIf="phone.hasError('noValidRegionCode')" class="error">Wrong country code</md-hint>
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+    </md-card-content>
+  </md-card>
+</form>

@@ -1,34 +1,34 @@
-import {RouterModule} from '@angular/router';
-import {AppRoutingModule} from './app-routing.module';
-import {MaterialModule} from '@angular/material';
-import {MdToolbarModule} from '@angular/material/toolbar';
+import { GuideModule } from './guide/guide.module';
+import { FormsExampleModule } from './forms/forms.module';
+import { ReactiveFormsExampleModule } from './reactive-forms/reactive-forms.module';
+import { ValidatorsModule } from 'ng2-validators';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule, MdCardModule, MdTabsModule } from '@angular/material';
+import { MdToolbarModule } from '@angular/material/toolbar';
 import { MdInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ValidatorsModule } from './../../../src/validators.module';
-import { ReactiveFormValidatorsComponent } from './reactive-form-validators/reactive-form-validators.component';
-import { FormsComponent } from './forms/forms.component';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ReactiveFormValidatorsComponent,
-    FormsComponent
+    AppComponent
   ],
   imports: [
+    ReactiveFormsExampleModule,
+    FormsExampleModule,
     AppRoutingModule,
     BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([], { useHash: true }),
     HttpModule,
     ValidatorsModule,
-    MaterialModule,
-    MdInputModule,
-    MdToolbarModule
+    GuideModule,
+    MdToolbarModule,
+    MdTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
