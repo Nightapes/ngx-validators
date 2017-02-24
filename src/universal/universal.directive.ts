@@ -108,7 +108,7 @@ export class MinValidatorDirective implements Validator, OnInit {
     private validator: ValidatorFn;
 
     ngOnInit() {
-        this.validator = UniversalValidators.max(this.min);
+        this.validator = UniversalValidators.min(this.min);
     }
 
     validate(c: AbstractControl): { [key: string]: any } {

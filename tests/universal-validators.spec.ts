@@ -115,16 +115,16 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
 
-            it('should work for valid length', () => {
-                let control: FormControl = new FormControl('12');
-                let validated = UniversalValidators.minLength(2)(control);
-                expect(validated).toBeUndefined();
+            it('should work for invalid length', () => {
+                let control: FormControl = new FormControl('1');
+                let validated = UniversalValidators.minLength(3)(control);
+                expect(validated).toEqual({ 'minLength': true });
             });
 
-            it('should work for invalid length', () => {
+            it('should work for valid length', () => {
                 let control: FormControl = new FormControl('1234567');
                 let validated = UniversalValidators.minLength(6)(control);
-                expect(validated).toEqual({ 'minLength': true });
+                expect(validated).toBeUndefined();
             });
 
         });
