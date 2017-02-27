@@ -4,7 +4,15 @@ import { ReactiveFormsExampleModule } from './reactive-forms/reactive-forms.modu
 import { ValidatorsModule } from 'ng2-validators';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule, MdCardModule, MdTabsModule } from '@angular/material';
+import {
+    MaterialModule,
+    MdButtonModule,
+    MdCardModule,
+    MdIconModule,
+    MdListModule,
+    MdSidenavModule,
+    MdTabsModule
+} from '@angular/material';
 import { MdToolbarModule } from '@angular/material/toolbar';
 import { MdInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +36,11 @@ import { GuideComponent } from './guide/guide.component';
     ValidatorsModule,
     GuideModule,
     MdToolbarModule,
-    MdTabsModule
+    MdTabsModule,
+    MdButtonModule,
+    MdSidenavModule,
+    MdListModule,
+    MdIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

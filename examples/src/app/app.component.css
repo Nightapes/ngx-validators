@@ -2,6 +2,28 @@
     margin: 24px;
     align-content: center;
     margin: auto;
-    width: 50%;
     padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+      width: 50%;
+    }
+}
+
+md-sidenav {
+    width: 250px;
+}
+
+.selected {
+    font-weight: 600;
+}
+
+.menu-button {
+    min-width: 48px !important;
+    min-height: 48px !important;
+}
+
+.home {
+    padding-left: 20px;
 }
