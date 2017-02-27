@@ -5,7 +5,6 @@ export { UniversalValidators } from './src/universal/universal-validators';
 export { CreditCardValidators } from './src/creditcard/creditcard-validators';
 export { PhoneValidators } from './src/phone/phone-validators';
 
-
 //Directive
 export { PasswordValidatorDirective } from './src/password/password.directive';
 export { EmailValidatorDirective } from './src/email/email.directive';

@@ -7,6 +7,7 @@ import { EmailValidators } from './email-validators';
     selector: '[email][formControlName],[email][formControl],[email][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => EmailValidatorDirective),
         multi: true
     }]
@@ -19,13 +20,13 @@ export class EmailValidatorDirective implements Validator, OnInit {
     ngOnInit() {
         switch (this.email) {
             case 'simple':
-                this.validator = EmailValidators.simple();
+                this.validator = EmailValidators.simple;
                 break;
             case 'normal':
-                this.validator = EmailValidators.normal();
+                this.validator = EmailValidators.normal;
                 break;
             default:
-                this.validator = EmailValidators.normal();
+                this.validator = EmailValidators.normal;
                 break;
         }
 

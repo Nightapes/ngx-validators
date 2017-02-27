@@ -1,8 +1,7 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { Util } from './../util';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import * as libPhoneNumber from 'google-libphonenumber';
-
 
 export const regionsCode: any = {
     // Region code for global networks (e.g. +800 numbers).
@@ -40,28 +39,24 @@ export const regionsCode: any = {
     // Official code for the unknown region.
     ZZ: 'ZZ'
 };
-
 export class PhoneValidators {
 
     static checkRegionCode(local: string): boolean {
         return !(regionsCode[local] === undefined);
-    }
+    };
 
-    static isValidRegionCode(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) {
-                return undefined;
-            }
-
-            if (!PhoneValidators.checkRegionCode(control.value)) {
-                return { 'noValidRegionCode': true };
-            }
+    static isValidRegionCode(control: AbstractControl): { [key: string]: boolean } {
+        if (Util.isNotPresent(control)) {
             return undefined;
-        };
-    }
+        }
 
+        if (!PhoneValidators.checkRegionCode(control.value)) {
+            return { 'noValidRegionCode': true };
+        }
+        return undefined;
+    };
 
-    static isPhoneNumber(local: string): any {
+    public static isPhoneNumber = (local: string): ValidatorFn => {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) {
                 return undefined;
@@ -70,7 +65,6 @@ export class PhoneValidators {
             if (!PhoneValidators.checkRegionCode(local)) {
                 return { 'noValidRegionCode': true };
             }
-
 
             let phoneParser: PhoneNumberUtil = PhoneNumberUtil.getInstance();
 
@@ -86,9 +80,9 @@ export class PhoneValidators {
 
             return error;
         };
-    }
+    };
 
-    static isPossibleNumberWithReason(local: string): any {
+    public static isPossibleNumberWithReason = (local: string): ValidatorFn => {
         return function validate(control: AbstractControl): { [key: string]: any } {
             if (Util.isNotPresent(control)) {
                 return undefined;
@@ -128,7 +122,5 @@ export class PhoneValidators {
             return error;
 
         };
-    }
-
-
+    };
 }

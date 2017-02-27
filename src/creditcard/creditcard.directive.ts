@@ -7,10 +7,12 @@ import { CreditCardValidators } from './creditcard-validators';
     selector: '[creditCard][formControlName],[creditCard][formControl],[creditCard][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
         useExisting: forwardRef(() => CreditCardValidatorDirective),
         multi: true
     }]
 })
+
 export class CreditCardValidatorDirective implements Validator, OnInit {
     @Input() creditCard: string = 'all';
 
@@ -19,31 +21,31 @@ export class CreditCardValidatorDirective implements Validator, OnInit {
     ngOnInit() {
         switch (this.creditCard) {
             case 'all':
-                this.validator = CreditCardValidators.isCreditCard();
+                this.validator = CreditCardValidators.isCreditCard;
                 break;
             case 'americanExpress':
-                this.validator = CreditCardValidators.americanExpress();
+                this.validator = CreditCardValidators.americanExpress;
                 break;
             case 'dinersclub':
-                this.validator = CreditCardValidators.dinersclub();
+                this.validator = CreditCardValidators.dinersclub;
                 break;
             case 'discover':
-                this.validator = CreditCardValidators.discover();
+                this.validator = CreditCardValidators.discover;
                 break;
             case 'jcb':
-                this.validator = CreditCardValidators.jcb();
+                this.validator = CreditCardValidators.jcb;
                 break;
             case 'maestro':
-                this.validator = CreditCardValidators.maestro();
+                this.validator = CreditCardValidators.maestro;
                 break;
             case 'mastercard':
-                this.validator = CreditCardValidators.mastercard();
+                this.validator = CreditCardValidators.mastercard;
                 break;
             case 'visa':
-                this.validator = CreditCardValidators.visa();
+                this.validator = CreditCardValidators.visa;
                 break;
             default:
-                this.validator = CreditCardValidators.isCreditCard();
+                this.validator = CreditCardValidators.isCreditCard;
                 break;
         }
 

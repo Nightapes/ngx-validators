@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+body {
+    margin: 0;
+    background-color: lightgrey;
+}
+
+.card {
+    margin-bottom: 24px;
+}
+
+.error {
+    color: red;
+    font-size: 75%;
+}
+
+.error-container {
+    margin-top: -15px;
+    margin-bottom: 5px;
+}
+
+.success {
+    color: green;
+    font-size: 75%;
+}
+
+.grey {
+    color: black;
+    font-size: 75%;
+}
+
+.mat-tab-link {
+    line-height: 63px !important;
+    height: 64px !important;
+    opacity: 1 !important;
+}
+
+.mat-ink-bar {
+    background-color: white;
+}

@@ -1,6 +1,6 @@
 import { PasswordValidators } from '../src/password/password-validators';
 import { FormControl, FormGroup } from '@angular/forms';
-import {} from 'jasmine';
+import { } from 'jasmine';
 
 export function main() {
     describe('Password validators service', () => {
@@ -173,7 +173,6 @@ export function main() {
                 expect(confirmPassword.getError('mismatchedPasswords')).toBeNull();
             });
 
-
             it('should work for override password', () => {
                 let password: FormControl = new FormControl('testPassword');
                 let confirmPassword: FormControl = new FormControl('testPassword');
@@ -186,7 +185,6 @@ export function main() {
                 expect(confirmPassword.getError('mismatchedPasswords')).toBeNull();
             });
 
-
             it('should work for override password', () => {
                 let password: FormControl = new FormControl('testPassword');
                 let confirmPassword: FormControl = new FormControl('testPassword2');
@@ -198,7 +196,6 @@ export function main() {
                 form.updateValueAndValidity();
                 expect(confirmPassword.getError('mismatchedPasswords')).not.toBeUndefined();
             });
-
 
             it('should work for invalid password', () => {
                 let password: FormControl = new FormControl('testPassword');
@@ -213,7 +210,6 @@ export function main() {
             });
 
         });
-
 
     });
 }

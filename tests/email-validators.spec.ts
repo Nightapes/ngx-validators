@@ -1,6 +1,6 @@
-import {EmailValidators} from '../src/email/email-validators';
-import {FormControl} from '@angular/forms';
-import {} from 'jasmine';
+import { EmailValidators } from '../src/email/email-validators';
+import { FormControl } from '@angular/forms';
+import { } from 'jasmine';
 
 export function main() {
 
@@ -9,7 +9,7 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = EmailValidators.simple()(control);
+                let validated = EmailValidators.simple(control);
                 expect(validated).toBeUndefined();
             });
 
@@ -27,7 +27,7 @@ export function main() {
 
                 mail.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = EmailValidators.simple()(control);
+                    let validated = EmailValidators.simple(control);
                     expect(validated).toBeUndefined();
                 });
 
@@ -42,7 +42,7 @@ export function main() {
                 ];
                 invalidEmail.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = EmailValidators.simple()(control);
+                    let validated = EmailValidators.simple(control);
                     expect(validated).toEqual({ 'simpleEmailRule': true });
                 });
             });
@@ -53,7 +53,7 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = EmailValidators.normal()(control);
+                let validated = EmailValidators.normal(control);
                 expect(validated).toBeUndefined();
             });
 
@@ -71,7 +71,7 @@ export function main() {
 
                 mail.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = EmailValidators.normal()(control);
+                    let validated = EmailValidators.normal(control);
                     expect(validated).toBeUndefined();
                 });
 
@@ -88,7 +88,7 @@ export function main() {
                 ];
                 invalidEmail.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = EmailValidators.normal()(control);
+                    let validated = EmailValidators.normal(control);
                     expect(validated).toEqual({ 'normalEmailRule': true });
                 });
             });

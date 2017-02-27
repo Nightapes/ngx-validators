@@ -1,0 +1,50 @@
+<md-card class="card">
+  <md-card-header>
+    <md-card-title>Guide</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <h1>ng2-validators
+      <a href="https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master"><img src="https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master" alt="Build Status"></a>
+      <a href="https://david-dm.org/nightapes/ng2-validators"><img src="https://david-dm.org/nightapes/ng2-validators.svg" alt="Dependency Status"></a>
+      <a href="https://david-dm.org/nightapes/ng2-validators/?type=dev"><img src="https://david-dm.org/nightapes/ng2-validators/dev-status.svg" alt="devDependency Status"></a>
+    </h1>
+    <p>An implementation of various angular validators for Angular 2.</p>
+    <h2>Install</h2>
+    <pre><code>npm install ng2-validators --save
+</code></pre>
+  </md-card-content>
+</md-card>
+<md-card class="card">
+  <md-card-header>
+    <md-card-title>List of validators</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-list dense>
+      <h3 md-subheader>Password validators</h3>
+      <md-list-item *ngFor="let items of password">
+        <h4 md-line>{{items.name}}</h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader>Email validators</h3>
+      <md-list-item *ngFor="let items of email">
+        <h4 md-line>{{items.name}}</h4>
+        <p md-line *ngIf="items.hint" [innerHtml]=items.hint></p>
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader>Universal validators</h3>
+      <md-list-item *ngFor="let items of universal">
+        <h4 md-line>{{items.name}}</h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader>Creditcards validators</h3>
+      <md-list-item *ngFor="let items of creditcards">
+        <h4 md-line>{{items.name}}</h4>
+      </md-list-item>
+      <md-divider></md-divider>
+      <h3 md-subheader>Phone validators</h3>
+      <md-list-item *ngFor="let items of phone">
+        <h4 md-line>{{items.name}}</h4>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>

@@ -1,6 +1,6 @@
 import { UniversalValidators } from '../src/universal/universal-validators';
 import { FormControl } from '@angular/forms';
-import {} from 'jasmine';
+import { } from 'jasmine';
 
 export function main() {
 
@@ -10,19 +10,19 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = UniversalValidators.noWhitespace()(control);
+                let validated = UniversalValidators.noWhitespace(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for valid password', () => {
                 let control: FormControl = new FormControl('aaabbbccc');
-                let validated = UniversalValidators.noWhitespace()(control);
+                let validated = UniversalValidators.noWhitespace(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for invalid password', () => {
                 let control: FormControl = new FormControl('aaab bbccc');
-                let validated = UniversalValidators.noWhitespace()(control);
+                let validated = UniversalValidators.noWhitespace(control);
                 expect(validated).toEqual({ 'noWhitespaceRequired': true });
             });
         });
@@ -31,25 +31,25 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = UniversalValidators.isNumber()(control);
+                let validated = UniversalValidators.isNumber(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for valid number', () => {
                 let control: FormControl = new FormControl('453');
-                let validated = UniversalValidators.isNumber()(control);
+                let validated = UniversalValidators.isNumber(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for valid number 2', () => {
                 let control: FormControl = new FormControl('453.5');
-                let validated = UniversalValidators.isNumber()(control);
+                let validated = UniversalValidators.isNumber(control);
                 expect(validated).toBeUndefined();
             });
 
             it('should work for invalid number', () => {
                 let control: FormControl = new FormControl('abbccc');
-                let validated = UniversalValidators.isNumber()(control);
+                let validated = UniversalValidators.isNumber(control);
                 expect(validated).toEqual({ 'numberRequired': true });
             });
 
@@ -115,16 +115,16 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
 
-            it('should work for valid length', () => {
-                let control: FormControl = new FormControl('12');
-                let validated = UniversalValidators.minLength(2)(control);
-                expect(validated).toBeUndefined();
+            it('should work for invalid length', () => {
+                let control: FormControl = new FormControl('1');
+                let validated = UniversalValidators.minLength(3)(control);
+                expect(validated).toEqual({ 'minLength': true });
             });
 
-            it('should work for invalid length', () => {
+            it('should work for valid length', () => {
                 let control: FormControl = new FormControl('1234567');
                 let validated = UniversalValidators.minLength(6)(control);
-                expect(validated).toEqual({ 'minLength': true });
+                expect(validated).toBeUndefined();
             });
 
         });
@@ -206,8 +206,6 @@ export function main() {
             });
 
         });
-
-
 
     });
 }

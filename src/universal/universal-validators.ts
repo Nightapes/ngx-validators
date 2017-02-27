@@ -1,32 +1,26 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { Util } from './../util';
 
-
 export class UniversalValidators {
+    public static noWhitespace: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+        if (Util.isNotPresent(control)) return undefined;
+        let pattern = '\\s';
+        if (new RegExp(pattern).test(control.value)) {
+            return { 'noWhitespaceRequired': true };
+        }
+        return undefined;
+    };
 
-    static noWhitespace(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            let pattern = '\\s';
-            if (new RegExp(pattern).test(control.value)) {
-                return { 'noWhitespaceRequired': true };
-            }
-            return undefined;
-        };
-    }
+    public static isNumber: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+        if (Util.isNotPresent(control)) return undefined;
+        if (isNaN(control.value)) {
+            return { 'numberRequired': true };
+        }
+        return undefined;
+    };
 
-    static isNumber(): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
-            if (Util.isNotPresent(control)) return undefined;
-            if (isNaN(control.value)) {
-                return { 'numberRequired': true };
-            }
-            return undefined;
-        };
-    }
-
-    static isInRange(minValue: number, maxValue: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static isInRange = (minValue: number, maxValue: number): ValidatorFn => {
+        return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             if (isNaN(control.value)) {
                 return { 'numberRequired': true };
@@ -41,21 +35,21 @@ export class UniversalValidators {
                 return undefined;
             }
         };
-    }
+    };
 
-    static minLength(minLength: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static minLength = (minLength: number): ValidatorFn => {
+        return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
-            if (value.length <= minLength) {
+            if (value.length >= minLength) {
                 return undefined;
             }
             return { 'minLength': true };
         };
-    }
+    };
 
-    static maxLength(maxLength: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static maxLength = (maxLength: number): ValidatorFn => {
+        return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (maxLength >= value.length) {
@@ -63,10 +57,10 @@ export class UniversalValidators {
             }
             return { 'maxLength': true };
         };
-    }
+    };
 
-    static min(min: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static min = (min: number): ValidatorFn => {
+        return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (isNaN(control.value)) {
@@ -77,10 +71,10 @@ export class UniversalValidators {
             }
             return { 'min': true };
         };
-    }
+    };
 
-    static max(max: number): any {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static max = (max: number): ValidatorFn => {
+        return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (isNaN(control.value)) {
@@ -91,6 +85,6 @@ export class UniversalValidators {
             }
             return { 'max': true };
         };
-    }
+    };
 
 }

@@ -1,122 +1,11 @@
 {
     "rulesDirectory": [
-        "node_modules/codelyzer",
-        "node_modules/tslint-eslint-rules/dist/rules"
+        "node_modules/codelyzer"
     ],
     "rules": {
-        "class-name": true,
-        "interface-name": [
-            true
-        ],
-        "curly": false,
-        "eofline": true,
-        "indent": [
-            "spaces"
-        ],
-        "max-line-length": [
-            true,
-            140
-        ],
-        "member-ordering": [
-            true,
-            "public-before-private",
-            "static-before-instance",
-            "variables-before-functions"
-        ],
-        "no-arg": true,
-        "no-construct": true,
-        "no-duplicate-key": true,
-        "no-duplicate-variable": true,
-        "no-empty": true,
-        "no-eval": true,
-        "no-null-keyword": true,
-        "no-require-imports": false,
-        "no-trailing-whitespace": true,
-        "no-unused-expression": true,
-        "no-unused-variable": true,
-        "no-shadowed-variable": false,
-        "no-var-keyword": true,
-        "no-var-requires": false,
-        "no-unreachable": true,
-        "no-use-before-declare": true,
-        "no-string-literal": false,
-        "no-switch-case-fall-through": false,
-        "switch-default": true,
-        "no-debugger": true,
-        "one-line": [
-            true,
-            "check-open-brace",
-            "check-catch",
-            "check-else",
-            "check-finally",
-            "check-whitespace"
-        ],
-        "quotemark": [
-            true,
-            "single",
-            "avoid-escape"
-        ],
-        "radix": true,
-        "semicolon": [
-            true, "always"
-        ],
-        "trailing-comma": true,
-        "triple-equals": true,
-        "variable-name": [
-            true,
-            "check-format",
-            "allow-leading-underscore",
-            "ban-keywords"
-        ],
-        "valid-typeof": true,
-        "typedef": [
-            false,
-            "call-signature",
-            "parameter",
-            "property-declaration",
-            "variable-declaration",
-            "member-variable-declaration"
-        ],
-        "typedef-whitespace": [
-            false, {
-                "call-signature": "nospace",
-                "index-signature": "nospace",
-                "parameter": "nospace",
-                "property-declaration": "nospace",
-                "variable-declaration": "nospace"
-            }, {
-                "call-signature": "space",
-                "index-signature": "space",
-                "parameter": "space",
-                "property-declaration": "space",
-                "variable-declaration": "space"
-            }
-        ],
-        "whitespace": [
-            false,
-            "check-branch",
-            "check-decl",
-            "check-operator",
-            "check-separator",
-            "check-type"
-        ],
-        "jsdoc-format": true,
-        "directive-selector-name": [
-            true,
-            "camelCase"
-        ],
-        "component-selector-name": [
-            true,
-            "kebab-case"
-        ],
-        "directive-selector-type": [
-            true,
-            "attribute"
-        ],
-        "component-selector-type": [
-            true,
-            "element"
-        ],
+        "no-consecutive-blank-lines": [true, 1],
+        "directive-selector": [true, "attribute", "", "camelCase"],
+        "component-selector": [true, "element", "", "kebab-case"],
         "use-input-property-decorator": true,
         "use-output-property-decorator": true,
         "use-host-property-decorator": true,
@@ -126,13 +15,11 @@
         "no-forward-ref": true,
         "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
-        "pipe-naming": [
-            true,
-            "camelCase",
-            "sg"
-        ],
+        "pipe-naming": [true, "camelCase", ""],
         "component-class-suffix": true,
         "directive-class-suffix": true,
-        "import-destructuring-spacing": false
+        "templates-use-public": true,
+        "no-access-missing-member": true,
+        "invoke-injectable": true
     }
 }

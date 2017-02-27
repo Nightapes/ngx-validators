@@ -10,6 +10,7 @@ npm-debug.log
 coverage
 *.js
 !karma.conf.js
+!rollup.config.js
 !karma-test-shim.js
 *.map
 *.d.ts
@@ -44,3 +45,9 @@ Desktop.ini
 .DS_Store
 
 jsconfig.json
+*.log
+*.tgz
+examples/node_modules/
+*.ngsummary.json
+*.metadata.json
+*.ngfactory.ts
