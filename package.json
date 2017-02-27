@@ -66,6 +66,8 @@
     "rollup": "^0.41.4",
     "rxjs": "^5.1.0",
     "semantic-release": "6.3.2",
+    "systemjs": "0.19.27",
+    "systemjs-builder": "0.15.13",
     "traceur": "^0.0.111",
     "tsd": "0.6.5",
     "tslint": "^4.4.2",
