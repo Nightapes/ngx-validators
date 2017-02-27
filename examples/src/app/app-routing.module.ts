@@ -20,7 +20,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'guide',
     pathMatch: 'prefix'
-  }
+  },
+  { path: '**', redirectTo: 'guide' }
 ];
 
 @NgModule({
