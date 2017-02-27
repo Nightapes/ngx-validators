@@ -1,8 +1,8 @@
 # ng2-validators
 
 [![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)
-<a href="https://david-dm.org/nightapes/ng2-validators"><img src="https://david-dm.org/nightapes/ng2-validators.svg" alt="Dependency Status"></a>
-<a href="https://david-dm.org/nightapes/ng2-validators/?type=dev"><img src="https://david-dm.org/nightapes/ng2-validators/dev-status.svg" alt="devDependency Status"></a>
+[![npm](https://david-dm.org/nightapes/ng2-validators.svg)](https://david-dm.org/nightapes/ng2-validators)
+[![npm-dev](https://david-dm.org/nightapes/ng2-validators/dev-status.svg)](https://david-dm.org/nightapes/ng2-validators/?type=dev)
 
 An implementation of various angular validators for Angular 2.
 
