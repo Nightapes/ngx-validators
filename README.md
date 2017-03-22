@@ -6,13 +6,39 @@
 
 An implementation of various angular validators for Angular 2.
 
-List of validators
+# List of validators
 
 1. Password
 1. Email
 1. Universal
 1. Creditcards
 
+# Install
+
+`npm install ng2-validators --save-dev`
+
+## [Angular CLI](https://github.com/angular/angular-cli)
+
+No config needed
+
+## [Angular Seed](https://github.com/mgechev/angular-seed)
+
+Add following to `project.config.ts`
+
+```
+let additionalPackages: ExtendPackages[] = [
+      {
+        name: 'google-libphonenumber',
+        path: 'node_modules/google-libphonenumber/dist/libphonenumber.js'
+      },
+      {
+        name: 'ng2-validators',
+        path: 'node_modules/ng2-validators/bundles/ng2-validators.umd.min.js'
+      },
+    ];
+    
+    this.addPackagesBundles(additionalPackages);
+```
 
 ## Password validators
 
@@ -175,7 +201,7 @@ phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithRe
 ```
 
 
-## How to use [template driven][beta]
+## How to use [template driven]
 
 needs ```FormsModule and ValidatorsModule ```
 
