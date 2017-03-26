@@ -18,6 +18,10 @@ tsconfig.json
 .npmignore
 karma-test-shim.js
 karma.conf.js
+!*.metadata.json
+!bundles/*.js
+examples/
+*.tgz
 
 #################
 ## Visual Studio Code
@@ -49,7 +53,4 @@ Desktop.ini
 
 # Mac crap
 .DS_Store
-
-examples/
-ng2-validators-2.0.0.tgz
 

@@ -5,7 +5,7 @@ import { Util } from './../util';
 export class PasswordValidators {
 
     public static repeatCharacterRegexRule(repeatCount: number) {
-        return (control: AbstractControl): { [key: string]: any } => {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let repeatDec = repeatCount - 1;
             let pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
@@ -14,10 +14,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static allowedCharacterRule = (allowedChars: string[]): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static allowedCharacterRule(allowedChars: string[]): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             let valid = true;
@@ -36,10 +37,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static alphabeticalCharacterRule = (amount: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static alphabeticalCharacterRule(amount: number): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
@@ -52,10 +54,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static digitCharacterRule = (amount: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static digitCharacterRule(amount: number): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
@@ -68,10 +71,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static lowercaseCharacterRule = (amount: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static lowercaseCharacterRule(amount: number): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
@@ -84,10 +88,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static uppercaseCharacterRule = (amount: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static uppercaseCharacterRule(amount: number): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
@@ -100,10 +105,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static specialCharacterRule = (amount: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+    public static specialCharacterRule(amount: number): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
@@ -116,10 +122,11 @@ export class PasswordValidators {
             }
             return undefined;
         };
+        return validator;
     };
 
-    public static mismatchedPasswords = (passwordControlName?: string, confirmPasswordControlName?: string): ValidatorFn => {
-        return (group: AbstractControl): { [key: string]: any } => {
+    public static mismatchedPasswords(passwordControlName?: string, confirmPasswordControlName?: string): ValidatorFn {
+        const validator = (group: AbstractControl): { [key: string]: any } => {
             let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
             let newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
             if (newPasswordValue !== newPasswordConfirmValue) {
@@ -130,6 +137,7 @@ export class PasswordValidators {
             return undefined;
 
         };
+        return validator;
     };
 
 }

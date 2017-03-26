@@ -7,37 +7,16 @@
         "strictNullChecks": false,
         "noImplicitAny": true,
         "module": "es2015",
+        "target": "es5",
         "moduleResolution": "node",
-        "paths": {
-            "@angular/core": [
-                "node_modules/@angular/core"
-            ],
-            "@angular/forms": [
-                "node_modules/@angular/forms"
-            ],
-            "google-libphonenumber": [
-                "node_modules/google-libphonenumber/dist/libphonenumber.js"
-            ],
-            "rxjs/*": [
-                "node_modules/rxjs/*"
-            ]
-        },
         "rootDir": ".",
         "sourceMap": true,
         "inlineSources": true,
-        "target": "es5",
         "skipLibCheck": true,
+        "suppressImplicitAnyIndexErrors": true,
         "lib": [
             "es2015",
             "dom"
-        ],
-        "typeRoots": [
-            "./node_modules/@types",
-            "./node_modules"
-        ],
-        "types": [
-            "jasmine",
-            "google-libphonenumber"
         ]
     },
     "files": [

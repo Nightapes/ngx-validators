@@ -26,6 +26,8 @@ module.exports = function(config) {
             'node_modules/zone.js/dist/jasmine-patch.js',
             'node_modules/systemjs/dist/system.src.js',
             'node_modules/reflect-metadata/Reflect.js',
+            { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
+            { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
             {
                 pattern: 'node_modules/@angular/**/*.js',
@@ -66,6 +68,7 @@ module.exports = function(config) {
                 included: false,
                 watched: true
             },
+            'test-config.js',
             'karma-test-shim.js'
         ],
 

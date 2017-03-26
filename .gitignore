@@ -9,6 +9,7 @@ node_modules/*
 npm-debug.log
 coverage
 *.js
+!test-config.js
 !karma.conf.js
 !rollup.config.js
 !karma-test-shim.js
@@ -51,3 +52,5 @@ examples/node_modules/
 *.ngsummary.json
 *.metadata.json
 *.ngfactory.ts
+bundles/ng2-validators.umd.js
+bundles/ng2-validators.umd.min.js
