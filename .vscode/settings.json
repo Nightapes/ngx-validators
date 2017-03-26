@@ -24,11 +24,16 @@
         "node_modules": true,
         "examples": true,
         "src/**/*.js": true,
+        "*.ktp.js": true,
+        "index.js": true,
+        "ng2-validators.js": true,
         "tests/**/*.js": true,
         "**/*.js.map": true,
         "**/*.metadata.json": true,
         "**/*.ngsummary.json": true,
         "**/*.ngfactory.ts": true,
-        "**/*.d.ts": true
+        "**/*.d.ts": true,
+        "*.log": true,
+        "bundles/": true
     }
 }
