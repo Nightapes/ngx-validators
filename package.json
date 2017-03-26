@@ -1,87 +1,87 @@
 {
-  "version": "2.0.0",
-  "name": "ng2-validators",
-  "description": "An implementation of angular validators for Angular 2",
-  "scripts": {
-    "test": "tsc && karma start",
-    "test-watch": "tsc && karma start --no-single-run --auto-watch",
-    "lint": "tslint 'src/**/*.ts' && tslint 'tests/**/*.ts'",
-    "commit": "npm run lint && npm run prepublish && npm test && git-cz",
-    "prepublish": "npm run build",
-    "transpile": "ngc",
-    "package": "rollup -c",
-    "minify": "uglifyjs bundles/ng2-validators.umd.js --screw-ie8 --compress --mangle --comments --output bundles/ng2-validators.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify",
-    "semantic-release": "npm run lint && semantic-release pre && npm publish && semantic-release post"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Nightapes/ng2-validators.git"
-  },
-  "keywords": [
-    "angular",
-    "angular2",
-    "validators"
-  ],
-  "author": "Sebastian Beisch",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Nightapes/ng2-validators/issues"
-  },
-  "main": "index.js",
-  "typings": "./index.d.ts",
-  "homepage": "https://github.com/Nightapes/ng2-validators",
-  "peerDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0"
-  },
-  "devDependencies": {
-    "@angular/common": "^2.4.0",
-    "@angular/compiler": "^2.4.8",
-    "@angular/compiler-cli": "^2.4.8",
-    "@angular/core": "^2.4.0",
-    "@angular/forms": "^2.4.0",
-    "@angular/platform-browser": "^2.4.0",
-    "@types/core-js": "^0.9.34",
-    "@types/google-libphonenumber": "^7.4.9",
-    "@types/jasmine": "^2.5.36",
-    "@types/node": "^7.0.5",
-    "@types/zone.js": "^0.0.27",
-    "codelyzer": "^2.0.1",
-    "commitizen": "2.9.6",
-    "cz-conventional-changelog": "2.0.0",
-    "es6-promise": "3.0.2",
-    "es6-shim": "0.35.0",
-    "gulp": "3.9.1",
-    "gulp-git": "2.0.0",
-    "jasmine-core": "2.5.2",
-    "karma": "1.5.0",
-    "karma-chrome-launcher": "2.0.0",
-    "karma-firefox-launcher": "1.0.0",
-    "karma-jasmine": "1.1.0",
-    "karma-mocha-reporter": "2.2.2",
-    "karma-typescript-preprocessor": "0.0.21",
-    "reflect-metadata": "0.1.2",
-    "rollup": "^0.41.4",
-    "rxjs": "^5.1.0",
-    "semantic-release": "6.3.2",
-    "systemjs": "0.19.27",
-    "systemjs-builder": "0.15.13",
-    "traceur": "^0.0.111",
-    "tsd": "0.6.5",
-    "tslint": "^4.4.2",
-    "typescript": "^2.2.1",
-    "typings": "2.1.0",
-    "uglify-js": "^2.7.5",
-    "zone.js": "^0.7.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
+    "name": "ng2-validators",
+    "description": "An implementation of angular validators for Angular 2",
+    "scripts": {
+        "test": "tsc && karma start",
+        "test-watch": "tsc && karma start --no-single-run --auto-watch",
+        "lint": "tslint --type-check --project tsconfig.json ",
+        "commit": "npm run lint && npm run prepublish && npm test && git-cz",
+        "prepublish": "npm run build",
+        "transpile": "ngc",
+        "package": "rollup -c",
+        "minify": "uglifyjs bundles/ng2-validators.umd.js --screw-ie8 --compress --mangle --comments --output bundles/ng2-validators.umd.min.js",
+        "build": "npm run transpile && npm run package && npm run minify",
+        "semantic-release": "npm run lint && semantic-release pre && npm publish && semantic-release post"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Nightapes/ng2-validators.git"
+    },
+    "keywords": [
+        "angular",
+        "angular2",
+        "validators"
+    ],
+    "author": "Sebastian Beisch",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Nightapes/ng2-validators/issues"
+    },
+    "main": "index.js",
+    "typings": "./index.d.ts",
+    "homepage": "https://github.com/Nightapes/ng2-validators",
+    "peerDependencies": {
+        "@angular/common": ">= 2.0.0",
+        "@angular/core": ">= 2.0.0",
+        "@angular/forms": ">= 2.0.0"
+    },
+    "devDependencies": {
+        "@angular/common": "^4.0.0",
+        "@angular/compiler": "^4.0.0",
+        "@angular/compiler-cli": "^4.0.0",
+        "@angular/core": "^4.0.0",
+        "@angular/forms": "^4.0.0",
+        "@angular/platform-browser": "^4.0.0",
+        "@angular/platform-browser-dynamic": "^4.0.0",
+        "@types/core-js": "^0.9.39",
+        "@types/google-libphonenumber": "^7.4.10",
+        "@types/jasmine": "^2.5.46",
+        "@types/node": "^7.0.11",
+        "@types/zone.js": "^0.0.27",
+        "codelyzer": "^3.0.0-beta.4",
+        "commitizen": "2.9.6",
+        "cz-conventional-changelog": "2.0.0",
+        "es6-promise": "4.1.0",
+        "es6-shim": "0.35.3",
+        "gulp": "3.9.1",
+        "gulp-git": "2.1.0",
+        "jasmine-core": "2.5.2",
+        "karma": "1.5.0",
+        "karma-chrome-launcher": "2.0.0",
+        "karma-firefox-launcher": "1.0.1",
+        "karma-jasmine": "1.1.0",
+        "karma-mocha-reporter": "2.2.3",
+        "karma-typescript-preprocessor": "0.3.1",
+        "reflect-metadata": "0.1.10",
+        "rollup": "^0.41.6",
+        "rxjs": "^5.2.0",
+        "semantic-release": "6.3.2",
+        "systemjs": "0.19.47",
+        "systemjs-builder": "0.16.4",
+        "traceur": "^0.0.111",
+        "tsd": "0.6.5",
+        "tslint": "^4.5.1",
+        "typescript": "^2.2.1",
+        "typings": "2.1.0",
+        "uglify-js": "^2.8.16",
+        "zone.js": "^0.8.5"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        }
+    },
+    "dependencies": {
+        "google-libphonenumber": "^2.0.13"
     }
-  },
-  "dependencies": {
-    "google-libphonenumber": "^2.0.10"
-  }
 }

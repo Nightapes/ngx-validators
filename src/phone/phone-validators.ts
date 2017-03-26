@@ -56,8 +56,8 @@ export class PhoneValidators {
         return undefined;
     };
 
-    public static isPhoneNumber = (local: string): ValidatorFn => {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static isPhoneNumber(local: string): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) {
                 return undefined;
             }
@@ -80,10 +80,11 @@ export class PhoneValidators {
 
             return error;
         };
+        return validator;
     };
 
-    public static isPossibleNumberWithReason = (local: string): ValidatorFn => {
-        return function validate(control: AbstractControl): { [key: string]: any } {
+    public static isPossibleNumberWithReason(local: string): ValidatorFn {
+        const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) {
                 return undefined;
             }
@@ -122,5 +123,6 @@ export class PhoneValidators {
             return error;
 
         };
+        return validator;
     };
 }

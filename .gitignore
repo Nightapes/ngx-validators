@@ -51,3 +51,5 @@ examples/node_modules/
 *.ngsummary.json
 *.metadata.json
 *.ngfactory.ts
+bundles/ng2-validators.umd.js
+bundles/ng2-validators.umd.min.js
