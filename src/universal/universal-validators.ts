@@ -1,8 +1,8 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Util } from './../util';
 
 export class UniversalValidators {
-    public static noWhitespace: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static noWhitespace(control: AbstractControl): { [key: string]: boolean } {
         if (Util.isNotPresent(control)) return undefined;
         let pattern = '\\s';
         if (new RegExp(pattern).test(control.value)) {
@@ -11,16 +11,25 @@ export class UniversalValidators {
         return undefined;
     };
 
-    public static isNumber: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static isNumber(control: AbstractControl): { [key: string]: boolean } {
         if (Util.isNotPresent(control)) return undefined;
         if (isNaN(control.value)) {
             return { 'numberRequired': true };
         }
         return undefined;
     };
+    static maxLength2(maxLength: number): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const length: number = control.value ? control.value.length : 0;
+            return length > maxLength ?
+                { 'maxlength': { 'requiredLength': maxLength, 'actualLength': length } } :
+                null;
+        };
+    }
 
-    public static isInRange = (minValue: number, maxValue: number): ValidatorFn => {
-        return (control: AbstractControl): { [key: string]: any } => {
+
+    public static isInRange(minValue: number, maxValue: number): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
             if (Util.isNotPresent(control)) return undefined;
             if (isNaN(control.value)) {
                 return { 'numberRequired': true };
@@ -37,7 +46,7 @@ export class UniversalValidators {
         };
     };
 
-    public static minLength = (minLength: number): ValidatorFn => {
+    public static minLength(minLength: number) {
         return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
@@ -48,7 +57,7 @@ export class UniversalValidators {
         };
     };
 
-    public static maxLength = (maxLength: number): ValidatorFn => {
+    public static maxLength(maxLength: number) {
         return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
@@ -59,7 +68,7 @@ export class UniversalValidators {
         };
     };
 
-    public static min = (min: number): ValidatorFn => {
+    public static min(min: number) {
         return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;
@@ -73,7 +82,7 @@ export class UniversalValidators {
         };
     };
 
-    public static max = (max: number): ValidatorFn => {
+    public static max(max: number) {
         return (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
             let value: string = control.value;

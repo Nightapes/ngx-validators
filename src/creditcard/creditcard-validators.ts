@@ -1,4 +1,4 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 import { Util } from './../util';
 
 const visaRegex = '^(?:4[0-9]{12})(?:[0-9]{3})?$';
@@ -11,7 +11,7 @@ const mastercardRegex = '^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}
 
 export class CreditCardValidators {
 
-    public static isCreditCard: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static isCreditCard(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(americanExpressRegex + '|' +
@@ -27,7 +27,7 @@ export class CreditCardValidators {
         return { 'creditcard': true };
     };
 
-    public static americanExpress: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static americanExpress(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(americanExpressRegex).test(control.value)) {
@@ -36,7 +36,7 @@ export class CreditCardValidators {
         return { 'americanExpress': true };
     };
 
-    public static dinersclub: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static dinersclub(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(dinersclubRegex).test(control.value)) {
@@ -45,7 +45,7 @@ export class CreditCardValidators {
         return { 'dinersclub': true };
     };
 
-    public static discover: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static discover(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(discoverRegex).test(control.value)) {
@@ -53,7 +53,7 @@ export class CreditCardValidators {
         }
         return { 'discover': true };
     };
-    public static jcb: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static jcb(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(jcbRegex).test(control.value)) {
@@ -61,7 +61,7 @@ export class CreditCardValidators {
         }
         return { 'jcb': true };
     };
-    public static maestro: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static maestro(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(maestroRegex).test(control.value)) {
@@ -70,7 +70,7 @@ export class CreditCardValidators {
         return { 'maestro': true };
     };
 
-    public static mastercard: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static mastercard(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(mastercardRegex).test(control.value)) {
@@ -79,7 +79,7 @@ export class CreditCardValidators {
         return { 'mastercard': true };
     };
 
-    public static visa: ValidatorFn = (control: AbstractControl): { [key: string]: boolean } => {
+    public static visa(control: AbstractControl): { [key: string]: boolean } {
 
         if (Util.isNotPresent(control)) return undefined;
         if (new RegExp(visaRegex).test(control.value)) {
