@@ -4,7 +4,7 @@
 [![npm](https://david-dm.org/nightapes/ng2-validators.svg)](https://david-dm.org/nightapes/ng2-validators)
 [![npm-dev](https://david-dm.org/nightapes/ng2-validators/dev-status.svg)](https://david-dm.org/nightapes/ng2-validators/?type=dev)
 
-An implementation of various angular validators for Angular 2.
+An implementation of various angular validators for Angular 2+.
 
 # List of validators
 
