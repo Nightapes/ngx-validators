@@ -9,6 +9,7 @@ export class FormUniversalValidatorComponent implements OnInit {
 
   model: any = {
     whitespace: '',
+    emptyString: '',
     isNumber: '',
     range: '',
     min: '',

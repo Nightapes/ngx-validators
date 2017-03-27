@@ -1,55 +1,61 @@
 <form [formGroup]="form">
-  <md-card class="card">
-    <md-card-header>
-      <md-card-title>Universal</md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="noWhitespace" name="noWhitespace" placeholder="No whitespace">
-          <md-hint *ngIf="noWhitespace.hasError('noWhitespaceRequired')" class="error">No whitespaces allowed</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="min" name="min" placeholder="Min number (5)">
-          <md-hint *ngIf="min.hasError('numberRequired')" class="error">Is not a number</md-hint>
-          <md-hint *ngIf="min.hasError('min')" class="error">Number to small</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="max" name="max" placeholder="Max number (10)">
-          <md-hint *ngIf="max.hasError('numberRequired')" class="error">Is not a number</md-hint>
-          <md-hint *ngIf="max.hasError('max')" class="error">Number to big</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="minLength" name="minLength" placeholder="Min length (min 3)">
-          <md-hint *ngIf="minLength.hasError('minLength')" class="error">Input to short (min 3)</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="maxLength" name="maxLength" placeholder="Max length (max 5)">
-          <md-hint *ngIf="maxLength.hasError('maxLength')" class="error">Input to long (max 5)</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="isInRange" name="maxLength" placeholder="Range (3, 6)">
-          <md-hint *ngIf="isInRange.hasError('numberRequired')" class="error">Is not a number</md-hint>
-          <md-hint *ngIf="isInRange.hasError('rangeValueToSmall')" class="error">Number to small</md-hint>
-          <md-hint *ngIf="isInRange.hasError('rangeValueToBig')" class="error">Number to big</md-hint>
-        </md-input-container>
-      </div>
-      <div>
-        <md-input-container>
-          <input mdInput type="text" formControlName="isNumber" name="isNumber" placeholder="Is number">
-          <md-hint *ngIf="isNumber.hasError('numberRequired')" class="error">Is not a number</md-hint>
-        </md-input-container>
-      </div>
-    </md-card-content>
-  </md-card>
+    <md-card class="card">
+        <md-card-header>
+            <md-card-title>Universal</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="noWhitespace" name="noWhitespace" placeholder="No whitespace">
+                    <md-hint *ngIf="noWhitespace.hasError('noWhitespaceRequired')" class="error">No whitespaces allowed</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="noEmptyString" name="noEmptyString" placeholder="No emptyString">
+                    <md-hint *ngIf="noEmptyString.hasError('noEmptyString')" class="error">No emptyStrings allowed</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="min" name="min" placeholder="Min number (5)">
+                    <md-hint *ngIf="min.hasError('numberRequired')" class="error">Is not a number</md-hint>
+                    <md-hint *ngIf="min.hasError('min')" class="error">Number to small</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="max" name="max" placeholder="Max number (10)">
+                    <md-hint *ngIf="max.hasError('numberRequired')" class="error">Is not a number</md-hint>
+                    <md-hint *ngIf="max.hasError('max')" class="error">Number to big</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="minLength" name="minLength" placeholder="Min length (min 3)">
+                    <md-hint *ngIf="minLength.hasError('minLength')" class="error">Input to short (min 3)</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="maxLength" name="maxLength" placeholder="Max length (max 5)">
+                    <md-hint *ngIf="maxLength.hasError('maxLength')" class="error">Input to long (max 5)</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="isInRange" name="maxLength" placeholder="Range (3, 6)">
+                    <md-hint *ngIf="isInRange.hasError('numberRequired')" class="error">Is not a number</md-hint>
+                    <md-hint *ngIf="isInRange.hasError('rangeValueToSmall')" class="error">Number to small</md-hint>
+                    <md-hint *ngIf="isInRange.hasError('rangeValueToBig')" class="error">Number to big</md-hint>
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <input mdInput type="text" formControlName="isNumber" name="isNumber" placeholder="Is number">
+                    <md-hint *ngIf="isNumber.hasError('numberRequired')" class="error">Is not a number</md-hint>
+                </md-input-container>
+            </div>
+        </md-card-content>
+    </md-card>
 </form>

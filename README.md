@@ -64,6 +64,7 @@ The password validators are:
 ## Universal validators
 
 * noWhitespace
+* noEmtpyString
 * isNumber
 * isInRange
 * minLength

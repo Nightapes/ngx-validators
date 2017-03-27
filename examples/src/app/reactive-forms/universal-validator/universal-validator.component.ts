@@ -18,6 +18,11 @@ export class ReactiveFormUniversalValidatorComponent implements OnInit {
     UniversalValidators.noWhitespace
   ]));
 
+  noEmptyString: FormControl = new FormControl('', Validators.compose([
+    Validators.required,
+    UniversalValidators.noEmptyString
+  ]));
+
   min: FormControl = new FormControl('', Validators.compose([
     Validators.required,
     UniversalValidators.min(5)
@@ -53,6 +58,7 @@ export class ReactiveFormUniversalValidatorComponent implements OnInit {
   ngOnInit() {
     this.form = this._fb.group({
       'noWhitespace': this.noWhitespace,
+      'noEmptyString' : this.noEmptyString,
       'min': this.min,
       'max': this.max,
       'isNumber': this.isNumber,
