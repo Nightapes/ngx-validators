@@ -14,16 +14,49 @@ export function main() {
                 expect(validated).toBeUndefined();
             });
 
-            it('should work for valid password', () => {
+            it('should work for valid string', () => {
                 let control: FormControl = new FormControl('aaabbbccc');
                 let validated = UniversalValidators.noWhitespace(control);
                 expect(validated).toBeUndefined();
             });
 
-            it('should work for invalid password', () => {
+            it('should work for invalid string', () => {
                 let control: FormControl = new FormControl('aaab bbccc');
                 let validated = UniversalValidators.noWhitespace(control);
                 expect(validated).toEqual({ 'noWhitespaceRequired': true });
+            });
+        });
+
+        describe('noEmptyString ', () => {
+
+            it('should work for empty control', () => {
+                let control: FormControl = new FormControl('');
+                let validated = UniversalValidators.noEmptyString(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid string', () => {
+                let control: FormControl = new FormControl('aaabbbccc');
+                let validated = UniversalValidators.noEmptyString(control);
+                expect(validated).toBeUndefined();
+            });
+
+            it('should work for valid string 2', () => {
+                let control: FormControl = new FormControl(' a ');
+                let validated = UniversalValidators.noEmptyString(control);
+                expect(validated).toBeUndefined();
+            });
+            
+            it('should work for invalid string', () => {
+                let control: FormControl = new FormControl(' ');
+                let validated = UniversalValidators.noEmptyString(control);
+                expect(validated).toEqual({ 'noEmptyString': true });
+            });
+
+            it('should work for invalid string 2', () => {
+                let control: FormControl = new FormControl('  ');
+                let validated = UniversalValidators.noEmptyString(control);
+                expect(validated).toEqual({ 'noEmptyString': true });
             });
         });
 

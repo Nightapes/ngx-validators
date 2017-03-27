@@ -1,38 +1,42 @@
 <form>
-  <md-card class="card">
-    <md-card-header>
-      <md-card-title>Universal</md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <md-input-container>
-        <input mdInput type="text" [(ngModel)]="model.whitespace" name="whitespace" #formControl="ngModel" noWhitespace placeholder="Whitespace">
-        <md-hint *ngIf="formControl.hasError('noWhitespaceRequired')" class="error">No whitespace allowed</md-hint>
-      </md-input-container>
+    <md-card class="card">
+        <md-card-header>
+            <md-card-title>Universal</md-card-title>
+        </md-card-header>
+        <md-card-content>
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.whitespace" name="whitespace" #formControl="ngModel" noWhitespace placeholder="Whitespace">
+                <md-hint *ngIf="formControl.hasError('noWhitespaceRequired')" class="error">No whitespace allowed</md-hint>
+            </md-input-container>
 
-      <md-input-container>
-        <input mdInput type="text" [(ngModel)]="model.isNumber" name="isNumber" #formControl2="ngModel" isNumber placeholder="isNumber">
-        <md-hint *ngIf="formControl2.hasError('numberRequired')" class="error">Is not a number</md-hint>
-      </md-input-container>
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.emptyString" name="emptyString" #formControl="ngModel" noEmptyString placeholder="EmptyString">
+                <md-hint *ngIf="formControl.hasError('noEmptyString')" class="error">No emptyString allowed</md-hint>
+            </md-input-container>
 
-      <md-input-container>
-        <input mdInput type="text" [(ngModel)]="model.range" name="range" #formControl3="ngModel" isInRange minValue="2" maxValue="100"
-          placeholder="Range (2-100)">
-          <md-hint *ngIf="formControl3.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
-          <md-hint *ngIf="formControl3.hasError('rangeValueToSmall')" class="error">Number to small</md-hint>
-          <md-hint *ngIf="formControl3.hasError('rangeValueToBig')" class="error">Number to big</md-hint>
-      </md-input-container>
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.isNumber" name="isNumber" #formControl2="ngModel" isNumber placeholder="isNumber">
+                <md-hint *ngIf="formControl2.hasError('numberRequired')" class="error">Is not a number</md-hint>
+            </md-input-container>
 
-      <md-input-container>
-        <input mdInput type="text" [(ngModel)]="model.min" name="min" #formControl4="ngModel" min="2" placeholder="min (2)">
-        <md-hint *ngIf="formControl4.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
-        <md-hint *ngIf="formControl4.hasError('min')" class="error">Number to small</md-hint>
-      </md-input-container>
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.range" name="range" #formControl3="ngModel" isInRange minValue="2" maxValue="100" placeholder="Range (2-100)">
+                <md-hint *ngIf="formControl3.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
+                <md-hint *ngIf="formControl3.hasError('rangeValueToSmall')" class="error">Number to small</md-hint>
+                <md-hint *ngIf="formControl3.hasError('rangeValueToBig')" class="error">Number to big</md-hint>
+            </md-input-container>
 
-      <md-input-container>
-        <input mdInput type="text" [(ngModel)]="model.max" name="max" #formControl5="ngModel" max="22" placeholder="max (22)">
-        <md-hint *ngIf="formControl5.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
-        <md-hint *ngIf="formControl5.hasError('max')" class="error">Number to big</md-hint>
-      </md-input-container>
-    </md-card-content>
-  </md-card>
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.min" name="min" #formControl4="ngModel" min="2" placeholder="min (2)">
+                <md-hint *ngIf="formControl4.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
+                <md-hint *ngIf="formControl4.hasError('min')" class="error">Number to small</md-hint>
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput type="text" [(ngModel)]="model.max" name="max" #formControl5="ngModel" max="22" placeholder="max (22)">
+                <md-hint *ngIf="formControl5.hasError('numberRequired')" class="error">Needs to be a number</md-hint>
+                <md-hint *ngIf="formControl5.hasError('max')" class="error">Number to big</md-hint>
+            </md-input-container>
+        </md-card-content>
+    </md-card>
 </form>

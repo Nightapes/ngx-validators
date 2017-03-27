@@ -10,7 +10,7 @@ export { PasswordValidatorDirective } from './src/password/password.directive';
 export { EmailValidatorDirective } from './src/email/email.directive';
 export {
     IsInRangeValidatorDirective, IsNumberValidatorDirective, MaxValidatorDirective,
-    MinValidatorDirective, WhiteSpaceValidatorDirective
+    MinValidatorDirective, WhiteSpaceValidatorDirective, EmptyStringValidatorDirective
 } from './src/universal/universal.directive';
 export { CreditCardValidatorDirective } from './src/creditcard/creditcard.directive';
 export { PhoneValidatorDirective, CountryCodeValidatorDirective, PossiblePhoneValidatorDirective } from './src/phone/phone.directive';

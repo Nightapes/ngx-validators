@@ -47,6 +47,9 @@ export class GuideComponent implements OnInit {
       name: 'noWhitespace',
     },
     {
+      name: 'noEmptyString',
+    },
+    {
       name: 'isNumber',
     },
     {

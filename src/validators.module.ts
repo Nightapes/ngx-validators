@@ -1,3 +1,4 @@
+import {EmptyStringValidatorDirective} from './universal/universal.directive';
 import { NgModule } from '@angular/core';
 
 import { CreditCardValidatorDirective } from './creditcard/creditcard.directive';
@@ -20,6 +21,7 @@ import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeVa
         WhiteSpaceValidatorDirective,
         PhoneValidatorDirective,
         PossiblePhoneValidatorDirective,
+        EmptyStringValidatorDirective,
         CountryCodeValidatorDirective],
     exports: [CreditCardValidatorDirective,
         EmailValidatorDirective,
@@ -31,6 +33,7 @@ import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeVa
         WhiteSpaceValidatorDirective,
         PhoneValidatorDirective,
         PossiblePhoneValidatorDirective,
+        EmptyStringValidatorDirective,
         CountryCodeValidatorDirective]
 })
 export class ValidatorsModule { }

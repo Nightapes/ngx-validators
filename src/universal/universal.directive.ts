@@ -25,6 +25,27 @@ export class WhiteSpaceValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
+    selector: '[noEmptyString][formControlName],[noEmptyString][formControl],[noEmptyString][ngModel]',
+    providers: [{
+        provide: NG_VALIDATORS,
+        // tslint:disable-next-line:no-forward-ref
+        useExisting: forwardRef(() => EmptyStringValidatorDirective),
+        multi: true
+    }]
+})
+export class EmptyStringValidatorDirective implements Validator, OnInit {
+    private validator: ValidatorFn;
+
+    ngOnInit() {
+        this.validator = UniversalValidators.noEmptyString;
+    }
+
+    validate(c: AbstractControl): { [key: string]: any } {
+        return this.validator(c);
+    }
+}
+
+@Directive({
     selector: '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,

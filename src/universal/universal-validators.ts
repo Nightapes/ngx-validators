@@ -2,11 +2,20 @@ import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Util } from './../util';
 
 export class UniversalValidators {
+
     public static noWhitespace(control: AbstractControl): { [key: string]: boolean } {
         if (Util.isNotPresent(control)) return undefined;
         let pattern = '\\s';
         if (new RegExp(pattern).test(control.value)) {
             return { 'noWhitespaceRequired': true };
+        }
+        return undefined;
+    };
+
+    public static noEmptyString (control: AbstractControl): { [key: string]: boolean } {
+        if (Util.isNotPresent(control)) return undefined;
+        if (control.value.trim().length === 0) {
+            return { 'noEmptyString': true };
         }
         return undefined;
     };
@@ -18,6 +27,7 @@ export class UniversalValidators {
         }
         return undefined;
     };
+
     static maxLength2(maxLength: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
             const length: number = control.value ? control.value.length : 0;
