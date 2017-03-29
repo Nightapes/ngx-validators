@@ -9,7 +9,7 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = PhoneValidators.isPhoneNumber(regionsCode.US)(control);
+                let validated = PhoneValidators.isPhoneNumber('US')(control);
                 expect(validated).toBeUndefined();
             });
 
@@ -33,7 +33,7 @@ export function main() {
 
                 phone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPhoneNumber(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPhoneNumber('FR')(control);
                     expect(validated).toBeUndefined();
                 });
 
@@ -53,7 +53,7 @@ export function main() {
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPhoneNumber(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPhoneNumber('FR')(control);
                     expect(validated).toEqual({ 'noPhoneNumber': true });
                 });
             });
@@ -64,7 +64,7 @@ export function main() {
 
             it('should work for empty control', () => {
                 let control: FormControl = new FormControl('');
-                let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                let validated = PhoneValidators.isPossibleNumberWithReason('FR')(control);
                 expect(validated).toBeUndefined();
             });
 
@@ -82,7 +82,7 @@ export function main() {
 
                 phone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPossibleNumberWithReason('FR')(control);
                     expect(validated).toEqual({ 'noPhoneNumber': true });
                 });
 
@@ -101,7 +101,7 @@ export function main() {
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPossibleNumberWithReason('FR')(control);
                     expect(validated).toEqual({ 'phoneNumberTooShort': true });
                 });
             });
@@ -119,7 +119,7 @@ export function main() {
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPossibleNumberWithReason('FR')(control);
                     expect(validated).toEqual({ 'phoneNumberTooShort': true });
                 });
             });
@@ -137,7 +137,7 @@ export function main() {
                 ];
                 invalidPhone.forEach(element => {
                     let control: FormControl = new FormControl(element);
-                    let validated = PhoneValidators.isPossibleNumberWithReason(regionsCode.US)(control);
+                    let validated = PhoneValidators.isPossibleNumberWithReason('FR')(control);
                     expect(validated).toEqual({ 'phoneNumberTooLong': true });
                 });
             });
