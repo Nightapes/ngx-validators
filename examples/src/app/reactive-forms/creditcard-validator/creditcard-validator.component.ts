@@ -1,4 +1,4 @@
-import { CreditCardValidators } from 'ng2-validators';
+import { CreditCardValidators } from 'ngx-validators';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 

@@ -1,5 +1,5 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PhoneValidators } from 'ng2-validators';
+import { PhoneValidators } from 'ngx-validators';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "update-lib": "npm install ../ng2-validators-2.2.0.tgz --save"
+    "update-lib": "npm install ../ngx-validators-3.0.0.tgz --save"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +24,7 @@
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
     "google-libphonenumber": "^2.0.13",
-    "ng2-validators": "file:///C:\\Users\\sbeis\\Documents\\GitHub\\ng2-validators\\ng2-validators-2.2.0.tgz",
+    "ngx-validators": "file:///C:\\Users\\sbeis\\Documents\\GitHub\\ng2-validators\\ngx-validators-3.0.0.tgz",
     "rxjs": "^5.2.0",
     "zone.js": "^0.8.5"
   },

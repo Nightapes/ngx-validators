@@ -1,5 +1,5 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UniversalValidators } from 'ng2-validators';
+import { UniversalValidators } from 'ngx-validators';
 import { min } from 'rxjs/operator/min';
 import { max } from 'rxjs/operator/max';
 import { isNumber } from 'util';
