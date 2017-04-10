@@ -22,7 +22,7 @@
         "src/**/*.js": true,
         "*.ktp.js": true,
         "index.js": true,
-        "ng2-validators.js": true,
+        "ngx-validators.js": true,
         "tests/**/*.js": true,
         "**/*.js.map": true,
         "**/*.metadata.json": true,

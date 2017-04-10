@@ -1,6 +1,6 @@
 {
-    "name": "ng2-validators",
-    "description": "An implementation of angular validators for Angular 2",
+    "name": "ngx-validators",
+    "description": "An implementation of angular validators for Angular 2 and higher",
     "scripts": {
         "test": "tsc && karma start",
         "test-watch": "tsc && karma start --no-single-run --auto-watch",
@@ -9,27 +9,28 @@
         "prepublish": "npm run build",
         "transpile": "ngc",
         "package": "rollup -c",
-        "minify": "uglifyjs bundles/ng2-validators.umd.js --screw-ie8 --compress --mangle --comments --output bundles/ng2-validators.umd.min.js",
+        "minify": "uglifyjs bundles/ngx-validators.umd.js --screw-ie8 --compress --mangle --comments --output bundles/ngx-validators.umd.min.js",
         "build": "npm run transpile && npm run package && npm run minify",
         "semantic-release": "npm run lint && semantic-release pre && npm publish && semantic-release post"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/Nightapes/ng2-validators.git"
+        "url": "https://github.com/Nightapes/ngx-validators.git"
     },
     "keywords": [
         "angular",
         "angular2",
+        "angular4",
         "validators"
     ],
     "author": "Sebastian Beisch",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/Nightapes/ng2-validators/issues"
+        "url": "https://github.com/Nightapes/ngx-validators/issues"
     },
     "main": "index.js",
     "typings": "./index.d.ts",
-    "homepage": "https://github.com/Nightapes/ng2-validators",
+    "homepage": "https://github.com/Nightapes/ngx-validators",
     "peerDependencies": {
         "@angular/common": ">= 2.0.0",
         "@angular/core": ">= 2.0.0",

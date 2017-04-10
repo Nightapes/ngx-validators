@@ -1,9 +1,9 @@
 export default {
     entry: './index.js',
-    dest: './bundles/ng2-validators.umd.js',
+    dest: './bundles/ngx-validators.umd.js',
     sourceMap: false,
     format: 'umd',
-    onwarn: function (warning) {
+    onwarn: function(warning) {
         // Suppress this error message... there are hundreds of them. Angular team says to ignore it.
         // https://github.com/rollup/rollup/wiki/Troubleshooting#this-is-undefined
         if (warning.code === 'THIS_IS_UNDEFINED') {

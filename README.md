@@ -1,8 +1,8 @@
-# ng2-validators
+# ngx-validators
 
-[![Build Status](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ng2-validators.svg?branch=master)
-[![npm](https://david-dm.org/nightapes/ng2-validators.svg)](https://david-dm.org/nightapes/ng2-validators)
-[![npm-dev](https://david-dm.org/nightapes/ng2-validators/dev-status.svg)](https://david-dm.org/nightapes/ng2-validators/?type=dev)
+[![Build Status](https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master)
+[![npm](https://david-dm.org/nightapes/ngx-validators.svg)](https://david-dm.org/nightapes/ngx-validators)
+[![npm-dev](https://david-dm.org/nightapes/ngx-validators/dev-status.svg)](https://david-dm.org/nightapes/ngx-validators/?type=dev)
 
 An implementation of various angular validators for Angular 2+.
 
@@ -15,7 +15,7 @@ An implementation of various angular validators for Angular 2+.
 
 # Install
 
-`npm install ng2-validators --save-dev`
+`npm install ngx-validators --save-dev`
 
 ## [Angular CLI](https://github.com/angular/angular-cli)
 
@@ -32,8 +32,8 @@ let additionalPackages: ExtendPackages[] = [
         path: 'node_modules/google-libphonenumber/dist/libphonenumber.js'
       },
       {
-        name: 'ng2-validators',
-        path: 'node_modules/ng2-validators/bundles/ng2-validators.umd.min.js'
+        name: 'ngx-validators',
+        path: 'node_modules/ngx-validators/bundles/ngx-validators.umd.min.js'
       },
     ];
     
@@ -83,7 +83,7 @@ The password validators are:
 ## Install
 
 ```
-npm install ng2-validators --save
+npm install ngx-validators --save
 ```
 
 
@@ -94,7 +94,7 @@ needs: ```ReactiveFormsModule```
 ### Passwords
 
 ```
-import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ngx-validators'
 
 ...
 password: FormControl = new FormControl('', Validators.compose([
@@ -112,7 +112,7 @@ password: FormControl = new FormControl('', Validators.compose([
 ### Password mismatch
 
 ```
-import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ngx-validators'
 
 ...
 
@@ -129,7 +129,7 @@ let form = new FormGroup({
 #### Override control name
 
 ```
-import {PasswordValidators} from 'ng2-validators'
+import {PasswordValidators} from 'ngx-validators'
 
 ...
 
@@ -147,7 +147,7 @@ let form = new FormGroup({
 ### Email
 
 ```
-import {EmailValidators} from 'ng2-validators'
+import {EmailValidators} from 'ngx-validators'
 
 ...
 
@@ -158,7 +158,7 @@ email2: FormControl = new FormControl('', EmailValidators.simple);
 ### Universal
 
 ```
-import {UniversalValidators} from 'ng2-validators'
+import {UniversalValidators} from 'ngx-validators'
 
 ...
 
@@ -174,7 +174,7 @@ control: FormControl = new FormControl('', UniversalValidators.max(2));
 ### Creditcards
 
 ```
-import {CreditCardValidators} from 'ng2-validators'
+import {CreditCardValidators} from 'ngx-validators'
 
 ...
 
@@ -192,7 +192,7 @@ control: FormControl = new FormControl('', UniversalValidators.visa);
 ### Phonenumber
 
 ```
-import {PhoneValidators} from 'ng2-validators'
+import {PhoneValidators} from 'ngx-validators'
 
 ...
 
@@ -210,7 +210,7 @@ needs ```FormsModule and ValidatorsModule ```
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ValidatorsModule } from 'ng2-validators'
+import { ValidatorsModule } from 'ngx-validators'
 
 import { AppComponent } from './app.component';
 
@@ -361,5 +361,5 @@ export class AppModule {
 * Add more password rules
 * Add address validator
 
-Get the complete changelog here: https://github.com/Nightapes/ng2-validators/releases
+Get the complete changelog here: https://github.com/Nightapes/ngx-validators/releases
 

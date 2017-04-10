@@ -1,7 +1,7 @@
 import { GuideModule } from './guide/guide.module';
 import { FormsExampleModule } from './forms/forms.module';
 import { ReactiveFormsExampleModule } from './reactive-forms/reactive-forms.module';
-import { ValidatorsModule } from 'ng2-validators';
+import { ValidatorsModule } from 'ngx-validators';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import {

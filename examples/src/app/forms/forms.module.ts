@@ -3,7 +3,7 @@ import { FormUniversalValidatorComponent } from './universal-validator/universal
 import { FormPhoneValidatorComponent } from './phone-validator/phone-validator.component';
 import { FormEmailValidatorComponent } from './email-validator/email-validator.component';
 import { FormCreditcardValidatorComponent } from './creditcard-validator/creditcard-validator.component';
-import { ValidatorsModule } from 'ng2-validators';
+import { ValidatorsModule } from 'ngx-validators';
 import { MdCardModule, MdInputModule } from '@angular/material';
 import { FormsComponent } from './forms.component';
 import { FormsModule } from '@angular/forms';
