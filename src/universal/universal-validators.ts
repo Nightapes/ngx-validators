@@ -12,7 +12,7 @@ export class UniversalValidators {
         return undefined;
     };
 
-    public static noEmptyString (control: AbstractControl): { [key: string]: boolean } {
+    public static noEmptyString(control: AbstractControl): { [key: string]: boolean } {
         if (Util.isNotPresent(control)) return undefined;
         if (control.value.trim().length === 0) {
             return { 'noEmptyString': true };
@@ -28,16 +28,6 @@ export class UniversalValidators {
         return undefined;
     };
 
-    static maxLength2(maxLength: number): ValidatorFn {
-        const validator = (control: AbstractControl): { [key: string]: any } => {
-            const length: number = control.value ? control.value.length : 0;
-            return length > maxLength ?
-                { 'maxlength': { 'requiredLength': maxLength, 'actualLength': length } } :
-                null;
-        };
-        return validator;
-    }
-
     public static isInRange(minValue: number, maxValue: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
             if (Util.isNotPresent(control)) return undefined;
@@ -45,11 +35,11 @@ export class UniversalValidators {
                 return { 'numberRequired': true };
             }
             if (+control.value < minValue) {
-                return { 'rangeValueToSmall': true };
+                return { 'rangeValueToSmall': { 'requiredMinValue': minValue, 'requiredMaxValue': maxValue, 'actual': control.value } };
             }
 
             if (+control.value > maxValue) {
-                return { 'rangeValueToBig': true };
+                return { 'rangeValueToBig': { 'requiredMinValue': minValue, 'requiredMaxValue': maxValue, 'actual': control.value } };
             } else {
                 return undefined;
             }
@@ -64,7 +54,7 @@ export class UniversalValidators {
             if (value.length >= minLength) {
                 return undefined;
             }
-            return { 'minLength': true };
+            return { 'minLength': { 'requiredMinLength': minLength, 'actualLength': value.length } };
         };
         return validator;
     };
@@ -76,7 +66,7 @@ export class UniversalValidators {
             if (maxLength >= value.length) {
                 return undefined;
             }
-            return { 'maxLength': true };
+            return { 'maxLength': { 'requiredMaxLength': maxLength, 'actualLength': value.length } };
         };
         return validator;
     };
@@ -91,7 +81,7 @@ export class UniversalValidators {
             if (+value >= min) {
                 return undefined;
             }
-            return { 'min': true };
+            return { 'min': { 'required': min, 'actual': control.value } };
         };
         return validator;
     };
@@ -106,7 +96,7 @@ export class UniversalValidators {
             if (max >= +value) {
                 return undefined;
             }
-            return { 'max': true };
+            return { 'max': { 'required': max, 'actual': control.value } };
         };
         return validator;
     };
