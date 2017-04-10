@@ -10,7 +10,7 @@ export class PasswordValidators {
             let repeatDec = repeatCount - 1;
             let pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
             if (control.value !== '' && new RegExp(pattern).test(control.value)) {
-                return { 'repeatCharacterRegexRule': true };
+                return { 'repeatCharacterRegexRule': { 'repeatCount': repeatCount } };
             }
             return undefined;
         };
@@ -33,7 +33,7 @@ export class PasswordValidators {
                 }
             }
             if (!valid) {
-                return { 'allowedCharacterRule': invalidChars };
+                return { 'allowedCharacterRule': { 'invalidChars': invalidChars, 'allowedChars': allowedChars } };
             }
             return undefined;
         };
@@ -50,7 +50,7 @@ export class PasswordValidators {
             let pattern = /[^A-Za-z]+/g;
             let stripped = value.replace(pattern, '');
             if (stripped.length < amount) {
-                return { 'alphabeticalCharacterRule': true };
+                return { 'alphabeticalCharacterRule': { 'required': amount, 'actual': stripped.length } };
             }
             return undefined;
         };
@@ -67,7 +67,7 @@ export class PasswordValidators {
             let pattern = /[^0-9\.]+/g;
             let stripped = value.replace(pattern, '');
             if (stripped.length < amount) {
-                return { 'digitCharacterRule': true };
+                return { 'digitCharacterRule': { 'required': amount, 'actual': stripped.length } };
             }
             return undefined;
         };
@@ -84,7 +84,7 @@ export class PasswordValidators {
             let pattern = /[^a-z]+/g;
             let stripped = value.replace(pattern, '');
             if (stripped.length < amount) {
-                return { 'lowercaseCharacterRule': true };
+                return { 'lowercaseCharacterRule': { 'required': amount, 'actual': stripped.length } };
             }
             return undefined;
         };
@@ -101,7 +101,7 @@ export class PasswordValidators {
             let pattern = /[^A-Z]+/g;
             let stripped = value.replace(pattern, '');
             if (stripped.length < amount) {
-                return { 'uppercaseCharacterRule': true };
+                return { 'uppercaseCharacterRule': { 'required': amount, 'actual': stripped.length } };
             }
             return undefined;
         };
@@ -118,7 +118,7 @@ export class PasswordValidators {
             let pattern = /[\w\s]+/g;
             let stripped = value.replace(pattern, '');
             if (stripped.length < amount) {
-                return { 'specialCharacterRule': true };
+                return { 'specialCharacterRule': { 'required': amount, 'actual': stripped.length } };
             }
             return undefined;
         };

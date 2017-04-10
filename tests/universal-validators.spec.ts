@@ -46,7 +46,7 @@ export function main() {
                 let validated = UniversalValidators.noEmptyString(control);
                 expect(validated).toBeUndefined();
             });
-            
+
             it('should work for invalid string', () => {
                 let control: FormControl = new FormControl(' ');
                 let validated = UniversalValidators.noEmptyString(control);
@@ -123,13 +123,13 @@ export function main() {
             it('should work for invalid number small', () => {
                 let control: FormControl = new FormControl('4');
                 let validated = UniversalValidators.isInRange(5, 10)(control);
-                expect(validated).toEqual({ 'rangeValueToSmall': true });
+                expect(validated).toEqual({ 'rangeValueToSmall': { requiredMinValue: 5, requiredMaxValue: 10, actual: '4' } });
             });
 
             it('should work for invalid number big', () => {
                 let control: FormControl = new FormControl('11');
                 let validated = UniversalValidators.isInRange(5, 10)(control);
-                expect(validated).toEqual({ 'rangeValueToBig': true });
+                expect(validated).toEqual({ 'rangeValueToBig': { requiredMinValue: 5, requiredMaxValue: 10, actual: '11' } });
             });
 
             it('should work for invalid input', () => {
@@ -151,7 +151,7 @@ export function main() {
             it('should work for invalid length', () => {
                 let control: FormControl = new FormControl('1');
                 let validated = UniversalValidators.minLength(3)(control);
-                expect(validated).toEqual({ 'minLength': true });
+                expect(validated).toEqual({ 'minLength': { requiredMinLength: 3, actualLength: 1 } });
             });
 
             it('should work for valid length', () => {
@@ -179,7 +179,7 @@ export function main() {
             it('should work for invalid length', () => {
                 let control: FormControl = new FormControl('123');
                 let validated = UniversalValidators.maxLength(2)(control);
-                expect(validated).toEqual({ 'maxLength': true });
+                expect(validated).toEqual({ 'maxLength': { requiredMaxLength: 2, actualLength: 3 } });
             });
 
         });
@@ -207,7 +207,7 @@ export function main() {
             it('should work for invalid min', () => {
                 let control: FormControl = new FormControl('2');
                 let validated = UniversalValidators.min(6)(control);
-                expect(validated).toEqual({ 'min': true });
+                expect(validated).toEqual({ 'min': { required: 6, actual: '2' } });
             });
 
         });
@@ -235,7 +235,7 @@ export function main() {
             it('should work for invalid max', () => {
                 let control: FormControl = new FormControl('3');
                 let validated = UniversalValidators.max(2)(control);
-                expect(validated).toEqual({ 'max': true });
+                expect(validated).toEqual({ 'max': { required: 2, actual: '3' } });
             });
 
         });

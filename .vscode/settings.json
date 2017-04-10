@@ -16,10 +16,6 @@
     "files.exclude": {
         "**/.git": true,
         ".gitignore": true,
-        ".gradle": true,
-        "gradle": true,
-        "gradlew": true,
-        "gradlew.bat": true,
         "typings": true,
         "node_modules": true,
         "examples": true,

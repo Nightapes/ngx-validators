@@ -10,8 +10,8 @@
             </md-input-container>
 
             <md-input-container>
-                <input mdInput type="text" [(ngModel)]="model.emptyString" name="emptyString" #formControl="ngModel" noEmptyString placeholder="EmptyString">
-                <md-hint *ngIf="formControl.hasError('noEmptyString')" class="error">No emptyString allowed</md-hint>
+                <input mdInput type="text" [(ngModel)]="model.emptyString" name="emptyString" #formControl1="ngModel" noEmptyString placeholder="EmptyString">
+                <md-hint *ngIf="formControl1.hasError('noEmptyString')" class="error">No emptyString allowed</md-hint>
             </md-input-container>
 
             <md-input-container>
