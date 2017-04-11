@@ -40,6 +40,15 @@ let additionalPackages: ExtendPackages[] = [
     this.addPackagesBundles(additionalPackages);
 ```
 
+For AOT add
+
+```
+  this.ROLLUP_NAMED_EXPORTS = [
+    ...this.ROLLUP_NAMED_EXPORTS,
+    { 'node_modules/google-libphonenumber/dist/libphonenumber.js': [ 'PhoneNumberUtil' ]}
+  ];
+```
+
 ## Password validators
 
 The rules are from https://github.com/vt-middleware/passay
