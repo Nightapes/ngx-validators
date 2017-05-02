@@ -130,9 +130,11 @@ export class PasswordValidators {
             let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
             let newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
             if (newPasswordValue !== newPasswordConfirmValue) {
-                group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword')
-                    .setErrors({ 'mismatchedPasswords': true });
+                Util.addError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords', true)
+                
                 return { 'mismatchedPasswords': true };
+            } else {
+                Util.removeError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords');
             }
             return undefined;
 

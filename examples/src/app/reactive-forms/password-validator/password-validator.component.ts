@@ -10,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class ReactiveFormPasswordValidatorComponent implements OnInit {
 
   form: FormGroup;
+  value: string;
   password = new FormControl('', Validators.compose([
-    Validators.required,
+    //Validators.required,
     PasswordValidators.repeatCharacterRegexRule(4),
     PasswordValidators.alphabeticalCharacterRule(1),
     PasswordValidators.digitCharacterRule(1),
@@ -19,7 +20,7 @@ export class ReactiveFormPasswordValidatorComponent implements OnInit {
     PasswordValidators.uppercaseCharacterRule(1),
     PasswordValidators.specialCharacterRule(1)
   ]));
-  confirmPassword = new FormControl('', Validators.required);
+  confirmPassword = new FormControl('');
 
   constructor(protected _fb: FormBuilder) { }
 
@@ -41,5 +42,9 @@ export class ReactiveFormPasswordValidatorComponent implements OnInit {
       return 'success';
     }
 
+  }
+
+  submit() {
+    this.value = JSON.stringify(this.form.value);
   }
 }
