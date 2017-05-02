@@ -9,13 +9,15 @@ import { ReactiveFormPasswordValidatorComponent } from './password-validator/pas
 import { ReactiveFormUniversalValidatorComponent } from './universal-validator/universal-validator.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MdButtonModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MdCardModule,
-    MdInputModule
+    MdInputModule,
+    MdButtonModule
   ],
   declarations: [
     ReactiveFormUniversalValidatorComponent,
