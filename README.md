@@ -25,7 +25,7 @@ No config needed
 
 Add following to `project.config.ts`
 
-```
+```ts
 let additionalPackages: ExtendPackages[] = [
       {
         name: 'google-libphonenumber',
@@ -42,7 +42,7 @@ let additionalPackages: ExtendPackages[] = [
 
 For AOT add
 
-```
+```ts
   this.ROLLUP_NAMED_EXPORTS = [
     ...this.ROLLUP_NAMED_EXPORTS,
     { 'node_modules/google-libphonenumber/dist/libphonenumber.js': [ 'PhoneNumberUtil' ]}
@@ -102,7 +102,7 @@ needs: ```ReactiveFormsModule```
 
 ### Passwords
 
-```
+```ts
 import {PasswordValidators} from 'ngx-validators'
 
 ...
@@ -120,7 +120,7 @@ password: FormControl = new FormControl('', Validators.compose([
 
 ### Password mismatch
 
-```
+```ts
 import {PasswordValidators} from 'ngx-validators'
 
 ...
@@ -137,7 +137,7 @@ let form = new FormGroup({
 
 #### Override control name
 
-```
+```ts
 import {PasswordValidators} from 'ngx-validators'
 
 ...
@@ -155,7 +155,7 @@ let form = new FormGroup({
 
 ### Email
 
-```
+```ts
 import {EmailValidators} from 'ngx-validators'
 
 ...
@@ -166,7 +166,7 @@ email2: FormControl = new FormControl('', EmailValidators.simple);
 
 ### Universal
 
-```
+```ts
 import {UniversalValidators} from 'ngx-validators'
 
 ...
@@ -182,7 +182,7 @@ control: FormControl = new FormControl('', UniversalValidators.max(2));
 
 ### Creditcards
 
-```
+```ts
 import {CreditCardValidators} from 'ngx-validators'
 
 ...
@@ -200,7 +200,7 @@ control: FormControl = new FormControl('', UniversalValidators.visa);
 
 ### Phonenumber
 
-```
+```ts
 import {PhoneValidators} from 'ngx-validators'
 
 ...
@@ -215,7 +215,7 @@ phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithRe
 
 needs ```FormsModule and ValidatorsModule ```
 
-```
+```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -233,7 +233,7 @@ export class AppModule {
 ```
 
 ### Password
-```
+```html
 <form>
 <input type="password" [(ngModel)]="model.password" name="password" #formControl="ngModel" password>
 <span *ngIf="formControl.hasError('repeatCharacterRegexRule')">Password contains repeating characters</span>
@@ -256,7 +256,7 @@ export class AppModule {
 ```
 
 ### Creditcard
-```
+```html
 <form>
 
 <input type="text" [(ngModel)]="model.creditcard" name="creditcard" #formControl="ngModel" creditCard>
@@ -270,7 +270,7 @@ export class AppModule {
 ```
 
 ### Email
-```
+```html
 <form>
 <input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" email>
 <span *ngIf="formControl.hasError('normalEmailRule')">Is not a email</span>
@@ -283,7 +283,7 @@ export class AppModule {
 
 #### Valid Phone
 
-```
+```html
 <form>
 <input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US">
 <span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
@@ -294,7 +294,7 @@ export class AppModule {
 
 #### Possible Phone
 
-```
+```html
 <form>
 <input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" possiblePhone="US">
 <span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
@@ -307,7 +307,7 @@ export class AppModule {
 
 #### CountryCode
 
-```
+```html
 <form>
 <input type="text" [(ngModel)]="model.countryCode" name="countryCode" #formControl="ngModel" countryCode>
 <span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
@@ -319,7 +319,7 @@ export class AppModule {
 
 #### whitespace
 
-```
+```html
 <form>
 <input type="text" [(ngModel)]="model.firstname" name="firstname" #formControl="ngModel" noWhitespace>
 <span *ngIf="formControl.hasError('noWhitespaceRequired')">Should not contain a whitespace</span>
@@ -328,7 +328,7 @@ export class AppModule {
 
 #### isNumber
 
-```
+```html
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isNumber>
 <span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
@@ -337,7 +337,7 @@ export class AppModule {
 
 #### isInRange
 
-```
+```html
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" isInRange  [minValue]="2" [maxValue]="4">
 <span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
@@ -347,7 +347,7 @@ export class AppModule {
 ```
 #### min
 
-```
+```html
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [min]="2">
 <span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
@@ -356,7 +356,7 @@ export class AppModule {
 ```
 #### max
 
-```
+```html
 <form>
 <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" [max]="2">
 <span *ngIf="formControl.hasError('numberRequired')">Needs to be a number</span>
