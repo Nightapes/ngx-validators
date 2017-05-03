@@ -128,10 +128,14 @@ export class PasswordValidators {
     public static mismatchedPasswords(passwordControlName?: string, confirmPasswordControlName?: string): ValidatorFn {
         const validator = (group: AbstractControl): { [key: string]: any } => {
             let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
+            if (!newPasswordValue) {
+                Util.removeError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords');
+                return undefined;
+            }
+
             let newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
             if (newPasswordValue !== newPasswordConfirmValue) {
                 Util.addError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords', true)
-                
                 return { 'mismatchedPasswords': true };
             } else {
                 Util.removeError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords');

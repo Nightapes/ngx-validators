@@ -149,6 +149,19 @@ export function main() {
 
         describe('mismatchedPasswords', () => {
 
+            it('should work for empty newPassword', () => {
+                let password: FormControl = new FormControl('');
+                let confirmPassword: FormControl = new FormControl('');
+                let form = new FormGroup({
+                    'newPassword': password,
+                    'confirmPassword': confirmPassword
+                }, PasswordValidators.mismatchedPasswords()
+                );
+                confirmPassword.setValue('test');
+                form.updateValueAndValidity();
+                expect(confirmPassword.getError('mismatchedPasswords')).toBeNull();
+            });
+
             it('should work for empty control', () => {
                 let password: FormControl = new FormControl('');
                 let confirmPassword: FormControl = new FormControl('');
