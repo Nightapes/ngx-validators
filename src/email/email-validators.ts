@@ -4,8 +4,8 @@ import { Util } from './../util';
 export class EmailValidators {
     public static simple(control: AbstractControl): { [key: string]: boolean } {
         if (Util.isNotPresent(control)) return undefined;
-        let pattern = '^.+@.+\\..+$';
-        if (new RegExp(pattern).test(control.value)) {
+        let pattern = /.+@.+\..+/i;
+        if (pattern.test(control.value)) {
             return undefined;
         }
         return { 'simpleEmailRule': true };
