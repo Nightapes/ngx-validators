@@ -73,7 +73,7 @@ The password validators are:
 ## Universal validators
 
 * noWhitespace
-* noEmtpyString
+* noEmptyString
 * isNumber
 * isInRange
 * minLength
