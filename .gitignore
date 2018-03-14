@@ -50,5 +50,5 @@ Desktop.ini
 *.log
 *.tgz
 examples/node_modules/
-dist
-coverage
+dist/
+coverage/
