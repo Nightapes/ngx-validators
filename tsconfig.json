@@ -1,20 +1,19 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "declaration": true,
-        "stripInternal": true,
-        "experimentalDecorators": true,
-        "strictNullChecks": false,
-        "module": "commonjs",
-        "moduleResolution": "node",
         "noImplicitAny": true,
-        "outDir": "tmp",
-        "rootDir": ".",
-        "target": "es2015",
-        "sourceMap": true,
-        "types": [
-            "jasmine"
-        ]
+        "module": "commonjs",
+        "target": "es5",
+        "lib": [
+            "es5",
+            "es6",
+            "dom"
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "declaration": true,
+        "moduleResolution": "node"
     },
     "include": [
         "src/**/*.ts"

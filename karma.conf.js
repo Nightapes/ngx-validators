@@ -8,11 +8,10 @@ module.exports = function (config) {
             "src/**/*.ts" // *.tsx for React Jsx
         ],
         exclude: [
-            'node_modules/**/*spec.js',
-            'examples/**/*.ts'
+            'node_modules/**/*spec.js'
         ],
         preprocessors: {
-            "./src/**/*.ts": "karma-typescript" // *.tsx for React Jsx
+            "src/**/*.ts": "karma-typescript" // *.tsx for React Jsx
         },
         reporters: ["progress", "karma-typescript"],
         browsers: process.env.TRAVIS ? ['ChromeHeadless'] : ['Chrome'],
@@ -21,7 +20,13 @@ module.exports = function (config) {
                 'node_modules/**/*spec.js',
                 'examples/**/*.ts'
             ],
-            tsconfig: "./tsconfig.json"
+            compilerOptions: {
+                lib: [
+                    "es5",
+                    "es6",
+                    "dom"
+                ]
+            }
         },
         singleRun: true
     });
