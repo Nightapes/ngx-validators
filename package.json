@@ -4,9 +4,8 @@
     "scripts": {
         "test": "karma start",
         "test-watch": "karma start --no-single-run --auto-watch",
-        "lint": "tslint --project tsconfig.json ",
-        "commit": "npm run lint && npm test && git-cz",
-        "build": "npm run lint && ng-packagr -p package.json",
+        "build": "tslint --project . && ng-packagr -p package.json",
+        "commit": "tslint --project .  && npm test && git-cz",
         "semantic-release": "semantic-release pre && npm publish && semantic-release post"
     },
     "repository": {

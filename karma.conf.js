@@ -15,13 +15,14 @@ module.exports = function (config) {
             "./src/**/*.ts": "karma-typescript" // *.tsx for React Jsx
         },
         reporters: ["progress", "karma-typescript"],
-        browsers: ["Chrome"],
+        browsers: process.env.TRAVIS ? ['ChromeHeadless'] : ['Chrome'],
         karmaTypescriptConfig: {
             exclude: [
                 'node_modules/**/*spec.js',
                 'examples/**/*.ts'
             ],
             tsconfig: "./tsconfig.json"
-        }
+        },
+        singleRun: true
     });
 };
