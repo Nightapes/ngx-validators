@@ -15,7 +15,7 @@
     },
     "keywords": [
         "angular",
-        "angular5+",
+        "angular2+",
         "validators"
     ],
     "author": "Sebastian Beisch",
@@ -25,9 +25,9 @@
     },
     "homepage": "https://github.com/Nightapes/ngx-validators",
     "peerDependencies": {
-        "@angular/common": ">= 5.0.0",
-        "@angular/core": ">= 5.0.0",
-        "@angular/forms": ">= 5.0.0"
+        "@angular/common": ">= 2.0.0",
+        "@angular/core": ">= 2.0.0",
+        "@angular/forms": ">= 2.0.0"
     },
     "devDependencies": {
         "@angular/common": "^5.2.8",
