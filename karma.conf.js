@@ -18,7 +18,8 @@ module.exports = function (config) {
         karmaTypescriptConfig: {
             exclude: [
                 'node_modules/**/*spec.js',
-                'examples/**/*.ts'
+                'examples/**/*.ts',
+                './node_modules/**/*.d.ts' // fix for https://github.com/monounity/karma-typescript/issues/258
             ],
             compilerOptions: {
                 lib: [
@@ -26,7 +27,8 @@ module.exports = function (config) {
                     "es6",
                     "dom"
                 ]
-            }
+            },
+            tsConfig: './tsconfig.json'
         },
         singleRun: true
     });
