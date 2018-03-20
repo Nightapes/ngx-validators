@@ -45,7 +45,7 @@
         "jasmine-core": "2.5.2",
         "karma": "2.0.0",
         "karma-chrome-launcher": "2.2.0",
-        "karma-jasmine": "1.1.1",
+        "karma-jasmine": "1.0.2",
         "karma-typescript": "^3.0.12",
         "ng-packagr": "^2.2.0",
         "rxjs": "^5.2.0",

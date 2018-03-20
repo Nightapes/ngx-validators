@@ -16,18 +16,15 @@ module.exports = function (config) {
         reporters: ["progress", "karma-typescript"],
         browsers: process.env.TRAVIS ? ['ChromeHeadless'] : ['Chrome'],
         karmaTypescriptConfig: {
-            include: ["src/**/*.ts"],
-            exclude: [
-                'node_modules/',
-                'examples/'
-            ],
             compilerOptions: {
-                lib: [
-                    "es5",
-                    "es6",
-                    "dom"
-                ]
-            }
+                emitDecoratorMetadata: true,
+                experimentalDecorators: true,
+                module: "commonjs",
+                sourceMap: true,
+                target: "ES5",
+                lib: ["DOM", "ES2015"]
+            },
+            include: ["src/**/*.ts"],
         },
         singleRun: true
     });
