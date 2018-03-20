@@ -1,32 +1,25 @@
 {
     "compilerOptions": {
-        "baseUrl": ".",
-        "declaration": true,
-        "stripInternal": true,
-        "experimentalDecorators": true,
-        "strictNullChecks": false,
         "noImplicitAny": true,
-        "module": "es2015",
+        "module": "commonjs",
         "target": "es5",
-        "moduleResolution": "node",
-        "rootDir": ".",
-        "sourceMap": true,
-        "inlineSources": true,
-        "skipLibCheck": true,
-        "suppressImplicitAnyIndexErrors": true,
         "lib": [
-            "es2015",
+            "es5",
+            "es6",
             "dom"
-        ]
+        ],
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "declaration": true,
+        "moduleResolution": "node"
     },
-    "files": [
-        "index.ts",
-        "./tests/util.spec.ts",
-        "./tests/password-validators.spec.ts",
-        "./tests/email-validators.spec.ts",
-        "./tests/creditcard-validators.spec.ts",
-        "./tests/universal-validators.spec.ts",
-        "./tests/phone-validators.spec.ts"
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
     ],
     "angularCompilerOptions": {
         "strictMetadataEmit": true

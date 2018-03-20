@@ -45,14 +45,10 @@ Desktop.ini
 # Mac crap
 .DS_Store
 
-jsconfig.json
+### Custom
+
 *.log
 *.tgz
 examples/node_modules/
-*.ngsummary.json
-*.metadata.json
-*.ngfactory.ts
-bundles/ngx-validators.umd.js
-bundles/ngx-validators.umd.min.js
-bundles/ng2-validators.umd.js
-bundles/ng2-validators.umd.min.js
+dist/
+coverage/
