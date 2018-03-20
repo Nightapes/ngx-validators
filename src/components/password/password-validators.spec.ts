@@ -1,6 +1,5 @@
 import { PasswordValidators } from './password-validators';
 import { FormControl, FormGroup } from '@angular/forms';
-import { } from 'jasmine';
 
 describe('Password validators service', () => {
     describe('repeatCharacterRegexRule', () => {

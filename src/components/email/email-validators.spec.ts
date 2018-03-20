@@ -1,6 +1,5 @@
 import { EmailValidators } from './email-validators';
 import { FormControl } from '@angular/forms';
-import { } from 'jasmine';
 
 describe('Email validators service', () => {
     describe('simpleRule', () => {

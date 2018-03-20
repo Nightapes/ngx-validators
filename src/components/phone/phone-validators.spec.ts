@@ -1,6 +1,5 @@
 import { PhoneValidators, regionsCode } from './phone-validators';
 import { FormControl } from '@angular/forms';
-import { } from 'jasmine';
 
 describe('isPhoneNumber', () => {
 

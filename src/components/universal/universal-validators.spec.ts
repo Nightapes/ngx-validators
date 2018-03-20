@@ -1,6 +1,5 @@
 import { UniversalValidators } from './universal-validators';
 import { FormControl } from '@angular/forms';
-import { } from 'jasmine';
 
 describe('Universal validators service', () => {
 

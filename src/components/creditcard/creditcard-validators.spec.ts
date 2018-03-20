@@ -1,7 +1,6 @@
 import { CreditCardValidators } from './creditcard-validators';
 import { FormControl } from '@angular/forms';
 import { americanexpress, visa, dinersclub, discover, jcb, maestro, mastercard } from './creditcards/creditcards';
-import { } from 'jasmine';
 
 describe('CreditCardValidators', () => {
 
