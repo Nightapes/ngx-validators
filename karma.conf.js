@@ -8,7 +8,7 @@ module.exports = function (config) {
             "src/**/*.ts" // *.tsx for React Jsx
         ],
         exclude: [
-            'node_modules/**/*spec.js'
+            'node_modules/'
         ],
         preprocessors: {
             "src/**/*.ts": "karma-typescript" // *.tsx for React Jsx
@@ -18,9 +18,8 @@ module.exports = function (config) {
         karmaTypescriptConfig: {
             include: ["src/**/*.ts"],
             exclude: [
-                'node_modules/**/*spec.js',
-                'examples/',
-                'node_modules/**/*.d.ts' // fix for https://github.com/monounity/karma-typescript/issues/258
+                'node_modules/',
+                'examples/'
             ],
             compilerOptions: {
                 lib: [
