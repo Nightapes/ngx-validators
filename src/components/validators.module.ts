@@ -8,7 +8,6 @@ import {
     MaxValidatorDirective, MinValidatorDirective, WhiteSpaceValidatorDirective
 } from './universal/universal.directive';
 import { PasswordValidatorDirective } from './password/password.directive';
-import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeValidatorDirective } from './phone/phone.directive';
 
 @NgModule({
     declarations: [CreditCardValidatorDirective,
@@ -19,10 +18,7 @@ import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeVa
         MaxValidatorDirective,
         MinValidatorDirective,
         WhiteSpaceValidatorDirective,
-        PhoneValidatorDirective,
-        PossiblePhoneValidatorDirective,
-        EmptyStringValidatorDirective,
-        CountryCodeValidatorDirective],
+        EmptyStringValidatorDirective],
     exports: [CreditCardValidatorDirective,
         EmailValidatorDirective,
         PasswordValidatorDirective,
@@ -31,9 +27,6 @@ import { PhoneValidatorDirective, PossiblePhoneValidatorDirective, CountryCodeVa
         MaxValidatorDirective,
         MinValidatorDirective,
         WhiteSpaceValidatorDirective,
-        PhoneValidatorDirective,
-        PossiblePhoneValidatorDirective,
-        EmptyStringValidatorDirective,
-        CountryCodeValidatorDirective]
+        EmptyStringValidatorDirective]
 })
 export class ValidatorsModule { }

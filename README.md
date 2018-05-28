@@ -13,6 +13,8 @@ An implementation of various angular validators for Angular 2+.
 1. Universal
 1. Creditcards
 
+For validation of phone numbers see: [ngx-phone-validators](https://github.com/Nightapes/ngx-phone-validators)
+
 # Install
 
 `npm install ngx-validators --save-dev`
@@ -28,25 +30,12 @@ Add following to `project.config.ts`
 ```ts
 let additionalPackages: ExtendPackages[] = [
       {
-        name: 'google-libphonenumber',
-        path: 'node_modules/google-libphonenumber/dist/libphonenumber.js'
-      },
-      {
         name: 'ngx-validators',
         path: 'node_modules/ngx-validators/bundles/ngx-validators.umd.min.js'
       },
     ];
     
     this.addPackagesBundles(additionalPackages);
-```
-
-For AOT add
-
-```ts
-  this.ROLLUP_NAMED_EXPORTS = [
-    ...this.ROLLUP_NAMED_EXPORTS,
-    { 'node_modules/google-libphonenumber/dist/libphonenumber.js': [ 'PhoneNumberUtil' ]}
-  ];
 ```
 
 ## Password validators
@@ -198,18 +187,6 @@ control: FormControl = new FormControl('', UniversalValidators.visa);
 
 ```
 
-### Phonenumber
-
-```ts
-import {PhoneValidators} from 'ngx-validators'
-
-...
-
-countryCode: FormControl = new FormControl('', PhoneValidators.isValidRegionCode);
-phone: FormControl = new FormControl('', PhoneValidators.isPhoneNumber('US'));
-phone2: FormControl = new FormControl('', PhoneValidators.isPossibleNumberWithReason('US'));
-```
-
 
 ## How to use [template driven]
 
@@ -274,43 +251,6 @@ export class AppModule {
 <form>
 <input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" email>
 <span *ngIf="formControl.hasError('normalEmailRule')">Is not a email</span>
-</form>
-
-```
-
-### Phone
-
-
-#### Valid Phone
-
-```html
-<form>
-<input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" phone="US">
-<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
-<span *ngIf="formControl.hasError('noPhoneNumber')">Is not a phone number</span>
-</form>
-
-```
-
-#### Possible Phone
-
-```html
-<form>
-<input type="text" [(ngModel)]="model.phone" name="phone" #formControl="ngModel" possiblePhone="US">
-<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
-<span *ngIf="formControl.hasError('phoneNumberTooLong')">Phone number is to long</span>
-<span *ngIf="formControl.hasError('phoneNumberTooShort')">Phone number is to short</span>
-<span *ngIf="formControl.hasError('noPhoneNumber')">Is not a phone number</span>
-</form>
-
-```
-
-#### CountryCode
-
-```html
-<form>
-<input type="text" [(ngModel)]="model.countryCode" name="countryCode" #formControl="ngModel" countryCode>
-<span *ngIf="formControl.hasError('noValidRegionCode')">Is not a countryCode</span>
 </form>
 
 ```
