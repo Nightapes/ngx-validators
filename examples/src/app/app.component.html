@@ -1,23 +1,23 @@
-<md-toolbar color="primary">
-    <button md-button class="menu-button" (click)="sidenav.toggle()">
-    <md-icon>menu</md-icon></button>
+<mat-toolbar color="primary">
+    <button mat-button class="menu-button" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon></button>
     <span class="home" [routerLink]="['guide']">ngx-validators</span>
-</md-toolbar>
+</mat-toolbar>
 
-<md-sidenav-container>
-    <md-sidenav opened="true" #sidenav>
+<mat-sidenav-container>
+    <mat-sidenav opened="true" #sidenav>
         <!-- sidenav content -->
-        <md-nav-list>
-            <a md-list-item [routerLink]="['guide']" routerLinkActive="selected">Guide</a >
-            <a md-list-item [routerLink]="['reactive-forms']" routerLinkActive="selected">Reactive forms</a >
-            <a md-list-item [routerLink]="['forms']" routerLinkActive="selected">Forms</a >
-            <a md-list-item href="https://github.com/Nightapes/ngx-validators">Github</a >
-            <a md-list-item href="https://github.com/Nightapes/ngx-validators/issues">Github Issues</a >
-        </md-nav-list>
-  </md-sidenav>
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['guide']" routerLinkActive="selected">Guide</a >
+            <a mat-list-item [routerLink]="['reactive-forms']" routerLinkActive="selected">Reactive forms</a >
+            <a mat-list-item [routerLink]="['forms']" routerLinkActive="selected">Forms</a >
+            <a mat-list-item href="https://github.com/Nightapes/ngx-validators">Github</a >
+            <a mat-list-item href="https://github.com/Nightapes/ngx-validators/issues">Github Issues</a >
+        </mat-nav-list>
+  </mat-sidenav>
 
   <!-- primary content -->
 <div class="container">
     <router-outlet></router-outlet>
 </div>
-</md-sidenav-container>
+</mat-sidenav-container>

@@ -1,8 +1,8 @@
-<md-card class="card">
-    <md-card-header>
-        <md-card-title>Guide</md-card-title>
-    </md-card-header>
-    <md-card-content>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Guide</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
         <h1>ngx-validators
             <a href="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master"><img src="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master" alt="Build Status"></a>
             <a href="https://david-dm.org/nightapes/ngx-validators"><img src="https://david-dm.org/nightapes/ngx-validators.svg" alt="Dependency Status"></a>
@@ -12,39 +12,39 @@
         <h2>Install</h2>
         <pre><code>npm install ngx-validators --save
 </code></pre>
-    </md-card-content>
-</md-card>
-<md-card class="card">
-    <md-card-header>
-        <md-card-title>List of validators</md-card-title>
-    </md-card-header>
-    <md-card-content>
-        <md-list dense>
-            <h3 md-subheader>Password validators</h3>
-            <md-list-item *ngFor="let items of password">
-                <h4 md-line>{{items.name}}</h4>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Email validators</h3>
-            <md-list-item *ngFor="let items of email">
-                <h4 md-line>{{items.name}}</h4>
-                <p md-line *ngIf="items.hint" [innerHtml]=items.hint></p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Universal validators</h3>
-            <md-list-item *ngFor="let items of universal">
-                <h4 md-line>{{items.name}}</h4>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Creditcards validators</h3>
-            <md-list-item *ngFor="let items of creditcards">
-                <h4 md-line>{{items.name}}</h4>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Phone validators</h3>
-            <md-list-item *ngFor="let items of phone">
-                <h4 md-line>{{items.name}}</h4>
-            </md-list-item>
-        </md-list>
-    </md-card-content>
-</md-card>
+    </mat-card-content>
+</mat-card>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>List of validators</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list dense>
+            <h3 mat-subheader>Password validators</h3>
+            <mat-list-item *ngFor="let items of password">
+                <h4 mat-line>{{items.name}}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Email validators</h3>
+            <mat-list-item *ngFor="let items of email">
+                <h4 mat-line>{{items.name}}</h4>
+                <p mat-line *ngIf="items.hint" [innerHtml]=items.hint></p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Universal validators</h3>
+            <mat-list-item *ngFor="let items of universal">
+                <h4 mat-line>{{items.name}}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Creditcards validators</h3>
+            <mat-list-item *ngFor="let items of creditcards">
+                <h4 mat-line>{{items.name}}</h4>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <h3 mat-subheader>Phone validators</h3>
+            <mat-list-item *ngFor="let items of phone">
+                <h4 mat-line>{{items.name}}</h4>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

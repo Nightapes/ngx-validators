@@ -5,22 +5,21 @@ import { ValidatorsModule } from 'ngx-validators';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import {
-    MaterialModule,
-    MdButtonModule,
-    MdCardModule,
-    MdIconModule,
-    MdListModule,
-    MdSidenavModule,
-    MdTabsModule
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatToolbarModule
 } from '@angular/material';
-import { MdToolbarModule } from '@angular/material/toolbar';
-import { MdInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { GuideComponent } from './guide/guide.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,16 +30,19 @@ import { GuideComponent } from './guide/guide.component';
     FormsExampleModule,
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([], { useHash: true }),
     HttpModule,
     ValidatorsModule,
     GuideModule,
-    MdToolbarModule,
-    MdTabsModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdListModule,
-    MdIconModule
+    MatToolbarModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
