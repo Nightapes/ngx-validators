@@ -1,50 +1,51 @@
 <mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>Guide</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h1>ngx-validators
-            <a href="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master"><img src="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master" alt="Build Status"></a>
-            <a href="https://david-dm.org/nightapes/ngx-validators"><img src="https://david-dm.org/nightapes/ngx-validators.svg" alt="Dependency Status"></a>
-            <a href="https://david-dm.org/nightapes/ngx-validators/?type=dev"><img src="https://david-dm.org/nightapes/ngx-validators/dev-status.svg" alt="devDependency Status"></a>
-        </h1>
-        <p>An implementation of various angular validators for Angular 2.</p>
-        <h2>Install</h2>
-        <pre><code>npm install ngx-validators --save
+  <mat-card-header>
+    <mat-card-title>Guide</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h1>ngx-validators
+      <a href="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master"><img
+        src="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master" alt="Build Status"></a>
+      <a href="https://david-dm.org/nightapes/ngx-validators"><img
+        src="https://david-dm.org/nightapes/ngx-validators.svg" alt="Dependency Status"></a>
+      <a href="https://david-dm.org/nightapes/ngx-validators/?type=dev"><img
+        src="https://david-dm.org/nightapes/ngx-validators/dev-status.svg" alt="devDependency Status"></a>
+    </h1>
+    <p>An implementation of various angular validators for Angular 2.</p>
+    <h2>Install</h2>
+    <pre><code>npm install ngx-validators --save
 </code></pre>
-    </mat-card-content>
+  </mat-card-content>
 </mat-card>
 <mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>List of validators</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-list dense>
-            <h3 mat-subheader>Password validators</h3>
-            <mat-list-item *ngFor="let items of password">
-                <h4 mat-line>{{items.name}}</h4>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Email validators</h3>
-            <mat-list-item *ngFor="let items of email">
-                <h4 mat-line>{{items.name}}</h4>
-                <p mat-line *ngIf="items.hint" [innerHtml]=items.hint></p>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Universal validators</h3>
-            <mat-list-item *ngFor="let items of universal">
-                <h4 mat-line>{{items.name}}</h4>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Creditcards validators</h3>
-            <mat-list-item *ngFor="let items of creditcards">
-                <h4 mat-line>{{items.name}}</h4>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            <h3 mat-subheader>Phone validators</h3>
-            <mat-list-item *ngFor="let items of phone">
-                <h4 mat-line>{{items.name}}</h4>
-            </mat-list-item>
-        </mat-list>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>List of validators</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list dense>
+      <h3 mat-subheader>Password validators</h3>
+      <mat-list-item *ngFor="let items of password">
+        <h4 mat-line>{{items.name}}</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Email validators</h3>
+      <mat-list-item *ngFor="let items of email">
+        <h4 mat-line>{{items.name}}</h4>
+        <p mat-line *ngIf="items.hint" [innerHtml]=items.hint></p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Universal validators</h3>
+      <mat-list-item *ngFor="let items of universal">
+        <h4 mat-line>{{items.name}}</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Creditcards validators</h3>
+      <mat-list-item *ngFor="let items of creditcards">
+        <h4 mat-line>{{items.name}}</h4>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <h3 mat-subheader>Phone validators</h3>
+      <a mat-list-item href="https://git.greathealthworks.com/towzing/towzing-web/merge_requests/86">ngx-phone-validators</a>
+    </mat-list>
+  </mat-card-content>
 </mat-card>

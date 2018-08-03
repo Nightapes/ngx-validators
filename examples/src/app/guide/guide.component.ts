@@ -91,17 +91,6 @@ export class GuideComponent implements OnInit {
       name: 'mastercard',
     }
   ];
-  phone = [
-    {
-      name: 'regionCode',
-    },
-    {
-      name: 'is phone number',
-    },
-    {
-      name: 'is possible number with reason',
-    }
-  ];
   constructor() { }
 
   ngOnInit() {

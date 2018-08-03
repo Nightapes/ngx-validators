@@ -2649,10 +2649,6 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
-google-libphonenumber@^3.1.11:
-  version "3.1.11"
-  resolved "https://registry.yarnpkg.com/google-libphonenumber/-/google-libphonenumber-3.1.11.tgz#894eafe874fbd456e794e322501b832871b7c568"
-
 got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"

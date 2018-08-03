@@ -25,7 +25,6 @@
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
     "core-js": "^2.4.1",
-    "google-libphonenumber": "^3.1.11",
     "ngx-validators": "file:../dist",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.5"
