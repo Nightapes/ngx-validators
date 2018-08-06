@@ -1,13 +1,13 @@
 <form [formGroup]="form">
-  <md-card class="card">
-    <md-card-header>
-      <md-card-title>Email</md-card-title>
-    </md-card-header>
-    <md-card-content>
-      <md-input-container>
-        <input mdInput formControlName="email" name="email" placeholder="Email">
-        <md-hint *ngIf="email.hasError('normalEmailRule')" class="error">Is not a email</md-hint>
-      </md-input-container>
-    </md-card-content>
-  </md-card>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Email</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput formControlName="email" name="email" placeholder="Email">
+        <mat-hint *ngIf="email.hasError('normalEmailRule')" class="error">Is not a email</mat-hint>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
 </form>
