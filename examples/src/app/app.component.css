@@ -27,3 +27,17 @@ md-sidenav {
 .home {
     padding-left: 20px;
 }
+
+.github {
+    height: 30px;
+    margin: auto;
+    margin-top: 9px;
+}
+
+.mat-sidenav {
+    width: 400px;
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}

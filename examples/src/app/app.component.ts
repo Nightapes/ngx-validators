@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { items, Items } from 'app/items';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  menuItems: Items[] = items;
 }

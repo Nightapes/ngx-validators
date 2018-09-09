@@ -1,0 +1,5 @@
+<mat-form-field>
+    <input matInput type="text" [(ngModel)]="model.max" name="max" #formControl5="ngModel" max="22" placeholder="max (22)">
+    <mat-hint *ngIf="formControl5.hasError('numberRequired')" class="error">Needs to be a number</mat-hint>
+    <mat-hint *ngIf="formControl5.hasError('max')" class="error">Number to big</mat-hint>
+</mat-form-field>

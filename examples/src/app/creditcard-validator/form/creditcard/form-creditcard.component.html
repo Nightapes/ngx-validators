@@ -1,0 +1,4 @@
+<mat-form-field>
+    <input type="creditcard" matInput [(ngModel)]="model" name="creditcard" #formControl="ngModel" creditCard placeholder="Creditcard">
+    <mat-hint *ngIf="formControl.hasError('creditcard')" class="error">This is not a credit card</mat-hint>
+</mat-form-field>

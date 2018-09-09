@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput type="text" formControlName="minLength" name="minLength" placeholder="Min length (min 3)">
+        <mat-hint *ngIf="minLength.hasError('minLength')" class="error">Input to short (min 3)</mat-hint>
+    </mat-form-field>
+</form>

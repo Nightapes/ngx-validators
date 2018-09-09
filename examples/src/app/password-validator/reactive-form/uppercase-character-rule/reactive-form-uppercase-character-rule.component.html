@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput formControlName="newPassword" name="newPassword" type="password" placeholder="Password">
+        <mat-hint *ngIf="uppercaseCharacterRule.hasError('uppercaseCharacterRule')" class="error">Password should contain at least one uppercase character</mat-hint>
+    </mat-form-field>
+</form>

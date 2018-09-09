@@ -1,3 +1,4 @@
+import { UniversalModule } from './universal-validator/universal-validator.module';
 import { GuideModule } from './guide/guide.module';
 import { FormsExampleModule } from './forms/forms.module';
 import { ReactiveFormsExampleModule } from './reactive-forms/reactive-forms.module';
@@ -12,7 +13,8 @@ import {
   MatListModule,
   MatSidenavModule,
   MatTabsModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,6 +22,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Routes } from '@angular/router';
+import { ReactiveFormsComponent } from 'app/reactive-forms/reactive-forms.component';
+import { GuideComponent } from 'app/guide/guide.component';
+import { EmailModule } from './email-validator/email-validator.module';
+import { PasswordModule } from './password-validator/password-validator.module';
+import { CreditcardModule } from './creditcard-validator/creditcard-validator.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsExampleModule,
     AppRoutingModule,
     BrowserModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot([], { useHash: true }),
+    BrowserAnimationsModule,
     HttpModule,
     ValidatorsModule,
     GuideModule,
@@ -42,9 +50,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     MatIconModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    UniversalModule,
+    PasswordModule,
+    EmailModule,
+    CreditcardModule
   ],
-  providers: [],
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

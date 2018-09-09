@@ -1,0 +1,36 @@
+<mat-form-field>
+    <mat-select placeholder="Type" [(value)]="selected">
+        <mat-option value="form" *ngIf="currentValidator.formHTML">
+            Form
+        </mat-option>
+        <mat-option value="reactiveForm" *ngIf="currentValidator.reactiveformHTML">
+            Reactive Form
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Universal validator - {{item}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngIf="selected =='reactiveForm'">
+            <app-reactive-no-whitespace *ngIf="item == 'noWhitespace'"></app-reactive-no-whitespace>
+            <app-reactive-no-empty-string *ngIf="item == 'noEmptyString'"></app-reactive-no-empty-string>
+            <app-reactive-min-length *ngIf="item == 'minLength'"></app-reactive-min-length>
+            <app-reactive-max-length *ngIf="item == 'maxLength'"></app-reactive-max-length>
+            <app-reactive-min *ngIf="item == 'min'"></app-reactive-min>
+            <app-reactive-max *ngIf="item == 'max'"></app-reactive-max>
+            <app-reactive-is-in-range *ngIf="item == 'isInRange'"></app-reactive-is-in-range>
+            <app-reactive-is-number *ngIf="item == 'isNumber'"></app-reactive-is-number>
+        </ng-container>
+        <ng-container *ngIf="selected =='form'">
+            <app-no-whitespace *ngIf="item == 'noWhitespace'"></app-no-whitespace>
+            <app-min *ngIf="item == 'min'"></app-min>
+            <app-max *ngIf="item == 'max'"></app-max>
+            <app-is-in-range *ngIf="item == 'isInRange'"></app-is-in-range>
+            <app-is-number *ngIf="item == 'isNumber'"></app-is-number>
+        </ng-container>
+    </mat-card-content>
+</mat-card>
+<app-codeviewer *ngIf="currentValidator && selected =='form'" [html]="currentValidator.formHTML" [tsCode]="currentValidator.formTS"></app-codeviewer>
+<app-codeviewer *ngIf="currentValidator && selected =='reactiveForm'" [html]="currentValidator.reactiveformHTML" [tsCode]="currentValidator.reactiveformTS"></app-codeviewer>
