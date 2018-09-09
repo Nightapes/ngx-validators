@@ -9,8 +9,7 @@ node_js:
   - '8'
 after_success:
   - yarn build
-  - cp .git dist/ -r # required by semantic release
-  - cp README.md dist/
+  - cp .git dist/.git/ -r # required by semantic release
   - cd dist
   - yarn install
   - yarn semantic-release
