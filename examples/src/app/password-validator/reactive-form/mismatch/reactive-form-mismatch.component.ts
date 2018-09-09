@@ -20,12 +20,5 @@ export class ReactiveFormMismatchComponent implements OnInit {
       'confirmPassword': this.confirmPassword
     });
     this.form.validator = PasswordValidators.mismatchedPasswords('newPassword', 'confirmPassword');
-
-    this.form.valueChanges.subscribe(val => {
-      console.log(this.form.errors);
-    });
   }
-
-
-
 }
