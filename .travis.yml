@@ -1,7 +1,8 @@
+sudo: required
 language: node_js
-cache:
-  directories:
-    - ~/.npm
+addons:
+  chrome: stable
+cache: yarn
 notifications:
   email: false
 node_js:
