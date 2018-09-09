@@ -1,14 +1,11 @@
-sudo: required
 language: node_js
-cache: yarn
-addons:
-  chrome: stable
+cache:
+  directories:
+    - ~/.npm
 notifications:
   email: false
 node_js:
   - '8'
-before_install:
-  - npm i -g npm@3 # fix for https://github.com/npm/npm/issues/19222
 after_success:
   - yarn build
   - cp .git dist/ -r # required by semantic release
@@ -18,4 +15,4 @@ after_success:
   - yarn semantic-release
 branches:
   except:
-    - "/^v\\d+\\.\\d+\\.\\d+$/"
+    - /^v\d+\.\d+\.\d+$/
