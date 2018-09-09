@@ -10,11 +10,6 @@ body {
     margin-bottom: 24px;
 }
 
-.error {
-    color: red;
-    font-size: 75%;
-}
-
 .error-container {
     margin-top: -15px;
     margin-bottom: 5px;
@@ -38,4 +33,12 @@ body {
 
 .mat-ink-bar {
     background-color: white;
+}
+
+.mat-drawer-container {
+    position: fixed !important;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
 }

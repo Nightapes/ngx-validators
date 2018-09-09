@@ -4093,10 +4093,17 @@ next-tick@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
 
-"ngx-validators@file:../dist":
-  version "3.0.0"
+ngx-highlightjs@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-highlightjs/-/ngx-highlightjs-2.1.1.tgz#f8f19e6b083e375b6b964e91ee233a30a01563a1"
   dependencies:
     tslib "^1.9.0"
+
+ngx-validators@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-validators/-/ngx-validators-4.0.0.tgz#644d9c756973e901d28c8c97be123400faf0dea8"
+  dependencies:
+    tslib "^1.7.1"
 
 no-case@^2.2.0:
   version "2.3.2"

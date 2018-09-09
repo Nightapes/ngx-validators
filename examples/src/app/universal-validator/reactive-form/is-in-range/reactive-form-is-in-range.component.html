@@ -1,0 +1,8 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput type="text" formControlName="isInRange" name="maxLength" placeholder="Range (3, 6)">
+        <mat-hint *ngIf="isInRange.hasError('numberRequired')" class="error">Is not a number</mat-hint>
+        <mat-hint *ngIf="isInRange.hasError('rangeValueToSmall')" class="error">Number to small</mat-hint>
+        <mat-hint *ngIf="isInRange.hasError('rangeValueToBig')" class="error">Number to big</mat-hint>
+    </mat-form-field>
+</form>

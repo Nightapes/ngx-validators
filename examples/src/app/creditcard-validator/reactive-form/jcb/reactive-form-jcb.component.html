@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput formControlName="creditcard" name="creditcard" placeholder="creditcard">
+        <mat-hint *ngIf="creditcard.hasError('jcb')" class="error">Is not a JCB</mat-hint>
+    </mat-form-field>
+</form>

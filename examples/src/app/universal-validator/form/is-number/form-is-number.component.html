@@ -1,0 +1,4 @@
+<mat-form-field>
+    <input matInput type="text" [(ngModel)]="model.isNumber" name="isNumber" #formControl2="ngModel" isNumber placeholder="isNumber">
+    <mat-hint *ngIf="formControl2.hasError('numberRequired')" class="error">Is not a number</mat-hint>
+</mat-form-field>
