@@ -51,6 +51,13 @@ describe('Util service', () => {
             expect(control.hasError('newError')).toBeFalsy();
             expect(control.hasError('oldError')).toBeTruthy();
         });
+
+        it('should work for control with one error', () => {
+            let control: FormControl = new FormControl('');
+            control.setErrors({ newError: 'test' });
+            let validated = Util.removeError(control, 'newError');
+            expect(control.hasError('newError')).toBeFalsy();
+        });
     });
 
 });
