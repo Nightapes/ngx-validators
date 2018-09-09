@@ -54,6 +54,11 @@ export const password: Validator[] = [
         name: 'specialCharacterRule',
         reactiveformTS: require('!raw-loader!./password-validator/reactive-form/special-character-rule/reactive-form-special-character-rule.component'),
         reactiveformHTML: require('!raw-loader!./password-validator/reactive-form/special-character-rule/reactive-form-special-character-rule.component.html')
+    },
+    {
+        name: 'mismatch',
+        reactiveformTS: require('!raw-loader!./password-validator/reactive-form/mismatch/reactive-form-mismatch.component'),
+        reactiveformHTML: require('!raw-loader!./password-validator/reactive-form/mismatch/reactive-form-mismatch.component.html')
     }
 ];
 

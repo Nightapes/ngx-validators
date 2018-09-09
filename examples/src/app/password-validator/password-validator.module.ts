@@ -19,6 +19,7 @@ import { FormDigitCharacterRuleComponent } from 'app/password-validator/form/dig
 import { FormLowercaseCharacterRuleComponent } from 'app/password-validator/form/lowercase-character-rule/form-lowercase-character-rule.component';
 import { ReactiveFormUppercaseCharacterRuleComponent } from './reactive-form/uppercase-character-rule/reactive-form-uppercase-character-rule.component';
 import { ReactiveFormSpecialCharacterRuleComponent } from './reactive-form/special-character-rule/reactive-form-special-character-rule.component';
+import { ReactiveFormMismatchComponent } from './reactive-form/mismatch/reactive-form-mismatch.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,7 @@ const routes: Routes = [
     ReactiveFormSpecialCharacterRuleComponent,
     ReactiveFormDigitCharacterRuleComponent,
     ReactiveFormRepeatCharacterRegexRuleComponent,
+    ReactiveFormMismatchComponent,
     FormAlphabeticalCharacterRuleComponent,
     FormRepeatCharacterRegexRuleComponent,
     FormDigitCharacterRuleComponent,
