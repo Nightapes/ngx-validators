@@ -1,6 +1,6 @@
 import { AbstractControl } from '@angular/forms';
 
-export class Util {
+export class AbstractControlUtil {
     static isNotPresent(control: AbstractControl): boolean {
         let value = control.value;
         if (value === undefined || value === null) {
