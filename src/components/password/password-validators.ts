@@ -1,12 +1,12 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Util } from './../util';
+import { AbstractControlUtil } from './../abstract-control-util';
 
 // tslint:disable-next-line:variable-name
 export class PasswordValidators {
 
     public static repeatCharacterRegexRule(repeatCount: number) {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let repeatDec = repeatCount - 1;
             let pattern = '([^\\x00-\\x1F])\\1{' + repeatDec + '}';
             if (control.value !== '' && new RegExp(pattern).test(control.value)) {
@@ -19,7 +19,7 @@ export class PasswordValidators {
 
     public static allowedCharacterRule(allowedChars: string[]): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             let valid = true;
             let invalidChars: string[] = [];
@@ -42,7 +42,7 @@ export class PasswordValidators {
 
     public static alphabeticalCharacterRule(amount: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -59,7 +59,7 @@ export class PasswordValidators {
 
     public static digitCharacterRule(amount: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -76,7 +76,7 @@ export class PasswordValidators {
 
     public static lowercaseCharacterRule(amount: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -93,7 +93,7 @@ export class PasswordValidators {
 
     public static uppercaseCharacterRule(amount: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -110,7 +110,7 @@ export class PasswordValidators {
 
     public static specialCharacterRule(amount: number): ValidatorFn {
         const validator = (control: AbstractControl): { [key: string]: any } => {
-            if (Util.isNotPresent(control)) return undefined;
+            if (AbstractControlUtil.isNotPresent(control)) return undefined;
             let value: string = control.value;
             if (value.length === 0) {
                 return undefined;
@@ -130,11 +130,11 @@ export class PasswordValidators {
             let newPasswordValue = group.get(passwordControlName ? passwordControlName : 'newPassword').value;
             let newPasswordConfirmValue = group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword').value;
             if (newPasswordValue !== newPasswordConfirmValue) {
-                Util.addError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords', true)
-                
+                AbstractControlUtil.addError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords', true)
+
                 return { 'mismatchedPasswords': true };
             } else {
-                Util.removeError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords');
+                AbstractControlUtil.removeError(group.get(confirmPasswordControlName ? confirmPasswordControlName : 'confirmPassword'), 'mismatchedPasswords');
             }
             return undefined;
 
