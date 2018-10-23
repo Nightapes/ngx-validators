@@ -7,6 +7,7 @@
         "test-watch": "karma start --no-single-run --auto-watch",
         "build": "tslint --project . && ng-packagr -p package.json",
         "commit": "tslint --project .  && npm test && git-cz",
+        "lint": "tslint --project .",
         "semantic-release": "semantic-release",
         "travis-deploy-once": "travis-deploy-once"
     },
