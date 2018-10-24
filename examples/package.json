@@ -10,7 +10,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "build.prod": "ng build --prod --base-href https://Nightapes.github.io/ngx-validators/",
-        "ngh": "ngh --no-silent --name=\"Nightapes\" --email=svbeisch@gmail.com"
+        "ngh": "ngh --no-silent"
     },
     "private": true,
     "dependencies": {
