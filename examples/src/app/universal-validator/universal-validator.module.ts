@@ -1,4 +1,12 @@
-import { MatCardModule, MatListModule, MatFormFieldModule, MatTooltipModule, MatInputModule, MatSelectModule } from '@angular/material';
+import {
+  MatCardModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatTooltipModule,
+  MatInputModule,
+  MatSelectModule,
+  MatDatepickerModule, MatNativeDateModule, MatIconModule
+} from '@angular/material';
 import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatTabsModule } from '@angular/material';
@@ -49,6 +57,9 @@ const routes: Routes = [
     MatButtonModule,
     MatTabsModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule,
     UtilModule,
     ValidatorsModule
   ],

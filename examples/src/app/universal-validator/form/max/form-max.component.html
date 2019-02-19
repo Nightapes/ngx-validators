@@ -1,5 +1,21 @@
 <mat-form-field>
-    <input matInput type="text" [(ngModel)]="model.max" name="max" #formControl5="ngModel" max="22" placeholder="max (22)">
+    <input matInput type="text" [(ngModel)]="model.max" name="max" #formControl5="ngModel" isNumber max="22" placeholder="max (22)">
     <mat-hint *ngIf="formControl5.hasError('numberRequired')" class="error">Needs to be a number</mat-hint>
     <mat-hint *ngIf="formControl5.hasError('max')" class="error">Number to big</mat-hint>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput type="date" [(ngModel)]="model.date1" name="date1" #date1="ngModel" placeholder="Date1 (max 2020-12-31):"
+         max="2020-12-31">
+  <mat-error *ngIf="date1.hasError('max')">Date too big</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="date2Picker" [(ngModel)]="model.date2" name="date2" #date2="ngModel" placeholder="Date2 (max 2020-12-31):"
+         max="2021-01-01">
+  <mat-datepicker-toggle matSuffix [for]="date2Picker">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #date2Picker></mat-datepicker>
+  <mat-error *ngIf="date2.hasError('matDatepickerMax')">Date too big</mat-error>
 </mat-form-field>

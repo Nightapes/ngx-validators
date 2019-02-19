@@ -1,5 +1,21 @@
 <mat-form-field>
-    <input matInput type="text" [(ngModel)]="model.min" name="min" #formControl4="ngModel" min="2" placeholder="min (2)">
+    <input matInput type="text" [(ngModel)]="model.min" isNumber name="min" #formControl4="ngModel" min="2" placeholder="min (2)">
     <mat-hint *ngIf="formControl4.hasError('numberRequired')" class="error">Needs to be a number</mat-hint>
     <mat-hint *ngIf="formControl4.hasError('min')" class="error">Number to small</mat-hint>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput type="date" [(ngModel)]="model.date1" name="date1" #date1="ngModel" placeholder="Date1 (min 2019-01-01):"
+         min="2019-01-01" max="2020-12-31">
+  <mat-error *ngIf="date1.hasError('min')">Date too small</mat-error>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="date2Picker" [(ngModel)]="model.date2" name="date2" #date2="ngModel" placeholder="Date2 (min 2019-01-01):"
+         min="2019-01-02" max="2021-01-01">
+  <mat-datepicker-toggle matSuffix [for]="date2Picker">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #date2Picker></mat-datepicker>
+  <mat-error *ngIf="date2.hasError('matDatepickerMin')">Date too small</mat-error>
 </mat-form-field>
