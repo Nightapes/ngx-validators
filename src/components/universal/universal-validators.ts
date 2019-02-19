@@ -1,5 +1,5 @@
-import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { AbstractControlUtil } from './../abstract-control-util';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControlUtil } from '../abstract-control-util';
 
 export class UniversalValidators {
 

@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <h3>Passing Field Name:</h3>
+  <div class="row">
+    <mat-form-field class="col-6">
+      <mat-label>Email:</mat-label>
+      <input type="email" matInput formControlName="email" required>
+      <mat-error *ngIf="form.get('email').hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6">
+      <mat-label>Confirm Email:</mat-label>
+      <input type="email" matInput formControlName="emailConfirm" required>
+      <mat-error *ngIf="form.get('emailConfirm').hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="form.get('emailConfirm').hasError('notEqualTo')">This field should be equal to Email field</mat-error>
+    </mat-form-field>
+  </div>
+  <h3>Passing Field Reference</h3>
+  <div class="row">
+    <mat-form-field class="col-6">
+      <mat-label>Password:</mat-label>
+      <input type="password" matInput formControlName="password" required>
+      <mat-error *ngIf="form.get('password').hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-6">
+      <mat-label>Confirm Password:</mat-label>
+      <input type="password" matInput formControlName="passwordConfirm" required>
+      <mat-error *ngIf="form.get('passwordConfirm').hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="form.get('passwordConfirm').hasError('notEqualTo')">This field should be equal to Password field</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-button [disabled]="form.invalid">Submit</button>
+  </div>
+</form>
