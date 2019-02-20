@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmailModule } from './email-validator/email-validator.module';
 import { PasswordModule } from './password-validator/password-validator.module';
 import { CreditcardModule } from './creditcard-validator/creditcard-validator.module';
+import { EqualToValidatorModule } from './equal-to-validator/equal-to-validator.module';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CreditcardModule } from './creditcard-validator/creditcard-validator.mo
     UniversalModule,
     PasswordModule,
     EmailModule,
-    CreditcardModule
+    CreditcardModule,
+    EqualToValidatorModule
   ],
   providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } }],
   bootstrap: [AppComponent]
