@@ -15,3 +15,10 @@ export { CreditCardValidatorDirective } from './components/creditcard/creditcard
 
 //Module
 export { ValidatorsModule } from './components/validators.module';
+
+// Util
+export { AbstractControlUtil } from './components/abstract-control-util'
+
+//EqualTo
+export * from './components/equal-to/equal-to.directive'
+export * from './components/equal-to/equal-to-validator'

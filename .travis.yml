@@ -7,8 +7,10 @@ notifications:
   email: false
 node_js:
   - '8'
-after_success:
+script:
+  - yarn test
   - yarn build
+after_success:
   - cp .git dist/.git/ -r # required by semantic release
   - cd dist
   - yarn install

@@ -1,5 +1,5 @@
-import { Directive, Input, forwardRef, OnInit } from '@angular/core';
-import { NG_VALIDATORS, Validator, ValidatorFn, AbstractControl } from '@angular/forms';
+import { Directive, forwardRef, Input, OnInit } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn } from '@angular/forms';
 
 import { UniversalValidators } from './universal-validators';
 
@@ -122,7 +122,6 @@ export class MaxValidatorDirective implements Validator, OnInit {
         multi: true
     }]
 })
-
 export class MinValidatorDirective implements Validator, OnInit {
     @Input() min: number;
 
