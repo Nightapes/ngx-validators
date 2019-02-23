@@ -9,7 +9,7 @@ import {
 import { NgModule } from '@angular/core';
 
 import { CreditCardValidatorDirective } from './creditcard/creditcard.directive';
-import { EmailValidatorDirective } from './email/email.directive';
+import { EmailValidatorDirective, EmailSuggestValidatorDirective } from './email/email.directive';
 import { PasswordValidatorDirective } from './password/password.directive';
 import { EqualToDirective } from './equal-to/equal-to.directive';
 
@@ -17,6 +17,7 @@ import { EqualToDirective } from './equal-to/equal-to.directive';
   declarations: [
     CreditCardValidatorDirective,
     EmailValidatorDirective,
+    EmailSuggestValidatorDirective,
     PasswordValidatorDirective,
     IsInRangeValidatorDirective,
     IsNumberValidatorDirective,
@@ -29,6 +30,7 @@ import { EqualToDirective } from './equal-to/equal-to.directive';
   exports: [
     CreditCardValidatorDirective,
     EmailValidatorDirective,
+    EmailSuggestValidatorDirective,
     PasswordValidatorDirective,
     IsInRangeValidatorDirective,
     IsNumberValidatorDirective,
@@ -39,4 +41,4 @@ import { EqualToDirective } from './equal-to/equal-to.directive';
     EqualToDirective
   ]
 })
-export class ValidatorsModule {}
+export class ValidatorsModule { }

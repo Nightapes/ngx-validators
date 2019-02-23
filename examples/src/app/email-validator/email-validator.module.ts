@@ -1,5 +1,5 @@
 import { MatCardModule, MatListModule, MatFormFieldModule, MatTooltipModule, MatInputModule, MatSelectModule } from '@angular/material';
-import { NgModule, Component } from '@angular/core';
+import { NgModule, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatTabsModule } from '@angular/material';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,6 +10,8 @@ import { ReactiveFormEmailComponent } from './reactive-form/email/reactive-form-
 
 import { FormEmailComponent } from './form/email/form-email.component';
 import { ValidatorsModule } from 'ngx-validators';
+import { ReactiveFormEmailSuggestComponent } from './reactive-form/suggest/reactive-form-email-suggest.component';
+import { FormEmailSuggestComponent } from './form/suggest/form-email-suggest.component';
 
 
 
@@ -46,8 +48,10 @@ const routes: Routes = [
   ],
   declarations: [
     ReactiveFormEmailComponent,
+    ReactiveFormEmailSuggestComponent,
     FormEmailComponent,
-    EmailValidatorComponent
+    EmailValidatorComponent,
+    FormEmailSuggestComponent
   ]
 })
 export class EmailModule { }

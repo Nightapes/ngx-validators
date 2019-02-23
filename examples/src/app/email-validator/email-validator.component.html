@@ -15,9 +15,13 @@
     <mat-card-content>
         <ng-container *ngIf="selected =='reactiveForm'">
             <app-reactive-email *ngIf="item == 'normal'"></app-reactive-email>
+            <app-reactive-email-suggest *ngIf="item == 'suggest'"></app-reactive-email-suggest>
+            <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
         </ng-container>
         <ng-container *ngIf="selected =='form'">
             <app-email *ngIf="item == 'normal'"></app-email>
+            <app-email-suggest *ngIf="item == 'suggest'"></app-email-suggest>
+            <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
         </ng-container>
     </mat-card-content>
 </mat-card>
