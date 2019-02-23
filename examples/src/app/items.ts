@@ -71,6 +71,14 @@ export const email: Validator[] = [
     formTS: require('!raw-loader!./email-validator/form/email/form-email.component'),
     formHTML: require('!raw-loader!./email-validator/form/email/form-email.component.html'),
     hint: '(follows the <a href="https://www.w3.org/TR/html5.html#valid-e-mail-address">HTML5</a> rules)',
+  },
+  {
+    name: 'suggest',
+    reactiveformTS: require('!raw-loader!./email-validator/reactive-form/suggest/reactive-form-email-suggest.component'),
+    reactiveformHTML: require('!raw-loader!./email-validator/reactive-form/suggest/reactive-form-email-suggest.component.html'),
+    formTS: require('!raw-loader!./email-validator/form/suggest/form-email-suggest.component'),
+    formHTML: require('!raw-loader!./email-validator/form/suggest/form-email-suggest.component.html'),
+    hint: '(thanks to <a href="https://github.com/mailcheck/mailcheck">mailcheck</a>)',
   }
 ];
 
@@ -198,10 +206,10 @@ export const creditcards: Validator[] = [
 ];
 
 export const items: Items[] = [
-  {linkPrefix: '/email/', validators: email, name: 'Email'},
-  {linkPrefix: '/password/', validators: password, name: 'Password'},
-  {linkPrefix: '/equal-to/', validators: equalTo, name: 'Equal To'},
-  {linkPrefix: '/creditcard/', validators: creditcards, name: 'Creditcards'},
-  {linkPrefix: '/universal/', validators: universal, name: 'Universal'}
+  { linkPrefix: '/email/', validators: email, name: 'Email' },
+  { linkPrefix: '/password/', validators: password, name: 'Password' },
+  { linkPrefix: '/equal-to/', validators: equalTo, name: 'Equal To' },
+  { linkPrefix: '/creditcard/', validators: creditcards, name: 'Creditcards' },
+  { linkPrefix: '/universal/', validators: universal, name: 'Universal' }
 ];
 

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-//import * as hljs from 'highlight.js';
+// import * as hljs from 'highlight.js';
 
 @Component({
   selector: 'app-codeviewer',
@@ -10,8 +10,4 @@ export class CodeviewerComponent {
 
   @Input() html: any;
   @Input() tsCode: any;
-
-  constructor() {
-    //hljs.initHighlighting();
-  }
 }
