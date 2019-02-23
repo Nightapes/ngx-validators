@@ -151,6 +151,7 @@ import {EmailValidators} from 'ngx-validators'
 
 email: FormControl = new FormControl('', EmailValidators.normal);
 email2: FormControl = new FormControl('', EmailValidators.simple);
+email3: FormControl = new FormControl('', EmailValidators.suggest);
 ```
 
 ### Universal
@@ -247,12 +248,23 @@ export class AppModule {
 ```
 
 ### Email
+
+#### Normal
+
 ```html
 <form>
 <input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" email>
 <span *ngIf="formControl.hasError('normalEmailRule')">Is not a email</span>
 </form>
+```
 
+#### Suggest
+
+```html
+<form>
+<input type="text" [(ngModel)]="model.email" name="email" #formControl="ngModel" emailSuggest>
+<span *ngIf="formControl.hasError('suggestion')">Maybe check the mail again</span>
+</form>
 ```
 
 ### Universal
@@ -306,7 +318,6 @@ export class AppModule {
 
 ##Todo
 
-* Implement  https://github.com/mailcheck/mailcheck
 * Add more password rules
 * Add address validator
 
