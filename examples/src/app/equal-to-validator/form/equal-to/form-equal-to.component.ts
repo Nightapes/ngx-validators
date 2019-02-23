@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormEqualToComponent implements OnInit {
 
-  model = {};
+  model = {
+    email: '',
+    emailConfirm: '',
+    password: '',
+    passwordConfirm: ''
+  };
 
   constructor() { }
 
