@@ -17,4 +17,8 @@ export class ReactiveFormEmailComponent implements OnInit {
       'email': this.email,
     });
   }
+
+  addToForm(email) {
+    this.form.get('email').setValue(email);
+  }
 }

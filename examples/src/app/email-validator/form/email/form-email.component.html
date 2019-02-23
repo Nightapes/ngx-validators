@@ -1,6 +1,6 @@
 <form>
     <mat-form-field>
         <input type="email" matInput [(ngModel)]="model" name="email" #formControl="ngModel" email placeholder="Email">
-        <mat-hint *ngIf="formControl.hasError('normalEmailRule')" class="error">Needs to be a number</mat-hint>
+        <mat-hint *ngIf="formControl.hasError('normalEmailRule')" class="error">Is not a email</mat-hint>
     </mat-form-field>
 </form>

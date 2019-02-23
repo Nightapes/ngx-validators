@@ -1,0 +1,6 @@
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput formControlName="email" name="email" placeholder="Email">
+        <mat-hint *ngIf="email.hasError('suggestion')" class="error"> <span>Did you mean:</span><span class="clickable" (click)="addToForm(email.getError('suggestion').full)">{{email.getError('suggestion').domain}}</span> </mat-hint>
+    </mat-form-field>
+</form>
