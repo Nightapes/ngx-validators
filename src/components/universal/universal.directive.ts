@@ -91,7 +91,7 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-    selector: '[max][formControlName],[max][formControl],[max][ngModel]',
+    selector: 'input[type=text][max][formControlName],input[type=text][max][formControl],input[type=text][max][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
         // tslint:disable-next-line:no-forward-ref
@@ -114,7 +114,7 @@ export class MaxValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-    selector: '[min][formControlName],[min][formControl],[min][ngModel]',
+    selector: 'input[type=text][min][formControlName],input[type=text][min][formControl],input[type=text][min][ngModel]',
     providers: [{
         provide: NG_VALIDATORS,
         // tslint:disable-next-line:no-forward-ref
