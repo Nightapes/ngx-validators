@@ -1,48 +1,51 @@
-import { FormControl, FormGroup } from '@angular/forms';
-import { EqualToValidator } from './equal-to-validator';
+import { FormControl, FormGroup } from "@angular/forms";
+import { EqualToValidator } from "./equal-to-validator";
 
-describe('EqualTo Validator Test', function () {
-
-  describe('equalTo', () => {
-
-    it('should not show error when both values are empty', () => {
-      let password: FormControl = new FormControl('');
-      let confirmPassword: FormControl = new FormControl('');
-      let form = new FormGroup({
-          'newPassword': password,
-          'confirmPassword': confirmPassword
-        }, EqualToValidator.equalTo('newPassword', 'confirmPassword')
+describe("EqualTo Validator Test", function() {
+  describe("equalTo", () => {
+    it("should not show error when both values are empty", () => {
+      const password: FormControl = new FormControl("");
+      const confirmPassword: FormControl = new FormControl("");
+      const form = new FormGroup(
+        {
+          newPassword: password,
+          confirmPassword: confirmPassword
+        },
+        EqualToValidator.equalTo("newPassword", "confirmPassword")
       );
       form.updateValueAndValidity();
-      expect(confirmPassword.getError('notEqualTo')).toBeNull();
-      expect(confirmPassword.hasError('notEqualTo')).toBe(false);
+      expect(confirmPassword.getError("notEqualTo")).toBeNull();
+      expect(confirmPassword.hasError("notEqualTo")).toBe(false);
     });
 
-    it('should not show error when values are equal', () => {
-      let password: FormControl = new FormControl('testPassword');
-      let confirmPassword: FormControl = new FormControl('testPassword');
-      let form = new FormGroup({
-          'newPassword': password,
-          'confirmPassword': confirmPassword
-        }, EqualToValidator.equalTo('newPassword', 'confirmPassword')
+    it("should not show error when values are equal", () => {
+      const password: FormControl = new FormControl("testPassword");
+      const confirmPassword: FormControl = new FormControl("testPassword");
+      const form = new FormGroup(
+        {
+          newPassword: password,
+          confirmPassword: confirmPassword
+        },
+        EqualToValidator.equalTo("newPassword", "confirmPassword")
       );
       form.updateValueAndValidity();
-      expect(confirmPassword.getError('notEqualTo')).toBeNull();
-      expect(confirmPassword.hasError('notEqualTo')).toBe(false);
+      expect(confirmPassword.getError("notEqualTo")).toBeNull();
+      expect(confirmPassword.hasError("notEqualTo")).toBe(false);
     });
 
-    it('should get error when values are different', () => {
-      let password: FormControl = new FormControl('testPassword');
-      let confirmPassword: FormControl = new FormControl('testPassword2');
-      let form = new FormGroup({
-          'newPassword': password,
-          'confirmPassword': confirmPassword
-        }, EqualToValidator.equalTo('newPassword', 'confirmPassword')
+    it("should get error when values are different", () => {
+      const password: FormControl = new FormControl("testPassword");
+      const confirmPassword: FormControl = new FormControl("testPassword2");
+      const form = new FormGroup(
+        {
+          newPassword: password,
+          confirmPassword: confirmPassword
+        },
+        EqualToValidator.equalTo("newPassword", "confirmPassword")
       );
       form.updateValueAndValidity();
-      expect(confirmPassword.getError('notEqualTo')).toBe(true);
-      expect(confirmPassword.hasError('notEqualTo')).toBe(true);
+      expect(confirmPassword.getError("notEqualTo")).toBe(true);
+      expect(confirmPassword.hasError("notEqualTo")).toBe(true);
     });
   });
-
 });

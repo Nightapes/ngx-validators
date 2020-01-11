@@ -1,0 +1,45 @@
+name: Node
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+        id: node
+
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - run: yarn install
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+
+      - name: Download releaser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          wget https://github.com/Nightapes/go-semantic-release/releases/download/v1.2.1/go-semantic-release 
+          chmod +x ./go-semantic-release
+          git config user.name "Nightapes"
+          git config user.email svbeisch@gmail.com
+          yarn version --new-version $(./go-semantic-release next)
+
+      - name: Release npm
+        if: github.ref == 'refs/heads/master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          ./go-semantic-release release

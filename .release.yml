@@ -1,0 +1,15 @@
+release: "github"
+github:
+  repo: "ngx-validators"
+  user: "nightapes"
+commitFormat: angular
+branch:
+  master: release
+hooks:
+  preRelease:
+    - echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
+    - yarn publish
+    - rm ~/.npmrc
+    - yarn config set registry https://npm.pkg.github.com/@Nightapes/
+    - echo "//npm.pkg.github.com/@Nightapes/:_authToken=$GITHUB_PAT" >> ~/.npmrc
+    - yarn publish --verbose
