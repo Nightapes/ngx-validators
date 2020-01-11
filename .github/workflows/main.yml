@@ -42,4 +42,4 @@ jobs:
           GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          ./go-semantic-release release
+          ./go-semantic-release release -l info
