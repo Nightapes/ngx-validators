@@ -33,7 +33,7 @@ jobs:
           chmod +x ./go-semantic-release
           git config user.name "Nightapes"
           git config user.email svbeisch@gmail.com
-          yarn version --new-version $(./go-semantic-release next)
+          ./go-semantic-release next
 
       - name: Release npm
         if: github.ref == 'refs/heads/master'
