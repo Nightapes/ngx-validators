@@ -1,8 +1,6 @@
 # ngx-validators
 
-[![Build Status](https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master)](https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master)
 [![npm](https://david-dm.org/nightapes/ngx-validators.svg)](https://david-dm.org/nightapes/ngx-validators)
-[![npm-dev](https://david-dm.org/nightapes/ngx-validators/dev-status.svg)](https://david-dm.org/nightapes/ngx-validators/?type=dev)
 
 An implementation of various angular validators for Angular 2+.
 
