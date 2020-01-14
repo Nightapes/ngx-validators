@@ -9,8 +9,8 @@ hooks:
   preRelease:
     - yarn version --new-version $(./go-semantic-release next)
     - echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
-    - yarn publish
+    - yarn publish dist
     - rm ~/.npmrc
     - yarn config set registry https://npm.pkg.github.com/@Nightapes/
     - echo "//npm.pkg.github.com/@Nightapes/:_authToken=$GITHUB_PAT" >> ~/.npmrc
-    - yarn publish --verbose
+    - yarn publish dist
