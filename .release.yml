@@ -7,7 +7,7 @@ branch:
   master: release
 hooks:
   preRelease:
-    - yarn version --new-version $(./go-semantic-release next)
+    - cd dist && yarn version --new-version $(./go-semantic-release next)
     - echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
     - yarn publish dist
     - rm ~/.npmrc
