@@ -14,7 +14,17 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-validators": [
+        "dist/ngx-validators/ngx-validators",
+        "dist/ngx-validators"
+      ],
+      "ngx-phone-validators": [
+        "dist/ngx-phone-validators/ngx-phone-validators",
+        "dist/ngx-phone-validators"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
