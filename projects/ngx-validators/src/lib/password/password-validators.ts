@@ -35,8 +35,8 @@ export class PasswordValidators {
         return {
           allowedCharacterRule: {
             invalidChars: invalidChars,
-            allowedChars: allowedChars
-          }
+            allowedChars: allowedChars,
+          },
         };
       }
       return undefined;
@@ -57,8 +57,8 @@ export class PasswordValidators {
         return {
           alphabeticalCharacterRule: {
             required: amount,
-            actual: stripped.length
-          }
+            actual: stripped.length,
+          },
         };
       }
       return undefined;
@@ -77,7 +77,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          digitCharacterRule: { required: amount, actual: stripped.length }
+          digitCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -96,7 +96,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          lowercaseCharacterRule: { required: amount, actual: stripped.length }
+          lowercaseCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -115,7 +115,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          uppercaseCharacterRule: { required: amount, actual: stripped.length }
+          uppercaseCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -134,7 +134,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          specialCharacterRule: { required: amount, actual: stripped.length }
+          specialCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;

@@ -5,7 +5,7 @@ import {
   Validators,
   ValidatorFn,
   AbstractControl,
-  ValidationErrors
+  ValidationErrors,
 } from "@angular/forms";
 
 import { PasswordValidators } from "./password-validators";
@@ -18,9 +18,9 @@ import { PasswordValidators } from "./password-validators";
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => PasswordValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class PasswordValidatorDirective implements Validator, OnInit {
   @Input() repeatCharacter = 4;
@@ -59,7 +59,7 @@ export class PasswordValidatorDirective implements Validator, OnInit {
       this.digitCharacterValidator,
       this.alphabeticalCharacterValidator,
       this.lowercaseCharacterValidator,
-      this.uppercaseCharacterValidator
+      this.uppercaseCharacterValidator,
     ]);
     return compose(c);
   }

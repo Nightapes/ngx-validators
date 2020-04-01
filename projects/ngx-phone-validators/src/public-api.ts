@@ -9,7 +9,7 @@ export { PhoneValidators } from "./lib/phone/phone-validators";
 export {
   PhoneValidatorDirective,
   CountryCodeValidatorDirective,
-  PossiblePhoneValidatorDirective
+  PossiblePhoneValidatorDirective,
 } from "./lib/phone/phone.directive";
 
 //Module

@@ -9,7 +9,7 @@ export { CreditCardValidators } from "./lib/creditcard/creditcard-validators";
 export { PasswordValidatorDirective } from "./lib/password/password.directive";
 export {
   EmailValidatorDirective,
-  EmailSuggestValidatorDirective
+  EmailSuggestValidatorDirective,
 } from "./lib/email/email.directive";
 export {
   IsInRangeValidatorDirective,
@@ -17,7 +17,7 @@ export {
   MaxValidatorDirective,
   MinValidatorDirective,
   WhiteSpaceValidatorDirective,
-  EmptyStringValidatorDirective
+  EmptyStringValidatorDirective,
 } from "./lib/universal/universal.directive";
 export { CreditCardValidatorDirective } from "./lib/creditcard/creditcard.directive";
 

@@ -66,7 +66,7 @@ export class EmailSuggestion {
       "me.com",
       "btinternet.com",
       "charter.net",
-      "shaw.ca"
+      "shaw.ca",
     ],
     secondLevelDomains: ["yahoo", "hotmail", "mail", "live", "outlook", "gmx"],
     topLevelDomains: [
@@ -110,8 +110,8 @@ export class EmailSuggestion {
       "co.jp",
       "sg",
       "hu",
-      "uk"
-    ]
+      "uk",
+    ],
   };
 
   public suggest(
@@ -153,8 +153,8 @@ export class EmailSuggestion {
           suggestion: {
             address: emailParts.address,
             domain: closestDomain,
-            full: emailParts.address + "@" + closestDomain
-          }
+            full: emailParts.address + "@" + closestDomain,
+          },
         };
       }
     }
@@ -204,8 +204,8 @@ export class EmailSuggestion {
           suggestion: {
             address: emailParts.address,
             domain: closestDomain,
-            full: emailParts.address + "@" + closestDomain
-          }
+            full: emailParts.address + "@" + closestDomain,
+          },
         };
       }
     }
@@ -234,7 +234,7 @@ export class EmailSuggestion {
       topLevelDomain: "",
       secondLevelDomain: "",
       domain: parts.pop(),
-      address: ""
+      address: "",
     };
 
     const domainParts = result.domain.split(".");
@@ -349,7 +349,7 @@ export class EmailSuggestion {
         offsetArr.push({
           c1: c1,
           c2: c2,
-          trans: isTrans
+          trans: isTrans,
         });
       } else {
         lcss += localCS;

@@ -7,7 +7,7 @@ import {
   discover,
   jcb,
   maestro,
-  mastercard
+  mastercard,
 } from "./creditcards/creditcards";
 
 describe("CreditCardValidators", () => {
@@ -19,7 +19,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (americanExpress)", () => {
-      americanexpress.forEach(element => {
+      americanexpress.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -27,7 +27,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (visa)", () => {
-      visa.forEach(element => {
+      visa.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -35,7 +35,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (dinersclub)", () => {
-      dinersclub.forEach(element => {
+      dinersclub.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -43,7 +43,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (discover)", () => {
-      discover.forEach(element => {
+      discover.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -51,7 +51,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (jcb)", () => {
-      jcb.forEach(element => {
+      jcb.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -59,7 +59,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (maestro)", () => {
-      maestro.forEach(element => {
+      maestro.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -67,7 +67,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for creditcard number (mastercard)", () => {
-      mastercard.forEach(element => {
+      mastercard.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.isCreditCard(control);
         expect(validated).toBeUndefined();
@@ -101,7 +101,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for americanExpress number", () => {
-      americanexpress.forEach(element => {
+      americanexpress.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.americanExpress(control);
         expect(validated).toBeUndefined();
@@ -135,7 +135,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for visa number", () => {
-      visa.forEach(element => {
+      visa.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.visa(control);
         expect(validated).toBeUndefined();
@@ -169,7 +169,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for dinersclub number", () => {
-      dinersclub.forEach(element => {
+      dinersclub.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.dinersclub(control);
         expect(validated).toBeUndefined();
@@ -203,7 +203,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for discover number", () => {
-      discover.forEach(element => {
+      discover.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.discover(control);
         expect(validated).toBeUndefined();
@@ -237,7 +237,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for jcb number", () => {
-      jcb.forEach(element => {
+      jcb.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.jcb(control);
         expect(validated).toBeUndefined();
@@ -271,7 +271,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for maestro number", () => {
-      maestro.forEach(element => {
+      maestro.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.maestro(control);
         expect(validated).toBeUndefined();
@@ -305,7 +305,7 @@ describe("CreditCardValidators", () => {
     });
 
     it("should work for mastercard number", () => {
-      mastercard.forEach(element => {
+      mastercard.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = CreditCardValidators.mastercard(control);
         expect(validated).toBeUndefined();

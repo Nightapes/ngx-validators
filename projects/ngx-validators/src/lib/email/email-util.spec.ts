@@ -40,8 +40,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: "prettyandsimple"
-        }
+          address: "prettyandsimple",
+        },
       },
       {
         test: "very.common@example.com",
@@ -49,8 +49,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: "very.common"
-        }
+          address: "very.common",
+        },
       },
       {
         test: "disposable.style.email.with+symbol@example.com",
@@ -58,8 +58,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: "disposable.style.email.with+symbol"
-        }
+          address: "disposable.style.email.with+symbol",
+        },
       },
       {
         test: "other.email-with-dash@example.com",
@@ -67,8 +67,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: "other.email-with-dash"
-        }
+          address: "other.email-with-dash",
+        },
       },
       {
         test: "example@s.solutions",
@@ -76,8 +76,8 @@ describe("Email util service", () => {
           topLevelDomain: "solutions",
           secondLevelDomain: "s",
           domain: "s.solutions",
-          address: "example"
-        }
+          address: "example",
+        },
       },
       {
         test: "example-indeed@strange-example.com",
@@ -85,8 +85,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "strange-example",
           domain: "strange-example.com",
-          address: "example-indeed"
-        }
+          address: "example-indeed",
+        },
       },
       {
         test:
@@ -96,8 +96,8 @@ describe("Email util service", () => {
           secondLevelDomain: "allthesymbols",
           domain: "allthesymbols.com",
           address:
-            '"()<>[]:;@,\\"!#$%&\'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a"'
-        }
+            '"()<>[]:;@,\\"!#$%&\'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a"',
+        },
       },
       {
         test: "postbox@com",
@@ -105,8 +105,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "",
           domain: "com",
-          address: "postbox"
-        }
+          address: "postbox",
+        },
       },
       {
         test: '"foo@bar"@example.com',
@@ -114,8 +114,8 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: '"foo@bar"'
-        }
+          address: '"foo@bar"',
+        },
       },
       {
         test: "test@mail.randomsmallcompany.co.uk",
@@ -123,8 +123,8 @@ describe("Email util service", () => {
           topLevelDomain: "randomsmallcompany.co.uk",
           secondLevelDomain: "mail",
           domain: "mail.randomsmallcompany.co.uk",
-          address: "test"
-        }
+          address: "test",
+        },
       },
       {
         test: '"contains.and.@.symbols.com"@example.com',
@@ -132,28 +132,28 @@ describe("Email util service", () => {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: '"contains.and.@.symbols.com"'
-        }
+          address: '"contains.and.@.symbols.com"',
+        },
       },
       {
         test: "example-indeed-broken-strange-example.com",
-        result: undefined
+        result: undefined,
       },
       {
         test: "@",
-        result: undefined
+        result: undefined,
       },
       {
         test: "email@",
-        result: undefined
+        result: undefined,
       },
       {
         test: "@example.com",
-        result: undefined
-      }
+        result: undefined,
+      },
     ];
 
-    mail.forEach(element => {
+    mail.forEach((element) => {
       const result = emailSuggestion.splitEmail(element.test);
       expect(result).toEqual(element.result);
     });
@@ -192,7 +192,7 @@ describe("Email util service", () => {
     const options: EmailOptions = {
       domains: ["gmail.com"],
       secondLevelDomains: ["gmail"],
-      topLevelDomains: ["com"]
+      topLevelDomains: ["com"],
     };
     testSuggestion("gmailc.om", "gmail.com", options);
   });
@@ -201,7 +201,7 @@ describe("Email util service", () => {
     const options: EmailOptions = {
       domains: ["gmail.com"],
       secondLevelDomains: [],
-      topLevelDomains: []
+      topLevelDomains: [],
     };
     testSuggestion("gmailc.om", "gmail.com", options);
   });

@@ -17,14 +17,14 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("aaabbbbccc");
       const validated = PasswordValidators.repeatCharacterRegexRule(4)(control);
       expect(validated).toEqual({
-        repeatCharacterRegexRule: { repeatCount: 4 }
+        repeatCharacterRegexRule: { repeatCount: 4 },
       });
     });
     it("should work for invalid password with length 9", () => {
       const control: FormControl = new FormControl("aaabbbbbbbbbccc");
       const validated = PasswordValidators.repeatCharacterRegexRule(4)(control);
       expect(validated).toEqual({
-        repeatCharacterRegexRule: { repeatCount: 4 }
+        repeatCharacterRegexRule: { repeatCount: 4 },
       });
     });
     it("should work for valid password with length 9", () => {
@@ -60,8 +60,8 @@ describe("Password validators service", () => {
       expect(validated).toEqual({
         allowedCharacterRule: {
           invalidChars: ["d"],
-          allowedChars: ["a", "b", "c"]
-        }
+          allowedChars: ["a", "b", "c"],
+        },
       });
     });
 
@@ -74,8 +74,8 @@ describe("Password validators service", () => {
       expect(validated).toEqual({
         allowedCharacterRule: {
           invalidChars: ["f", " ", ")", "d", "!"],
-          allowedChars: ["a", "b", "c"]
-        }
+          allowedChars: ["a", "b", "c"],
+        },
       });
     });
   });
@@ -102,7 +102,7 @@ describe("Password validators service", () => {
         control
       );
       expect(validated).toEqual({
-        alphabeticalCharacterRule: { required: 5, actual: 3 }
+        alphabeticalCharacterRule: { required: 5, actual: 3 },
       });
     });
   });
@@ -123,7 +123,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234Abc!");
       const validated = PasswordValidators.digitCharacterRule(5)(control);
       expect(validated).toEqual({
-        digitCharacterRule: { required: 5, actual: 4 }
+        digitCharacterRule: { required: 5, actual: 4 },
       });
     });
   });
@@ -144,7 +144,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234abcADc!");
       const validated = PasswordValidators.lowercaseCharacterRule(5)(control);
       expect(validated).toEqual({
-        lowercaseCharacterRule: { required: 5, actual: 4 }
+        lowercaseCharacterRule: { required: 5, actual: 4 },
       });
     });
   });
@@ -165,7 +165,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234abcAbc!");
       const validated = PasswordValidators.uppercaseCharacterRule(5)(control);
       expect(validated).toEqual({
-        uppercaseCharacterRule: { required: 5, actual: 1 }
+        uppercaseCharacterRule: { required: 5, actual: 1 },
       });
     });
   });
@@ -177,7 +177,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -191,7 +191,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -205,7 +205,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           test: password,
-          test2: confirmPassword
+          test2: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords("test", "test2")
       );
@@ -219,7 +219,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           test: password,
-          test2: confirmPassword
+          test2: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords("test", "test2")
       );
@@ -235,7 +235,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );

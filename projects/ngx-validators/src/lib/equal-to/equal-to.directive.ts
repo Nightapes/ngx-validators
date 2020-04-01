@@ -3,7 +3,7 @@ import {
   AbstractControl,
   NG_VALIDATORS,
   ValidationErrors,
-  Validator
+  Validator,
 } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { delay } from "rxjs/operators";
@@ -16,9 +16,9 @@ import { delay } from "rxjs/operators";
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EqualToDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EqualToDirective implements Validator, OnDestroy {
   @Input() equalTo: string | AbstractControl;

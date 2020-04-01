@@ -3,19 +3,19 @@ import { NgModule } from "@angular/core";
 import {
   PhoneValidatorDirective,
   PossiblePhoneValidatorDirective,
-  CountryCodeValidatorDirective
+  CountryCodeValidatorDirective,
 } from "./phone/phone.directive";
 
 @NgModule({
   declarations: [
     PhoneValidatorDirective,
     PossiblePhoneValidatorDirective,
-    CountryCodeValidatorDirective
+    CountryCodeValidatorDirective,
   ],
   exports: [
     PhoneValidatorDirective,
     PossiblePhoneValidatorDirective,
-    CountryCodeValidatorDirective
-  ]
+    CountryCodeValidatorDirective,
+  ],
 })
 export class PhoneValidatorsModule {}

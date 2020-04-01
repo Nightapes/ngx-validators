@@ -118,8 +118,8 @@ describe("Universal validators service", () => {
         rangeValueToSmall: {
           requiredMinValue: 5,
           requiredMaxValue: 10,
-          actual: "4"
-        }
+          actual: "4",
+        },
       });
     });
 
@@ -130,8 +130,8 @@ describe("Universal validators service", () => {
         rangeValueToBig: {
           requiredMinValue: 5,
           requiredMaxValue: 10,
-          actual: "11"
-        }
+          actual: "11",
+        },
       });
     });
 
@@ -153,7 +153,7 @@ describe("Universal validators service", () => {
       const control: FormControl = new FormControl("1");
       const validated = UniversalValidators.minLength(3)(control);
       expect(validated).toEqual({
-        minLength: { requiredMinLength: 3, actualLength: 1 }
+        minLength: { requiredMinLength: 3, actualLength: 1 },
       });
     });
 
@@ -181,7 +181,7 @@ describe("Universal validators service", () => {
       const control: FormControl = new FormControl("123");
       const validated = UniversalValidators.maxLength(2)(control);
       expect(validated).toEqual({
-        maxLength: { requiredMaxLength: 2, actualLength: 3 }
+        maxLength: { requiredMaxLength: 2, actualLength: 3 },
       });
     });
   });

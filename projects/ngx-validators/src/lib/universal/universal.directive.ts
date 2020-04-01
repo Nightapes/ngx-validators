@@ -4,7 +4,7 @@ import {
   NG_VALIDATORS,
   Validator,
   ValidatorFn,
-  ValidationErrors
+  ValidationErrors,
 } from "@angular/forms";
 
 import { UniversalValidators } from "./universal-validators";
@@ -17,9 +17,9 @@ import { UniversalValidators } from "./universal-validators";
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => WhiteSpaceValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class WhiteSpaceValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -41,9 +41,9 @@ export class WhiteSpaceValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmptyStringValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EmptyStringValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -65,9 +65,9 @@ export class EmptyStringValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => IsNumberValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class IsNumberValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -89,9 +89,9 @@ export class IsNumberValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => IsInRangeValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class IsInRangeValidatorDirective implements Validator, OnInit {
   @Input() minValue: number;
@@ -119,9 +119,9 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => MaxValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MaxValidatorDirective implements Validator, OnInit {
   @Input() max: number;
@@ -145,9 +145,9 @@ export class MaxValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => MinValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MinValidatorDirective implements Validator, OnInit {
   @Input() min: number;

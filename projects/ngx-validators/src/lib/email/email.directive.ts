@@ -5,7 +5,7 @@ import {
   Validator,
   ValidatorFn,
   AbstractControl,
-  ValidationErrors
+  ValidationErrors,
 } from "@angular/forms";
 
 import { EmailValidators } from "./email-validators";
@@ -17,9 +17,9 @@ import { EmailValidators } from "./email-validators";
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmailValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EmailValidatorDirective implements Validator, OnInit {
   @Input() email = "normal";
@@ -53,9 +53,9 @@ export class EmailValidatorDirective implements Validator, OnInit {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmailSuggestValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EmailSuggestValidatorDirective implements Validator, OnInit {
   @Input() emailSuggest: EmailOptions;

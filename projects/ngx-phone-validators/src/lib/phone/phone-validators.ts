@@ -253,7 +253,7 @@ export const regionsCode: { [key: string]: string } = {
   ZM: "ZM",
   ZW: "ZW",
   // Official code for the unknown region.
-  ZZ: "ZZ"
+  ZZ: "ZZ",
 };
 export class PhoneValidators {
   static checkRegionCode(local: string): boolean {

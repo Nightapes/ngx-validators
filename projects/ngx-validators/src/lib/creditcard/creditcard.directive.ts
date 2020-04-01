@@ -3,7 +3,7 @@ import {
   NG_VALIDATORS,
   Validator,
   ValidatorFn,
-  AbstractControl
+  AbstractControl,
 } from "@angular/forms";
 
 import { CreditCardValidators } from "./creditcard-validators";
@@ -16,9 +16,9 @@ import { CreditCardValidators } from "./creditcard-validators";
       provide: NG_VALIDATORS,
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
       useExisting: forwardRef(() => CreditCardValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CreditCardValidatorDirective implements Validator, OnInit {
   @Input() creditCard = "all";

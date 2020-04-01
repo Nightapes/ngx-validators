@@ -23,10 +23,10 @@ describe("isPhoneNumber", () => {
       "202/4561414",
       "1 202 456 1414",
       "+12024561414",
-      "1 202-456-1414"
+      "1 202-456-1414",
     ];
 
-    phone.forEach(element => {
+    phone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPhoneNumber(regionsCode.US)(control);
       expect(validated).toBeUndefined();
@@ -43,9 +43,9 @@ describe("isPhoneNumber", () => {
       "sd434343sd",
       "3434s3434dsd",
       "43434343434sdsd",
-      "343434343.sdsd"
+      "343434343.sdsd",
     ];
-    invalidPhone.forEach(element => {
+    invalidPhone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPhoneNumber(regionsCode.US)(control);
       expect(validated).toEqual({ noPhoneNumber: true });
@@ -73,7 +73,7 @@ describe("isPossibleNumberWithReason", () => {
   it("should work for invalid Phones", () => {
     const phone = ["sd", "sdsdsdsd"];
 
-    phone.forEach(element => {
+    phone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPossibleNumberWithReason(
         regionsCode.US
@@ -91,9 +91,9 @@ describe("isPossibleNumberWithReason", () => {
       "202/45614",
       "1 202 456 14",
       "+120245614",
-      "1 202-456-14"
+      "1 202-456-14",
     ];
-    invalidPhone.forEach(element => {
+    invalidPhone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPossibleNumberWithReason(
         regionsCode.US
@@ -111,9 +111,9 @@ describe("isPossibleNumberWithReason", () => {
       "202/45614",
       "1 202 456 14",
       "+120245614",
-      "1 202-456-14"
+      "1 202-456-14",
     ];
-    invalidPhone.forEach(element => {
+    invalidPhone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPossibleNumberWithReason(
         regionsCode.US
@@ -131,9 +131,9 @@ describe("isPossibleNumberWithReason", () => {
       "202/4561414555",
       "1 202 456 1414555",
       "+12024561414555",
-      "1 202-456-1414555"
+      "1 202-456-1414555",
     ];
-    invalidPhone.forEach(element => {
+    invalidPhone.forEach((element) => {
       const control: FormControl = new FormControl(element);
       const validated = PhoneValidators.isPossibleNumberWithReason(
         regionsCode.US
