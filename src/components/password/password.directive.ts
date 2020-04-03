@@ -1,4 +1,11 @@
-import { Directive, Input, forwardRef, OnInit } from "@angular/core";
+import {
+  Directive,
+  Input,
+  forwardRef,
+  OnInit,
+  SimpleChanges,
+  OnChanges
+} from "@angular/core";
 import {
   NG_VALIDATORS,
   Validator,
@@ -22,7 +29,8 @@ import { PasswordValidators } from "./password-validators";
     }
   ]
 })
-export class PasswordValidatorDirective implements Validator, OnInit {
+export class PasswordValidatorDirective
+  implements Validator, OnInit, OnChanges {
   @Input() repeatCharacter = 4;
   @Input() alphabeticalCharacter = 1;
   @Input() digitCharacter = 1;
@@ -34,6 +42,7 @@ export class PasswordValidatorDirective implements Validator, OnInit {
   private digitCharacterValidator: ValidatorFn;
   private lowercaseCharacterValidator: ValidatorFn;
   private uppercaseCharacterValidator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
     this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(
@@ -53,6 +62,48 @@ export class PasswordValidatorDirective implements Validator, OnInit {
     );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    let inputChanged = false;
+    if (changes["repeatCharacter"]) {
+      this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(
+        changes["repeatCharacter"].currentValue
+      );
+      inputChanged = true;
+    }
+
+    if (changes["alphabeticalCharacter"]) {
+      this.alphabeticalCharacterValidator = PasswordValidators.alphabeticalCharacterRule(
+        changes["alphabeticalCharacter"].currentValue
+      );
+      inputChanged = true;
+    }
+
+    if (changes["digitCharacter"]) {
+      this.digitCharacterValidator = PasswordValidators.digitCharacterRule(
+        changes["digitCharacter"].currentValue
+      );
+      inputChanged = true;
+    }
+
+    if (changes["lowercaseCharacter"]) {
+      this.lowercaseCharacterValidator = PasswordValidators.lowercaseCharacterRule(
+        changes["lowercaseCharacter"].currentValue
+      );
+      inputChanged = true;
+    }
+
+    if (changes["uppercaseCharacter"]) {
+      this.uppercaseCharacterValidator = PasswordValidators.uppercaseCharacterRule(
+        changes["uppercaseCharacter"].currentValue
+      );
+      inputChanged = true;
+    }
+
+    if (inputChanged) {
+      this.onChange();
+    }
+  }
+
   validate(c: AbstractControl): ValidationErrors {
     const compose: ValidatorFn = Validators.compose([
       this.repeatCharacterValidator,
@@ -62,5 +113,9 @@ export class PasswordValidatorDirective implements Validator, OnInit {
       this.uppercaseCharacterValidator
     ]);
     return compose(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }
