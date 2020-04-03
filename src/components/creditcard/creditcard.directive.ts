@@ -1,9 +1,16 @@
-import { Directive, Input, forwardRef, OnInit } from "@angular/core";
+import {
+  Directive,
+  Input,
+  forwardRef,
+  OnInit,
+  SimpleChanges
+} from "@angular/core";
 import {
   NG_VALIDATORS,
   Validator,
   ValidatorFn,
-  AbstractControl
+  AbstractControl,
+  ValidationErrors
 } from "@angular/forms";
 
 import { CreditCardValidators } from "./creditcard-validators";
@@ -24,9 +31,14 @@ export class CreditCardValidatorDirective implements Validator, OnInit {
   @Input() creditCard = "all";
 
   private validator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
-    switch (this.creditCard) {
+    this.setCreditcardValidator(this.creditCard);
+  }
+
+  setCreditcardValidator(type: string) {
+    switch (type) {
       case "all":
         this.validator = CreditCardValidators.isCreditCard;
         break;
@@ -57,8 +69,18 @@ export class CreditCardValidatorDirective implements Validator, OnInit {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  validate(c: AbstractControl): { [key: string]: any } {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["creditCard"]) {
+      this.setCreditcardValidator(changes["creditCard"].currentValue);
+      this.onChange();
+    }
+  }
+
+  validate(c: AbstractControl): ValidationErrors {
     return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }

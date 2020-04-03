@@ -1,4 +1,11 @@
-import { Directive, forwardRef, Input, OnInit } from "@angular/core";
+import {
+  Directive,
+  forwardRef,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from "@angular/core";
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -98,6 +105,7 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
   @Input() maxValue: number;
 
   private validator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
     this.validator = UniversalValidators.isInRange(
@@ -106,8 +114,22 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
     );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["minValue"] || changes["maxValue"]) {
+      this.validator = UniversalValidators.isInRange(
+        changes["minValue"].currentValue,
+        changes["maxValue"].currentValue
+      );
+      this.onChange();
+    }
+  }
+
   validate(c: AbstractControl): ValidationErrors {
     return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }
 
@@ -123,17 +145,29 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
     }
   ]
 })
-export class MaxValidatorDirective implements Validator, OnInit {
+export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() max: number;
 
   private validator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
     this.validator = UniversalValidators.max(this.max);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["max"]) {
+      this.validator = UniversalValidators.max(changes["max"].currentValue);
+      this.onChange();
+    }
+  }
+
   validate(c: AbstractControl): ValidationErrors {
     return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }
 
@@ -149,16 +183,28 @@ export class MaxValidatorDirective implements Validator, OnInit {
     }
   ]
 })
-export class MinValidatorDirective implements Validator, OnInit {
+export class MinValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() min: number;
 
   private validator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
     this.validator = UniversalValidators.min(this.min);
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["min"]) {
+      this.validator = UniversalValidators.min(changes["min"].currentValue);
+      this.onChange();
+    }
+  }
+
   validate(c: AbstractControl): ValidationErrors {
     return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }

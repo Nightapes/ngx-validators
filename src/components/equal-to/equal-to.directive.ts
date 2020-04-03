@@ -1,4 +1,11 @@
-import { Directive, forwardRef, Input, OnDestroy } from "@angular/core";
+import {
+  Directive,
+  forwardRef,
+  Input,
+  OnDestroy,
+  SimpleChanges,
+  OnChanges
+} from "@angular/core";
 import {
   AbstractControl,
   NG_VALIDATORS,
@@ -20,16 +27,18 @@ import { delay } from "rxjs/operators";
     }
   ]
 })
-export class EqualToDirective implements Validator, OnDestroy {
+export class EqualToDirective implements Validator, OnDestroy, OnChanges {
   @Input() equalTo: string | AbstractControl;
 
   private subscription: Subscription;
+  private onChange: () => void;
 
   validate(c: AbstractControl): ValidationErrors | null {
     const otherControl =
       typeof this.equalTo === "string"
         ? c.parent.get(this.equalTo)
         : this.equalTo;
+
     if (!this.subscription) {
       this.subscription = otherControl.valueChanges
         .pipe(delay(1))
@@ -42,5 +51,15 @@ export class EqualToDirective implements Validator, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["equalTo"]) {
+      this.onChange();
+    }
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 }
