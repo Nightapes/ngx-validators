@@ -1,32 +1,38 @@
 <mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>Guide</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <h1>ngx-validators
-            <div>
-                <a href="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master"><img src="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master" alt="Build Status"></a>
-            </div>
-            <div>
-                <a href="https://david-dm.org/nightapes/ngx-validators"><img src="https://david-dm.org/nightapes/ngx-validators.svg" alt="Dependency Status"></a>
-            </div>
-        </h1>
-        <p>An implementation of various angular validators for Angular 2+.</p>
-        <h2>Install</h2>
-        <pre><code>npm install ngx-validators --save</code></pre>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Guide</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h1>
+      ngx-validators
+      <div>
+        <a href="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master"
+          ><img src="https://travis-ci.org/Nightapes/ngx-validators.svg?branch=master" alt="Build Status"
+        /></a>
+      </div>
+      <div>
+        <a href="https://david-dm.org/nightapes/ngx-validators"
+          ><img src="https://david-dm.org/nightapes/ngx-validators.svg" alt="Dependency Status"
+        /></a>
+      </div>
+    </h1>
+    <p>An implementation of various angular validators for Angular 2+.</p>
+    <h2>Install</h2>
+    <pre><code>npm install ngx-validators --save</code></pre>
+  </mat-card-content>
 </mat-card>
 <mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>List of validators</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-nav-list *ngFor="let item of menuItems" dense>
-            <div mat-subheader>{{item.name}}</div>
-            <ng-container *ngFor="let validator of item.validators">
-                <a mat-list-item [routerLink]="[item.linkPrefix, validator.name]" routerLinkActive="selected">
-                    {{validator.name}}</a>
-            </ng-container>
-        </mat-nav-list>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>List of validators</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-nav-list *ngFor="let item of menuItems" dense>
+      <div mat-subheader>{{ item.name }}</div>
+      <ng-container *ngFor="let validator of item.validators">
+        <a mat-list-item [routerLink]="[item.linkPrefix, validator.name]" routerLinkActive="selected">
+          {{ validator.name }}</a
+        >
+      </ng-container>
+    </mat-nav-list>
+  </mat-card-content>
 </mat-card>

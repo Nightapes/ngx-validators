@@ -1,4 +1,12 @@
 <mat-form-field>
-    <input matInput type="text" [(ngModel)]="model.whitespace" name="whitespace" #formControl="ngModel" noWhitespace placeholder="Whitespace">
-    <mat-hint *ngIf="formControl.hasError('noWhitespaceRequired')" class="error">No whitespace allowed</mat-hint>
+  <input
+    matInput
+    type="text"
+    [(ngModel)]="model.whitespace"
+    name="whitespace"
+    #formControl="ngModel"
+    noWhitespace
+    placeholder="Whitespace"
+  />
+  <mat-hint *ngIf="formControl.hasError('noWhitespaceRequired')" class="error">No whitespace allowed</mat-hint>
 </mat-form-field>

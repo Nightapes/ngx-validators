@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from "@angular/forms";
 import { EqualToValidator } from "./equal-to-validator";
 
-describe("EqualTo Validator Test", function() {
+describe("EqualTo Validator Test", () => {
   describe("equalTo", () => {
     it("should not show error when both values are empty", () => {
       const password: FormControl = new FormControl("");
@@ -9,7 +9,7 @@ describe("EqualTo Validator Test", function() {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         EqualToValidator.equalTo("newPassword", "confirmPassword")
       );
@@ -24,7 +24,7 @@ describe("EqualTo Validator Test", function() {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         EqualToValidator.equalTo("newPassword", "confirmPassword")
       );
@@ -39,7 +39,7 @@ describe("EqualTo Validator Test", function() {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         EqualToValidator.equalTo("newPassword", "confirmPassword")
       );

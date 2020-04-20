@@ -1,7 +1,7 @@
 <form [formGroup]="form">
-    <mat-form-field>
-        <input matInput type="text" formControlName="max" name="max" placeholder="Max number (10)">
-        <mat-hint *ngIf="max.hasError('numberRequired')" class="error">Is not a number</mat-hint>
-        <mat-hint *ngIf="max.hasError('max')" class="error">Number to big</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" formControlName="max" name="max" placeholder="Max number (10)" />
+    <mat-hint *ngIf="max.hasError('numberRequired')" class="error">Is not a number</mat-hint>
+    <mat-hint *ngIf="max.hasError('max')" class="error">Number to big</mat-hint>
+  </mat-form-field>
 </form>

@@ -1,6 +1,19 @@
 <form>
-    <mat-form-field>
-        <input type="email" matInput [(ngModel)]="model" name="email" #formControl="ngModel" [emailSuggest]="customOptions" placeholder="Email">
-        <mat-hint *ngIf="formControl.hasError('suggestion')" class="error"> <span>Did you mean:</span><span class="clickable" (click)="addToForm(formControl.getError('suggestion').full)">{{formControl.getError('suggestion').domain}}</span> </mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input
+      type="email"
+      matInput
+      [(ngModel)]="model"
+      name="email"
+      #formControl="ngModel"
+      [emailSuggest]="customOptions"
+      placeholder="Email"
+    />
+    <mat-hint *ngIf="formControl.hasError('suggestion')" class="error">
+      <span>Did you mean:</span
+      ><span class="clickable" (click)="addToForm(formControl.getError('suggestion').full)">{{
+        formControl.getError("suggestion").domain
+      }}</span>
+    </mat-hint>
+  </mat-form-field>
 </form>

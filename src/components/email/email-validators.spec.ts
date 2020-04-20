@@ -17,10 +17,10 @@ describe("Email validators service", () => {
         "other.email-with-dash@example.com",
         "x@example.com",
         "example@s.solutions",
-        "example-indeed@strange-example.com"
+        "example-indeed@strange-example.com",
       ];
 
-      mail.forEach(element => {
+      mail.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = EmailValidators.simple(control);
         expect(validated).toBeUndefined();
@@ -29,12 +29,12 @@ describe("Email validators service", () => {
 
     it("should work for invalid email", () => {
       const invalidEmail = [
-        "Abc.example.com"
+        "Abc.example.com",
         //  'A@b@c@example.com',
         //  'john.doe@example..com',
         //  'john..doe@example.com',
       ];
-      invalidEmail.forEach(element => {
+      invalidEmail.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = EmailValidators.simple(control);
         expect(validated).toEqual({ simpleEmailRule: true });
@@ -57,10 +57,10 @@ describe("Email validators service", () => {
         "other.email-with-dash@example.com",
         "x@example.com",
         "example@s.solutions",
-        "example-indeed@strange-example.com"
+        "example-indeed@strange-example.com",
       ];
 
-      mail.forEach(element => {
+      mail.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = EmailValidators.normal(control);
         expect(validated).toBeUndefined();
@@ -74,9 +74,9 @@ describe("Email validators service", () => {
         "john.doe@example..com",
         "john.doe123456789012345678901234567890123456789012345678901234567890@example..com",
         "john.doe@123456789012345678901234567890123456789012345678901234567890example..com",
-        "prett[~]yandsimple@example.com"
+        "prett[~]yandsimple@example.com",
       ];
-      invalidEmail.forEach(element => {
+      invalidEmail.forEach((element) => {
         const control: FormControl = new FormControl(element);
         const validated = EmailValidators.normal(control);
         expect(validated).toEqual({ normalEmailRule: true });

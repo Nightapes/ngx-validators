@@ -1,29 +1,37 @@
 <mat-form-field>
-    <mat-select placeholder="Type" [(value)]="selected">
-        <mat-option value="form" *ngIf="currentValidator.formHTML">
-            Form
-        </mat-option>
-        <mat-option value="reactiveForm" *ngIf="currentValidator.reactiveformHTML">
-            Reactive Form
-        </mat-option>
-    </mat-select>
+  <mat-select placeholder="Type" [(value)]="selected">
+    <mat-option value="form" *ngIf="currentValidator.formHTML">
+      Form
+    </mat-option>
+    <mat-option value="reactiveForm" *ngIf="currentValidator.reactiveformHTML">
+      Reactive Form
+    </mat-option>
+  </mat-select>
 </mat-form-field>
 <mat-card class="card">
-    <mat-card-header>
-        <mat-card-title>Email validator - {{item}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <ng-container *ngIf="selected =='reactiveForm'">
-            <app-reactive-email *ngIf="item == 'normal'"></app-reactive-email>
-            <app-reactive-email-suggest *ngIf="item == 'suggest'"></app-reactive-email-suggest>
-            <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
-        </ng-container>
-        <ng-container *ngIf="selected =='form'">
-            <app-email *ngIf="item == 'normal'"></app-email>
-            <app-email-suggest *ngIf="item == 'suggest'"></app-email-suggest>
-            <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
-        </ng-container>
-    </mat-card-content>
+  <mat-card-header>
+    <mat-card-title>Email validator - {{ item }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="selected == 'reactiveForm'">
+      <app-reactive-email *ngIf="item == 'normal'"></app-reactive-email>
+      <app-reactive-email-suggest *ngIf="item == 'suggest'"></app-reactive-email-suggest>
+      <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
+    </ng-container>
+    <ng-container *ngIf="selected == 'form'">
+      <app-email *ngIf="item == 'normal'"></app-email>
+      <app-email-suggest *ngIf="item == 'suggest'"></app-email-suggest>
+      <div *ngIf="item == 'suggest'">Try test@gmai.con</div>
+    </ng-container>
+  </mat-card-content>
 </mat-card>
-<app-codeviewer *ngIf="currentValidator && selected =='form'" [html]="currentValidator.formHTML" [tsCode]="currentValidator.formTS"></app-codeviewer>
-<app-codeviewer *ngIf="currentValidator && selected =='reactiveForm'" [html]="currentValidator.reactiveformHTML" [tsCode]="currentValidator.reactiveformTS"></app-codeviewer>
+<app-codeviewer
+  *ngIf="currentValidator && selected == 'form'"
+  [html]="currentValidator.formHTML"
+  [tsCode]="currentValidator.formTS"
+></app-codeviewer>
+<app-codeviewer
+  *ngIf="currentValidator && selected == 'reactiveForm'"
+  [html]="currentValidator.reactiveformHTML"
+  [tsCode]="currentValidator.reactiveformTS"
+></app-codeviewer>

@@ -1,24 +1,23 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmailValidators } from 'ngx-validators';
-import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { EmailValidators } from "ngx-validators";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-reactive-email',
-  templateUrl: './reactive-form-email.component.html'
+  selector: "app-reactive-email",
+  templateUrl: "./reactive-form-email.component.html",
 })
 export class ReactiveFormEmailComponent implements OnInit {
-
   form: FormGroup;
-  email = new FormControl('', Validators.compose([EmailValidators.normal]));
-  constructor(protected _fb: FormBuilder) { }
+  email = new FormControl("", Validators.compose([EmailValidators.normal]));
+  constructor(protected _fb: FormBuilder) {}
 
   ngOnInit() {
     this.form = this._fb.group({
-      'email': this.email,
+      email: this.email,
     });
   }
 
   addToForm(email) {
-    this.form.get('email').setValue(email);
+    this.form.get("email").setValue(email);
   }
 }

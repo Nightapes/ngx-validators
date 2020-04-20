@@ -1,43 +1,43 @@
 .container {
-    margin: 24px;
-    align-content: center;
-    margin: auto;
-    padding: 10px;
+  margin: 24px;
+  align-content: center;
+  margin: auto;
+  padding: 10px;
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        width: 75%;
-    }
+  .container {
+    width: 75%;
+  }
 }
 
 md-sidenav {
-    width: 250px;
+  width: 250px;
 }
 
 .selected {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .menu-button {
-    min-width: 48px !important;
-    min-height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
 }
 
 .home {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .github {
-    height: 30px;
-    margin: auto;
-    margin-top: 9px;
+  height: 30px;
+  margin: auto;
+  margin-top: 9px;
 }
 
 .mat-sidenav {
-    width: 400px;
+  width: 400px;
 }
 
 .fill-space {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }

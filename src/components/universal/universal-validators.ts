@@ -2,9 +2,7 @@ import { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
 import { AbstractControlUtil } from "../abstract-control-util";
 
 export class UniversalValidators {
-  public static noWhitespace(
-    control: AbstractControl
-  ): { [key: string]: boolean } {
+  public static noWhitespace(control: AbstractControl): { [key: string]: boolean } {
     if (AbstractControlUtil.isNotPresent(control)) return undefined;
     const pattern = "\\s";
     if (new RegExp(pattern).test(control.value)) {
@@ -13,9 +11,7 @@ export class UniversalValidators {
     return undefined;
   }
 
-  public static noEmptyString(
-    control: AbstractControl
-  ): { [key: string]: boolean } {
+  public static noEmptyString(control: AbstractControl): { [key: string]: boolean } {
     if (AbstractControlUtil.isNotPresent(control)) return undefined;
     if (control.value.trim().length === 0) {
       return { noEmptyString: true };
@@ -42,8 +38,8 @@ export class UniversalValidators {
           rangeValueToSmall: {
             requiredMinValue: minValue,
             requiredMaxValue: maxValue,
-            actual: control.value
-          }
+            actual: control.value,
+          },
         };
       }
 
@@ -52,8 +48,8 @@ export class UniversalValidators {
           rangeValueToBig: {
             requiredMinValue: minValue,
             requiredMaxValue: maxValue,
-            actual: control.value
-          }
+            actual: control.value,
+          },
         };
       } else {
         return undefined;
@@ -70,7 +66,7 @@ export class UniversalValidators {
         return undefined;
       }
       return {
-        minLength: { requiredMinLength: minLength, actualLength: value.length }
+        minLength: { requiredMinLength: minLength, actualLength: value.length },
       };
     };
     return validator;
@@ -84,7 +80,7 @@ export class UniversalValidators {
         return undefined;
       }
       return {
-        maxLength: { requiredMaxLength: maxLength, actualLength: value.length }
+        maxLength: { requiredMaxLength: maxLength, actualLength: value.length },
       };
     };
     return validator;

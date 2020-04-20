@@ -1,8 +1,18 @@
 <form>
-    <mat-form-field>
-        <input matInput type="text" [(ngModel)]="model.range" name="range" #formControl3="ngModel" isInRange minValue="2" maxValue="100" placeholder="Range (2-100)">
-        <mat-hint *ngIf="formControl3.hasError('numberRequired')" class="error">Needs to be a number</mat-hint>
-        <mat-hint *ngIf="formControl3.hasError('rangeValueToSmall')" class="error">Number to small</mat-hint>
-        <mat-hint *ngIf="formControl3.hasError('rangeValueToBig')" class="error">Number to big</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="model.range"
+      name="range"
+      #formControl3="ngModel"
+      isInRange
+      minValue="2"
+      maxValue="100"
+      placeholder="Range (2-100)"
+    />
+    <mat-hint *ngIf="formControl3.hasError('numberRequired')" class="error">Needs to be a number</mat-hint>
+    <mat-hint *ngIf="formControl3.hasError('rangeValueToSmall')" class="error">Number to small</mat-hint>
+    <mat-hint *ngIf="formControl3.hasError('rangeValueToBig')" class="error">Number to big</mat-hint>
+  </mat-form-field>
 </form>
