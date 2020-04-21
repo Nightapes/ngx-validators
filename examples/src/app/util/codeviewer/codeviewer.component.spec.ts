@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CodeviewerComponent } from './codeviewer.component';
+import { CodeviewerComponent } from "./codeviewer.component";
 
-describe('CodeviewerComponent', () => {
+describe("CodeviewerComponent", () => {
   let component: CodeviewerComponent;
   let fixture: ComponentFixture<CodeviewerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CodeviewerComponent ]
-    })
-    .compileComponents();
+      declarations: [CodeviewerComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('CodeviewerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

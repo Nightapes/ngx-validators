@@ -17,14 +17,14 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("aaabbbbccc");
       const validated = PasswordValidators.repeatCharacterRegexRule(4)(control);
       expect(validated).toEqual({
-        repeatCharacterRegexRule: { repeatCount: 4 }
+        repeatCharacterRegexRule: { repeatCount: 4 },
       });
     });
     it("should work for invalid password with length 9", () => {
       const control: FormControl = new FormControl("aaabbbbbbbbbccc");
       const validated = PasswordValidators.repeatCharacterRegexRule(4)(control);
       expect(validated).toEqual({
-        repeatCharacterRegexRule: { repeatCount: 4 }
+        repeatCharacterRegexRule: { repeatCount: 4 },
       });
     });
     it("should work for valid password with length 9", () => {
@@ -38,44 +38,36 @@ describe("Password validators service", () => {
     it("should work for empty control", () => {
       const control: FormControl = new FormControl("");
       const allowedCharacter: string[] = ["a", "b", "c"];
-      const validated = PasswordValidators.allowedCharacterRule(
-        allowedCharacter
-      )(control);
+      const validated = PasswordValidators.allowedCharacterRule(allowedCharacter)(control);
       expect(validated).toBeUndefined();
     });
     it("should work for valid password", () => {
       const control: FormControl = new FormControl("aaabbbccc");
       const allowedCharacter: string[] = ["a", "b", "c"];
-      const validated = PasswordValidators.allowedCharacterRule(
-        allowedCharacter
-      )(control);
+      const validated = PasswordValidators.allowedCharacterRule(allowedCharacter)(control);
       expect(validated).toBeUndefined();
     });
     it("should work for invalid password with one wrong char", () => {
       const control: FormControl = new FormControl("aaabbbcccd");
       const allowedCharacter: string[] = ["a", "b", "c"];
-      const validated = PasswordValidators.allowedCharacterRule(
-        allowedCharacter
-      )(control);
+      const validated = PasswordValidators.allowedCharacterRule(allowedCharacter)(control);
       expect(validated).toEqual({
         allowedCharacterRule: {
           invalidChars: ["d"],
-          allowedChars: ["a", "b", "c"]
-        }
+          allowedChars: ["a", "b", "c"],
+        },
       });
     });
 
     it("should work for invalid password with multiple wrong char", () => {
       const control: FormControl = new FormControl("aaafb bbccc) d!");
       const allowedCharacter: string[] = ["a", "b", "c"];
-      const validated = PasswordValidators.allowedCharacterRule(
-        allowedCharacter
-      )(control);
+      const validated = PasswordValidators.allowedCharacterRule(allowedCharacter)(control);
       expect(validated).toEqual({
         allowedCharacterRule: {
           invalidChars: ["f", " ", ")", "d", "!"],
-          allowedChars: ["a", "b", "c"]
-        }
+          allowedChars: ["a", "b", "c"],
+        },
       });
     });
   });
@@ -83,26 +75,20 @@ describe("Password validators service", () => {
   describe("alphabeticalCharacterRule", () => {
     it("should work for empty control", () => {
       const control: FormControl = new FormControl("");
-      const validated = PasswordValidators.alphabeticalCharacterRule(5)(
-        control
-      );
+      const validated = PasswordValidators.alphabeticalCharacterRule(5)(control);
       expect(validated).toBeUndefined();
     });
     it("should work for valid password", () => {
-      const control: FormControl = new FormControl('aAa345b!bdDb"c cc76');
-      const validated = PasswordValidators.alphabeticalCharacterRule(5)(
-        control
-      );
+      const control: FormControl = new FormControl("aAa345b!bdDb\"c cc76");
+      const validated = PasswordValidators.alphabeticalCharacterRule(5)(control);
       expect(validated).toBeUndefined();
     });
 
     it("should work for invalid password", () => {
       const control: FormControl = new FormControl("1234Abc!");
-      const validated = PasswordValidators.alphabeticalCharacterRule(5)(
-        control
-      );
+      const validated = PasswordValidators.alphabeticalCharacterRule(5)(control);
       expect(validated).toEqual({
-        alphabeticalCharacterRule: { required: 5, actual: 3 }
+        alphabeticalCharacterRule: { required: 5, actual: 3 },
       });
     });
   });
@@ -114,7 +100,7 @@ describe("Password validators service", () => {
       expect(validated).toBeUndefined();
     });
     it("should work for valid password", () => {
-      const control: FormControl = new FormControl('aAa345b!bdDb"c cc76');
+      const control: FormControl = new FormControl("aAa345b!bdDb\"c cc76");
       const validated = PasswordValidators.digitCharacterRule(5)(control);
       expect(validated).toBeUndefined();
     });
@@ -123,7 +109,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234Abc!");
       const validated = PasswordValidators.digitCharacterRule(5)(control);
       expect(validated).toEqual({
-        digitCharacterRule: { required: 5, actual: 4 }
+        digitCharacterRule: { required: 5, actual: 4 },
       });
     });
   });
@@ -144,7 +130,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234abcADc!");
       const validated = PasswordValidators.lowercaseCharacterRule(5)(control);
       expect(validated).toEqual({
-        lowercaseCharacterRule: { required: 5, actual: 4 }
+        lowercaseCharacterRule: { required: 5, actual: 4 },
       });
     });
   });
@@ -165,7 +151,7 @@ describe("Password validators service", () => {
       const control: FormControl = new FormControl("1234abcAbc!");
       const validated = PasswordValidators.uppercaseCharacterRule(5)(control);
       expect(validated).toEqual({
-        uppercaseCharacterRule: { required: 5, actual: 1 }
+        uppercaseCharacterRule: { required: 5, actual: 1 },
       });
     });
   });
@@ -177,7 +163,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -191,7 +177,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -205,7 +191,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           test: password,
-          test2: confirmPassword
+          test2: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords("test", "test2")
       );
@@ -219,14 +205,12 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           test: password,
-          test2: confirmPassword
+          test2: confirmPassword,
         },
         PasswordValidators.mismatchedPasswords("test", "test2")
       );
       form.updateValueAndValidity();
-      expect(
-        confirmPassword.getError("mismatchedPasswords")
-      ).not.toBeUndefined();
+      expect(confirmPassword.getError("mismatchedPasswords")).not.toBeUndefined();
     });
 
     it("should work for invalid password", () => {
@@ -235,14 +219,12 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
       form.updateValueAndValidity();
-      expect(
-        confirmPassword.getError("mismatchedPasswords")
-      ).not.toBeUndefined();
+      expect(confirmPassword.getError("mismatchedPasswords")).not.toBeUndefined();
     });
   });
 });

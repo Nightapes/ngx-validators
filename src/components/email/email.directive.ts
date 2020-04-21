@@ -1,19 +1,6 @@
 import { EmailOptions } from "./email-util";
-import {
-  Directive,
-  Input,
-  forwardRef,
-  OnInit,
-  OnChanges,
-  SimpleChanges
-} from "@angular/core";
-import {
-  NG_VALIDATORS,
-  Validator,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors
-} from "@angular/forms";
+import { Directive, Input, forwardRef, OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { NG_VALIDATORS, Validator, ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms";
 
 import { EmailValidators } from "./email-validators";
 
@@ -24,9 +11,9 @@ import { EmailValidators } from "./email-validators";
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmailValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() email: "normal" | "simple" = "normal";
@@ -53,8 +40,8 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["email"]) {
-      this.setValidator(changes["email"].currentValue);
+    if (changes.email && !changes.email.isFirstChange()) {
+      this.setValidator(changes.email.currentValue);
       this.onChange();
     }
   }
@@ -69,18 +56,17 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector:
-    "[emailSuggest][formControlName],[emailSuggest][formControl],[emailSuggest][ngModel]",
+  selector: "[emailSuggest][formControlName],[emailSuggest][formControl],[emailSuggest][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmailSuggestValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class EmailSuggestValidatorDirective implements Validator, OnInit {
+export class EmailSuggestValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() emailSuggest: EmailOptions;
 
   private validator: ValidatorFn;
@@ -91,10 +77,8 @@ export class EmailSuggestValidatorDirective implements Validator, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["emailSuggest"]) {
-      this.validator = EmailValidators.suggest(
-        changes["emailSuggest"].currentValue
-      );
+    if (changes.emailSuggest && !changes.emailSuggest.isFirstChange()) {
+      this.validator = EmailValidators.suggest(changes.emailSuggest.currentValue);
       this.onChange();
     }
   }

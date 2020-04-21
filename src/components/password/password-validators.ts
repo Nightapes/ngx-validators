@@ -9,7 +9,7 @@ export class PasswordValidators {
       const repeatDec = repeatCount - 1;
       const pattern = "([^\\x00-\\x1F])\\1{" + repeatDec + "}";
       if (control.value !== "" && new RegExp(pattern).test(control.value)) {
-        return { repeatCharacterRegexRule: { repeatCount: repeatCount } };
+        return { repeatCharacterRegexRule: { repeatCount } };
       }
       return undefined;
     };
@@ -34,9 +34,9 @@ export class PasswordValidators {
       if (!valid) {
         return {
           allowedCharacterRule: {
-            invalidChars: invalidChars,
-            allowedChars: allowedChars
-          }
+            invalidChars,
+            allowedChars,
+          },
         };
       }
       return undefined;
@@ -57,8 +57,8 @@ export class PasswordValidators {
         return {
           alphabeticalCharacterRule: {
             required: amount,
-            actual: stripped.length
-          }
+            actual: stripped.length,
+          },
         };
       }
       return undefined;
@@ -77,7 +77,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          digitCharacterRule: { required: amount, actual: stripped.length }
+          digitCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -96,7 +96,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          lowercaseCharacterRule: { required: amount, actual: stripped.length }
+          lowercaseCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -115,7 +115,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          uppercaseCharacterRule: { required: amount, actual: stripped.length }
+          uppercaseCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -134,7 +134,7 @@ export class PasswordValidators {
       const stripped = value.replace(pattern, "");
       if (stripped.length < amount) {
         return {
-          specialCharacterRule: { required: amount, actual: stripped.length }
+          specialCharacterRule: { required: amount, actual: stripped.length },
         };
       }
       return undefined;
@@ -142,26 +142,15 @@ export class PasswordValidators {
     return validator;
   }
 
-  public static mismatchedPasswords(
-    passwordControlName?: string,
-    confirmPasswordControlName?: string
-  ): ValidatorFn {
+  public static mismatchedPasswords(passwordControlName?: string, confirmPasswordControlName?: string): ValidatorFn {
     const validator = (group: AbstractControl): ValidationErrors => {
-      const newPasswordValue = group.get(
-        passwordControlName ? passwordControlName : "newPassword"
-      ).value;
+      const newPasswordValue = group.get(passwordControlName ? passwordControlName : "newPassword").value;
       const newPasswordConfirmValue = group.get(
-        confirmPasswordControlName
-          ? confirmPasswordControlName
-          : "confirmPassword"
+        confirmPasswordControlName ? confirmPasswordControlName : "confirmPassword"
       ).value;
       if (newPasswordValue !== newPasswordConfirmValue) {
         AbstractControlUtil.addError(
-          group.get(
-            confirmPasswordControlName
-              ? confirmPasswordControlName
-              : "confirmPassword"
-          ),
+          group.get(confirmPasswordControlName ? confirmPasswordControlName : "confirmPassword"),
           "mismatchedPasswords",
           true
         );
@@ -169,11 +158,7 @@ export class PasswordValidators {
         return { mismatchedPasswords: true };
       } else {
         AbstractControlUtil.removeError(
-          group.get(
-            confirmPasswordControlName
-              ? confirmPasswordControlName
-              : "confirmPassword"
-          ),
+          group.get(confirmPasswordControlName ? confirmPasswordControlName : "confirmPassword"),
           "mismatchedPasswords"
         );
       }

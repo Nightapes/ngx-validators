@@ -1,32 +1,18 @@
-import {
-  Directive,
-  forwardRef,
-  Input,
-  OnInit,
-  OnChanges,
-  SimpleChanges
-} from "@angular/core";
-import {
-  AbstractControl,
-  NG_VALIDATORS,
-  Validator,
-  ValidatorFn,
-  ValidationErrors
-} from "@angular/forms";
+import { Directive, forwardRef, Input, OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { AbstractControl, NG_VALIDATORS, Validator, ValidatorFn, ValidationErrors } from "@angular/forms";
 
 import { UniversalValidators } from "./universal-validators";
 
 @Directive({
-  selector:
-    "[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]",
+  selector: "[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => WhiteSpaceValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class WhiteSpaceValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -41,16 +27,15 @@ export class WhiteSpaceValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-  selector:
-    "[noEmptyString][formControlName],[noEmptyString][formControl],[noEmptyString][ngModel]",
+  selector: "[noEmptyString][formControlName],[noEmptyString][formControl],[noEmptyString][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => EmptyStringValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EmptyStringValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -65,16 +50,15 @@ export class EmptyStringValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-  selector:
-    "[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]",
+  selector: "[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => IsNumberValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class IsNumberValidatorDirective implements Validator, OnInit {
   private validator: ValidatorFn;
@@ -89,18 +73,17 @@ export class IsNumberValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-  selector:
-    "[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]",
+  selector: "[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => IsInRangeValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class IsInRangeValidatorDirective implements Validator, OnInit {
+export class IsInRangeValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() minValue: number;
   @Input() maxValue: number;
 
@@ -108,18 +91,26 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
   private onChange: () => void;
 
   ngOnInit() {
-    this.validator = UniversalValidators.isInRange(
-      this.minValue,
-      this.maxValue
-    );
+    this.validator = UniversalValidators.isInRange(this.minValue, this.maxValue);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["minValue"] || changes["maxValue"]) {
-      this.validator = UniversalValidators.isInRange(
-        changes["minValue"].currentValue,
-        changes["maxValue"].currentValue
-      );
+    let minValue = this.minValue;
+    let maxValue = this.maxValue;
+    let changed = false;
+
+    if (changes.minValue) {
+      minValue = changes.minValue.currentValue;
+      changed = changes.minValue.isFirstChange() ? false : true;
+    }
+
+    if (changes.maxValue) {
+      maxValue = changes.maxValue.currentValue;
+      changed = changes.maxValue.isFirstChange() ? false : true;
+    }
+
+    if (changed) {
+      this.validator = UniversalValidators.isInRange(minValue, maxValue);
       this.onChange();
     }
   }
@@ -134,16 +125,15 @@ export class IsInRangeValidatorDirective implements Validator, OnInit {
 }
 
 @Directive({
-  selector:
-    "input[type=text][max][formControlName],input[type=text][max][formControl],input[type=text][max][ngModel]",
+  selector: "input[type=text][max][formControlName],input[type=text][max][formControl],input[type=text][max][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => MaxValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() max: number;
@@ -156,8 +146,8 @@ export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["max"]) {
-      this.validator = UniversalValidators.max(changes["max"].currentValue);
+    if (changes.max && !changes.max.isFirstChange()) {
+      this.validator = UniversalValidators.max(changes.max.currentValue);
       this.onChange();
     }
   }
@@ -172,16 +162,15 @@ export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector:
-    "input[type=text][min][formControlName],input[type=text][min][formControl],input[type=text][min][ngModel]",
+  selector: "input[type=text][min][formControlName],input[type=text][min][formControl],input[type=text][min][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => MinValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MinValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() min: number;
@@ -194,8 +183,8 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["min"]) {
-      this.validator = UniversalValidators.min(changes["min"].currentValue);
+    if (changes.min && !changes.min.isFirstChange()) {
+      this.validator = UniversalValidators.min(changes.min.currentValue);
       this.onChange();
     }
   }

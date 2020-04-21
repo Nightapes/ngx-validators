@@ -1,4 +1,15 @@
 <mat-form-field>
-    <input type="password" matInput [(ngModel)]="password" name="password" #formControl="ngModel" password alphabeticalCharacter=1 placeholder="Password">
-    <mat-hint *ngIf="formControl.hasError('alphabeticalCharacterRule')" class="error">Password should contain at least one alphabetical character</mat-hint>
+  <input
+    type="password"
+    matInput
+    [(ngModel)]="password"
+    name="password"
+    #formControl="ngModel"
+    password
+    alphabeticalCharacter="1"
+    placeholder="Password"
+  />
+  <mat-hint *ngIf="formControl.hasError('alphabeticalCharacterRule')" class="error"
+    >Password should contain at least one alphabetical character</mat-hint
+  >
 </mat-form-field>

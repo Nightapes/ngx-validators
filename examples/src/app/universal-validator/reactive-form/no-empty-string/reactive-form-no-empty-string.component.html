@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-    <mat-form-field>
-        <input matInput type="text" formControlName="noEmptyString" name="noEmptyString" placeholder="No empty string">
-        <mat-hint *ngIf="noEmptyString.hasError('noEmptyString')" class="error">No empty string allowed</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" formControlName="noEmptyString" name="noEmptyString" placeholder="No empty string" />
+    <mat-hint *ngIf="noEmptyString.hasError('noEmptyString')" class="error">No empty string allowed</mat-hint>
+  </mat-form-field>
 </form>

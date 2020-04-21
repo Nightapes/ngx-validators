@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-    <mat-form-field>
-        <input matInput type="text" formControlName="noWhitespace" name="noWhitespace" placeholder="No whitespace">
-        <mat-hint *ngIf="noWhitespace.hasError('noWhitespaceRequired')" class="error">No whitespaces allowed</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" formControlName="noWhitespace" name="noWhitespace" placeholder="No whitespace" />
+    <mat-hint *ngIf="noWhitespace.hasError('noWhitespaceRequired')" class="error">No whitespaces allowed</mat-hint>
+  </mat-form-field>
 </form>

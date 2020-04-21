@@ -1,27 +1,34 @@
 <mat-toolbar color="primary">
-    <button mat-button class="menu-button" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon></button>
-    <span class="home" [routerLink]="['guide']">ngx-validators</span>
-    <span class="fill-space"></span>
-    <a mat-button href="https://github.com/Nightapes/ngx-validators" class="menu-button">
-        <img class="github" src="./assets/github.png">
-    </a>
+  <button mat-button class="menu-button" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="home" [routerLink]="['guide']">ngx-validators</span>
+  <span class="fill-space"></span>
+  <a mat-button href="https://github.com/Nightapes/ngx-validators" class="menu-button">
+    <img class="github" src="./assets/github.png" />
+  </a>
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav #sidenav fixedInViewport="true" fixedTopGap="64">
-        <!-- sidenav content -->
-        <mat-nav-list *ngFor="let item of menuItems" dense>
-            <div mat-subheader>{{item.name}}</div>
-            <ng-container *ngFor="let validator of item.validators">
-                <a mat-list-item [routerLink]="[item.linkPrefix, validator.name]" routerLinkActive="selected" (click)="sidenav.close()">
-                    {{validator.name}}</a>
-            </ng-container>
-        </mat-nav-list>
-    </mat-sidenav>
+  <mat-sidenav #sidenav fixedInViewport="true" fixedTopGap="64">
+    <!-- sidenav content -->
+    <mat-nav-list *ngFor="let item of menuItems" dense>
+      <div mat-subheader>{{ item.name }}</div>
+      <ng-container *ngFor="let validator of item.validators">
+        <a
+          mat-list-item
+          [routerLink]="[item.linkPrefix, validator.name]"
+          routerLinkActive="selected"
+          (click)="sidenav.close()"
+        >
+          {{ validator.name }}</a
+        >
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
 
-    <!-- primary content -->
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
+  <!-- primary content -->
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </mat-sidenav-container>

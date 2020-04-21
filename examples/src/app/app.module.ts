@@ -1,7 +1,7 @@
-import { UniversalModule } from './universal-validator/universal-validator.module';
-import { GuideModule } from './guide/guide.module';
-import { ValidatorsModule } from 'ngx-validators';
-import { RouterModule } from '@angular/router';
+import { UniversalModule } from "./universal-validator/universal-validator.module";
+import { GuideModule } from "./guide/guide.module";
+import { ValidatorsModule } from "ngx-validators";
+import { RouterModule } from "@angular/router";
 import {
   MatButtonModule,
   MatCardModule,
@@ -11,23 +11,21 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatToolbarModule,
-  MAT_FORM_FIELD_DEFAULT_OPTIONS
-} from '@angular/material';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from "@angular/material";
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpModule } from "@angular/http";
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EmailModule } from './email-validator/email-validator.module';
-import { PasswordModule } from './password-validator/password-validator.module';
-import { CreditcardModule } from './creditcard-validator/creditcard-validator.module';
-import { EqualToValidatorModule } from './equal-to-validator/equal-to-validator.module';
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { EmailModule } from "./email-validator/email-validator.module";
+import { PasswordModule } from "./password-validator/password-validator.module";
+import { CreditcardModule } from "./creditcard-validator/creditcard-validator.module";
+import { EqualToValidatorModule } from "./equal-to-validator/equal-to-validator.module";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([], { useHash: true }),
@@ -47,9 +45,9 @@ import { EqualToValidatorModule } from './equal-to-validator/equal-to-validator.
     PasswordModule,
     EmailModule,
     CreditcardModule,
-    EqualToValidatorModule
+    EqualToValidatorModule,
   ],
-  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } }],
-  bootstrap: [AppComponent]
+  providers: [{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: "standard" } }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

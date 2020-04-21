@@ -4,15 +4,12 @@ import {
   IsNumberValidatorDirective,
   MaxValidatorDirective,
   MinValidatorDirective,
-  WhiteSpaceValidatorDirective
+  WhiteSpaceValidatorDirective,
 } from "./universal/universal.directive";
 import { NgModule } from "@angular/core";
 
 import { CreditCardValidatorDirective } from "./creditcard/creditcard.directive";
-import {
-  EmailValidatorDirective,
-  EmailSuggestValidatorDirective
-} from "./email/email.directive";
+import { EmailValidatorDirective, EmailSuggestValidatorDirective } from "./email/email.directive";
 import { PasswordValidatorDirective } from "./password/password.directive";
 import { EqualToDirective } from "./equal-to/equal-to.directive";
 
@@ -28,7 +25,7 @@ import { EqualToDirective } from "./equal-to/equal-to.directive";
     MinValidatorDirective,
     WhiteSpaceValidatorDirective,
     EmptyStringValidatorDirective,
-    EqualToDirective
+    EqualToDirective,
   ],
   exports: [
     CreditCardValidatorDirective,
@@ -41,7 +38,7 @@ import { EqualToDirective } from "./equal-to/equal-to.directive";
     MinValidatorDirective,
     WhiteSpaceValidatorDirective,
     EmptyStringValidatorDirective,
-    EqualToDirective
-  ]
+    EqualToDirective,
+  ],
 })
 export class ValidatorsModule {}

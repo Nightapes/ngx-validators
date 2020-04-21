@@ -1,21 +1,21 @@
 {
-    // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
-    "editor.tabSize": 4,
-    // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
-    "editor.insertSpaces": true,
-    // Controls if the editor should automatically format the line after typing
-    "editor.formatOnType": false,
-    // The default character set encoding to use when reading and writing files.
-    "files.encoding": "utf8",
-    // When enabled, will trim trailing whitespace when you save a file.
-    "files.trimTrailingWhitespace": false,
-    // Control whether tslint is enabled for TypeScript files or not.
-    "tslint.enable": true,
-    "typescript.tsdk": "node_modules/typescript/lib",
-    // Configure glob patterns for excluding files and folders.
-    "files.exclude": {
-        "**/.git": true,
-        "node_modules": true,
-        "dist/": true
-    }
+  // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+  "editor.tabSize": 4,
+  // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+  "editor.insertSpaces": true,
+  // Controls if the editor should automatically format the line after typing
+  "editor.formatOnType": false,
+  // The default character set encoding to use when reading and writing files.
+  "files.encoding": "utf8",
+  // When enabled, will trim trailing whitespace when you save a file.
+  "files.trimTrailingWhitespace": false,
+  // Control whether tslint is enabled for TypeScript files or not.
+  "tslint.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  // Configure glob patterns for excluding files and folders.
+  "files.exclude": {
+    "**/.git": true,
+    "node_modules": true,
+    "dist/": true
+  }
 }

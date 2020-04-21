@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-    <mat-form-field>
-        <input matInput formControlName="creditcard" name="creditcard" placeholder="creditcard">
-        <mat-hint *ngIf="creditcard.hasError('visa')" class="error">Is not a VISA</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="creditcard" name="creditcard" placeholder="creditcard" />
+    <mat-hint *ngIf="creditcard.hasError('visa')" class="error">Is not a VISA</mat-hint>
+  </mat-form-field>
 </form>

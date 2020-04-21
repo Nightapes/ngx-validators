@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-    <mat-form-field>
-        <input matInput type="text" formControlName="isNumber" name="isNumber" placeholder="Is number">
-        <mat-hint *ngIf="isNumber.hasError('numberRequired')" class="error">Is not a number</mat-hint>
-    </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" formControlName="isNumber" name="isNumber" placeholder="Is number" />
+    <mat-hint *ngIf="isNumber.hasError('numberRequired')" class="error">Is not a number</mat-hint>
+  </mat-form-field>
 </form>

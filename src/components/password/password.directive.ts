@@ -1,36 +1,20 @@
-import {
-  Directive,
-  Input,
-  forwardRef,
-  OnInit,
-  SimpleChanges,
-  OnChanges
-} from "@angular/core";
-import {
-  NG_VALIDATORS,
-  Validator,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors
-} from "@angular/forms";
+import { Directive, Input, forwardRef, OnInit, SimpleChanges, OnChanges } from "@angular/core";
+import { NG_VALIDATORS, Validator, Validators, ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms";
 
 import { PasswordValidators } from "./password-validators";
 
 @Directive({
-  selector:
-    "[password][formControlName],[password][formControl],[password][ngModel]",
+  selector: "[password][formControlName],[password][formControl],[password][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
       // tslint:disable-next-line:no-forward-ref
       useExisting: forwardRef(() => PasswordValidatorDirective),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class PasswordValidatorDirective
-  implements Validator, OnInit, OnChanges {
+export class PasswordValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() repeatCharacter = 4;
   @Input() alphabeticalCharacter = 1;
   @Input() digitCharacter = 1;
@@ -45,58 +29,44 @@ export class PasswordValidatorDirective
   private onChange: () => void;
 
   ngOnInit() {
-    this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(
-      this.repeatCharacter
-    );
-    this.alphabeticalCharacterValidator = PasswordValidators.alphabeticalCharacterRule(
-      this.alphabeticalCharacter
-    );
-    this.digitCharacterValidator = PasswordValidators.digitCharacterRule(
-      this.digitCharacter
-    );
-    this.lowercaseCharacterValidator = PasswordValidators.lowercaseCharacterRule(
-      this.lowercaseCharacter
-    );
-    this.uppercaseCharacterValidator = PasswordValidators.uppercaseCharacterRule(
-      this.uppercaseCharacter
-    );
+    this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(this.repeatCharacter);
+    this.alphabeticalCharacterValidator = PasswordValidators.alphabeticalCharacterRule(this.alphabeticalCharacter);
+    this.digitCharacterValidator = PasswordValidators.digitCharacterRule(this.digitCharacter);
+    this.lowercaseCharacterValidator = PasswordValidators.lowercaseCharacterRule(this.lowercaseCharacter);
+    this.uppercaseCharacterValidator = PasswordValidators.uppercaseCharacterRule(this.uppercaseCharacter);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     let inputChanged = false;
-    if (changes["repeatCharacter"]) {
-      this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(
-        changes["repeatCharacter"].currentValue
-      );
-      inputChanged = true;
+    if (changes.repeatCharacter) {
+      this.repeatCharacterValidator = PasswordValidators.repeatCharacterRegexRule(changes.repeatCharacter.currentValue);
+      inputChanged = changes.repeatCharacter.isFirstChange() ? false : true;
     }
 
-    if (changes["alphabeticalCharacter"]) {
+    if (changes.alphabeticalCharacter) {
       this.alphabeticalCharacterValidator = PasswordValidators.alphabeticalCharacterRule(
-        changes["alphabeticalCharacter"].currentValue
+        changes.alphabeticalCharacter.currentValue
       );
-      inputChanged = true;
+      inputChanged = changes.alphabeticalCharacter.isFirstChange() ? false : true;
     }
 
-    if (changes["digitCharacter"]) {
-      this.digitCharacterValidator = PasswordValidators.digitCharacterRule(
-        changes["digitCharacter"].currentValue
-      );
-      inputChanged = true;
+    if (changes.digitCharacter) {
+      this.digitCharacterValidator = PasswordValidators.digitCharacterRule(changes.digitCharacter.currentValue);
+      inputChanged = changes.digitCharacter.isFirstChange() ? false : true;
     }
 
-    if (changes["lowercaseCharacter"]) {
+    if (changes.lowercaseCharacter) {
       this.lowercaseCharacterValidator = PasswordValidators.lowercaseCharacterRule(
-        changes["lowercaseCharacter"].currentValue
+        changes.lowercaseCharacter.currentValue
       );
-      inputChanged = true;
+      inputChanged = changes.lowercaseCharacter.isFirstChange() ? false : true;
     }
 
-    if (changes["uppercaseCharacter"]) {
+    if (changes.uppercaseCharacter) {
       this.uppercaseCharacterValidator = PasswordValidators.uppercaseCharacterRule(
-        changes["uppercaseCharacter"].currentValue
+        changes.uppercaseCharacter.currentValue
       );
-      inputChanged = true;
+      inputChanged = changes.uppercaseCharacter.isFirstChange() ? false : true;
     }
 
     if (inputChanged) {
@@ -110,7 +80,7 @@ export class PasswordValidatorDirective
       this.digitCharacterValidator,
       this.alphabeticalCharacterValidator,
       this.lowercaseCharacterValidator,
-      this.uppercaseCharacterValidator
+      this.uppercaseCharacterValidator,
     ]);
     return compose(c);
   }

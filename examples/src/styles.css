@@ -2,48 +2,48 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
-    margin: 0;
-    background-color: lightgrey;
+  margin: 0;
+  background-color: lightgrey;
 }
 
 .card {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 .error-container {
-    margin-top: -15px;
-    margin-bottom: 5px;
+  margin-top: -15px;
+  margin-bottom: 5px;
 }
 
 .success {
-    color: green;
-    font-size: 75%;
+  color: green;
+  font-size: 75%;
 }
 
 .grey {
-    color: black;
-    font-size: 75%;
+  color: black;
+  font-size: 75%;
 }
 
 .mat-tab-link {
-    line-height: 63px !important;
-    height: 64px !important;
-    opacity: 1 !important;
+  line-height: 63px !important;
+  height: 64px !important;
+  opacity: 1 !important;
 }
 
 .mat-ink-bar {
-    background-color: white;
+  background-color: white;
 }
 
 .mat-drawer-container {
-    position: fixed !important;
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-    min-width: 100%;
+  position: fixed !important;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
 }
 
 .clickable {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
