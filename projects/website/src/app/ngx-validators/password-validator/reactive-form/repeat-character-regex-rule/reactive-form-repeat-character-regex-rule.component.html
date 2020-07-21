@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="newPassword"
+      name="newPassword"
+      type="password"
+      placeholder="Password"
+    />
+    <mat-error
+      *ngIf="repeatCharacterRegexRule.hasError('repeatCharacterRegexRule')"
+      class="error"
+      >Password should not contains repeating characters</mat-error
+    >
+  </mat-form-field>
+</form>

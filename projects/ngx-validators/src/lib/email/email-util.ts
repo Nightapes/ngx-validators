@@ -119,7 +119,7 @@ export class EmailSuggestion {
     options?: EmailOptions
   ): { [key: string]: Suggestion } {
     let opt = this.defaultOptions;
-    if (options != undefined) {
+    if (options !== undefined) {
       opt = options;
     }
     const emailParts = this.splitEmail(email.toLowerCase());
@@ -144,7 +144,7 @@ export class EmailSuggestion {
       2
     );
     if (closestDomain) {
-      if (closestDomain == emailParts.domain) {
+      if (closestDomain === emailParts.domain) {
         // The email address exactly matches one of the supplied domains; do not return a suggestion.
         return undefined;
       } else {
@@ -176,7 +176,7 @@ export class EmailSuggestion {
 
       if (
         closestSecondLevelDomain &&
-        closestSecondLevelDomain != emailParts.secondLevelDomain
+        closestSecondLevelDomain !== emailParts.secondLevelDomain
       ) {
         // The email address may have a mispelled second-level domain; return a suggestion
         closestDomain = closestDomain.replace(
@@ -188,7 +188,7 @@ export class EmailSuggestion {
 
       if (
         closestTopLevelDomain &&
-        closestTopLevelDomain != emailParts.topLevelDomain &&
+        closestTopLevelDomain !== emailParts.topLevelDomain &&
         emailParts.secondLevelDomain !== ""
       ) {
         // The email address may have a mispelled top-level domain; return a suggestion
@@ -224,6 +224,7 @@ export class EmailSuggestion {
       return undefined;
     }
 
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < parts.length; i++) {
       if (parts[i] === "") {
         return undefined;
@@ -241,7 +242,7 @@ export class EmailSuggestion {
 
     if (domainParts.length === 0) {
       return undefined;
-    } else if (domainParts.length == 1) {
+    } else if (domainParts.length === 1) {
       result.topLevelDomain = domainParts[0];
     } else {
       // The address has a domain and a top-level domain
@@ -273,6 +274,7 @@ export class EmailSuggestion {
       return undefined;
     }
 
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < domains.length; i++) {
       if (domain === domains[i]) {
         return domain;
@@ -294,7 +296,7 @@ export class EmailSuggestion {
   private sift4Distance(s1: string, s2: string, maxOffset: number): number {
     // sift4: https://siderite.blogspot.com/2014/11/super-fast-and-accurate-string-distance.html
     if (maxOffset === undefined) {
-      maxOffset = 5; //default
+      maxOffset = 5; // default
     }
 
     if (!s1 || !s1.length) {
@@ -311,18 +313,18 @@ export class EmailSuggestion {
     const l1 = s1.length;
     const l2 = s2.length;
 
-    let c1 = 0; //cursor for string 1
-    let c2 = 0; //cursor for string 2
-    let lcss = 0; //largest common subsequence
-    let localCS = 0; //local common substring
-    let trans = 0; //number of transpositions ('ab' vs 'ba')
-    const offsetArr: Offset[] = []; //offset pair array, for computing the transpositions
+    let c1 = 0; // cursor for string 1
+    let c2 = 0; // cursor for string 2
+    let lcss = 0; // largest common subsequence
+    let localCS = 0; // local common substring
+    let trans = 0; // number of transpositions ('ab' vs 'ba')
+    const offsetArr: Offset[] = []; // offset pair array, for computing the transpositions
 
     while (c1 < l1 && c2 < l2) {
-      if (s1.charAt(c1) == s2.charAt(c2)) {
+      if (s1.charAt(c1) === s2.charAt(c2)) {
         localCS++;
         let isTrans = false;
-        //see if current match is a transposition
+        // see if current match is a transposition
         let i = 0;
         while (i < offsetArr.length) {
           const ofs = offsetArr[i];
@@ -347,25 +349,25 @@ export class EmailSuggestion {
           }
         }
         offsetArr.push({
-          c1: c1,
-          c2: c2,
+          c1,
+          c2,
           trans: isTrans,
         });
       } else {
         lcss += localCS;
         localCS = 0;
-        if (c1 != c2) {
-          c1 = c2 = Math.min(c1, c2); //using min allows the computation of transpositions
+        if (c1 !== c2) {
+          c1 = c2 = Math.min(c1, c2); // using min allows the computation of transpositions
         }
-        //if matching characters are found, remove 1 from both cursors (they get incremented at the end of the loop)
-        //so that we can have only one code block handling matches
+        // if matching characters are found, remove 1 from both cursors (they get incremented at the end of the loop)
+        // so that we can have only one code block handling matches
         for (let j = 0; j < maxOffset && (c1 + j < l1 || c2 + j < l2); j++) {
-          if (c1 + j < l1 && s1.charAt(c1 + j) == s2.charAt(c2)) {
+          if (c1 + j < l1 && s1.charAt(c1 + j) === s2.charAt(c2)) {
             c1 += j - 1;
             c2--;
             break;
           }
-          if (c2 + j < l2 && s1.charAt(c1) == s2.charAt(c2 + j)) {
+          if (c2 + j < l2 && s1.charAt(c1) === s2.charAt(c2 + j)) {
             c1--;
             c2 += j - 1;
             break;
@@ -382,6 +384,6 @@ export class EmailSuggestion {
       }
     }
     lcss += localCS;
-    return Math.round(Math.max(l1, l2) - lcss + trans); //add the cost of transpositions to the final result
+    return Math.round(Math.max(l1, l2) - lcss + trans); // add the cost of transpositions to the final result
   }
 }

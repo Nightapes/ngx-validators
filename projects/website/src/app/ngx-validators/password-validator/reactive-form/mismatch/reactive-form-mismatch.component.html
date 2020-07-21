@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="newPassword"
+      name="newPassword"
+      type="password"
+      placeholder="Password"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="confirmPassword"
+      name="confirmPassword"
+      type="password"
+      placeholder="Password"
+    />
+    <mat-error *ngIf="form.hasError('mismatchedPasswords')" class="error"
+      >Passwords don't match</mat-error
+    >
+  </mat-form-field>
+</form>

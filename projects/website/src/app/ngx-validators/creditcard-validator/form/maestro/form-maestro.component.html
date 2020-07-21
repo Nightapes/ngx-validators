@@ -1,0 +1,14 @@
+<mat-form-field>
+  <input
+    type="creditcard"
+    matInput
+    [(ngModel)]="model"
+    name="creditcard"
+    #formControl="ngModel"
+    creditCard="maestro"
+    placeholder="Creditcard"
+  />
+  <mat-error *ngIf="formControl.hasError('maestro')" class="error"
+    >This is not a Maestro card</mat-error
+  >
+</mat-form-field>

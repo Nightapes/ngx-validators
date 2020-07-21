@@ -9,7 +9,7 @@ export class PasswordValidators {
       const repeatDec = repeatCount - 1;
       const pattern = "([^\\x00-\\x1F])\\1{" + repeatDec + "}";
       if (control.value !== "" && new RegExp(pattern).test(control.value)) {
-        return { repeatCharacterRegexRule: { repeatCount: repeatCount } };
+        return { repeatCharacterRegexRule: { repeatCount } };
       }
       return undefined;
     };
@@ -34,8 +34,8 @@ export class PasswordValidators {
       if (!valid) {
         return {
           allowedCharacterRule: {
-            invalidChars: invalidChars,
-            allowedChars: allowedChars,
+            invalidChars,
+            allowedChars,
           },
         };
       }

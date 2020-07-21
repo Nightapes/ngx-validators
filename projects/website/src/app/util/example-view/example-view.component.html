@@ -1,0 +1,38 @@
+<mat-form-field>
+  <mat-select placeholder="Type" [(value)]="selected">
+    <mat-option value="form" *ngIf="currentValidator.formHTML">
+      Form
+    </mat-option>
+    <mat-option value="reactiveForm" *ngIf="currentValidator.reactiveformHTML">
+      Reactive Form
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<pre><code>{{api}}</code></pre>
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ title }} - {{ item }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="selected == 'reactiveForm'">
+      <ng-template
+        [ngComponentOutlet]="currentValidator.reactiveComponent"
+      ></ng-template>
+    </ng-container>
+    <ng-container *ngIf="selected == 'form'">
+      <ng-template
+        [ngComponentOutlet]="currentValidator.formComponent"
+      ></ng-template>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+<app-codeviewer
+  *ngIf="currentValidator && selected == 'form'"
+  [html]="currentValidator.formHTML"
+  [tsCode]="currentValidator.formTS"
+></app-codeviewer>
+<app-codeviewer
+  *ngIf="currentValidator && selected == 'reactiveForm'"
+  [html]="currentValidator.reactiveformHTML"
+  [tsCode]="currentValidator.reactiveformTS"
+></app-codeviewer>

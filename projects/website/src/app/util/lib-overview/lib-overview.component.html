@@ -1,0 +1,29 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let item of items">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ item.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-nav-list *ngFor="let validator of item.validators" dense>
+      <a
+        mat-list-item
+        [routerLink]="[item.linkPrefix, validator.name]"
+        routerLinkActive="selected"
+      >
+        {{ validator.name }}</a
+      >
+    </mat-nav-list>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+
+  &__link {
+    text-decoration: none;
+    margin: 16px;
+  }
+
+  &__card {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  .mat-card-title {
+    margin-bottom: 16px;
+  }
+}

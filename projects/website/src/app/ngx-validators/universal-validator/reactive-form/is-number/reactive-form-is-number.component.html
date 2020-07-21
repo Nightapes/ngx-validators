@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="isNumber"
+      name="isNumber"
+      placeholder="Is number"
+    />
+    <mat-error *ngIf="isNumber.hasError('numberRequired')" class="error"
+      >Is not a number</mat-error
+    >
+  </mat-form-field>
+</form>

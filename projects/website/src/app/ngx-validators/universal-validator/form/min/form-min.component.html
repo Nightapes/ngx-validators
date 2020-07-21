@@ -1,0 +1,27 @@
+<mat-form-field>
+  <input
+    matInput
+    type="text"
+    [(ngModel)]="model.min"
+    name="min"
+    #formControl4="ngModel"
+    [min]="model.value"
+    placeholder="min (2)"
+  />
+  <mat-error *ngIf="formControl4.hasError('numberRequired')" class="error"
+    >Needs to be a number</mat-error
+  >
+  <mat-error *ngIf="formControl4.hasError('min')" class="error"
+    >Number to small</mat-error
+  >
+</mat-form-field>
+<mat-form-field>
+  <input
+    matInput
+    type="number"
+    [(ngModel)]="model.value"
+    name="min"
+    #formControl5="ngModel"
+    placeholder="min value"
+  />
+</mat-form-field>

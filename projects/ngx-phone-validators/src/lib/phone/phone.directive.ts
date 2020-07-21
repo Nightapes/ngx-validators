@@ -1,4 +1,11 @@
-import { Directive, Input, forwardRef, OnInit } from "@angular/core";
+import {
+  Directive,
+  Input,
+  forwardRef,
+  OnInit,
+  SimpleChanges,
+  OnChanges,
+} from "@angular/core";
 import {
   NG_VALIDATORS,
   Validator,
@@ -48,13 +55,27 @@ export class PossiblePhoneValidatorDirective implements Validator, OnInit {
     },
   ],
 })
-export class PhoneValidatorDirective implements Validator, OnInit {
+export class PhoneValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() phone = "US";
 
   private validator: ValidatorFn;
+  private onChange: () => void;
 
   ngOnInit() {
     this.validator = PhoneValidators.isPhoneNumber(this.phone);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.phone && !changes.phone.isFirstChange()) {
+      this.validator = PhoneValidators.isPhoneNumber(
+        changes.phone.currentValue
+      );
+      this.onChange();
+    }
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
   }
 
   validate(c: AbstractControl): ValidationErrors {

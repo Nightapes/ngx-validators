@@ -177,7 +177,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword,
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -191,7 +191,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword,
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );
@@ -235,7 +235,7 @@ describe("Password validators service", () => {
       const form = new FormGroup(
         {
           newPassword: password,
-          confirmPassword: confirmPassword,
+          confirmPassword,
         },
         PasswordValidators.mismatchedPasswords()
       );

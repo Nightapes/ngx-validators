@@ -1,6 +1,7 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import "~@angular/material/theming";
+@import "~highlight.js/styles/github.css";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -8,11 +9,77 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
+$md-primary: (
+  50: #e8f2f6,
+  100: #c5e0e9,
+  200: #9fcbda,
+  300: #79b6cb,
+  400: #5ca6c0,
+  500: #3f96b5,
+  600: #398eae,
+  700: #3183a5,
+  800: #29799d,
+  900: #1b688d,
+  A100: #c6ebff,
+  A200: #93d9ff,
+  A400: #60c7ff,
+  A700: #47beff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$md-accent: (
+  50: #e5f4f3,
+  100: #bee4e1,
+  200: #93d3cd,
+  300: #67c1b8,
+  400: #47b3a9,
+  500: #26a69a,
+  600: #229e92,
+  700: #1c9588,
+  800: #178b7e,
+  900: #0d7b6c,
+  A100: #adfff3,
+  A200: #7affec,
+  A400: #47ffe4,
+  A700: #2dffe0,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$website-primary: mat-palette($mat-indigo);
-$website-accent: mat-palette($mat-pink, A200, A100, A400);
+$website-primary: mat-palette($md-primary);
+$website-accent: mat-palette($md-accent, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $website-warn: mat-palette($mat-red);

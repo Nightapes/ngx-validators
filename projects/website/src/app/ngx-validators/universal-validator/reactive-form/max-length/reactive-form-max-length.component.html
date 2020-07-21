@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="maxLength"
+      name="maxLength"
+      placeholder="Max length (max 5)"
+    />
+    <mat-error *ngIf="maxLength.hasError('maxLength')" class="error"
+      >Input to long (max 5)</mat-error
+    >
+  </mat-form-field>
+</form>

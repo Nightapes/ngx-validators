@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="newPassword"
+      name="newPassword"
+      type="password"
+      placeholder="Password"
+    />
+    <mat-error
+      *ngIf="alphabeticalCharacterRule.hasError('alphabeticalCharacterRule')"
+      class="error"
+      >Password should contain at least one alphabetical character</mat-error
+    >
+  </mat-form-field>
+</form>

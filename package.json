@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
     "google-libphonenumber": "^3.2.8",
+    "ngx-highlightjs": "^4.1.0-beta",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.3"

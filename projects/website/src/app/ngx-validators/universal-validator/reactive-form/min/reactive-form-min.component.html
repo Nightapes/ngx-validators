@@ -1,0 +1,17 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      formControlName="min"
+      name="min"
+      placeholder="Min number (5)"
+    />
+    <mat-error *ngIf="min.hasError('numberRequired')" class="error"
+      >Is not a number</mat-error
+    >
+    <mat-error *ngIf="min.hasError('min')" class="error"
+      >Number to small</mat-error
+    >
+  </mat-form-field>
+</form>
