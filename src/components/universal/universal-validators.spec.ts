@@ -237,4 +237,76 @@ describe("Universal validators service", () => {
       expect(validated).toEqual({ max: { required: 2, actual: "3" } });
     });
   });
+
+  describe("maxDate", () => {
+    it("should work for empty control", () => {
+      const control: FormControl = new FormControl("");
+      const validated = UniversalValidators.maxDate(new Date())(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for valid maxDate", () => {
+      const control: FormControl = new FormControl("2012-12-24");
+      const validated = UniversalValidators.maxDate(new Date())(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for valid maxDate", () => {
+      const date = new Date();
+      const control: FormControl = new FormControl(date.getTime());
+      const validated = UniversalValidators.maxDate(date)(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for invalid date", () => {
+      const date = new Date();
+      const control: FormControl = new FormControl("broken");
+      const validated = UniversalValidators.maxDate(date)(control);
+      expect(validated).toEqual({ dateRequired: true });
+    });
+
+    it("should work for invalid maxDate", () => {
+      const currentDate = new Date();
+      const requiredDate = new Date("2012-12-24");
+      const control: FormControl = new FormControl(currentDate);
+      const validated = UniversalValidators.maxDate(requiredDate)(control);
+      expect(validated).toEqual({ maxDate: { required: requiredDate, actual: currentDate } });
+    });
+  });
+
+  describe("minDate", () => {
+    it("should work for empty control", () => {
+      const control: FormControl = new FormControl("");
+      const validated = UniversalValidators.minDate(new Date())(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for valid minDate", () => {
+      const control: FormControl = new FormControl("2020-12-24");
+      const validated = UniversalValidators.minDate(new Date("2012-12-24"))(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for valid minDate", () => {
+      const date = new Date();
+      const control: FormControl = new FormControl(date.getTime());
+      const validated = UniversalValidators.minDate(date)(control);
+      expect(validated).toBeUndefined();
+    });
+
+    it("should work for invalid date", () => {
+      const date = new Date();
+      const control: FormControl = new FormControl("broken");
+      const validated = UniversalValidators.minDate(date)(control);
+      expect(validated).toEqual({ dateRequired: true });
+    });
+
+    it("should work for invalid minDate", () => {
+      const currentDate = new Date("2012-12-24");
+      const requiredDate = new Date();
+      const control: FormControl = new FormControl(currentDate);
+      const validated = UniversalValidators.minDate(requiredDate)(control);
+      expect(validated).toEqual({ minDate: { required: requiredDate, actual: currentDate } });
+    });
+  });
 });

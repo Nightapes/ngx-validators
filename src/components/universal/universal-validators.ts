@@ -115,4 +115,34 @@ export class UniversalValidators {
     };
     return validator;
   }
+
+  public static minDate(minDate: Date) {
+    const validator = (control: AbstractControl): ValidationErrors => {
+      if (AbstractControlUtil.isNotPresent(control)) return undefined;
+      const date: Date = new Date(control.value);
+      if (isNaN(date.getTime())) {
+        return { dateRequired: true };
+      }
+      if (date.getTime() >= minDate.getTime()) {
+        return undefined;
+      }
+      return { minDate: { required: minDate, actual: date } };
+    };
+    return validator;
+  }
+
+  public static maxDate(minDate: Date) {
+    const validator = (control: AbstractControl): ValidationErrors => {
+      if (AbstractControlUtil.isNotPresent(control)) return undefined;
+      const date: Date = new Date(control.value);
+      if (isNaN(date.getTime())) {
+        return { dateRequired: true };
+      }
+      if (date.getTime() <= minDate.getTime()) {
+        return undefined;
+      }
+      return { maxDate: { required: minDate, actual: date } };
+    };
+    return validator;
+  }
 }

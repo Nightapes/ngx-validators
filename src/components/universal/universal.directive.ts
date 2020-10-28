@@ -197,3 +197,77 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
     this.onChange = fn;
   }
 }
+
+@Directive({
+  selector: "input[type=text][minDate][formControlName],input[type=text][minDate][formControl],input[type=text][minDate][ngModel]",
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      // tslint:disable-next-line:no-forward-ref
+      useExisting: forwardRef(() => MinDateValidatorDirective),
+      multi: true,
+    },
+  ],
+})
+export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
+  @Input() minDate: string;
+
+  private validator: ValidatorFn;
+  private onChange: () => void;
+
+  ngOnInit() {
+    this.validator = UniversalValidators.minDate(new Date(this.minDate));
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.minDate && !changes.minDate.isFirstChange()) {
+      this.validator = UniversalValidators.minDate(changes.min.currentValue);
+      this.onChange();
+    }
+  }
+
+  validate(c: AbstractControl): ValidationErrors {
+    return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
+  }
+}
+
+@Directive({
+  selector: "input[type=text][maxDate][formControlName],input[type=text][maxDate][formControl],input[type=text][maxDate][ngModel]",
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      // tslint:disable-next-line:no-forward-ref
+      useExisting: forwardRef(() => MaxDateValidatorDirective),
+      multi: true,
+    },
+  ],
+})
+export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
+  @Input() maxDate: string;
+
+  private validator: ValidatorFn;
+  private onChange: () => void;
+
+  ngOnInit() {
+    this.validator = UniversalValidators.maxDate(new Date(this.maxDate));
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.maxDate && !changes.maxDate.isFirstChange()) {
+      this.validator = UniversalValidators.maxDate(changes.min.currentValue);
+      this.onChange();
+    }
+  }
+
+  validate(c: AbstractControl): ValidationErrors {
+    return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
+  }
+}
