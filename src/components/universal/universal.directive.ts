@@ -271,3 +271,40 @@ export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
     this.onChange = fn;
   }
 }
+
+@Directive({
+  selector: "input[requireType][formControlName]",
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      // tslint:disable-next-line:no-forward-ref
+      useExisting: forwardRef(() => TypeValidatorDirective),
+      multi: true,
+    },
+  ],
+})
+export class TypeValidatorDirective implements Validator, OnInit, OnChanges {
+  @Input() requiredType: 'number' | 'string' | 'object' | 'boolean';
+
+  private validator: ValidatorFn;
+  private onChange: () => void;
+
+  ngOnInit() {
+    this.validator = UniversalValidators.type(this.requiredType);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.requireType && !changes.requireType.isFirstChange()) {
+      this.validator = UniversalValidators.type(changes.requireType.currentValue);
+      this.onChange();
+    }
+  }
+
+  validate(c: AbstractControl): ValidationErrors {
+    return this.validator(c);
+  }
+
+  registerOnValidatorChange(fn: () => void): void {
+    this.onChange = fn;
+  }
+}

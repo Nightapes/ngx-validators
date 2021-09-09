@@ -333,6 +333,15 @@ export class AppModule {}
 </form>
 ```
 
+#### type
+
+```html
+<form>
+  <input type="number" [(ngModel)]="model.amount" name="amount" #formControl="ngModel" requireType="string" />
+  <span *ngIf="formControl.hasError('type')">Needs to be a string</span>
+</form>
+```
+
 ##Todo
 
 - Add more password rules
