@@ -79,7 +79,7 @@ describe("Password validators service", () => {
       expect(validated).toBeUndefined();
     });
     it("should work for valid password", () => {
-      const control: FormControl = new FormControl("aAa345b!bdDb\"c cc76");
+      const control: FormControl = new FormControl('aAa345b!bdDb"c cc76');
       const validated = PasswordValidators.alphabeticalCharacterRule(5)(control);
       expect(validated).toBeUndefined();
     });
@@ -100,7 +100,7 @@ describe("Password validators service", () => {
       expect(validated).toBeUndefined();
     });
     it("should work for valid password", () => {
-      const control: FormControl = new FormControl("aAa345b!bdDb\"c cc76");
+      const control: FormControl = new FormControl('aAa345b!bdDb"c cc76');
       const validated = PasswordValidators.digitCharacterRule(5)(control);
       expect(validated).toBeUndefined();
     });

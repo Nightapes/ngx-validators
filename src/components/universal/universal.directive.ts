@@ -199,7 +199,8 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector: "input[type=text][minDate][formControlName],input[type=text][minDate][formControl],input[type=text][minDate][ngModel]",
+  selector:
+    "input[type=text][minDate][formControlName],input[type=text][minDate][formControl],input[type=text][minDate][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -236,7 +237,8 @@ export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector: "input[type=text][maxDate][formControlName],input[type=text][maxDate][formControl],input[type=text][maxDate][ngModel]",
+  selector:
+    "input[type=text][maxDate][formControlName],input[type=text][maxDate][formControl],input[type=text][maxDate][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -284,7 +286,7 @@ export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
   ],
 })
 export class TypeValidatorDirective implements Validator, OnInit, OnChanges {
-  @Input() requiredType: 'number' | 'string' | 'object' | 'boolean';
+  @Input() requiredType: "number" | "string" | "object" | "boolean";
 
   private validator: ValidatorFn;
   private onChange: () => void;

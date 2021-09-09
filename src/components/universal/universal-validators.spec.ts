@@ -310,63 +310,63 @@ describe("Universal validators service", () => {
     });
   });
 
-  describe('type', () => {
-    it('should allow empty input', () => {
-      expect(UniversalValidators.type('number')(new FormControl(''))).toBeNull();
-      expect(UniversalValidators.type('string')(new FormControl(''))).toBeNull();
-      expect(UniversalValidators.type('object')(new FormControl(''))).toBeNull();
-      expect(UniversalValidators.type('boolean')(new FormControl(''))).toBeNull();
+  describe("type", () => {
+    it("should allow empty input", () => {
+      expect(UniversalValidators.type("number")(new FormControl(""))).toBeNull();
+      expect(UniversalValidators.type("string")(new FormControl(""))).toBeNull();
+      expect(UniversalValidators.type("object")(new FormControl(""))).toBeNull();
+      expect(UniversalValidators.type("boolean")(new FormControl(""))).toBeNull();
     });
 
-    it('should check for number type', () => {
-      expect(UniversalValidators.type('number')(new FormControl(1))).toBeNull()
-      expect(UniversalValidators.type('number')(new FormControl('str'))).toEqual({
-        'type': {'required': 'number', 'actual': 'string'}
+    it("should check for number type", () => {
+      expect(UniversalValidators.type("number")(new FormControl(1))).toBeNull();
+      expect(UniversalValidators.type("number")(new FormControl("str"))).toEqual({
+        type: { required: "number", actual: "string" },
       });
-      expect(UniversalValidators.type('number')(new FormControl({key: 'value'}))).toEqual({
-        'type': {'required': 'number', 'actual': 'object'}
+      expect(UniversalValidators.type("number")(new FormControl({ key: "value" }))).toEqual({
+        type: { required: "number", actual: "object" },
       });
-      expect(UniversalValidators.type('number')(new FormControl(true))).toEqual({
-        'type': {'required': 'number', 'actual': 'boolean'}
-      });
-    });
-
-    it('should check for string type', () => {
-      expect(UniversalValidators.type('string')(new FormControl('str'))).toBeNull();
-      expect(UniversalValidators.type('string')(new FormControl(1))).toEqual({
-        'type': {'required': 'string', 'actual': 'number'}
-      });
-      expect(UniversalValidators.type('string')(new FormControl({key: 'value'}))).toEqual({
-        'type': {'required': 'string', 'actual': 'object'}
-      });
-      expect(UniversalValidators.type('string')(new FormControl(true))).toEqual({
-        'type': {'required': 'string', 'actual': 'boolean'}
+      expect(UniversalValidators.type("number")(new FormControl(true))).toEqual({
+        type: { required: "number", actual: "boolean" },
       });
     });
 
-    it('should check for boolean type', () => {
-      expect(UniversalValidators.type('boolean')(new FormControl(true))).toBeNull();
-      expect(UniversalValidators.type('boolean')(new FormControl(1))).toEqual({
-        'type': {'required': 'boolean', 'actual': 'number'}
+    it("should check for string type", () => {
+      expect(UniversalValidators.type("string")(new FormControl("str"))).toBeNull();
+      expect(UniversalValidators.type("string")(new FormControl(1))).toEqual({
+        type: { required: "string", actual: "number" },
       });
-      expect(UniversalValidators.type('boolean')(new FormControl({key: 'value'}))).toEqual({
-        'type': {'required': 'boolean', 'actual': 'object'}
+      expect(UniversalValidators.type("string")(new FormControl({ key: "value" }))).toEqual({
+        type: { required: "string", actual: "object" },
       });
-      expect(UniversalValidators.type('boolean')(new FormControl('str'))).toEqual({
-        'type': {'required': 'boolean', 'actual': 'string'}
+      expect(UniversalValidators.type("string")(new FormControl(true))).toEqual({
+        type: { required: "string", actual: "boolean" },
       });
     });
 
-    it('should check for object type', () => {
-      expect(UniversalValidators.type('object')(new FormControl({key: 'value'}))).toBeNull();
-      expect(UniversalValidators.type('object')(new FormControl(1))).toEqual({
-        'type': {'required': 'object', 'actual': 'number'}
+    it("should check for boolean type", () => {
+      expect(UniversalValidators.type("boolean")(new FormControl(true))).toBeNull();
+      expect(UniversalValidators.type("boolean")(new FormControl(1))).toEqual({
+        type: { required: "boolean", actual: "number" },
       });
-      expect(UniversalValidators.type('object')(new FormControl(true))).toEqual({
-        'type': {'required': 'object', 'actual': 'boolean'}
+      expect(UniversalValidators.type("boolean")(new FormControl({ key: "value" }))).toEqual({
+        type: { required: "boolean", actual: "object" },
       });
-      expect(UniversalValidators.type('object')(new FormControl('str'))).toEqual({
-        'type': {'required': 'object', 'actual': 'string'}
+      expect(UniversalValidators.type("boolean")(new FormControl("str"))).toEqual({
+        type: { required: "boolean", actual: "string" },
+      });
+    });
+
+    it("should check for object type", () => {
+      expect(UniversalValidators.type("object")(new FormControl({ key: "value" }))).toBeNull();
+      expect(UniversalValidators.type("object")(new FormControl(1))).toEqual({
+        type: { required: "object", actual: "number" },
+      });
+      expect(UniversalValidators.type("object")(new FormControl(true))).toEqual({
+        type: { required: "object", actual: "boolean" },
+      });
+      expect(UniversalValidators.type("object")(new FormControl("str"))).toEqual({
+        type: { required: "object", actual: "string" },
       });
     });
   });

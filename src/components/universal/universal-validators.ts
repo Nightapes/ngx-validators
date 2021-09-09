@@ -164,11 +164,11 @@ export class UniversalValidators {
    * `type` property if the validation check fails, otherwise `null`.
    *
    */
-  public static type(type: 'number' | 'string' | 'object' | 'boolean') {
+  public static type(type: "number" | "string" | "object" | "boolean") {
     const validator = (control: AbstractControl): ValidationErrors => {
       if (AbstractControlUtil.isNotPresent(control)) return null;
       const typeOfControl = typeof control.value;
-      return typeOfControl !== type ? {type: {required: type, actual: typeOfControl}} : null;
+      return typeOfControl !== type ? { type: { required: type, actual: typeOfControl } } : null;
     };
     return validator;
   }
