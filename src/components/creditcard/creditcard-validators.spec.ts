@@ -13,56 +13,98 @@ describe("CreditCardValidators", () => {
     it("should work for creditcard number (americanExpress)", () => {
       americanexpress.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toBeUndefined();
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
     it("should work for creditcard number (visa)", () => {
       visa.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toBeUndefined();
       });
     });
 
     it("should work for creditcard number (dinersclub)", () => {
       dinersclub.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toBeUndefined();
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
     it("should work for creditcard number (discover)", () => {
       discover.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toBeUndefined();
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
     it("should work for creditcard number (jcb)", () => {
       jcb.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toBeUndefined();
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
     it("should work for creditcard number (maestro)", () => {
       maestro.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toBeUndefined();
+        expect(CreditCardValidators.mastercard(control)).toEqual({ mastercard: true });
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
     it("should work for creditcard number (mastercard)", () => {
       mastercard.forEach((element) => {
         const control: FormControl = new FormControl(element);
-        const validated = CreditCardValidators.isCreditCard(control);
-        expect(validated).toBeUndefined();
+        expect(CreditCardValidators.isCreditCard(control)).toBeUndefined();
+        expect(CreditCardValidators.americanExpress(control)).toEqual({ americanExpress: true });
+        expect(CreditCardValidators.dinersclub(control)).toEqual({ dinersclub: true });
+        expect(CreditCardValidators.discover(control)).toEqual({ discover: true });
+        expect(CreditCardValidators.jcb(control)).toEqual({ jcb: true });
+        expect(CreditCardValidators.maestro(control)).toEqual({ maestro: true });
+        expect(CreditCardValidators.mastercard(control)).toBeUndefined();
+        expect(CreditCardValidators.visa(control)).toEqual({ visa: true });
       });
     });
 
