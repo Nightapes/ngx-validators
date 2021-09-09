@@ -22,8 +22,9 @@ export class EmailValidators {
     if (AbstractControlUtil.isNotPresent(control)) {
       return undefined;
     }
-    // tslint:disable-next-line:max-line-length
+
     const pattern =
+      // tslint:disable-next-line:max-line-length
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (pattern.test(control.value)) {
       return undefined;

@@ -89,12 +89,12 @@ describe("Email util service", () => {
         },
       },
       {
-        test: '"()<>[]:;@,\\"!#$%&\'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a"@allthesymbols.com',
+        test: "\"()<>[]:;@,\\\"!#$%&'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a\"@allthesymbols.com",
         result: {
           topLevelDomain: "com",
           secondLevelDomain: "allthesymbols",
           domain: "allthesymbols.com",
-          address: '"()<>[]:;@,\\"!#$%&\'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a"',
+          address: "\"()<>[]:;@,\\\"!#$%&'*+-/=?^_`{}|     ~       ?            ^_`{}|~.a\"",
         },
       },
       {
@@ -107,12 +107,12 @@ describe("Email util service", () => {
         },
       },
       {
-        test: '"foo@bar"@example.com',
+        test: "\"foo@bar\"@example.com",
         result: {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: '"foo@bar"',
+          address: "\"foo@bar\"",
         },
       },
       {
@@ -125,12 +125,12 @@ describe("Email util service", () => {
         },
       },
       {
-        test: '"contains.and.@.symbols.com"@example.com',
+        test: "\"contains.and.@.symbols.com\"@example.com",
         result: {
           topLevelDomain: "com",
           secondLevelDomain: "example",
           domain: "example.com",
-          address: '"contains.and.@.symbols.com"',
+          address: "\"contains.and.@.symbols.com\"",
         },
       },
       {
