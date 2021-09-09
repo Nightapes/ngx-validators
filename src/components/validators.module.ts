@@ -6,6 +6,7 @@ import {
   MaxValidatorDirective,
   MinDateValidatorDirective,
   MinValidatorDirective,
+  TypeValidatorDirective,
   WhiteSpaceValidatorDirective,
 } from "./universal/universal.directive";
 import { NgModule } from "@angular/core";
@@ -30,6 +31,7 @@ import { EqualToDirective } from "./equal-to/equal-to.directive";
     WhiteSpaceValidatorDirective,
     EmptyStringValidatorDirective,
     EqualToDirective,
+    TypeValidatorDirective,
   ],
   exports: [
     CreditCardValidatorDirective,
@@ -45,6 +47,7 @@ import { EqualToDirective } from "./equal-to/equal-to.directive";
     WhiteSpaceValidatorDirective,
     EmptyStringValidatorDirective,
     EqualToDirective,
+    TypeValidatorDirective,
   ],
 })
 export class ValidatorsModule {}

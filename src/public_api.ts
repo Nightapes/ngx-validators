@@ -15,6 +15,7 @@ export {
   MinValidatorDirective,
   WhiteSpaceValidatorDirective,
   EmptyStringValidatorDirective,
+  TypeValidatorDirective
 } from "./components/universal/universal.directive";
 export { CreditCardValidatorDirective } from "./components/creditcard/creditcard.directive";
 
