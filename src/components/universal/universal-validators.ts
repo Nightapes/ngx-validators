@@ -145,4 +145,31 @@ export class UniversalValidators {
     };
     return validator;
   }
+
+  /**
+   * @description
+   * Validator that requires the control's type to equal to the provided type.
+   *
+   * @usageNotes
+   *
+   * ### Validate against a string type
+   *
+   * ```typescript
+   * const control = new FormControl(2, Validators.type('string'));
+   *
+   * console.log(control.errors); // {type: {required: 'string', actual: 'number'}}
+   * ```
+   *
+   * @returns A validator function that returns an error map with the
+   * `type` property if the validation check fails, otherwise `null`.
+   *
+   */
+  public static type(type: 'number' | 'string' | 'object' | 'boolean') {
+    const validator = (control: AbstractControl): ValidationErrors => {
+      if (AbstractControlUtil.isNotPresent(control)) return null;
+      const typeOfControl = typeof control.value;
+      return typeOfControl !== type ? {type: {required: type, actual: typeOfControl}} : null;
+    };
+    return validator;
+  }
 }
