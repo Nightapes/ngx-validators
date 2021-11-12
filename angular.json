@@ -35,10 +35,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "projects/ngx-validators/**/*.ts",
-              "projects/ngx-validators/**/*.html"
-            ]
+            "lintFilePatterns": ["projects/ngx-validators/**/*.ts", "projects/ngx-validators/**/*.html"]
           }
         }
       }

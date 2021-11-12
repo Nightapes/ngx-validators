@@ -1,17 +1,12 @@
-import type { OnDestroy, SimpleChanges, OnChanges } from '@angular/core';
-import { Directive, forwardRef, Input } from '@angular/core';
-import type {
-  AbstractControl,
-  ValidationErrors,
-  Validator,
-} from '@angular/forms';
-import { NG_VALIDATORS } from '@angular/forms';
-import type { Subscription } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import type { OnDestroy, SimpleChanges, OnChanges } from "@angular/core";
+import { Directive, forwardRef, Input } from "@angular/core";
+import type { AbstractControl, ValidationErrors, Validator } from "@angular/forms";
+import { NG_VALIDATORS } from "@angular/forms";
+import type { Subscription } from "rxjs";
+import { delay } from "rxjs/operators";
 
 @Directive({
-  selector:
-    '[equalTo][ngModel], [equalTo][formControlName], [equalTo][formControl]',
+  selector: "[equalTo][ngModel], [equalTo][formControlName], [equalTo][formControl]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -22,23 +17,18 @@ import { delay } from 'rxjs/operators';
   ],
 })
 export class EqualToDirective implements Validator, OnDestroy, OnChanges {
-  @Input() equalTo: string | AbstractControl = '';
+  @Input() equalTo: string | AbstractControl = "";
 
   private subscription?: Subscription;
   private onChange?: () => void;
 
   validate(c: AbstractControl): ValidationErrors | null {
-    const otherControl =
-      typeof this.equalTo === 'string'
-        ? c.parent?.get(this.equalTo)
-        : this.equalTo;
+    const otherControl = typeof this.equalTo === "string" ? c.parent?.get(this.equalTo) : this.equalTo;
 
     if (!this.subscription) {
-      this.subscription = otherControl?.valueChanges
-        .pipe(delay(1))
-        .subscribe(() => {
-          c.updateValueAndValidity();
-        });
+      this.subscription = otherControl?.valueChanges.pipe(delay(1)).subscribe(() => {
+        c.updateValueAndValidity();
+      });
     }
     return c.value !== otherControl?.value ? { notEqualTo: true } : null;
   }
@@ -48,7 +38,7 @@ export class EqualToDirective implements Validator, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['equalTo'] && !changes['equalTo'].isFirstChange()) {
+    if (changes["equalTo"] && !changes["equalTo"].isFirstChange()) {
       if (this.onChange) {
         this.onChange();
       }

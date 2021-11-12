@@ -1,7 +1,7 @@
-import type { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { AbstractControlUtil } from './../abstract-control-util';
-import type { EmailOptions } from './email-util';
-import { EmailSuggestion } from './email-util';
+import type { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
+import { AbstractControlUtil } from "./../abstract-control-util";
+import type { EmailOptions } from "./email-util";
+import { EmailSuggestion } from "./email-util";
 
 export class EmailValidators {
   private static emailSuggestion: EmailSuggestion = new EmailSuggestion();

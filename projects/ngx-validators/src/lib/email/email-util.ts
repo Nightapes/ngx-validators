@@ -36,88 +36,85 @@ interface Offset {
 export class EmailSuggestion {
   private defaultOptions: EmailOptions = {
     domains: [
-      'msn.com',
-      'bellsouth.net',
-      'telus.net',
-      'comcast.net',
-      'optusnet.com.au',
-      'earthlink.net',
-      'qq.com',
-      'sky.com',
-      'icloud.com',
-      'mac.com',
-      'sympatico.ca',
-      'googlemail.com',
-      'att.net',
-      'xtra.co.nz',
-      'web.de',
-      'cox.net',
-      'gmail.com',
-      'ymail.com',
-      'yahoo.com',
-      'aim.com',
-      'rogers.com',
-      'verizon.net',
-      'rocketmail.com',
-      'google.com',
-      'optonline.net',
-      'sbcglobal.net',
-      'aol.com',
-      'me.com',
-      'btinternet.com',
-      'charter.net',
-      'shaw.ca',
+      "msn.com",
+      "bellsouth.net",
+      "telus.net",
+      "comcast.net",
+      "optusnet.com.au",
+      "earthlink.net",
+      "qq.com",
+      "sky.com",
+      "icloud.com",
+      "mac.com",
+      "sympatico.ca",
+      "googlemail.com",
+      "att.net",
+      "xtra.co.nz",
+      "web.de",
+      "cox.net",
+      "gmail.com",
+      "ymail.com",
+      "yahoo.com",
+      "aim.com",
+      "rogers.com",
+      "verizon.net",
+      "rocketmail.com",
+      "google.com",
+      "optonline.net",
+      "sbcglobal.net",
+      "aol.com",
+      "me.com",
+      "btinternet.com",
+      "charter.net",
+      "shaw.ca",
     ],
-    secondLevelDomains: ['yahoo', 'hotmail', 'mail', 'live', 'outlook', 'gmx'],
+    secondLevelDomains: ["yahoo", "hotmail", "mail", "live", "outlook", "gmx"],
     topLevelDomains: [
-      'com',
-      'com.au',
-      'com.tw',
-      'ca',
-      'co.nz',
-      'co.uk',
-      'de',
-      'fr',
-      'it',
-      'ru',
-      'net',
-      'org',
-      'edu',
-      'gov',
-      'jp',
-      'nl',
-      'kr',
-      'se',
-      'eu',
-      'ie',
-      'co.il',
-      'us',
-      'at',
-      'be',
-      'dk',
-      'hk',
-      'es',
-      'gr',
-      'ch',
-      'no',
-      'cz',
-      'in',
-      'net',
-      'net.au',
-      'info',
-      'biz',
-      'mil',
-      'co.jp',
-      'sg',
-      'hu',
-      'uk',
+      "com",
+      "com.au",
+      "com.tw",
+      "ca",
+      "co.nz",
+      "co.uk",
+      "de",
+      "fr",
+      "it",
+      "ru",
+      "net",
+      "org",
+      "edu",
+      "gov",
+      "jp",
+      "nl",
+      "kr",
+      "se",
+      "eu",
+      "ie",
+      "co.il",
+      "us",
+      "at",
+      "be",
+      "dk",
+      "hk",
+      "es",
+      "gr",
+      "ch",
+      "no",
+      "cz",
+      "in",
+      "net",
+      "net.au",
+      "info",
+      "biz",
+      "mil",
+      "co.jp",
+      "sg",
+      "hu",
+      "uk",
     ],
   };
 
-  public suggest(
-    email: string,
-    options?: EmailOptions
-  ): { [key: string]: Suggestion } | null {
+  public suggest(email: string, options?: EmailOptions): { [key: string]: Suggestion } | null {
     let opt = this.defaultOptions;
     if (options !== undefined) {
       opt = options;
@@ -138,11 +135,7 @@ export class EmailSuggestion {
       }
     }
 
-    let closestDomain = this.findClosestDomain(
-      emailParts.domain ?? '',
-      opt.domains,
-      2
-    );
+    let closestDomain = this.findClosestDomain(emailParts.domain ?? "", opt.domains, 2);
     if (closestDomain) {
       if (closestDomain === emailParts.domain) {
         // The email address exactly matches one of the supplied domains; do not return a suggestion.
@@ -153,49 +146,32 @@ export class EmailSuggestion {
           suggestion: {
             address: emailParts.address,
             domain: closestDomain,
-            full: emailParts.address + '@' + closestDomain,
+            full: emailParts.address + "@" + closestDomain,
           },
         };
       }
     }
 
-    const closestSecondLevelDomain = this.findClosestDomain(
-      emailParts.secondLevelDomain,
-      opt.secondLevelDomains,
-      2
-    );
-    const closestTopLevelDomain = this.findClosestDomain(
-      emailParts.topLevelDomain,
-      opt.topLevelDomains,
-      2
-    );
+    const closestSecondLevelDomain = this.findClosestDomain(emailParts.secondLevelDomain, opt.secondLevelDomains, 2);
+    const closestTopLevelDomain = this.findClosestDomain(emailParts.topLevelDomain, opt.topLevelDomains, 2);
 
     if (emailParts.domain) {
       closestDomain = emailParts.domain;
       let rtrn = false;
 
-      if (
-        closestSecondLevelDomain &&
-        closestSecondLevelDomain !== emailParts.secondLevelDomain
-      ) {
+      if (closestSecondLevelDomain && closestSecondLevelDomain !== emailParts.secondLevelDomain) {
         // The email address may have a mispelled second-level domain; return a suggestion
-        closestDomain = closestDomain.replace(
-          emailParts.secondLevelDomain,
-          closestSecondLevelDomain
-        );
+        closestDomain = closestDomain.replace(emailParts.secondLevelDomain, closestSecondLevelDomain);
         rtrn = true;
       }
 
       if (
         closestTopLevelDomain &&
         closestTopLevelDomain !== emailParts.topLevelDomain &&
-        emailParts.secondLevelDomain !== ''
+        emailParts.secondLevelDomain !== ""
       ) {
         // The email address may have a mispelled top-level domain; return a suggestion
-        closestDomain = closestDomain.replace(
-          new RegExp(emailParts.topLevelDomain + '$'),
-          closestTopLevelDomain
-        );
+        closestDomain = closestDomain.replace(new RegExp(emailParts.topLevelDomain + "$"), closestTopLevelDomain);
         rtrn = true;
       }
 
@@ -204,7 +180,7 @@ export class EmailSuggestion {
           suggestion: {
             address: emailParts.address,
             domain: closestDomain,
-            full: emailParts.address + '@' + closestDomain,
+            full: emailParts.address + "@" + closestDomain,
           },
         };
       }
@@ -218,7 +194,7 @@ export class EmailSuggestion {
   }
 
   public splitEmail(email: string) {
-    const parts = email.trim().split('@');
+    const parts = email.trim().split("@");
 
     if (parts.length < 2) {
       return null;
@@ -226,19 +202,19 @@ export class EmailSuggestion {
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < parts.length; i++) {
-      if (parts[i] === '') {
+      if (parts[i] === "") {
         return null;
       }
     }
 
     const result = {
-      topLevelDomain: '',
-      secondLevelDomain: '',
+      topLevelDomain: "",
+      secondLevelDomain: "",
       domain: parts.pop(),
-      address: '',
+      address: "",
     };
 
-    const domainParts = result.domain?.split('.');
+    const domainParts = result.domain?.split(".");
 
     if (!domainParts) {
       return null;
@@ -252,24 +228,17 @@ export class EmailSuggestion {
       // The address has a domain and a top-level domain
       result.secondLevelDomain = domainParts[0];
       for (let j = 1; j < domainParts.length; j++) {
-        result.topLevelDomain += domainParts[j] + '.';
+        result.topLevelDomain += domainParts[j] + ".";
       }
-      result.topLevelDomain = result.topLevelDomain.substring(
-        0,
-        result.topLevelDomain.length - 1
-      );
+      result.topLevelDomain = result.topLevelDomain.substring(0, result.topLevelDomain.length - 1);
     }
 
-    result.address = parts.join('@');
+    result.address = parts.join("@");
 
     return result;
   }
 
-  private findClosestDomain(
-    domain: string,
-    domains: string[],
-    threshold: number
-  ): string | null {
+  private findClosestDomain(domain: string, domains: string[], threshold: number): string | null {
     let dist;
     let minDist = Infinity;
     let closestDomain = null;
