@@ -10,4 +10,4 @@ hooks:
     - yarn version --new-version $(./go-semantic-release next)
     - yarn build
     - echo //registry.npmjs.org/:_authToken=$NPM_TOKEN >> ~/.npmrc
-    - yarn publish dist
+    - yarn publish dist/ngx-validators
