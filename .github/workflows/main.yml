@@ -29,7 +29,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          wget https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release 
+          wget https://github.com/Nightapes/go-semantic-release/releases/download/v2.0.1/go-semantic-release.linux_x86_64.zip
+          unzip go-semantic-release.linux_x86_64.zip
+          rm go-semantic-release.linux_x86_64.zip
+          mv go-semantic-release.linux_x86_64 go-semantic-release
           chmod +x ./go-semantic-release
           git config user.name "Nightapes"
           git config user.email svbeisch@gmail.com
