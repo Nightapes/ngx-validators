@@ -1,18 +1,12 @@
-import type { OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Directive, forwardRef, Input } from '@angular/core';
-import type {
-  AbstractControl,
-  Validator,
-  ValidatorFn,
-  ValidationErrors,
-} from '@angular/forms';
-import { NG_VALIDATORS } from '@angular/forms';
+import type { OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { Directive, forwardRef, Input } from "@angular/core";
+import type { AbstractControl, Validator, ValidatorFn, ValidationErrors } from "@angular/forms";
+import { NG_VALIDATORS } from "@angular/forms";
 
-import { UniversalValidators } from './universal-validators';
+import { UniversalValidators } from "./universal-validators";
 
 @Directive({
-  selector:
-    '[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]',
+  selector: "[noWhitespace][formControlName],[noWhitespace][formControl],[noWhitespace][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -31,8 +25,7 @@ export class WhiteSpaceValidatorDirective implements Validator {
 }
 
 @Directive({
-  selector:
-    '[noEmptyString][formControlName],[noEmptyString][formControl],[noEmptyString][ngModel]',
+  selector: "[noEmptyString][formControlName],[noEmptyString][formControl],[noEmptyString][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -51,8 +44,7 @@ export class EmptyStringValidatorDirective implements Validator {
 }
 
 @Directive({
-  selector:
-    '[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]',
+  selector: "[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -71,8 +63,7 @@ export class IsNumberValidatorDirective implements Validator {
 }
 
 @Directive({
-  selector:
-    '[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]',
+  selector: "[isInRange][formControlName],[isInRange][formControl],[isInRange][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -82,9 +73,7 @@ export class IsNumberValidatorDirective implements Validator {
     },
   ],
 })
-export class IsInRangeValidatorDirective
-  implements Validator, OnInit, OnChanges
-{
+export class IsInRangeValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() minValue = 0;
   @Input() maxValue = 0;
 
@@ -93,10 +82,7 @@ export class IsInRangeValidatorDirective
   private onChange = () => {};
 
   ngOnInit() {
-    this.validator = UniversalValidators.isInRange(
-      this.minValue,
-      this.maxValue
-    );
+    this.validator = UniversalValidators.isInRange(this.minValue, this.maxValue);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -104,14 +90,14 @@ export class IsInRangeValidatorDirective
     let maxValue = this.maxValue;
     let changed = false;
 
-    if (changes['minValue']) {
-      minValue = changes['minValue'].currentValue;
-      changed = changes['minValue'].isFirstChange() ? false : true;
+    if (changes["minValue"]) {
+      minValue = changes["minValue"].currentValue;
+      changed = changes["minValue"].isFirstChange() ? false : true;
     }
 
-    if (changes['maxValue']) {
-      maxValue = changes['maxValue'].currentValue;
-      changed = changes['maxValue'].isFirstChange() ? false : true;
+    if (changes["maxValue"]) {
+      maxValue = changes["maxValue"].currentValue;
+      changed = changes["maxValue"].isFirstChange() ? false : true;
     }
 
     if (changed) {
@@ -130,8 +116,7 @@ export class IsInRangeValidatorDirective
 }
 
 @Directive({
-  selector:
-    'input[type=text][max][formControlName],input[type=text][max][formControl],input[type=text][max][ngModel]',
+  selector: "input[type=text][max][formControlName],input[type=text][max][formControl],input[type=text][max][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -153,8 +138,8 @@ export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['max'] && !changes['max'].isFirstChange()) {
-      this.validator = UniversalValidators.max(changes['max'].currentValue);
+    if (changes["max"] && !changes["max"].isFirstChange()) {
+      this.validator = UniversalValidators.max(changes["max"].currentValue);
       this.onChange();
     }
   }
@@ -169,8 +154,7 @@ export class MaxValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector:
-    'input[type=text][min][formControlName],input[type=text][min][formControl],input[type=text][min][ngModel]',
+  selector: "input[type=text][min][formControlName],input[type=text][min][formControl],input[type=text][min][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -192,8 +176,8 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['min'] && !changes['min'].isFirstChange()) {
-      this.validator = UniversalValidators.min(changes['min'].currentValue);
+    if (changes["min"] && !changes["min"].isFirstChange()) {
+      this.validator = UniversalValidators.min(changes["min"].currentValue);
       this.onChange();
     }
   }
@@ -209,7 +193,7 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
 
 @Directive({
   selector:
-    'input[type=text][minDate][formControlName],input[type=text][minDate][formControl],input[type=text][minDate][ngModel]',
+    "input[type=text][minDate][formControlName],input[type=text][minDate][formControl],input[type=text][minDate][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -220,7 +204,7 @@ export class MinValidatorDirective implements Validator, OnInit, OnChanges {
   ],
 })
 export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
-  @Input() minDate = '';
+  @Input() minDate = "";
 
   private validator?: ValidatorFn;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -231,8 +215,8 @@ export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['minDate'] && !changes['minDate'].isFirstChange()) {
-      this.validator = UniversalValidators.minDate(changes['min'].currentValue);
+    if (changes["minDate"] && !changes["minDate"].isFirstChange()) {
+      this.validator = UniversalValidators.minDate(changes["min"].currentValue);
       this.onChange();
     }
   }
@@ -248,7 +232,7 @@ export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
 
 @Directive({
   selector:
-    'input[type=text][maxDate][formControlName],input[type=text][maxDate][formControl],input[type=text][maxDate][ngModel]',
+    "input[type=text][maxDate][formControlName],input[type=text][maxDate][formControl],input[type=text][maxDate][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -259,7 +243,7 @@ export class MinDateValidatorDirective implements Validator, OnInit, OnChanges {
   ],
 })
 export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
-  @Input() maxDate = '';
+  @Input() maxDate = "";
 
   private validator?: ValidatorFn;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -270,8 +254,8 @@ export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['maxDate'] && !changes['maxDate'].isFirstChange()) {
-      this.validator = UniversalValidators.maxDate(changes['min'].currentValue);
+    if (changes["maxDate"] && !changes["maxDate"].isFirstChange()) {
+      this.validator = UniversalValidators.maxDate(changes["min"].currentValue);
       this.onChange();
     }
   }
@@ -286,7 +270,7 @@ export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector: 'input[requireType][formControlName]',
+  selector: "input[requireType][formControlName]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -297,7 +281,7 @@ export class MaxDateValidatorDirective implements Validator, OnInit, OnChanges {
   ],
 })
 export class TypeValidatorDirective implements Validator, OnInit, OnChanges {
-  @Input() requiredType: 'number' | 'string' | 'object' | 'boolean' = 'string';
+  @Input() requiredType: "number" | "string" | "object" | "boolean" = "string";
 
   private validator?: ValidatorFn;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -308,10 +292,8 @@ export class TypeValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['requireType'] && !changes['requireType'].isFirstChange()) {
-      this.validator = UniversalValidators.type(
-        changes['requireType'].currentValue
-      );
+    if (changes["requireType"] && !changes["requireType"].isFirstChange()) {
+      this.validator = UniversalValidators.type(changes["requireType"].currentValue);
       this.onChange();
     }
   }

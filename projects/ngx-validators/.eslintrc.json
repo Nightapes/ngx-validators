@@ -5,10 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "projects/ngx-validators/tsconfig.lib.json",
-          "projects/ngx-validators/tsconfig.spec.json"
-        ],
+        "project": ["projects/ngx-validators/tsconfig.lib.json", "projects/ngx-validators/tsconfig.spec.json"],
         "createDefaultProgram": true
       },
       "rules": {}

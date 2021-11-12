@@ -1,21 +1,17 @@
-import type { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { AbstractControlUtil } from '../abstract-control-util';
+import type { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
+import { AbstractControlUtil } from "../abstract-control-util";
 
 export class UniversalValidators {
-  public static noWhitespace(
-    control: AbstractControl
-  ): ValidationErrors | null {
+  public static noWhitespace(control: AbstractControl): ValidationErrors | null {
     if (AbstractControlUtil.isNotPresent(control)) return null;
-    const pattern = '\\s';
+    const pattern = "\\s";
     if (new RegExp(pattern).test(control.value)) {
       return { noWhitespaceRequired: true };
     }
     return null;
   }
 
-  public static noEmptyString(
-    control: AbstractControl
-  ): ValidationErrors | null {
+  public static noEmptyString(control: AbstractControl): ValidationErrors | null {
     if (AbstractControlUtil.isNotPresent(control)) return null;
     if (control.value.trim().length === 0) {
       return { noEmptyString: true };
@@ -168,13 +164,11 @@ export class UniversalValidators {
    * `type` property if the validation check fails, otherwise `null`.
    *
    */
-  public static type(type: 'number' | 'string' | 'object' | 'boolean') {
+  public static type(type: "number" | "string" | "object" | "boolean") {
     const validator = (control: AbstractControl): ValidationErrors | null => {
       if (AbstractControlUtil.isNotPresent(control)) return null;
       const typeOfControl = typeof control.value;
-      return typeOfControl !== type
-        ? { type: { required: type, actual: typeOfControl } }
-        : null;
+      return typeOfControl !== type ? { type: { required: type, actual: typeOfControl } } : null;
     };
     return validator;
   }

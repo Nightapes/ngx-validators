@@ -1,18 +1,13 @@
-import type { EmailOptions } from './email-util';
-import type { OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { Directive, Input, forwardRef } from '@angular/core';
-import type {
-  Validator,
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
-import { NG_VALIDATORS } from '@angular/forms';
+import type { EmailOptions } from "./email-util";
+import type { OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { Directive, Input, forwardRef } from "@angular/core";
+import type { Validator, ValidatorFn, AbstractControl, ValidationErrors } from "@angular/forms";
+import { NG_VALIDATORS } from "@angular/forms";
 
-import { EmailValidators } from './email-validators';
+import { EmailValidators } from "./email-validators";
 
 @Directive({
-  selector: '[email][formControlName],[email][formControl],[email][ngModel]',
+  selector: "[email][formControlName],[email][formControl],[email][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -23,7 +18,7 @@ import { EmailValidators } from './email-validators';
   ],
 })
 export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
-  @Input() email: 'normal' | 'simple' = 'normal';
+  @Input() email: "normal" | "simple" = "normal";
 
   private validator?: ValidatorFn;
   private onChange?: () => void;
@@ -34,10 +29,10 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
 
   setValidator(type: string) {
     switch (type) {
-      case 'simple':
+      case "simple":
         this.validator = EmailValidators.simple;
         break;
-      case 'normal':
+      case "normal":
         this.validator = EmailValidators.normal;
         break;
       default:
@@ -47,8 +42,8 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['email'] && !changes['email'].isFirstChange()) {
-      this.setValidator(changes['email'].currentValue);
+    if (changes["email"] && !changes["email"].isFirstChange()) {
+      this.setValidator(changes["email"].currentValue);
       if (this.onChange) {
         this.onChange();
       }
@@ -65,8 +60,7 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
 }
 
 @Directive({
-  selector:
-    '[emailSuggest][formControlName],[emailSuggest][formControl],[emailSuggest][ngModel]',
+  selector: "[emailSuggest][formControlName],[emailSuggest][formControl],[emailSuggest][ngModel]",
   providers: [
     {
       provide: NG_VALIDATORS,
@@ -76,9 +70,7 @@ export class EmailValidatorDirective implements Validator, OnInit, OnChanges {
     },
   ],
 })
-export class EmailSuggestValidatorDirective
-  implements Validator, OnInit, OnChanges
-{
+export class EmailSuggestValidatorDirective implements Validator, OnInit, OnChanges {
   @Input() emailSuggest?: EmailOptions;
 
   private validator?: ValidatorFn;
@@ -89,10 +81,8 @@ export class EmailSuggestValidatorDirective
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['emailSuggest'] && !changes['emailSuggest'].isFirstChange()) {
-      this.validator = EmailValidators.suggest(
-        changes['emailSuggest'].currentValue
-      );
+    if (changes["emailSuggest"] && !changes["emailSuggest"].isFirstChange()) {
+      this.validator = EmailValidators.suggest(changes["emailSuggest"].currentValue);
       if (this.onChange) {
         this.onChange();
       }
