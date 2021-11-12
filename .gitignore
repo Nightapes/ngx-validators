@@ -1,54 +1,46 @@
-#################
-## Misc
-#################
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
-node_modules/*
-npm-debug.log
-coverage
-*.js
-!test-config.js
-!karma.conf.js
-!rollup.config.js
-!karma-test-shim.js
-*.map
-*.d.ts
-!make.js
-!bundles/*.js
-typings
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-#################
-## JetBrains
-#################
-.idea
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+/.idea
 .project
-.settings
-.idea/*
-*.iml
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-############
-## Windows
-############
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
-# Windows image file caches
-Thumbs.db
+# misc
+/.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
 
-# Folder config file
-Desktop.ini
-
-############
-## Mac
-############
-
-# Mac crap
+# System Files
 .DS_Store
-
-### Custom
-
-*.log
-*.tgz
-examples/node_modules/
-dist/
-coverage/
+Thumbs.db

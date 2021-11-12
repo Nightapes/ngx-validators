@@ -5,10 +5,10 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node 12
+      - name: Set up Node 14
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "14.x"
         id: node
 
       - name: Check out code
