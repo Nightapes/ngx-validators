@@ -3,11 +3,12 @@
   "version": "0.0.0-development",
   "description": "An implementation of angular validators for Angular 2 and higher",
   "scripts": {
-    "test": "karma start",
-    "test-watch": "karma start --no-single-run --auto-watch",
-    "build": "ng-packagr -p package.json",
-    "lint": "tslint --project .",
-    "lint:fix": "tslint --fix --project .",
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
     "format:fix": "prettier --write ."
   },
   "repository": {
@@ -25,41 +26,42 @@
     "url": "https://github.com/Nightapes/ngx-validators/issues"
   },
   "homepage": "https://github.com/Nightapes/ngx-validators",
-  "peerDependencies": {
-    "@angular/common": ">= 2.0.0",
-    "@angular/core": ">= 2.0.0",
-    "@angular/forms": ">= 2.0.0"
+  "dependencies": {
+    "@angular/common": "~13.0.0",
+    "@angular/compiler": "~13.0.0",
+    "@angular/core": "~13.0.0",
+    "@angular/forms": "~13.0.0",
+    "@angular/platform-browser": "~13.0.0",
+    "@angular/platform-browser-dynamic": "~13.0.0",
+    "@angular/router": "~13.0.0",
+    "rxjs": "~7.4.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular/cli": "^8.3.21",
-    "@angular/common": "^8.2.14",
-    "@angular/compiler": "^8.2.14",
-    "@angular/compiler-cli": "^8.2.14",
-    "@angular/core": "^8.2.14",
-    "@angular/forms": "^8.2.14",
-    "@angular/platform-browser": "^8.2.14",
-    "@angular/platform-browser-dynamic": "^8.2.14",
-    "@types/jasmine": "3.5.0",
-    "@types/node": "^13.1.2",
-    "codelyzer": "^5.2.2",
-    "jasmine-core": "3.5.0",
-    "karma": "4.4.1",
-    "karma-chrome-launcher": "3.1.0",
-    "karma-jasmine": "2.0.1",
-    "karma-typescript": "^4.1.1",
-    "ng-packagr": "^5.7.1",
-    "prettier": "^2.0.4",
-    "puppeteer": "^2.0.0",
-    "rxjs": "^6.5.4",
-    "tslib": "1.10.0",
-    "tslint": "~6.1.0",
-    "typescript": "3.5.3",
-    "zone.js": "^0.9.1"
-  },
-  "dependencies": {},
-  "ngPackage": {
-    "lib": {
-      "entryFile": "./src/public_api.ts"
-    }
+    "@angular-devkit/build-angular": "~13.0.1",
+    "@angular-eslint/builder": "13.0.0-alpha.0",
+    "@angular-eslint/eslint-plugin": "13.0.0-alpha.0",
+    "@angular-eslint/eslint-plugin-template": "13.0.0-alpha.0",
+    "@angular-eslint/schematics": "13.0.0-alpha.0",
+    "@angular-eslint/template-parser": "13.0.0-alpha.0",
+    "@angular/cli": "~13.0.1",
+    "@angular/compiler-cli": "~13.0.0",
+    "@types/jasmine": "~3.10.0",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.28.2",
+    "@typescript-eslint/parser": "4.28.2",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jasmine-core": "~3.10.0",
+    "karma": "^6.3.8",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-jasmine": "^4.0.1",
+    "karma-jasmine-html-reporter": "^1.7.0",
+    "ng-packagr": "^13.0.0",
+    "prettier": "^2.4.1",
+    "typescript": "~4.4.3"
   }
 }

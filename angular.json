@@ -1,0 +1,48 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-validators": {
+      "projectType": "library",
+      "root": "projects/ngx-validators",
+      "sourceRoot": "projects/ngx-validators/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-validators/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-validators/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-validators/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-validators/src/test.ts",
+            "tsConfig": "projects/ngx-validators/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-validators/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-validators/**/*.ts",
+              "projects/ngx-validators/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-validators"
+}
